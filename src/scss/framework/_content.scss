@@ -1,0 +1,26 @@
+// ---- Content ----
+
+// Hide Tabs if JS is available, otherwise show all content
+.js main .tabbed-content:not(.active) { display: none; }
+
+main {
+	div { @include clearfix; }
+	ul {
+		margin-left: auto;
+		margin-right: auto;
+		@include ul-reset;
+	}
+
+	a {
+		display: block;
+		position: relative;		// allow postioning of child-elements
+		img { display: inline-block; }		// prevent whitespace on images
+	}
+
+	// Clip text of Description if nessecary
+	span {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}
