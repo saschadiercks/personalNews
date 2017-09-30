@@ -1,30 +1,44 @@
 <?php
+	// Setup
+	$projectConfigUrl = "config/config.php";
+	require_once($projectConfigUrl);
 
-	// Project Title
-	$projectTitle = "personalNews";
-	$projectdescription = "your news as a timeline";
-	$applicationName = "personalNews";
-	$applicationNameShort = $applicationName;
-
-	// Set Environemt
-	$manifestUrl = "personalnews.manifest.php";	// This is the name of the manifest-file
+	// Data-Environment
 	$dataUrl = "data/data.json";				// Set the url to retrieve the data from
-	$content = file_get_contents($dataUrl);		// Get the data
-	$json = json_decode($content, true);		// (true) returns the json as array-structure
-	$counterStartvalue = 1;						// Set the Number the counters start with (no change nesseccary)
-	$cssUrl = "assets/css/site.css";			// Set the url to retreive the css from
-	$jsUrl = "assets/js/script.js";				// Set the url to retrieve the js from
+	$jsonContent = file_get_contents($dataUrl);		// Get the data
+	$json = json_decode($jsonContent, true);		// (true) returns the json as array-structure
 
 	// Array-Konstrukte aufbauen
-	$header = array_keys($json['content']);		// Build header-array (keys of first layer only, because we only need the keys as title)
-	$content = $json['content'];				// Get content-array directly
-	$footer = $json['footer'];					// Get footer-array
+	//$header = array_keys($json['content']);		// Build header-array (keys of first layer only, because we only need the keys as title)
+	$content = $json['content'];					// Get content-array directly
+	//$footer = $json['footer'];					// Get footer-array
 
 	// Countervalues to start with. Every block gets it's own value, so we don't need to unset it
 	// The important thing is, header and content must use the same startValue!
-	$headerCount = $counterStartvalue;
-	$contentCount = $counterStartvalue;
-	$tileCount = $counterStartvalue;	// currently unused
+	//$counterStartvalue = 1;						// Set the Number the counters start with (no change nesseccary)
+	//$headerCount = $counterStartvalue;
+	//$contentCount = $counterStartvalue;
+
+	// debug
+	$manifestUrl = "";
+
+	// +++++ Funktionen +++++++
+	// allow loading files
+	ini_set("allow_url_fopen", true);
+
+	// parse RSS
+	function parseRss($rssUrl) {
+		$xml = file_get_contents($rssUrl);
+		$xml = simplexml_load_string($xml);
+
+		foreach ($xml->channel[0]->item as $item) {
+			echo(
+				"<li>
+					<h2 class='title'><a href='".$item->link."' target='_blank' rel='noopener'>".$item->title."</a></h2>".
+				"</li>"
+			);
+		}
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +66,7 @@
 
 	<!-- JS -->
 	<script type="text/javascript">
-		<?php require_once($jsUrl); ?>
+
 	</script>
 
 	<!-- Mobile Manifest -->
@@ -63,33 +77,20 @@
 
 	<!-- header -->
 	<header>
-		<nav class="tabs">
-			<ul>
-				<!-- <?php foreach($header as $key): ?>
-					<li class="tab">
-						<a href="#tab-<?= $headerCount++ ?>" data-target=""><?= $key ?></a>
-					</li>
-				<?php endforeach; ?> -->
-			</ul>
-		</nav>
+		<!-- nothing here -->
 	</header>
 
 	<!-- content -->
 	<main id="content">
-		<!-- <?php foreach($content as $key): ?>
-			<div id="tab-<?= $counterStartvalue++ ?>" class="tabbed-content">
-				<ul>
-					<?php foreach($key as $contentItem): ?>
-						<li>
-							<a href="<?= $contentItem['url'] ?>" rel="noopener">
-								<img src="<?= $contentItem['image'] ?>" alt="<?= $contentItem['title'] ?>"/>
-								<span class="title"><?= $contentItem['title'] ?></span>
-							</a>
-						</li>
-					<?php endforeach; ?>
-				</ul>
-			</div>
-		<?php endforeach; ?> -->
+		<ul>
+			<?php
+				foreach($content as $key) {
+					foreach($key as $rssUrl) {
+						parseRss($rssUrl['url']);
+					}
+				}
+			?>
+		</ul>
 	</main>
 
 	<!-- footer -->

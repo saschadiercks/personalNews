@@ -5,175 +5,66 @@ $body-background-color: #fff;
 $base-spacing-size: 1vw;
 $base-animation-speed: .5s;
 
-$header-background-color: #fff;
-$header-link-color: #333;
-$header-link-active-bg: #007acc;
-$header-link-active-color: #fff;
-
-$main-link-border-color: #f5f5f5;
-$main-link-background-color: #f5f5f5;
-$main-link-background-image: linear-gradient(to bottom,$body-background-color, $main-link-background-color);
-$main-link-background-image-hover: linear-gradient(to top,$body-background-color, $main-link-background-color);
-$main-link-active-border-color: #ddd;
-$main-link-description-bg: rgba($main-link-border-color,.95);
-$main-link-description-color: $header-link-color;
-$main-link-active-description-bg: $header-link-active-bg;
-$main-link-active-description-color: $header-link-active-color;
-
-$footer-bg: $header-link-active-bg;
-$footer-color: $header-background-color;
-
-$no-js-separator-color: $main-link-border-color;
+$main-link-color: #666;
+$main-link-active-color: darken($main-link-color, 50%);
+$main-link-visited-color: lighten($main-link-color, 50%);
 
 
 // ----- Body -----
 body {
 	background-color: $body-background-color;
 	font-family: $document-font-family;
+	padding: $base-spacing-size;
 }
 
 
 // ---- header ----
 header {
-	background-color: $header-background-color;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
-	display: block;
-	z-index: 1;
 
-	li {
-		color: $header-link-color;
-		display: inline-block;
-
-		&:hover,
-		&.active {
-			background-color: $header-link-active-bg;
-			border-radius: 2px;
-			color: $header-link-active-color;
-		}
-	}
-
-	a { color: inherit; }
 }
 
 // ---- Content ----
 main {
-	margin: $base-spacing-size;
-
-	ul {
-		display: grid;
-		grid-gap: $base-spacing-size;
+	.title {
+		font-size: 1em;
+		font-weight: normal;
+		margin-top: 0;
 	}
-
 	a {
-		background-color: $main-link-background-color;
-		background-image: $main-link-background-image;
-		background-clip: padding-box;
-		border: 1px solid $main-link-border-color;
-		border-radius: 2px;
-		font-size: .75rem;
-		// margin: $base-spacing-size/2;
-		position: relative;
-		text-align: center;
+		color: $main-link-color;
 		text-decoration: none;
-
-		&:hover {
-			border-color: $main-link-active-border-color;
-			background-image: $main-link-background-image-hover;
-			z-index: 1;
+		&:hover,
+		&:active {
+			color: $main-link-active-color !important;
+			text-decoration: underline;
 		}
-
-		// Description
-		span {
-			background-color: $main-link-description-bg;
-			bottom: 0;
-			color: $main-link-description-color;
-			left: 0;
-			display: block;
-			padding: $base-spacing-size/2;
-			position: absolute;
-			right: 0;
-		}
+		&:visited { color: $main-link-visited-color; }
 	}
+
 }
 
 // ---- Footer ----
 footer {
-	@include clearfix;
-	background-color: $footer-bg;
-	color: $footer-color;
-	width: 100%;
-	font-size: .75rem;
-	padding: $base-spacing-size $base-spacing-size*1.5;
-	z-index: 1;
 
-	ul { @include ul-reset; }
-	li { display: inline-block; }
-	a { color: inherit; }
-
-	div:first-of-type { float: left; }
-	.social-profiles { float: right; }
 }
 
 // ---- Responsive ----
 // Mobile view
 @include phone-only {
-	header {
-		font-size: .75rem;
-		padding: $base-spacing-size*2 $base-spacing-size*1.5;
 
-		a { padding: $base-spacing-size $base-spacing-size*2; }
-	}
-	main {
-		ul { grid-template-columns: repeat(2,1fr); }
-
-	}
 }
 
 // Tablet portrait
 @include tablet-portrait {
-	main {
-		ul { grid-template-columns: repeat(4,1fr); }
-	}
+
 }
 
 // Tablet portrait
 @include tablet-landscape-up {
-	main {
-		ul { grid-template-columns: repeat(5,1fr); }
-	}
+
 }
 
 // Default View
 @include default {
-	header {
-		padding: $base-spacing-size*.75 $base-spacing-size;
-		a { padding: $base-spacing-size*.75 $base-spacing-size; }
-	}
-	main {
-		.title {
-			opacity: 0;
-			transition: opacity $base-animation-speed;
-		}
-		a:hover {
-			.title { opacity: 1; }
-		}
-	}
 
-	footer {
-		position: fixed;
-		bottom: $base-spacing-size*-2.5;
-		transition: bottom $base-animation-speed;
-		opacity: .9;
-
-		&:hover { bottom: 0; }
-	}
-}
-
-
-// ---- Fallbacks / special cases ----
-// separation of content if JS is disabled / not loaded
-body:not(.js) main nav:not(:last-child) {
-	margin-bottom: $base-spacing-size*2;
-	padding-bottom: $base-spacing-size*2;
-	border-bottom: 1px dotted $no-js-separator-color;
 }
