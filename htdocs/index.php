@@ -1,6 +1,13 @@
 <?php
 
+	// Project Title
+	$projectTitle = "personalNews";
+	$projectdescription = "your news as a timeline";
+	$applicationName = "personalNews";
+	$applicationNameShort = $applicationName;
+
 	// Set Environemt
+	$manifestUrl = "personalnews.manifest.php";	// This is the name of the manifest-file
 	$dataUrl = "data/data.json";				// Set the url to retrieve the data from
 	$content = file_get_contents($dataUrl);		// Get the data
 	$json = json_decode($content, true);		// (true) returns the json as array-structure
@@ -21,21 +28,22 @@
 ?>
 
 <!DOCTYPE html>
-<html dir="ltr" lang="de" manifest="startpage.manifest.php">
+<html dir="ltr" lang="de" manifest="<?php echo($manifestUrl) ?>">
 <head>
-	<title>Browser Startpage</title>
+	<title><?php echo($projectTitle); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="<?php echo($projectdescription); ?>" />
 	<meta name="language" content="de" />
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
-	<meta name="viewport" content="width=device-width; initial-scale=1;">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Short Names -->
-	<meta name="apple-mobile-web-app-title" content="Startpage">
-	<meta name="application-name" content="Startpage">
+	<meta name="apple-mobile-web-app-title" content="<?php echo($applicationName); ?>" />
+	<meta name="application-name" content="<?php echo($applicationNameShort); ?>" />
 
 	<!-- Icons -->
-	<link rel="apple-touch-icon" href="apple-touch-icon-foto-114x114-precomposed.png">
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon-foto-114x114-precomposed.png" />
+	<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- CSS -->
 	<style type="text/css">
@@ -57,18 +65,18 @@
 	<header>
 		<nav class="tabs">
 			<ul>
-				<?php foreach($header as $key): ?>
+				<!-- <?php foreach($header as $key): ?>
 					<li class="tab">
 						<a href="#tab-<?= $headerCount++ ?>" data-target=""><?= $key ?></a>
 					</li>
-				<?php endforeach; ?>
+				<?php endforeach; ?> -->
 			</ul>
 		</nav>
 	</header>
 
 	<!-- content -->
 	<main id="content">
-		<?php foreach($content as $key): ?>
+		<!-- <?php foreach($content as $key): ?>
 			<div id="tab-<?= $counterStartvalue++ ?>" class="tabbed-content">
 				<ul>
 					<?php foreach($key as $contentItem): ?>
@@ -81,19 +89,11 @@
 					<?php endforeach; ?>
 				</ul>
 			</div>
-		<?php endforeach; ?>
+		<?php endforeach; ?> -->
 	</main>
 
 	<!-- footer -->
 	<footer>
-		<div class="description"><a href="https://github.com/saschadiercks/browserStartpage">Fork me on Github</a></div>
-		<div class="social-profiles">
-			<ul>
-				<li><a href="http://metafolio.de">home</a></li>
-				<li><a href="https://github.com/saschadiercks">github</a></li>
-				<li><a href="https://twitter.com/saschadiercks">twitter</a></li>
-			</ul>
-		</div>
 	</footer>
 </body>
 </html>
