@@ -5,6 +5,7 @@ $body-background-color: #fff;
 $base-animation-speed: .5s;
 $base-spacing-size: 1em;
 $base-spacing-size-text: .5em;
+$favicon-size: 16px;
 
 // colors
 $base-color: #333;
@@ -50,13 +51,14 @@ main {
 
 	li {
 		border-bottom: $base-border;
-		padding: $base-spacing-size;
+		padding: $base-spacing-size $base-spacing-size $base-spacing-size $base-spacing-size * 2;
 		&:first-of-type { border-top: $base-border; }
 	}
 
 	a {
 		color: $main-link-color;
-		text-decoration: none;
+		&:not(.source) { text-decoration: none; }
+
 		&:hover,
 		&:active {
 			color: $main-link-active-color !important;
@@ -69,11 +71,23 @@ main {
 		&:last-of-type { margin-bottom: 0; }
 	}
 
+	.icon {
+		display: inline-block;
+		height: $favicon-size;
+		margin-left: round($favicon-size * -1.5);
+		margin-right: round($favicon-size / 2);
+		margin-top: round($favicon-size / 4);
+		vertical-align: top;
+		width: $favicon-size;
+	}
+
 	.title {
+		display: inline-block;
 		font-size: $font-size-title;
 		font-weight: 600;
 		margin-top: 0;
 		margin-bottom: $base-spacing-size-text / 2;
+		vertical-align: middle;
 	}
 	.excerpt { font-size: $font-size-excerpt; }
 	.info {

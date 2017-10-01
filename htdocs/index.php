@@ -33,9 +33,10 @@
 
 		foreach ($xml->channel[0]->item as $item) {
 			echo '<li>';
+			echo '<a href="http://www.tagesschau.de" class="icon" rel="noopener"><img src="favicon.ico" alt="tagesschau.de" height="32" width="32" /></a>';
 			echo '<h2 class="title"><a href="' .  $item->link . '" rel="noopener">' . $item->title .'</a></h2>';
-			echo '<p class="info"><span class="date">' . date("d.m.Y (H:m)", strtotime($item->pubDate)) . '</span> / <span class="source">tagesschau.de</span></p>';
-			echo '<p class="excerpt js-folddown">' . $item->description . '</p>';
+			echo '<p class="info"><span class="date">' . date("d.m.Y (H:m)", strtotime($item->pubDate)) . '</span> / <a href="http://www.tagesschau.de" class="source">tagesschau.de</a></p>';
+			echo '<p class="excerpt js-folddown"><a href="' .  $item->link . '" rel="noopener">' . $item->description . '</a></p>';
 			echo '</li>';
 		}
 	}
