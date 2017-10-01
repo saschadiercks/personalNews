@@ -21,7 +21,7 @@ $main-link-color: $base-color;
 $main-link-active-color: darken($main-link-color, 50%);
 $main-link-visited-color: lighten($main-link-color, 50%);
 $info-color: $base-color-light;
-$base-border: 1px solid $base-color;
+$base-border: 1px solid lighten($base-color, 30%);
 
 // ---- Font-Smoothing
 body {
