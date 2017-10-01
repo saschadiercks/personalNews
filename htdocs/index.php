@@ -19,9 +19,6 @@
 	//$headerCount = $counterStartvalue;
 	//$contentCount = $counterStartvalue;
 
-	// debug
-	$manifestUrl = "";
-
 	// +++++ Funktionen +++++++
 	// allow loading files
 	ini_set("allow_url_fopen", true);
@@ -31,18 +28,21 @@
 		$xml = file_get_contents($rssUrl);
 		$xml = simplexml_load_string($xml);
 
+		$author = $xml->channel[0]->$description;
+		echo $author;
+
 		foreach ($xml->channel[0]->item as $item) {
-			echo(
-				"<li>
-					<h2 class='title'><a href='".$item->link."' target='_blank' rel='noopener'>".$item->title."</a></h2>".
-				"</li>"
-			);
+			echo '<li>';
+			echo '<h2 class="title"><a href="' .  $item->link . 'rel="noopener">' . $item->title .'</a></h2>';
+			echo '<p class="info"><span class="date">' . date("d.m.Y (h:m)", strtotime($item->pubDate)) . '</span> / <span class="source">tagesschau.de</span></p>';
+			echo '<p class="excerpt">' . $item->description . '</p>';
+			echo '</li>';
 		}
-}
+	}
 ?>
 
 <!DOCTYPE html>
-<html dir="ltr" lang="de" manifest="<?php echo($manifestUrl) ?>">
+<html dir="ltr" lang="de" manifest="<?php if(isset($manifestUrl)) { echo($manifestUrl); }  ?>">
 <head>
 	<title><?php echo($projectTitle); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
