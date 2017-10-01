@@ -1,5 +1,5 @@
 // ----- Setup -----
-$document-font-family: -apple-system, sans-serif;
+$font-family-document: -apple-system, sans-serif;
 $body-background-color: #fff;
 
 $base-animation-speed: .5s;
@@ -27,15 +27,12 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-//@media (min-device-pixel-ratio: 2) {
-//	body { font-smooting: none;  }
-//}
-//
+
 
 // ----- Body -----
 body {
 	background-color: $body-background-color;
-	font-family: $document-font-family;
+	font-family: $font-family-document;
 }
 
 
