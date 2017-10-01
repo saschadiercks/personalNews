@@ -22,6 +22,16 @@ $main-link-visited-color: lighten($main-link-color, 50%);
 $info-color: $base-color-light;
 $base-border: 1px solid $base-color;
 
+// ---- Font-Smoothing
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+//@media (min-device-pixel-ratio: 2) {
+//	body { font-smooting: none;  }
+//}
+//
+
 // ----- Body -----
 body {
 	background-color: $body-background-color;
@@ -42,7 +52,6 @@ main {
 	}
 
 	li {
-		background-color: $body-background-color;
 		border-bottom: $base-border;
 		padding: $base-spacing-size;
 		&:first-of-type { border-top: $base-border; }
@@ -102,4 +111,15 @@ footer {
 // Default View
 @include default {
 
+}
+
+// ---- Fallbacks / special cases ----
+// separation of content if JS is disabled / not loaded
+body.js {
+	//.js-folddown {
+	//	overflow: hidden;
+	//	max-height: 20em;
+	//	transition: max-height 1s;
+	//	&:not(.open) { max-height: 0; }
+	//}
 }

@@ -33,9 +33,9 @@
 
 		foreach ($xml->channel[0]->item as $item) {
 			echo '<li>';
-			echo '<h2 class="title"><a href="' .  $item->link . 'rel="noopener">' . $item->title .'</a></h2>';
-			echo '<p class="info"><span class="date">' . date("d.m.Y (h:m)", strtotime($item->pubDate)) . '</span> / <span class="source">tagesschau.de</span></p>';
-			echo '<p class="excerpt">' . $item->description . '</p>';
+			echo '<h2 class="title"><a href="' .  $item->link . '" rel="noopener">' . $item->title .'</a></h2>';
+			echo '<p class="info"><span class="date">' . date("d.m.Y (H:m)", strtotime($item->pubDate)) . '</span> / <span class="source">tagesschau.de</span></p>';
+			echo '<p class="excerpt js-folddown">' . $item->description . '</p>';
 			echo '</li>';
 		}
 	}
@@ -66,7 +66,7 @@
 
 	<!-- JS -->
 	<script type="text/javascript">
-
+		<?php require_once($jsUrl); ?>
 	</script>
 
 	<!-- Mobile Manifest -->
