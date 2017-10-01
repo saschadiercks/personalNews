@@ -13,30 +13,41 @@
 	$content = $json['content'];					// Get content-array directly
 	//$footer = $json['footer'];					// Get footer-array
 
-	// Countervalues to start with. Every block gets it's own value, so we don't need to unset it
-	// The important thing is, header and content must use the same startValue!
-	//$counterStartvalue = 1;						// Set the Number the counters start with (no change nesseccary)
-	//$headerCount = $counterStartvalue;
-	//$contentCount = $counterStartvalue;
 
-	// +++++ Funktionen +++++++
-	// allow loading files
-	ini_set("allow_url_fopen", true);
+
+	// +++++ Functions +++++++
+
+	// get the RSS
+	function getRSS($content) {
+		foreach($content as $key) {
+			foreach($key as $rssUrl) {
+				$xml = file_get_contents($rssUrl['url']);
+				$xml = simplexml_load_string($xml);
+				$xmlLink = $xml->channel[0]->link;
+				$xmlDescription = $xml->channel[0]->description;
+				return array ($xml, $xmlLink, $xmlDescription);
+			}
+		}
+	}
 
 	// parse RSS
-	function parseRss($rssUrl) {
-		$xml = file_get_contents($rssUrl);
-		$xml = simplexml_load_string($xml);
+	function renderRss($bundledXml) {
+		$xmlLink = $bundledXml[1];
+		$xmlDescription = $bundledXml[2];
 
-		$author = $xml->channel[0]->$description;
-		echo $author;
+		foreach ($bundledXml[0]->channel[0]->item as $item) {
+			// prepare output
+			$itemLink = strip_tags($item->link);
+			$itemTitle = strip_tags($item->title);
+			$itemDate = strip_tags(date("d.m.Y (H:m)", strtotime($item->pubDate)));
+			$itemDescription = strip_tags($item->description);
 
-		foreach ($xml->channel[0]->item as $item) {
+			// render output
 			echo '<li>';
-			echo '<a href="http://www.tagesschau.de" class="icon" rel="noopener"><img src="favicon.ico" alt="tagesschau.de" height="32" width="32" /></a>';
-			echo '<h2 class="title"><a href="' .  $item->link . '" rel="noopener">' . $item->title .'</a></h2>';
-			echo '<p class="info"><span class="date">' . date("d.m.Y (H:m)", strtotime($item->pubDate)) . '</span> / <a href="http://www.tagesschau.de" class="source">tagesschau.de</a></p>';
-			echo '<p class="excerpt js-folddown"><a href="' .  $item->link . '" rel="noopener">' . $item->description . '</a></p>';
+			echo '<a href="' . $xmlLink . '" class="icon" rel="noopener"><img src="favicon.ico" alt="' . $xmlDescription . '" height="32" width="32" /></a>';
+			echo '<h2 class="title"><a href="' .  $itemLink . '" rel="noopener">' . $itemTitle .'</a></h2>';
+			echo '<p class="info"><span class="date">' . $itemDate . '</span> / <a href="' . $xmlLink . '" class="source">' . $xmlDescription . '</a></p>';
+			echo '<p class="excerpt js-folddown"><a href="' .  $itemLink . '" rel="noopener">' . $itemDescription . '</a></p>';
 			echo '</li>';
 		}
 	}
@@ -85,11 +96,8 @@
 	<main id="content">
 		<ul>
 			<?php
-				foreach($content as $key) {
-					foreach($key as $rssUrl) {
-						parseRss($rssUrl['url']);
-					}
-				}
+				$bundledXml = getRss($content);
+				renderRss($bundledXml);
 			?>
 		</ul>
 	</main>
