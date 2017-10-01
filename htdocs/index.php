@@ -25,17 +25,25 @@
 				$xml = simplexml_load_string($xml);
 				$xmlLink = $xml->channel[0]->link;
 				$xmlDescription = $xml->channel[0]->description;
-				return array ($xml, $xmlLink, $xmlDescription);
+				$xmlSourceIcon = $xmlLink . "/favicon.ico";
+
+				return array (
+					'xmlFeeds' => $xml,
+					'xmlLink' => $xmlLink,
+					'xmlDescription' => $xmlDescription,
+					'xmlSourceIcon' => $xmlSourceIcon
+				);
 			}
 		}
 	}
 
 	// parse RSS
 	function renderRss($bundledXml) {
-		$xmlLink = $bundledXml[1];
-		$xmlDescription = $bundledXml[2];
+		$xmlLink = $bundledXml['xmlLink'];
+		$xmlDescription = $bundledXml['xmlDescription'];
+		$xmlSourceIcon = $bundledXml['xmlSourceIcon'];
 
-		foreach ($bundledXml[0]->channel[0]->item as $item) {
+		foreach ($bundledXml['xmlFeeds']->channel[0]->item as $item) {
 			// prepare output
 			$itemLink = strip_tags($item->link);
 			$itemTitle = strip_tags($item->title);
@@ -44,7 +52,7 @@
 
 			// render output
 			echo '<li>';
-			echo '<a href="' . $xmlLink . '" class="icon" rel="noopener"><img src="favicon.ico" alt="' . $xmlDescription . '" height="32" width="32" /></a>';
+			echo '<a href="' . $xmlLink . '" class="icon" rel="noopener"><img src="' . $xmlSourceIcon . '" alt="' . $xmlDescription . '" height="32" width="32" /></a>';
 			echo '<h2 class="title"><a href="' .  $itemLink . '" rel="noopener">' . $itemTitle .'</a></h2>';
 			echo '<p class="info"><span class="date">' . $itemDate . '</span> / <a href="' . $xmlLink . '" class="source">' . $xmlDescription . '</a></p>';
 			echo '<p class="excerpt js-folddown"><a href="' .  $itemLink . '" rel="noopener">' . $itemDescription . '</a></p>';

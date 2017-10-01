@@ -76,9 +76,10 @@ main {
 		height: $favicon-size;
 		margin-left: round($favicon-size * -1.5);
 		margin-right: round($favicon-size / 2);
-		margin-top: round($favicon-size / 4);
+		margin-top: round($favicon-size / 5);
 		vertical-align: top;
 		width: $favicon-size;
+		img { border-radius: 3px; }
 	}
 
 	.title {
@@ -87,9 +88,10 @@ main {
 		font-weight: 600;
 		margin-top: 0;
 		margin-bottom: $base-spacing-size-text / 2;
-		vertical-align: middle;
 	}
+
 	.excerpt { font-size: $font-size-excerpt; }
+
 	.info {
 		color: $info-color;
 		font-size: $font-size-info;
