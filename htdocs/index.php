@@ -4,7 +4,7 @@
 	require_once($projectConfigUrl);
 
 	// Data-Environment
-	$dataUrl = "data/data.json";				// Set the url to retrieve the data from
+	$dataUrl = "data/data.json";					// Set the url to retrieve the data from
 	$jsonContent = file_get_contents($dataUrl);		// Get the data
 	$json = json_decode($jsonContent, true);		// (true) returns the json as array-structure
 
