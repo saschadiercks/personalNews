@@ -19,6 +19,7 @@ personalNews comes with a default list of links, to show you how it works. It sh
 ### Planned Features
 - toggle descriptions
 - allow theming
+- allow blacklisting of news
 - grouping of related news
 - allow onsite-editing so you don't have to fiddle with the json-file
 
