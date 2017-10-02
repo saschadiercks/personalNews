@@ -19,43 +19,43 @@
 
 	// get the RSS
 	function getRSS($content) {
+		$feedItems = array();										// collect all feeds in array
+
 		foreach($content as $key) {
 			foreach($key as $rssUrl) {
-				$xml = file_get_contents($rssUrl['url']);
-				$xml = simplexml_load_string($xml);
-				$xmlLink = $xml->channel[0]->link;
-				$xmlDescription = $xml->channel[0]->description;
-				$xmlSourceIcon = $xmlLink . "/favicon.ico";
+				$xml = file_get_contents($rssUrl['url']);			// get url from json
+				$xml = simplexml_load_string($xml);					// load rss to object
 
-				return array (
-					'xmlFeeds' => $xml,
-					'xmlLink' => $xmlLink,
-					'xmlDescription' => $xmlDescription,
-					'xmlSourceIcon' => $xmlSourceIcon
-				);
+				// get data to push to every feedItem
+				$xmlAuthorLink = (string)$xml->channel[0]->link;						// get source-link from rss
+				$xmlAuthorDescription = (string)$xml->channel[0]->description;			// get description from rss
+				$xmlAuthorIcon = (string)$xmlAuthorLink . "/favicon.ico";				// set up favicon from sourcelink
+
+				foreach($xml->channel[0]->item as $item) {
+					$feedItems[] = array(
+						'itemAuthorLink' => $xmlAuthorLink,
+						'itemAuthorDescription' => $xmlAuthorDescription,
+						'itemAuthorIcon' => $xmlAuthorIcon,
+						'itemLink' => strip_tags($item->link),
+						'itemTitle' => strip_tags($item->title),
+						'itemDate' => strip_tags(date("d.m.Y (H:m)", strtotime($item->pubDate))),
+						'itemDescription' => strip_tags($item->description)
+					);
+				}
 			}
 		}
+		return $feedItems;
 	}
 
-	// parse RSS
-	function renderRss($bundledXml) {
-		$xmlLink = $bundledXml['xmlLink'];
-		$xmlDescription = $bundledXml['xmlDescription'];
-		$xmlSourceIcon = $bundledXml['xmlSourceIcon'];
-
-		foreach ($bundledXml['xmlFeeds']->channel[0]->item as $item) {
-			// prepare output
-			$itemLink = strip_tags($item->link);
-			$itemTitle = strip_tags($item->title);
-			$itemDate = strip_tags(date("d.m.Y (H:m)", strtotime($item->pubDate)));
-			$itemDescription = strip_tags($item->description);
-
+	// render RSS
+	function renderRss($feedItems) {
+		foreach ($feedItems as $feedItem) {
 			// render output
 			echo '<li>';
-			echo '<a href="' . $xmlLink . '" class="icon" rel="noopener"><img src="' . $xmlSourceIcon . '" alt="' . $xmlDescription . '" height="32" width="32" /></a>';
-			echo '<h2 class="title"><a href="' .  $itemLink . '" rel="noopener">' . $itemTitle .'</a></h2>';
-			echo '<p class="info"><span class="date">' . $itemDate . '</span> / <a href="' . $xmlLink . '" class="source">' . $xmlDescription . '</a></p>';
-			echo '<p class="excerpt js-folddown"><a href="' .  $itemLink . '" rel="noopener">' . $itemDescription . '</a></p>';
+			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+			echo '<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
+			echo '<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
+			echo '<p class="excerpt js-folddown"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
 			echo '</li>';
 		}
 	}
@@ -104,8 +104,8 @@
 	<main id="content">
 		<ul>
 			<?php
-				$bundledXml = getRss($content);
-				renderRss($bundledXml);
+				$feedItems = getRss($content);
+				renderRss($feedItems);
 			?>
 		</ul>
 	</main>
