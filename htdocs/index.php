@@ -9,11 +9,7 @@
 	$json = json_decode($jsonContent, true);		// (true) returns the json as array-structure
 
 	// Array-Konstrukte aufbauen
-	//$header = array_keys($json['content']);		// Build header-array (keys of first layer only, because we only need the keys as title)
 	$content = $json['content'];					// Get content-array directly
-	//$footer = $json['footer'];					// Get footer-array
-
-
 
 	// +++++ Functions +++++++
 	$feedItems = array();	// collect all feeds in array
