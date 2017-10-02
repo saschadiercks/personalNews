@@ -98,6 +98,11 @@ main {
 		margin: 0;
 	}
 
+	.source {
+		color: inherit;
+		&:hover { color: $main-link-active-color !important; }
+	}
+
 }
 
 // ---- Footer ----
