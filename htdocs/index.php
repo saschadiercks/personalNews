@@ -32,13 +32,14 @@
 
 				foreach($xml->channel[0]->item as $item) {
 					$feedItems[] = array(
-						'itemAuthorLink' => $xmlAuthorLink, '/',
-						'itemAuthorDescription' => $xmlAuthorDescription,
-						'itemAuthorIcon' => $xmlAuthorIcon,
-						'itemLink' => strip_tags($item->link),
-						'itemTitle' => strip_tags($item->title),
-						'itemDate' => strip_tags(date("d.m.Y (H:m)", strtotime($item->pubDate))),
-						'itemDescription' => strip_tags($item->description)
+						'itemAuthorLink' => $xmlAuthorLink, '/',						// get authorlink (from feed)
+						'itemAuthorDescription' => $xmlAuthorDescription,				// get author (from feed)
+						'itemAuthorIcon' => $xmlAuthorIcon,								// get authorIcon (from feed)
+						'itemLink' => strip_tags($item->link),							// get the link
+						'itemTitle' => strip_tags($item->title),						// get the title
+						'itemTimestamp' => strip_tags(strtotime($item->pubDate)),		// get timestamp to make timeline sortable
+						'itemDate' => date("d.m.Y (H:m)", $item['timestamp']),			// modify timestamp to readable date
+						'itemDescription' => strip_tags($item->description)				// get description of item (usually news-short-description)
 					);
 				}
 			}
@@ -46,7 +47,7 @@
 		return $feedItems;
 	}
 
-	// sort RSS by releaseDate
+	// sort RSS by releaseDate/timestamp
 	function sortRss($feedItems) {
 		return $feedItems;
 	}
