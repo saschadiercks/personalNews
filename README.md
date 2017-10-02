@@ -5,7 +5,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 Just place the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement.
 
 ### Want a demo?
-[http://www.metafolio.de/fragments/personalNews/](http://www.metafolio.de/fragments/personalNews/)
+[http://www.metafolio.de/fragments/personalnews/](http://www.metafolio.de/fragments/personalnews/)
 
 
 ### Setup your own links
