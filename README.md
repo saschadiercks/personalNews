@@ -17,7 +17,9 @@ personalNews comes with a default list of links, to show you how it works. It sh
 - uses vanillaJS
 
 ### Planned Features
+- toggle descriptions
 - allow theming
+- grouping of related news
 - allow onsite-editing so you don't have to fiddle with the json-file
 
 ### Usage of Vagrant
