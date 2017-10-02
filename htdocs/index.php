@@ -61,15 +61,16 @@
 
 	// sort RSS by releaseDate/timestamp
 	function sortRss($feedItems) {
-		// echo $feedItems[0]['itemDate'];
-		//var_dump($feedItems);
+		foreach ($feedItems as $key => $row) {
+			$itemTimestamp[$key] = $row['itemTimestamp'];
+		}
+		array_multisort($itemTimestamp, SORT_DESC, $feedItems);
 		return $feedItems;
 	}
 
-	// render RSS
+	// render Output
 	function renderRss($feedItems) {
 		foreach ($feedItems as $feedItem) {
-			// render output
 			echo '<li>';
 			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo '<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
@@ -124,7 +125,7 @@
 		<ul>
 			<?php
 				$feedItems = getRss($content);
-				//$feedItems = sortRss($feedItems);
+				$feedItems = sortRss($feedItems);
 				renderRss($feedItems);
 			?>
 		</ul>
