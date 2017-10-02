@@ -1,12 +1,8 @@
 {
 	"content": {
 		"Nachrichten" : [
-			{
-				"url":	"http://newsfeed.zeit.de/index"
-			},
-			{
-				"url":	"http://www.tagesschau.de/xml/rss2"
-			}
+			{ "url":	"http://www.tagesschau.de/xml/rss2"	},
+			{ "url":	"http://newsfeed.zeit.de/index"	}
 		]
 	}
 

@@ -18,6 +18,13 @@
 	// +++++ Functions +++++++
 	$feedItems = array();	// collect all feeds in array
 
+	// get the rootUrl
+	function getRootUrl($url) {
+		$url = explode('/', $url);		// explode original url
+		$url = $url[2];					// simply use the rootUrl
+		return $url;
+	}
+
 	// get the RSS
 	function getRSS($content) {
 		foreach($content as $key) {
@@ -26,19 +33,19 @@
 				$xml = simplexml_load_string($xml);					// load rss to object
 
 				// get data to push to every feedItem
-				$xmlAuthorLink = (string)$xml->channel[0]->link;						// get source-link from rss
-				$xmlAuthorDescription = (string)$xml->channel[0]->description;			// get description from rss
-				$xmlAuthorIcon = (string)$xmlAuthorLink . "/favicon.ico";				// set up favicon from sourcelink
+				$xmlAuthorLink = getRootUrl((string)$xml->channel[0]->link);			// get source-link from rss
+				$xmlAuthorDescription = $xmlAuthorLink;									// get description from rss
+				$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";				// set up favicon from sourcelink
 
 				foreach($xml->channel[0]->item as $item) {
 					$feedItems[] = array(
-						'itemAuthorLink' => $xmlAuthorLink, '/',						// get authorlink (from feed)
+						'itemAuthorLink' => '//' . $xmlAuthorLink,						// get authorlink (from feed)
 						'itemAuthorDescription' => $xmlAuthorDescription,				// get author (from feed)
 						'itemAuthorIcon' => $xmlAuthorIcon,								// get authorIcon (from feed)
 						'itemLink' => strip_tags($item->link),							// get the link
 						'itemTitle' => strip_tags($item->title),						// get the title
-						'itemTimestamp' => strip_tags(strtotime($item->pubDate)),		// get timestamp to make timeline sortable
-						'itemDate' => date("d.m.Y (H:m)", $item['timestamp']),			// modify timestamp to readable date
+						'itemTimestamp' => strtotime($item->pubDate),					// get timestamp to make timeline sortable
+						'itemDate' => date("d.m.Y (H:m)", strtotime($item->pubDate)),	// get releasedate an transform to readable date
 						'itemDescription' => strip_tags($item->description)				// get description of item (usually news-short-description)
 					);
 				}
@@ -49,6 +56,8 @@
 
 	// sort RSS by releaseDate/timestamp
 	function sortRss($feedItems) {
+		// echo $feedItems[0]['itemDate'];
+		//var_dump($feedItems);
 		return $feedItems;
 	}
 
@@ -57,9 +66,9 @@
 		foreach ($feedItems as $feedItem) {
 			// render output
 			echo '<li>';
-			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="favicon.ico" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo '<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
-			echo '<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorLink'] . '</a></p>';
+			echo '<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
 			echo '<p class="excerpt js-folddown"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
 			echo '</li>';
 		}
@@ -110,7 +119,7 @@
 		<ul>
 			<?php
 				$feedItems = getRss($content);
-				$feedItems = sortRss($feedItems);
+				//$feedItems = sortRss($feedItems);
 				renderRss($feedItems);
 			?>
 		</ul>
