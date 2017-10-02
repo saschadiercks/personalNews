@@ -16,11 +16,10 @@
 
 
 	// +++++ Functions +++++++
+	$feedItems = array();	// collect all feeds in array
 
 	// get the RSS
 	function getRSS($content) {
-		$feedItems = array();										// collect all feeds in array
-
 		foreach($content as $key) {
 			foreach($key as $rssUrl) {
 				$xml = file_get_contents($rssUrl['url']);			// get url from json
@@ -33,7 +32,7 @@
 
 				foreach($xml->channel[0]->item as $item) {
 					$feedItems[] = array(
-						'itemAuthorLink' => $xmlAuthorLink,
+						'itemAuthorLink' => $xmlAuthorLink, '/',
 						'itemAuthorDescription' => $xmlAuthorDescription,
 						'itemAuthorIcon' => $xmlAuthorIcon,
 						'itemLink' => strip_tags($item->link),
@@ -47,14 +46,19 @@
 		return $feedItems;
 	}
 
+	// sort RSS by releaseDate
+	function sortRss($feedItems) {
+		return $feedItems;
+	}
+
 	// render RSS
 	function renderRss($feedItems) {
 		foreach ($feedItems as $feedItem) {
 			// render output
 			echo '<li>';
-			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="favicon.ico" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo '<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
-			echo '<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
+			echo '<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorLink'] . '</a></p>';
 			echo '<p class="excerpt js-folddown"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
 			echo '</li>';
 		}
@@ -105,6 +109,7 @@
 		<ul>
 			<?php
 				$feedItems = getRss($content);
+				$feedItems = sortRss($feedItems);
 				renderRss($feedItems);
 			?>
 		</ul>
