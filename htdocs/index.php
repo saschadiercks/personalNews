@@ -46,7 +46,7 @@
 						'itemLink' => strip_tags($item->link),							// get the link
 						'itemTitle' => strip_tags($item->title),						// get the title
 						'itemTimestamp' => strtotime($item->pubDate),					// get timestamp to make timeline sortable
-						'itemDate' => date("d.m.Y (H:m)", strtotime($item->pubDate)),	// get releasedate an transform to readable date
+						'itemDate' => date("d.m.Y (H:i)", strtotime($item->pubDate)),	// get releasedate an transform to readable date
 						'itemDescription' => strip_tags($item->description)				// get description of item (usually news-short-description)
 					);
 				}
