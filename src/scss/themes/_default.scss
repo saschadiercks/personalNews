@@ -51,6 +51,11 @@ body {
 	padding: $base-spacing-size;
 }
 
+// ---- theme-switcher
+#theme-switcher {
+	&:not(:checked) + label .icon-moon { display: none; }
+	&:checked + label .icon-sun { display: none; }
+}
 
 // ----- Body -----
 body {

@@ -121,8 +121,8 @@
 	<header id="application-head" class="application-grid">
 		<div>
 			<form method="#" action="#">
-				<input type="checkbox" id="theme-toggle" />
-				<label for="theme-toggle"><span class="vh">activate night-mode</span></label>
+				<input type="checkbox" id="theme-switcher" class="vh"/>
+				<label for="theme-switcher"><i class="icon-moon"></i><i class="icon-sun"></i></label>
 			</form>
 		</div>
 		<div>
