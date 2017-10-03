@@ -1,30 +1,40 @@
 // ----- Setup -----
 $font-family-document: -apple-system, sans-serif;
-$body-background-color: #fff;
 
 $base-animation-speed: .5s;
 $base-spacing-size: 1em;
 $base-spacing-size-text: .5em;
 $favicon-size: 16px;
 
-$base-shadow: 0 2px 2px rgba(0,0,0,0.2);
-
-// colors
-$base-color: #333;
-$base-color-light: #aaa;
-
 // font-sizes
 $font-size-title: 1.125em;	/* 18px / 16px */
 $font-size-excerpt: .875em;	/* 14px / 16px */
 $font-size-info: .75em;		/* 12px / 16px */
 
-// specific-colors
-$header-backgground-color: $body-background-color;
+// Theme-Colors
+// light
+$body-background-color: #fff;
+$base-color: #333;
+$base-color-info: #aaa;
+$base-shadow: 0 2px 2px rgba(0,0,0,0.2);
+$header-background-color: $body-background-color;
 $main-link-color: $base-color;
 $main-link-active-color: darken($main-link-color, 50%);
 $main-link-visited-color: lighten($main-link-color, 50%);
-$info-color: $base-color-light;
+$info-color: $base-color-info;
 $base-border: 1px solid lighten($base-color, 30%);
+
+// dark
+$body-background-color-dark: #000;
+$base-color-dark: #555;
+$base-color-info-dark: #444;
+$base-shadow-dark: 0 2px 2px rgba(255,255,255,0.2);
+$header-background-color-dark: $body-background-color-dark;
+$main-link-color-dark: $base-color-dark;
+$main-link-active-color-dark: darken($main-link-color-dark, 50%);
+$main-link-visited-color-dark: darken($main-link-color-dark, 10%);
+$base-border-dark: 1px solid lighten($base-color-dark, 30%);
+$info-color-dark: $base-color-info-dark;
 
 // ---- Font-Smoothing
 body {
@@ -58,37 +68,23 @@ body {
 }
 
 // ----- Body -----
-body {
-	background-color: $body-background-color;
-	font-family: $font-family-document;
-}
+body { font-family: $font-family-document; }
 
 
 // ---- header ----
 header {
-	background-color: $header-backgground-color;
-	box-shadow: $base-shadow;
 	top: 0;
 	width: 100%;
 }
 
 // ---- Content ----
 main {
-	li {
-		border-bottom: $base-border;
-	}
-
 	a {
-		color: $main-link-color;
 		&:not(.source) { text-decoration: none; }
-
 		&:hover,
-		&:active {
-			color: $main-link-active-color !important;
-			text-decoration: underline;
-		}
-		&:visited { color: $main-link-visited-color; }
+		&:active { text-decoration: underline; }
 	}
+
 	p {
 		margin-top: $base-spacing-size-text;
 		&:last-of-type { margin-bottom: 0; }
@@ -113,16 +109,11 @@ main {
 	.excerpt { font-size: $font-size-excerpt; }
 
 	.info {
-		color: $info-color;
 		font-size: $font-size-info;
 		margin: 0;
 	}
 
-	.source {
-		color: inherit;
-		&:hover { color: $main-link-active-color !important; }
-	}
-
+	.source { color: inherit; }
 }
 
 // ---- Footer ----
@@ -151,13 +142,40 @@ footer {
 
 }
 
-// ---- Fallbacks / special cases ----
-// separation of content if JS is disabled / not loaded
-body.js {
-	//.js-folddown {
-	//	overflow: hidden;
-	//	max-height: 20em;
-	//	transition: max-height 1s;
-	//	&:not(.open) { max-height: 0; }
-	//}
+// ---- themes
+body.light {
+	background-color: $body-background-color;
+	color: $base-color;
+	header {
+		background-color: $header-background-color;
+		box-shadow: $base-shadow;
+	}
+	main a {
+		color: $main-link-color;
+		&:hover,
+		&:active { color: $main-link-active-color !important; }
+		&:visited { color: $main-link-visited-color; }
+	}
+	li { border-bottom: $base-border; }
+	.info { color: $info-color; }
+	.source:hover { color: $main-link-active-color !important; }
+}
+
+body.dark {
+	background-color: $body-background-color-dark;
+	color: $base-color-dark;
+	header {
+		background-color: $header-background-color-dark;
+		border-bottom: $base-border;
+	}
+	main a {
+		color: $main-link-color-dark;
+		&:hover,
+		&:active { color: $main-link-active-color-dark !important; }
+		&:visited { color: $main-link-visited-color-dark; }
+	}
+	li { border-bottom: $base-border-dark; }
+	.icon { opacity: .5; }
+	.info { color: $info-color-dark; }
+	.source:hover { color: $main-link-active-color-dark !important; }
 }
