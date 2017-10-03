@@ -7,6 +7,8 @@ $base-spacing-size: 1em;
 $base-spacing-size-text: .5em;
 $favicon-size: 16px;
 
+$base-shadow: 0 2px 2px rgba(0,0,0,0.2);
+
 // colors
 $base-color: #333;
 $base-color-light: #aaa;
@@ -17,6 +19,7 @@ $font-size-excerpt: .875em;	/* 14px / 16px */
 $font-size-info: .75em;		/* 12px / 16px */
 
 // specific-colors
+$header-backgground-color: $body-background-color;
 $main-link-color: $base-color;
 $main-link-active-color: darken($main-link-color, 50%);
 $main-link-visited-color: lighten($main-link-color, 50%);
@@ -29,6 +32,25 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+// ---- sticky-Element
+.sticky { position: fixed; }
+
+// ---- visually hidden
+.vh {
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px; width: 1px;
+	overflow: hidden;
+	position: absolute !important;
+}
+
+// ---- basic-grid
+.application-grid {
+	display: grid;
+	grid-template-columns: 32px auto;
+	padding: $base-spacing-size;
+}
+
 
 // ----- Body -----
 body {
@@ -39,20 +61,16 @@ body {
 
 // ---- header ----
 header {
-
+	background-color: $header-backgground-color;
+	box-shadow: $base-shadow;
+	top: 0;
+	width: 100%;
 }
 
 // ---- Content ----
 main {
-	ul {
-		display: grid;
-		grid-template-columns: repeat(1,1fr);
-	}
-
 	li {
 		border-bottom: $base-border;
-		padding: $base-spacing-size $base-spacing-size $base-spacing-size $base-spacing-size * 2;
-		&:first-of-type { border-top: $base-border; }
 	}
 
 	a {
@@ -74,10 +92,7 @@ main {
 	.icon {
 		display: inline-block;
 		height: $favicon-size;
-		margin-left: round($favicon-size * -1.5);
-		margin-right: round($favicon-size / 2);
-		margin-top: round($favicon-size / 5);
-		vertical-align: top;
+		margin-top: 2px;
 		width: $favicon-size;
 		img { border-radius: 3px; }
 	}

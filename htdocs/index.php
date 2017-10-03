@@ -67,11 +67,17 @@
 	// render Output
 	function renderRss($feedItems) {
 		foreach ($feedItems as $feedItem) {
-			echo '<li>';
-			echo '<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
-			echo '<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
-			echo '<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
-			echo '<p class="excerpt js-folddown"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
+			echo '<li class="application-grid">';
+			echo 	'<div>';
+			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+			echo 	'</div>';
+			echo 	'<div>';
+			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
+			echo 		'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
+			echo 		'<p class="excerpt js-folddown"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
+			echo 	'</div>';
+			echo	'<div>';
+			echo	'</div>';
 			echo '</li>';
 		}
 	}
@@ -109,11 +115,21 @@
 	<link rel="manifest" href="manifest.json" />
 </head>
 
-<body id="home">
+<body id="home" class="light">
 
 	<!-- header -->
-	<header>
-		<!-- nothing here -->
+	<header id="application-head" class="application-grid">
+		<div>
+			<form method="#" action="#">
+				<input type="checkbox" id="theme-toggle" />
+				<label for="theme-toggle"><span class="vh">activate night-mode</span></label>
+			</form>
+		</div>
+		<div>
+		</div>
+		<div>
+			<!-- nothing here yet -->
+		</div>
 	</header>
 
 	<!-- content -->
