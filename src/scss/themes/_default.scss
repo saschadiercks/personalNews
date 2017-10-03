@@ -75,6 +75,7 @@ body { font-family: $font-family-document; }
 header {
 	top: 0;
 	width: 100%;
+	z-index: 1;
 }
 
 // ---- Content ----
@@ -175,7 +176,7 @@ body.dark {
 		&:visited { color: $main-link-visited-color-dark; }
 	}
 	li { border-bottom: $base-border-dark; }
-	.icon { opacity: .5; }
+	main .icon { opacity: .5; }
 	.info { color: $info-color-dark; }
 	.source:hover { color: $main-link-active-color-dark !important; }
 }
