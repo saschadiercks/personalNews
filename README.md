@@ -1,5 +1,5 @@
 # personalNews
-Do you like getting an overview of news? Do you prefer timelines? With personalNews you'll get your news-sources presented as a timelin to get a quick overview of whats currently happening.
+Do you like getting an overview of news? Do you prefer timelines? With personalNews you'll get your news-sources presented as a timeline to get a quick overview of whats currently happening. It's like twitter, but for news!
 
 ![Screenshot](/.screenshots/personalnews-iphone.jpg)
 
@@ -23,6 +23,7 @@ personalNews comes with a default list of links, to show you how it works. It sh
 - ~~allow theming~~ (done)
 - allow blacklisting of news
 - grouping of related news
+- multiple timelines
 - allow onsite-editing so you don't have to fiddle with the json-file
 
 ## Infos for local development
