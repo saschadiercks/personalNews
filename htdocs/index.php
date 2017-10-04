@@ -126,7 +126,7 @@
 			</form>
 		</div>
 		<div>
-			<img src="favicon.ico" alt="<?php echo($projectTitle); ?>" />
+			<a href="#"><img src="favicon.ico" alt="<?php echo($projectTitle); ?>" /></a>
 		</div>
 		<div>
 			<!-- nothing here yet -->
