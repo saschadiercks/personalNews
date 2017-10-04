@@ -1,6 +1,8 @@
 # personalNews
 Do you like getting an overview of news? Do you prefer timelines? With personalNews you'll get your news-sources presented as a timelin to get a quick overview of whats currently happening.
 
+![Screenshot](/.screenshots/personalnews-iphone.jpg)
+
 ## How does it work?
 Just place the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement.
 
@@ -12,17 +14,18 @@ Just place the folder `/htdocs` on your own webserver. Make sure it supports *ph
 personalNews comes with a default list of links, to show you how it works. It shows up with a list of popular news-sites and some development-Ressources. You change that. Just head over to '/htdocs/data/data.json` and play with that file. It's quite self explanatory.
 
 ## Features
-- easy confiurable via json
+- easy to configure via json
 - only requires php on your server
 - uses vanillaJS
 
 ### Planned Features
 - toggle descriptions
-- allow theming
+- ~~allow theming~~ (done)
 - allow blacklisting of news
 - grouping of related news
 - allow onsite-editing so you don't have to fiddle with the json-file
 
+## Infos for local development
 ### Usage of Vagrant
 1. install vagrant on your machine (https://www.vagrantup.com/)
 2. install Virtualbox (https://www.virtualbox.org/wiki/Downloads)
