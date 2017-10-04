@@ -58,10 +58,12 @@ body {
 main li,
 #application-head {
 	display: grid;
-	grid-template-columns: $favicon-size auto $favicon-size;
 	grid-column-gap: $base-spacing-size / 2;
 	padding: $base-spacing-size;
 }
+
+main li { grid-template-columns: $favicon-size auto; }
+#application-head { grid-template-columns: $favicon-size auto $favicon-size ; }
 
 // ---- theme-switcher
 #theme-switcher {
