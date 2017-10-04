@@ -67,7 +67,7 @@
 	// render Output
 	function renderRss($feedItems) {
 		foreach ($feedItems as $feedItem) {
-			echo '<li class="application-grid">';
+			echo '<li>';
 			echo 	'<div>';
 			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo 	'</div>';
@@ -118,7 +118,7 @@
 <body id="home" class="light">
 
 	<!-- header -->
-	<header id="application-head" class="application-grid">
+	<header id="application-head">
 		<div>
 			<form method="#" action="#">
 				<input type="checkbox" id="theme-switcher" class="vh"/>
@@ -126,6 +126,7 @@
 			</form>
 		</div>
 		<div>
+			<img src="favicon.ico" alt="<?php echo($projectTitle); ?>" />
 		</div>
 		<div>
 			<!-- nothing here yet -->
