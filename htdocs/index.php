@@ -93,6 +93,11 @@
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Website as app -->
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+
 	<!-- Short Names -->
 	<meta name="apple-mobile-web-app-title" content="<?php echo($applicationName); ?>" />
 	<meta name="application-name" content="<?php echo($applicationNameShort); ?>" />
