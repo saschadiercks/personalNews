@@ -4,7 +4,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 ![Screenshot](/.screenshots/personalnews-iphone.jpg)
 
 ## How does it work?
-Just place the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement.
+Just place the contents of the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement.
 
 ### Want a demo?
 [http://www.metafolio.de/fragments/personalnews/](http://www.metafolio.de/fragments/personalnews/)
