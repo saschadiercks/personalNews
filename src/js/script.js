@@ -6,17 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	var themeLight = 'light';
 	var themeDark = 'dark';
 
-	// add JS to body-tag to allow CSS-Manipulation if JS is available
-	document.getElementsByTagName('body')[0].classList.add('js');
-
-	// make element sticky (via position in css)
-	function stickyElement(stickyId,compensateId) {
-		stickyElement = document.getElementById(stickyId);
-		stickyElement.classList.add('sticky');
-
-		//add Element-Height as margin-top to desired element
-		scrollElement = document.getElementById(compensateId);
-		scrollElement.style.marginTop = stickyElement.clientHeight + 'px';
+	// -- if DOM is ready, check if localStorage is filled and set body with it
+	var savedLocalStorageTheme = localStorage.getItem('theme');
+	console.log(savedLocalStorageTheme);
+	if(savedLocalStorageTheme !== null) {
+		document.getElementsByTagName('body')[0].classList.remove(themeLight, themeDark);
+		document.getElementsByTagName('body')[0].classList.add(savedLocalStorageTheme);
+		if(savedLocalStorageTheme === themeLight) {
+			document.getElementById('theme-switcher').checked = false;
+		}
+		if(savedLocalStorageTheme === themeDark) {
+			document.getElementById('theme-switcher').checked = true;
+		}
 	}
 
 	// switch theme by adding and removing classes to body
@@ -37,20 +38,23 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	// -- if DOM is ready, check if localStorage is filled and set body with it
-	var savedLocalStorageTheme = localStorage.getItem('theme');
-	console.log(savedLocalStorageTheme);
-	if(savedLocalStorageTheme !== null) {
-		document.getElementsByTagName('body')[0].classList.remove(themeLight, themeDark);
-		document.getElementsByTagName('body')[0].classList.add(savedLocalStorageTheme);
-		if(savedLocalStorageTheme === themeLight) {
-			document.getElementById('theme-switcher').checked = false;
-		}
-		if(savedLocalStorageTheme === themeDark) {
-			document.getElementById('theme-switcher').checked = true;
-		}
+	// add JS to body-tag to allow CSS-Manipulation if JS is available
+	function setJs() {
+		document.getElementsByTagName('body')[0].classList.add('js');
 	}
 
+	// make element sticky (via position in css)
+	function stickyElement(stickyId,compensateId) {
+		stickyElement = document.getElementById(stickyId);
+		stickyElement.classList.add('sticky');
+
+		//add Element-Height as margin-top to desired element
+		scrollElement = document.getElementById(compensateId);
+		scrollElement.style.marginTop = stickyElement.clientHeight + 'px';
+	}
+
+	// set Js on body if JS is available
+	setJs();
 
 	//sticky header (item to fix, item with padding to compensate fix)
 	stickyElement('application-head','content');
