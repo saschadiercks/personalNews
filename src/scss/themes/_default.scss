@@ -133,7 +133,7 @@ main {
 	min-height: 300px;
 	overflow-y: auto;
 	padding: $base-spacing-size;
-	position: absolute;
+	position: fixed;
 	margin-top: $base-spacing-size;
 	left: $base-spacing-size;
 	right: $base-spacing-size;
