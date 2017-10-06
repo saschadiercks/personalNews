@@ -14,11 +14,6 @@
 	// +++++ Functions +++++++
 	$feedItems = array();	// collect all feeds in array
 
-	//prevent caching of document
-	header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-	header("Cache-Control: post-check=0, pre-check=0", false);
-	header("Pragma: no-cache");
-
 	// get the rootUrl
 	function getRootUrl($url) {
 		$url = explode('/', $url);		// explode original url
