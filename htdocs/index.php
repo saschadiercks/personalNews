@@ -67,14 +67,14 @@
 	// render Output
 	function renderRss($feedItems) {
 		foreach ($feedItems as $feedItem) {
-			echo '<li>';
+			echo '<li id="' . $feedItem['itemTimestamp'] . '">';	// add timestamp to use as anchor for unread news
 			echo 	'<div>';
 			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo 	'</div>';
 			echo 	'<div>';
 			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
 			echo 		'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
-			echo 		'<p class="excerpt js-folddown"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
+			echo 		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
 			echo 	'</div>';
 			echo	'<div>';
 			echo	'</div>';
@@ -125,16 +125,16 @@
 	<!-- header -->
 	<header id="application-head">
 		<div>
-			<form method="#" action="#">
-				<input type="checkbox" id="theme-switcher" class="vh"/>
-				<label for="theme-switcher"><i class="icon-moon"></i><i class="icon-sun"></i></label>
-			</form>
+			<!-- space reserved for dropdown-trigger -->
 		</div>
 		<div>
 			<a href="#" id="logo"><img src="favicon.ico" alt="<?php echo($projectTitle); ?>" /></a>
 		</div>
 		<div>
-			<!-- nothing here yet -->
+			<form method="#" action="#">
+				<input type="checkbox" id="theme-switcher" class="vh"/>
+				<label for="theme-switcher"><i class="icon-moon"></i><i class="icon-sun"></i></label>
+			</form>
 		</div>
 	</header>
 
