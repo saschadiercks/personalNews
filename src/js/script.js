@@ -36,6 +36,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
+	// toggle Element
+	function toggleElement(elementId) {
+		toggleElement = document.getElementById(elementId);
+		toggleElement.onclick = function() {
+			targetElement = document.getElementById('application-overlay');
+			if(targetElement.classList.contains('js-hidden')) {
+				targetElement.classList.remove('js-hidden');
+			} else {
+				targetElement.classList.add('js-hidden');
+			}
+		}
+	}
+
 	// add JS to body-tag to allow CSS-Manipulation if JS is available
 	function setJs() {
 		document.getElementsByTagName('body')[0].classList.add('js');
@@ -59,4 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// theme switcher
 	themeSwitch('theme-switcher');
+
+	// toggle Element
+	toggleElement('toggle-overlay');
 });

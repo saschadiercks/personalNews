@@ -120,7 +120,7 @@
 	<!-- header -->
 	<header id="application-head">
 		<div>
-			<!-- space reserved for dropdown-trigger -->
+			<a href="#" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
 			<a href="#" id="logo"><img src="favicon.ico" alt="<?php echo($projectTitle); ?>" /></a>
@@ -132,6 +132,10 @@
 			</form>
 		</div>
 	</header>
+
+	<div class="overlay js-hidden" id="application-overlay">
+	 Hello overlay
+	</div>
 
 	<!-- content -->
 	<main id="content">

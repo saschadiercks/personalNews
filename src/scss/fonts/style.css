@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-menu:before {
+  content: "\e902";
+}
 .icon-moon:before {
   content: "\e901";
 }
