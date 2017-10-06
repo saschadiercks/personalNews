@@ -1,5 +1,3 @@
-// TODO: use data-target instead of elementIndex
-
 // is the DOM ready for manipulation?
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// set Js on body if JS is available
 	setJs();
 
-	//sticky header (item to fix, item with padding to compensate fix)
+	//sticky header (item to fix, item with margin to compensate fix)
 	stickyElement('application-head','content');
 
 	// theme switcher
