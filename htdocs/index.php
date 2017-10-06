@@ -134,7 +134,7 @@
 	</header>
 
 	<div class="overlay js-hidden" id="application-overlay">
-	 Hello overlay
+	 	<h2><?php echo($applicationName); ?></h2>
 	</div>
 
 	<!-- content -->

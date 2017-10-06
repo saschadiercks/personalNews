@@ -132,11 +132,20 @@ main {
 	max-height: 50%;
 	min-height: 300px;
 	overflow-y: auto;
+	padding: $base-spacing-size;
 	position: absolute;
 	margin-top: $base-spacing-size;
 	left: $base-spacing-size;
 	right: $base-spacing-size;
 	z-index: 1;		// place between header and content
+
+	h2 {
+		font-size: $font-size-title;
+		font-weight: 600;
+		margin: 0;
+		padding-bottom: $base-spacing-size;
+		text-align: center;
+	}
 }
 
 // move down
@@ -197,7 +206,8 @@ body.light {
 	.overlay {
 		background-color: $overlay-background-color;
 		border: $base-border;
-		color: $overlay-background-color;
+		color: $overlay-color;
+		h2 { border-bottom: $base-border; }
 	}
 }
 
@@ -224,6 +234,7 @@ body.dark {
 	.overlay {
 		background-color: $overlay-background-color-dark;
 		border: $base-border-dark;
-		color: $overlay-background-color-dark;
+		color: $overlay-color-dark;
+		h2 { border-bottom: $base-border-dark; }
 	}
 }
