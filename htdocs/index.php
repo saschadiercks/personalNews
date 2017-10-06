@@ -134,7 +134,8 @@
 	</header>
 
 	<div class="overlay js-hidden" id="application-overlay">
-	 	<h2><?php echo($applicationName); ?></h2>
+		 <h2><?php echo($applicationName); ?></h2>
+		 <p style="position:absolute; margin: 0; bottom: .5em; font-size: .875em; ">Made with love by Sascha Diercks</p>
 	</div>
 
 	<!-- content -->
