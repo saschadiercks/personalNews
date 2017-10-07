@@ -37,15 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	// toggle Element
-	function toggleElement(elementId) {
+	function toggleElement(elementId,targetElementId) {
 		toggleElement = document.getElementById(elementId);
 		toggleElement.onclick = function() {
-			targetElement = document.getElementById('application-overlay');
+			targetElement = document.getElementById(targetElementId);
 			if(targetElement.classList.contains('js-hidden')) {
 				targetElement.classList.remove('js-hidden');
 			} else {
 				targetElement.classList.add('js-hidden');
 			}
+
+			event.preventDefault();
 		}
 	}
 
@@ -58,10 +60,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	function stickyElement(stickyId,compensateId) {
 		stickyElement = document.getElementById(stickyId);
 		stickyElement.classList.add('sticky');
+		stickyHeight = stickyElement.clientHeight + 'px';
 
 		//add Element-Height as margin-top to desired element
 		scrollElement = document.getElementById(compensateId);
-		scrollElement.style.marginTop = stickyElement.clientHeight + 'px';
+		scrollElement.style.marginTop = stickyHeight;
+	}
+
+	// place Element in relation to sticky element
+	function placeOverlay(elementId) {
+		overlayElement = document.getElementById(elementId);
+		overlayElement.style.top = stickyHeight;
 	}
 
 	// set Js on body if JS is available
@@ -73,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	// theme switcher
 	themeSwitch('theme-switcher');
 
-	// toggle Element
-	toggleElement('toggle-overlay');
+	// toggle Element (toggle, target)
+	toggleElement('toggle-overlay', 'application-overlay');
+
+	// place overlay
+	placeOverlay('application-overlay');
 });

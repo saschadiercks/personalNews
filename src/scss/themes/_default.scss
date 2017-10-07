@@ -142,15 +142,17 @@ main {
 }
 
 // ---- overlay ----
-.overlay {
+#application-overlay {
 	max-height: 50%;
 	min-height: 300px;
 	overflow-y: auto;
 	padding: $base-spacing-size;
 	position: fixed;
 	margin-top: $base-spacing-size;
-	left: $base-spacing-size;
+	//left: $base-spacing-size;
 	right: $base-spacing-size;
+	// top is set via js
+	transition: left, right, $base-animation-speed / 2;
 	z-index: 1;		// place between header and content
 
 	h2 {
@@ -162,9 +164,15 @@ main {
 	}
 }
 
-// move down
-.overlay.js-hidden { top: -50%; }
-.overlay:not(.js-hidden) { top: 51px; }
+// hide/show overlay
+#application-overlay.js-hidden {
+	left: -100%;
+	right: 100%;
+}
+#application-overlay:not(.js-hidden) {
+	left: $base-spacing-size;
+	right: $base-spacing-size;
+}
 
 // ---- Footer ----
 footer {
@@ -196,7 +204,7 @@ footer {
 // theme-transition
 body,
 #application-head,
-.overlay { transition: all $base-animation-speed; }
+.overlay { transition: color, background-color, border-color, $base-animation-speed; }
 
 // Light
 body.light {
