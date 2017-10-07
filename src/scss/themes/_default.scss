@@ -55,11 +55,18 @@ main li,
 #application-head {
 	display: grid;
 	grid-column-gap: $base-spacing-size / 2;
-	padding: $base-spacing-size;
 }
 
-main li { grid-template-columns: $favicon-size auto; }
-#application-head { grid-template-columns: $favicon-size auto $favicon-size ; }
+main li {
+	grid-template-columns: $favicon-size auto;
+	padding: $base-spacing-size;
+}
+#application-head {
+	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3 ;
+	// increase size clickable of elements
+	a,
+	label {	padding: $base-spacing-size; }
+}
 
 // ---- theme-switcher
 #theme-switcher {
@@ -82,7 +89,14 @@ header {
 		height: $logo-size;
 		width: $logo-size;
 	}
-	a { text-decoration: none; }
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+	label {
+		cursor: pointer;		// simulate link-behavior
+		float: right;
+	}
 }
 
 // ---- Content ----
