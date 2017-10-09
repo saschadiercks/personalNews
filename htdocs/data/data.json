@@ -4,6 +4,9 @@
 			{ "url":	"http://www.tagesschau.de/xml/rss2"	},
 			{ "url":	"http://newsfeed.zeit.de/politik/index"	},
 			{ "url":	"http://www.spiegel.de/schlagzeilen/tops/index.rss"	}
+		],
+		"Tech News" : [
+			{ "url":	"https://www.macwelt.de/rss/news.xml"	}
 		]
 	}
 

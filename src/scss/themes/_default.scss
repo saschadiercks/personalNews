@@ -162,6 +162,14 @@ main {
 		padding-bottom: $base-spacing-size;
 		text-align: center;
 	}
+
+	ul { @include ul-reset;}
+
+	a {
+		display: block;
+		padding: $base-spacing-size-text 0;
+		text-decoration: none;
+	}
 }
 
 // hide/show overlay
@@ -230,6 +238,11 @@ body.light {
 		border: $base-border;
 		color: $overlay-color;
 		h2 { border-bottom: $base-border; }
+		a {
+			color: $base-link-color;
+			&:hover,
+			&:active { color: $base-link-active-color; }
+		}
 	}
 }
 
@@ -258,5 +271,11 @@ body.dark {
 		border: $base-border-dark;
 		color: $overlay-color-dark;
 		h2 { border-bottom: $base-border-dark; }
+
+		a {
+			color: $base-link-color-dark;
+			&:hover,
+			&:active { color: $base-link-active-color-dark; }
+		}
 	}
 }
