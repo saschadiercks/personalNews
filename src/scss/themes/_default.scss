@@ -149,10 +149,10 @@ main {
 	padding: $base-spacing-size;
 	position: fixed;
 	margin-top: $base-spacing-size;
-	//left: $base-spacing-size;
+	left: $base-spacing-size;
 	right: $base-spacing-size;
 	// top is set via js
-	transition: left, right, $base-animation-speed / 2;
+	transition: margin-top, $base-animation-speed;
 	z-index: 1;		// place between header and content
 
 	h2 {
@@ -167,19 +167,23 @@ main {
 
 	a {
 		display: block;
-		padding: $base-spacing-size-text 0;
+		padding: $base-spacing-size 0;
 		text-decoration: none;
 	}
 }
 
 // hide/show overlay
 #application-overlay.js-hidden {
-	left: -100%;
-	right: 100%;
+	//right: 100%;
+	//left: -100%;
+
+	margin-top: -150%;		// we use a number larger than 100 to make sure the overlay hides on smaller windows too
 }
 #application-overlay:not(.js-hidden) {
-	left: $base-spacing-size;
-	right: $base-spacing-size;
+	//left: $base-spacing-size;
+	//right: $base-spacing-size;
+
+	margin-top: $base-spacing-size;
 }
 
 // ---- Footer ----
