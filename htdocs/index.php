@@ -170,12 +170,12 @@
 		</div>
 	</header>
 
-	<div class="overlay" id="application-overlay">
+	<div class="overlay js-hidden" id="application-overlay">
 		 <h2><?php echo($applicationName); ?></h2>
 		 <ul>
 			<?php
-			$channelItems = getChannelItems($content);
-			renderChannels($channelItems);
+				$channelItems = getChannelItems($content);
+				renderChannels($channelItems);
 			?>
 		</ul>
 	</div>
