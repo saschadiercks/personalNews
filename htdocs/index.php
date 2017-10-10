@@ -16,6 +16,14 @@
 	$channelItems = array();								// collect all channels in array
 	$feedItems = array();									// collect all feeds in array
 
+	// get theme from session
+	session_start();
+	if(!empty($_SESSION['theme'])) {
+		$theme = $_SESSION['theme'];
+	} else {
+		$theme = $themeDefault;
+	}
+
 	// get the rootUrl
 	function getRootUrl($url) {
 		$url = explode('/', $url);		// explode original url
@@ -152,7 +160,7 @@
 	<link rel="manifest" href="manifest.json" />
 </head>
 
-<body id="home" class="light">
+<body id="home" class="<?php echo $theme; ?>">
 
 	<!-- header -->
 	<header id="application-head">
@@ -164,7 +172,7 @@
 		</div>
 		<div>
 			<form method="#" action="#">
-				<input type="checkbox" id="theme-switcher" class="vh"/>
+				<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
 				<label for="theme-switcher"><i class="icon-moon"></i><i class="icon-sun"></i></label>
 			</form>
 		</div>

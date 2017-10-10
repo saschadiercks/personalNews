@@ -4,34 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
 	var themeLight = 'light';
 	var themeDark = 'dark';
 
-	// -- if DOM is ready, check if localStorage is filled and set body with it
-	var savedLocalStorageTheme = localStorage.getItem('theme');
-	console.log(savedLocalStorageTheme);
-	if(savedLocalStorageTheme !== null) {
-		document.getElementsByTagName('body')[0].classList.remove(themeLight, themeDark);
-		document.getElementsByTagName('body')[0].classList.add(savedLocalStorageTheme);
-		if(savedLocalStorageTheme === themeLight) {
-			document.getElementById('theme-switcher').checked = false;
-		}
-		if(savedLocalStorageTheme === themeDark) {
-			document.getElementById('theme-switcher').checked = true;
-		}
-	}
-
 	// switch theme by adding and removing classes to body
 	function themeSwitch(elementId) {
 		switchingElement = document.getElementById(elementId);
 		switchingElement.onclick = function() {
+			xmlhttp = new XMLHttpRequest();
 			if (this.checked) {
 				document.getElementsByTagName('body')[0].classList.add(themeDark);
 				document.getElementsByTagName('body')[0].classList.remove(themeLight);
-				localStorage.setItem('theme', themeDark);
-				console.log('localStorage Theme is: ' + themeDark);
+				xmlhttp.open('GET','modules/themeswitch.php?theme='+themeDark,true);
+				xmlhttp.send();
 			} else {
 				document.getElementsByTagName('body')[0].classList.add(themeLight);
 				document.getElementsByTagName('body')[0].classList.remove(themeDark);
-				localStorage.setItem('theme', themeLight);
-				console.log('localStorage Theme is: ' + themeLight);
+				xmlhttp.open('GET','modules/themeswitch.php?theme='+themeLight,true);
+				xmlhttp.send();
 			}
 		}
 	}

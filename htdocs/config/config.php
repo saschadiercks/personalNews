@@ -11,4 +11,9 @@
 	$cssUrl = "assets/css/site.css";			// Set the url to retreive the css from
 	$jsUrl = "assets/js/script.js";				// Set the url to retrieve the js from
 	ini_set("allow_url_fopen", true);			// allow loading external files
+
+	// Set themes
+	$themeLight = 'light';
+	$themeDark = 'dark';
+	$themeDefault = $themeDark;
 ?>
