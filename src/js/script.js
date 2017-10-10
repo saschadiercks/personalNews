@@ -4,6 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
 	var themeLight = 'light';
 	var themeDark = 'dark';
 
+	// -- set styles to prevent flickering if site runs as app
+	document.getElementsByTagName('body')[0].style.opacity = "0";
+
+	// -- if DOM is ready, check if localStorage is filled and set body with it. This is useful, if the site runs as app
+	var savedLocalStorageTheme = localStorage.getItem('theme');
+	console.log(savedLocalStorageTheme);
+	if(savedLocalStorageTheme !== null) {
+		document.getElementsByTagName('body')[0].classList.remove(themeLight, themeDark);
+		document.getElementsByTagName('body')[0].classList.add(savedLocalStorageTheme);
+		document.getElementsByTagName('body')[0].style.opacity = "1";
+		if(savedLocalStorageTheme === themeLight) {
+			document.getElementById('theme-switcher').checked = false;
+		}
+		if(savedLocalStorageTheme === themeDark) {
+			document.getElementById('theme-switcher').checked = true;
+		}
+	}
+
 	// switch theme by adding and removing classes to body
 	function themeSwitch(elementId) {
 		switchingElement = document.getElementById(elementId);
@@ -14,11 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
 				document.getElementsByTagName('body')[0].classList.remove(themeLight);
 				xmlhttp.open('GET','modules/themeswitch.php?theme='+themeDark,true);
 				xmlhttp.send();
+				localStorage.setItem('theme', themeDark);
+				console.log('localStorage Theme is: ' + themeDark);
 			} else {
 				document.getElementsByTagName('body')[0].classList.add(themeLight);
 				document.getElementsByTagName('body')[0].classList.remove(themeDark);
 				xmlhttp.open('GET','modules/themeswitch.php?theme='+themeLight,true);
 				xmlhttp.send();
+				localStorage.setItem('theme', themeLight);
+				console.log('localStorage Theme is: ' + themeLight);
 			}
 		}
 	}
