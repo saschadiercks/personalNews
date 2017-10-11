@@ -152,11 +152,6 @@
 		<?php require_once($cssUrl); ?>
 	</style>
 
-	<!-- JS -->
-	<script type="text/javascript">
-		<?php require_once($jsUrl); ?>
-	</script>
-
 	<!-- Mobile Manifest -->
 	<link rel="manifest" href="manifest.json" />
 </head>
@@ -204,5 +199,10 @@
 	<!-- footer -->
 	<footer>
 	</footer>
+
+	<!-- JS -->
+	<script type="text/javascript">
+		<?php require_once($jsUrl); ?>
+	</script>
 </body>
 </html>
