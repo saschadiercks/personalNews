@@ -143,7 +143,7 @@
 	<meta name="application-name" content="<?php echo($applicationNameShort); ?>" />
 
 	<!-- Icons -->
-	<link rel="apple-touch-icon" href="apple-touch-icon-foto-114x114-precomposed.png" />
+	<link rel="apple-touch-icon" href="apple-touch-icon-foto-192x192-precomposed.png" />
 	<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- CSS -->
