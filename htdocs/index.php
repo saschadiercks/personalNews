@@ -161,15 +161,15 @@
 	<!-- header -->
 	<header id="application-head">
 		<div>
-			<a href="#" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+			<a href="#" title="select channel" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
-			<a href="#" id="logo"><img src="favicon.ico" alt="<?php echo($projectTitle); ?>" /></a>
+			<a href="#" title="scroll to top" id="logo"><img src="favicon.ico" alt="<?php echo($projectTitle); ?>" /></a>
 		</div>
 		<div>
 			<form method="#" action="#">
 				<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
-				<label for="theme-switcher"><i class="icon-moon"></i><i class="icon-sun"></i></label>
+				<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
 			</form>
 		</div>
 	</header>
