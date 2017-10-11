@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	var themeLight = 'light';
 	var themeDark = 'dark';
 
-	// -- set styles to prevent flickering if site runs as app
-	document.getElementsByTagName('body')[0].style.opacity = "0";
 
 	// -- if DOM is ready, check if localStorage is filled and set body with it. This is useful, if the site runs as app
 	var savedLocalStorageTheme = localStorage.getItem('theme');
