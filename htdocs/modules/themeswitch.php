@@ -1,5 +1,6 @@
 <?php
-	include_once('../config/config.php');
+	$projectConfigUrl ='config/config.php';
+	require_once($projectConfigUrl);
 
 	$theme = '';
 	session_start();

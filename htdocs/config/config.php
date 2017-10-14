@@ -1,16 +1,22 @@
 <?php
 
 	// Project Title
-	$projectTitle = "personalNews";
-	$projectdescription = "your news as a timeline";
-	$applicationName = "personalNews";
+	$projectTitle = 'personalNews';
+	$projectdescription = 'your news as a timeline';
+	$applicationName = 'personalNews';
 	$applicationNameShort = $applicationName;
 
+	// Set Data-Environment
+	$dataUrl = 'data/data.json';					// Set the url to retrieve the data from
+	$jsonContent = file_get_contents($dataUrl);		// Get the data
+	$json = json_decode($jsonContent, true);		// (true) returns the json as array-structure
+	$content = $json['content'];					// Get content of json-array directly (used to ease extension of the json later (header, footer...))
+
 	// Set Environemt
-	// $manifestUrl = "personalnews.manifest.php";	// This is the name of the manifest-file
-	$cssUrl = "assets/css/site.css";			// Set the url to retreive the css from
-	$jsUrl = "assets/js/script.js";				// Set the url to retrieve the js from
-	ini_set("allow_url_fopen", true);			// allow loading external files
+	// $manifestUrl = 'personalnews.manifest.php';	// This is the name of the manifest-file
+	$cssUrl = 'assets/css/site.css';			// Set the url to retreive the css from
+	$jsUrl = 'assets/js/script.js';				// Set the url to retrieve the js from
+	ini_set('allow_url_fopen', true);			// allow loading external files
 
 	// Set themes
 	$themeLight = 'light';
