@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				document.getElementsByTagName('body')[0].classList.remove(themeLight);
 				xmlhttp.open('GET','modules/themeswitch.php?theme='+themeDark,true);
 				xmlhttp.send();
+				xmlDoc = xmlhttp.responseXML;
 				localStorage.setItem('theme', themeDark);
 				console.log('localStorage Theme is: ' + themeDark);
 			} else {

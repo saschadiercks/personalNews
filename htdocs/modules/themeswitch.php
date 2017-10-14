@@ -1,5 +1,7 @@
 <?php
-	$projectConfigUrl ='config/config.php';
+
+	// Setup
+	$projectConfigUrl ='../config/config.php';
 	require_once($projectConfigUrl);
 
 	$theme = '';
@@ -11,4 +13,6 @@
 	}
 
 	$_SESSION['theme'] = $theme;
+
+	echo "hallo" . $theme;
 ?>
