@@ -10,6 +10,9 @@
 	} else {
 		$theme = $themeDefault;
 	}
+
+	// get the channelparamter, if there's one
+	$channelUrlParameter = urldecode($_GET['channel']);
 ?>
 
 <!DOCTYPE html>

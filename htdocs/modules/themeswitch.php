@@ -13,6 +13,4 @@
 	}
 
 	$_SESSION['theme'] = $theme;
-
-	echo "hallo" . $theme;
 ?>
