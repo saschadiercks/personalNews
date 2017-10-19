@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// switch theme by adding and removing classes to body
 		function themeSwitch(elementId) {
-			var renderFile = 'modules/themeswitch.php?theme=';
+			var renderFile = 'themeswitch.php?theme=';
 
 			switchingElement = document.getElementById(elementId);
 			switchingElement.onclick = function() {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 					document.getElementsByTagName('body')[0].classList.add(themeLight);
 					document.getElementsByTagName('body')[0].classList.remove(themeDark);
-					xmlhttp.open('GET','modules/themeswitch.php?theme='+themeLight,true);
+					xmlhttp.open('GET','themeswitch.php?theme='+themeLight,true);
 					xmlhttp.send();
 					localStorage.setItem('theme', themeLight);
 					console.log('localStorage Theme is: ' + themeLight);
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				xmlhttp = new XMLHttpRequest();
 				if (e.target !== e.currentTarget) {
 					channelLink = e.target.getAttribute('href');
-					renderFile = 'modules/render-feeds.php';
+					renderFile = 'render-feeds.php';
 					e.preventDefault();
 
 					xmlhttp.open('GET',renderFile+channelLink,true);

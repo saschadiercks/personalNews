@@ -10,9 +10,6 @@
 	} else {
 		$theme = $themeDefault;
 	}
-
-	// get the channelparamter, if there's one
-	$channelUrlParameter = urldecode($_GET['channel']);
 ?>
 
 <!DOCTYPE html>
@@ -65,11 +62,11 @@
 		</div>
 	</header>
 
-	<?php include_once('modules/render-channels.php'); ?>
+	<?php include_once('render-channels.php'); ?>
 
 	<!-- content -->
 	<main id="content">
-		<?php include_once('modules/render-feeds.php'); ?>
+		<?php include_once('render-feeds.php'); ?>
 	</main>
 
 	<!-- footer -->

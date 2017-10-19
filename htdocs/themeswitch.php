@@ -1,7 +1,7 @@
 <?php
 
 	// Setup
-	$projectConfigUrl ='../config/config.php';
+	$projectConfigUrl ='config/config.php';
 	require_once($projectConfigUrl);
 
 	$theme = '';

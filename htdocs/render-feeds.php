@@ -1,27 +1,10 @@
 <?php
 
 	// Setup
-	if(strpos(getcwd(), 'modules')) {
-		$projectConfigUrl = '../config/config.php';
-	} else {
-		$projectConfigUrl = 'config/config.php';
-	}
+	$projectConfigUrl = 'config/config.php';
 	require_once($projectConfigUrl);
 
-
-
 	// +++++ Functions +++++++
-	$channelUrlParameter = urldecode($_GET['channel']);		// get the channelparamter, if there's one
-	if(strpos(getcwd(), 'modules')) {
-		$channelItems = array();								// collect all channels in array
-		// get all channels and put them in array
-		function getChannelItems($content) {
-			$channelItems = array_keys($content);
-			return $channelItems;
-		}
-		$channelItems = getChannelItems($content);
-	}
-	$feedItems = array();									// collect all feeds in array
 
 	// get the rootUrl
 	function getRootUrl($url) {
