@@ -54,7 +54,7 @@
 							'itemTitle' => strip_tags($item->title),						// get the title
 							'itemTimestamp' => strtotime($item->pubDate),					// get timestamp to make timeline sortable
 							'itemDate' => date("d.m.Y (H:i)", strtotime($item->pubDate)),	// get releasedate an transform to readable date
-							'itemDescription' => strip_tags($item->description)				// get description of item (usually news-short-description)
+							'itemDescription' => shortenItem(strip_tags($item->description))				// get description of item (usually news-short-description)
 						);
 					}
 				}
@@ -71,6 +71,13 @@
 		}
 		array_multisort($itemTimestamp, SORT_DESC, $feedItems);
 		return $feedItems;
+	}
+
+	function shortenItem($item) {
+		if(strlen($item) > 400) {
+			$item = substr($item, 0, 400) . " ...";
+		}
+		return $item;
 	}
 
 	// render Output

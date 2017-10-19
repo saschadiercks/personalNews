@@ -6,8 +6,10 @@
 			{ "url":	"http://www.spiegel.de/schlagzeilen/tops/index.rss" }
 		],
 		"Tech News" : [
-			{ "url":	"http://www.techradar.com/rss" },
-			{ "url":	"https://www.wired.com/feed/rss" }
+			{ "url":	"https://futurezone.at/xml/rss" },
+			{ "url":	"http://www.heise.de/tr/rss/news.rdf" },
+			{ "url":	"https://m.heise.de/mac-and-i/news.rdf" },
+			{ "url":	"http://feeds.macrumors.com/MacRumors-All" }
 		]
 	}
 
