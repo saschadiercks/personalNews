@@ -10,6 +10,9 @@
 			{ "url":	"http://www.heise.de/tr/rss/news.rdf" },
 			{ "url":	"https://m.heise.de/mac-and-i/news.rdf" },
 			{ "url":	"http://feeds.macrumors.com/MacRumors-All" }
+		],
+		"Vivaldi" : [
+			{ "url":	"https://vivaldi.com/feed/" }
 		]
 	}
 
