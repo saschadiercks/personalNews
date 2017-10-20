@@ -29,6 +29,8 @@
 
 	// get the Feed
 	function getFeed($content, $currentChannelKey) {
+		global $itemDescriptionLength;
+
 		foreach($content as $key=>$value) {
 
 			// compute selected channel only (default if checkCurrentChannel decides)
@@ -56,7 +58,7 @@
 								'itemTitle' => strip_tags($item->title),								// get the title
 								'itemTimestamp' => strtotime($item->pubDate),							// get timestamp to make timeline sortable
 								'itemDate' => date("d.m.Y (H:i)", strtotime($item->pubDate)),			// get releasedate an transform to readable date
-								'itemDescription' => shortenText(strip_tags($item->description), 400)	// get description of item (usually news-short-description)
+								'itemDescription' => shortenText(strip_tags($item->description), $itemDescriptionLength)	// get description of item (usually news-short-description)
 							);
 						}
 					} elseif($xmlSelector === 'entry') {
@@ -76,7 +78,7 @@
 								'itemTitle' => strip_tags($item->title),								// get the title
 								'itemTimestamp' => strtotime($item->updated),							// get timestamp to make timeline sortable
 								'itemDate' => date("d.m.Y (H:i)", strtotime($item->updated)),			// get releasedate an transform to readable date
-								'itemDescription' => shortenText(strip_tags($item->content), 400)	// get description of item (usually news-short-description)
+								'itemDescription' => shortenText(strip_tags($item->content), $itemDescriptionLength)	// get description of item (usually news-short-description)
 							);
 						}
 

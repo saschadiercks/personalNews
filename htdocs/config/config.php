@@ -23,6 +23,9 @@
 	$themeDark = 'dark';
 	$themeDefault = $themeDark;
 
+	// size to shortenText
+	$itemDescriptionLength = 400;
+
 	// +++++ Functions +++++++
 	$channelUrlParameter = urldecode($_GET['channel']);		// get the channelparamter, if there's one
 	$channelItems = array();								// collect all channels in array
