@@ -13,8 +13,13 @@
 		return $url;
 	}
 
-	// get the RSS
-	function getRSS($content, $currentChannelKey) {
+	// check if there are channel or entry-nodes
+	function checkFormat($source) {
+		return $format;
+	}
+
+	// get the Feed
+	function getFeed($content, $currentChannelKey) {
 		foreach($content as $key=>$value) {
 
 			// compute selected channel only (default if checkCurrentChannel decides)
@@ -23,9 +28,11 @@
 					$xml = file_get_contents($rssUrl['url']);			// get url from json
 					$xml = simplexml_load_string($xml);					// load rss to object
 
+					checkFormat($xml);			// let's check, if there are chanel oder entry-nodes
+
 					// get data to push to every feedItem
-					$xmlAuthorLink = getRootUrl((string)$xml->channel[0]->link);			// get source-link from rss
-					$xmlAuthorDescription = $xmlAuthorLink;									// get description from rss
+					$xmlAuthorLink = getRootUrl((string)$xml->channel[0]->link);			// get source-link from feed
+					$xmlAuthorDescription = $xmlAuthorLink;									// get description from feed
 					$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";				// set up favicon from sourcelink
 
 					foreach($xml->channel[0]->item as $item) {
@@ -47,8 +54,8 @@
 		return $feedItems;
 	}
 
-	// sort RSS by releaseDate/timestamp
-	function sortRss($feedItems) {
+	// sort feed by releaseDate/timestamp
+	function sortFeed($feedItems) {
 		foreach ($feedItems as $key => $row) {
 			$itemTimestamp[$key] = $row['itemTimestamp'];
 		}
@@ -64,16 +71,16 @@
 	}
 
 	// render Output
-	function renderRss($feedItems) {
+	function renderFeed($feedItems) {
 		foreach ($feedItems as $feedItem) {
 			echo '<li id="' . $feedItem['itemTimestamp'] . '">';	// add timestamp to use as anchor for unread news
 			echo 	'<div>';
-			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="_blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo 	'</div>';
 			echo 	'<div>';
-			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemTitle'] .'</a></h2>';
+			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="_blank">' . $feedItem['itemTitle'] .'</a></h2>';
 			echo 		'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
-			echo 		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener">' . $feedItem['itemDescription'] . '</a></p>';
+			echo 		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="_blank">' . $feedItem['itemDescription'] . '</a></p>';
 			echo 	'</div>';
 			echo	'<div>';
 			echo	'</div>';
@@ -98,8 +105,8 @@
 <ul>
 	<?php
 		$currentChannelKey = checkCurrentChannel($channelItems);
-		$feedItems = getRss($content, $currentChannelKey);
-		$feedItems = sortRss($feedItems);
-		renderRss($feedItems);
+		$feedItems = getFeed($content, $currentChannelKey);
+		$feedItems = sortFeed($feedItems);
+		renderFeed($feedItems);
 	?>
 </ul>

@@ -8,7 +8,7 @@
 		"Tech News" : [
 			{ "url":	"https://futurezone.at/xml/rss" },
 			{ "url":	"http://www.heise.de/tr/rss/news.rdf" },
-			{ "url":	"https://m.heise.de/mac-and-i/news.rdf" },
+			{ "url":	"https://www.engadget.com/rss.xml" },
 			{ "url":	"http://feeds.macrumors.com/MacRumors-All" }
 		],
 		"Vivaldi" : [
