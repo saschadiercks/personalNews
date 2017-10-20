@@ -74,8 +74,8 @@
 								'itemAuthorIcon' => $xmlAuthorIcon,										// get authorIcon (from feed)
 								'itemLink' => strip_tags($item->id),									// get the link
 								'itemTitle' => strip_tags($item->title),								// get the title
-								'itemTimestamp' => strtotime($item->published),							// get timestamp to make timeline sortable
-								'itemDate' => date("d.m.Y (H:i)", strtotime($item->published)),			// get releasedate an transform to readable date
+								'itemTimestamp' => strtotime($item->updated),							// get timestamp to make timeline sortable
+								'itemDate' => date("d.m.Y (H:i)", strtotime($item->updated)),			// get releasedate an transform to readable date
 								'itemDescription' => shortenText(strip_tags($item->content), 400)	// get description of item (usually news-short-description)
 							);
 						}
