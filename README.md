@@ -4,7 +4,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 ![Screenshot](/.screenshots/personalnews-iphone.jpg)
 
 ## How does it work?
-Just place the contents of the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement.
+Just place the contents of the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow *allow_url_fopen* `allow_url_fopen = 1`. SOme providers only require to tick a checkbox *allow_url_fopen* in the backoffice to allow this functionality.
 
 ### Want a demo?
 [http://www.metafolio.de/fragments/personalnews/](http://www.metafolio.de/fragments/personalnews/)
@@ -23,7 +23,7 @@ personalNews comes with a default list of links, to show you how it works. It sh
 - ~~allow theming~~ (done)
 - allow blacklisting of news
 - grouping of related news
-- multiple timelines
+- ~~multiple timelines~~ (done)
 - allow onsite-editing so you don't have to fiddle with the json-file
 
 ## Infos for local development
