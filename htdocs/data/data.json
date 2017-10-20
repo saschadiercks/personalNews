@@ -14,6 +14,9 @@
 		],
 		"Vivaldi" : [
 			{ "url":	"https://vivaldi.com/feed/" }
+		],
+		"Sascha Diercks" : [
+			{ "url":	"http://metaideen.de/feed/atom/" }
 		]
 	}
 
