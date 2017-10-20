@@ -6,7 +6,13 @@ main {
 		margin-right: auto;
 	}
 
-	.icon { overflow: hidden; }
+	.icon {
+		overflow: hidden;
+
+		// avoid showing alt-text if icon is not loaded
+		text-indent: 100px;
+		img { float: left; }
+	}
 }
 
 // ---- hide elements from view
