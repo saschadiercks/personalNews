@@ -82,7 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			overlayElement.style.top = stickyHeight;
 		}
 
-		// load items of a channel
+		// scroll to desired position
+		function scrollToTarget() {
+			window.scrollTo(0,0);
+		}
+
+		// load items of a channel (via ajax)
 		function channelSwitch(elementId) {
 			elementContainer = document.getElementById(elementId);
 			elementContainer.addEventListener('click', switchChannel, false);
@@ -104,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 							overlayContainer = document.getElementById('application-overlay');
 							outputContainer.innerHTML = xmlhttp.response;
 							overlayContainer.classList.add('js-hidden')
+							scrollToTarget();
 							console.log("finish");
 						}
 					}
