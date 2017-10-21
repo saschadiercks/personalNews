@@ -152,7 +152,7 @@ main {
 	left: $base-spacing-size;
 	right: $base-spacing-size;
 	// top is set via js
-	transition: all, $base-animation-speed;
+	transition: all, $base-animation-speed / 2;
 	z-index: 1;		// place between header and content
 
 	h2 {
