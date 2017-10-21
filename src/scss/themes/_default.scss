@@ -45,6 +45,10 @@ $overlay-color-dark: $base-color-dark;
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-attachment:fixed;
+	background-image: url('assets/images/world-bg.svg');	// url is relative from index.php
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
 // ---- sticky-Element
@@ -211,6 +215,7 @@ footer {
 // ---- themes
 // theme-transition
 body,
+main ul,
 #application-head,
 .overlay { transition: color, background-color, border-color, $base-animation-speed; }
 
@@ -223,11 +228,14 @@ body.light {
 		box-shadow: $base-shadow;
 		a { color: $base-link-color; }
 	}
-	main a {
-		color: $base-link-color;
-		&:hover,
-		&:active { color: $base-link-active-color !important; }
-		&:visited { color: $base-link-visited-color; }
+	main {
+		a {
+			color: $base-link-color;
+			&:hover,
+			&:active { color: $base-link-active-color !important; }
+			&:visited { color: $base-link-visited-color; }
+		}
+		ul { background-color: $body-background-color; }
 	}
 	li { border-bottom: $base-border; }
 	.icon { background-color: transparent; }
@@ -255,11 +263,14 @@ body.dark {
 		border-bottom: $base-border-dark;
 		a { color: $base-link-color-dark; }
 	}
-	main a {
-		color: $base-link-color-dark;
-		&:hover,
-		&:active { color: $base-link-active-color-dark !important; }
-		&:visited { color: $base-link-visited-color-dark; }
+	main {
+		a {
+			color: $base-link-color-dark;
+			&:hover,
+			&:active { color: $base-link-active-color-dark !important; }
+			&:visited { color: $base-link-visited-color-dark; }
+		}
+		ul { background-color: $body-background-color-dark; }
 	}
 	li { border-bottom: $base-border-dark; }
 	main .icon { opacity: .5; }
