@@ -138,7 +138,7 @@
 
 
 <!-- output -->
-<ul>
+<ul id="feed-items">
 	<?php
 		$currentChannelKey = checkCurrentChannel($channelItems);
 		$feedItems = getFeed($content, $currentChannelKey);

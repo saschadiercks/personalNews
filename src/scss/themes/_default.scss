@@ -186,6 +186,10 @@ main {
 	right: $base-spacing-size;
 }
 
+// hide/show feeds
+#feed-items.js-hidden { opacity: 0; }
+#feed-items:not(.js-hidden) { opacity: 1; }
+
 // ---- Footer ----
 footer {
 

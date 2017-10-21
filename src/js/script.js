@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var themeLight = 'light';
 		var themeDark = 'dark';
+		var elementToToggleOnLoad = 'feed-items';
 
 
 		// -- if DOM is ready, check if localStorage is filled and set body with it. This is useful, if the site runs as app
@@ -93,6 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			elementContainer.addEventListener('click', switchChannel, false);
 
 			function switchChannel(e) {
+				overlayContainer = document.getElementById('application-overlay');
+				overlayContainer.classList.add('js-hidden');
+				document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
+
 				xmlhttp = new XMLHttpRequest();
 				if (e.target !== e.currentTarget) {
 					channelLink = e.target.getAttribute('href');
@@ -106,9 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
 					xmlhttp.onreadystatechange = function() {
 						if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
 							outputContainer = document.getElementById('content');
-							overlayContainer = document.getElementById('application-overlay');
 							outputContainer.innerHTML = xmlhttp.response;
-							overlayContainer.classList.add('js-hidden')
+							document.getElementById(elementToToggleOnLoad).classList.remove('js-hidden');
 							scrollToTarget();
 							console.log("finish");
 						}
