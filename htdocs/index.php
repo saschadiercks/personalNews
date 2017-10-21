@@ -72,6 +72,9 @@
 	<footer>
 	</footer>
 
+	<!-- loading-screen (js-hidden is removed while ajax-request runs) -->
+	<div id="application-loading" class="overlay js-hidden"></div>
+
 	<!-- JS -->
 	<script type="text/javascript">
 		<?php require_once($jsUrl); ?>

@@ -187,9 +187,31 @@ main {
 	right: $base-spacing-size;
 }
 
-// hide/show feeds
-#feed-items.js-hidden { opacity: 0; }
-#feed-items:not(.js-hidden) { opacity: 1; }
+// ---- loading-screen -----
+#application-loading {
+	background-image: url('assets/images/ajax-loader.png');		// relative to index.php
+	background-position: center center;
+	background-repeat: no-repeat;
+
+	// place it above all elements
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+
+	transition: opacity, $base-animation-speed;
+}
+
+// hide/show loading-screen
+#application-loading.js-hidden {
+	opacity: 0;
+	z-index: -1;
+}
+#application-loading:not(.js-hidden) {
+	opacity: 1;
+	z-index: 2;
+}
 
 // ---- Footer ----
 footer {
