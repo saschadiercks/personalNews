@@ -7,7 +7,6 @@
 		],
 		"Tech News" : [
 			{ "url":	"https://futurezone.at/xml/rss" },
-			{ "url":	"http://rss.slashdot.org/Slashdot/slashdotMainatom" },
 			{ "url":	"https://www.theverge.com/rss/index.xml" },
 			{ "url":	"https://www.engadget.com/rss.xml" },
 			{ "url":	"http://feeds.macrumors.com/MacRumors-All" }
