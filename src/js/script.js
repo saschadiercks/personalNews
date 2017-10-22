@@ -98,39 +98,46 @@ document.addEventListener('DOMContentLoaded', function() {
 			elementContainer.addEventListener('click', switchChannel, false);
 		}
 
-		// loading the contents
+		// prepare loading after click
 		function switchChannel(e) {
-			document.getElementById(elementToToggleOnLoad).classList.remove('js-hidden');
-
-			xmlhttp = new XMLHttpRequest();
 			if (e.target !== e.currentTarget) {
-				overlayContainer = document.getElementById('application-overlay');
-				overlayContainer.classList.add('js-hidden');
 				channelLink = e.target.getAttribute('href');
-				renderFile = 'render-feeds.php';
+				ajaxRequest(channelLink);
 				e.preventDefault();
-
-				xmlhttp.open('GET',renderFile+channelLink,true);
-				xmlhttp.send();
-
-				// output if call is succesful
-				xmlhttp.onreadystatechange = function() {
-					if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
-						outputContainer = document.getElementById('content');
-						outputContainer.innerHTML = xmlhttp.response;
-						document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
-						scrollToTarget();
-						console.log("finish");
-					}
-				}
-
 			}
 			e.stopPropagation();
+		}
+
+		// loading the content
+		function ajaxRequest(channelLink) {
+			document.getElementById(elementToToggleOnLoad).classList.remove('js-hidden');
+			renderFile = 'render-feeds.php';
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.open('GET',renderFile+channelLink,true);
+			xmlhttp.send();
+
+			overlayContainer = document.getElementById('application-overlay');
+			overlayContainer.classList.add('js-hidden');
+
+
+			// output if call is succesful
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
+					outputContainer = document.getElementById('content');
+					outputContainer.innerHTML = xmlhttp.response;
+					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
+					scrollToTarget();
+					console.log("finish");
+				}
+			}
 		}
 
 		// ---- initialize ----
 		// set Js on body if JS is available
 		setJs();
+
+		// initial load of content
+		ajaxRequest('');
 
 		//sticky header (item to fix, item with margin to compensate fix)
 		stickyElement('application-head','content');

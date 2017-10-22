@@ -67,7 +67,7 @@
 
 	<!-- content -->
 	<main id="content">
-		<?php include_once('render-feeds.php'); ?>
+		<!-- feeds will be placed here (ajax) -->
 	</main>
 
 	<!-- footer -->
