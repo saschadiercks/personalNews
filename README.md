@@ -45,4 +45,3 @@ personalNews comes with a default list of links, to show you how it works. It sh
 
 ## Kudos
 1. Screenshots on this page made with [http://magicmockups.com/](http://magicmockups.com/)
-2. loading-indicator generated with [https://icons8.com/preloaders/](https://icons8.com/preloaders/)
