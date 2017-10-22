@@ -131,6 +131,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
+		// ---- fix element to current position
+		function fixElement(elementId) {
+			var boundingRect = document.getElementById(elementId).getBoundingClientRect
+			console.log(boundingRect);
+		}
+
 		// ---- initialize ----
 		// set Js on body if JS is available
 		setJs();
