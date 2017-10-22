@@ -55,9 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		var savedLocalStorageTheme = localStorage.getItem('theme');
 		console.log(savedLocalStorageTheme);
 		if(savedLocalStorageTheme !== null) {
-			document.getElementsByTagName('body')[0].classList.remove(themeLight, themeDark);
-			document.getElementsByTagName('body')[0].classList.add(savedLocalStorageTheme);
-			document.getElementsByTagName('body')[0].style.opacity = "1";
+			document.getElementsByTagName('html')[0].classList.remove(themeLight, themeDark);
+			document.getElementsByTagName('html')[0].classList.add(savedLocalStorageTheme);
 			if(savedLocalStorageTheme === themeLight) {
 				document.getElementById('theme-switcher').checked = false;
 			}
@@ -74,15 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			switchingElement.onclick = function() {
 				xmlhttp = new XMLHttpRequest();
 				if (this.checked) {
-					document.getElementsByTagName('body')[0].classList.add(themeDark);
-					document.getElementsByTagName('body')[0].classList.remove(themeLight);
+					document.getElementsByTagName('html')[0].classList.add(themeDark);
+					document.getElementsByTagName('html')[0].classList.remove(themeLight);
 					xmlhttp.open('GET',renderFile+themeDark,true);
 					xmlhttp.send();
 					localStorage.setItem('theme', themeDark);
 					console.log('localStorage Theme is: ' + themeDark);
 				} else {
-					document.getElementsByTagName('body')[0].classList.add(themeLight);
-					document.getElementsByTagName('body')[0].classList.remove(themeDark);
+					document.getElementsByTagName('html')[0].classList.add(themeLight);
+					document.getElementsByTagName('html')[0].classList.remove(themeDark);
 					xmlhttp.open('GET','themeswitch.php?theme='+themeLight,true);
 					xmlhttp.send();
 					localStorage.setItem('theme', themeLight);

@@ -264,13 +264,13 @@ footer {
 
 // ---- themes
 // theme-transition
-body,
+html,
 main ul,
 #application-head,
 .overlay { transition: color, background-color, border-color, $base-animation-speed; }
 
 // Light
-body.light {
+html.light {
 	background-color: $body-background-color;
 	color: $base-color;
 	header {
@@ -305,7 +305,7 @@ body.light {
 }
 
 // Dark
-body.dark {
+html.dark {
 	background-color: $body-background-color-dark;
 	color: $base-color-dark;
 	header {

@@ -15,7 +15,7 @@
 ?>
 
 <!DOCTYPE html>
-<html dir="ltr" lang="de" manifest="<?php if(isset($manifestUrl)) { echo($manifestUrl); }  ?>">
+<html dir="ltr" lang="de" manifest="<?php if(isset($manifestUrl)) { echo($manifestUrl); } ?>" class="<?php echo $theme; ?>">
 <head>
 	<title><?php echo($projectTitle); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,7 +45,7 @@
 	<link rel="manifest" href="manifest.json" />
 </head>
 
-<body id="home" class="<?php echo $theme; ?>">
+<body id="home">
 
 	<!-- header -->
 	<header id="application-head">
