@@ -13,9 +13,14 @@ $spinner-border-color: rgba(#ccc, .9);
 $spinner-border-size: 1em;
 
 // font-sizes
-$font-size-title: 1.125em;	/* 18px / 16px */
-$font-size-excerpt: .875em;	/* 14px / 16px */
-$font-size-info: .75em;		/* 12px / 16px */
+$font-size-title: 1.125em;		/* 18px / 16px */
+$font-size-excerpt: .875em;		/* 14px / 16px */
+$font-size-info: .75em;			/* 12px / 16px */
+$font-size-overlay-title: 1em;	/* 16px / 16px */
+$font-size-overlay-links: 1em;	/* 16px / 16px */
+
+// count of visible items in overlay
+$overlay-item-count: 4;
 
 // Theme-Colors
 // light
@@ -152,9 +157,6 @@ main {
 
 // ---- overlay ----
 #application-overlay {
-	max-height: 50%;
-	min-height: 300px;
-	overflow-y: auto;
 	padding: $base-spacing-size;
 	position: fixed;
 	margin-top: $base-spacing-size;
@@ -165,17 +167,24 @@ main {
 	z-index: 1;		// place between header and content
 
 	h2 {
-		font-size: $font-size-title;
+		font-size: $font-size-overlay-title;
 		font-weight: 600;
 		margin: 0;
 		padding-bottom: $base-spacing-size;
 		text-align: center;
 	}
 
-	ul { @include ul-reset;}
+	ul {
+		@include ul-reset;
+		overflow-y: auto;
+
+		// calculate the height depending on configured item-count and configured font-sizes
+		height: $overlay-item-count * ($base-spacing-size * 2 + $font-size-overlay-title + $font-size-overlay-links);
+	}
 
 	a {
 		display: block;
+		font-size: $font-size-overlay-links;
 		padding: $base-spacing-size 0;
 		text-decoration: none;
 	}
