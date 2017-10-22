@@ -1,12 +1,57 @@
 // is the DOM ready for manipulation?
 document.addEventListener('DOMContentLoaded', function() {
 
+		// ---- variables ----
 		var themeLight = 'light';
 		var themeDark = 'dark';
 		var elementToToggleOnLoad = 'application-loading';
 
+		// ---- global functions ----
+		// toggle Element
+		function toggleElement(elementId,targetElementId) {
+			toggleElement = document.getElementById(elementId);
+			toggleElement.onclick = function() {
+				targetElement = document.getElementById(targetElementId);
+				if(targetElement.classList.contains('js-hidden')) {
+					targetElement.classList.remove('js-hidden');
+				} else {
+					targetElement.classList.add('js-hidden');
+				}
 
-		// -- if DOM is ready, check if localStorage is filled and set body with it. This is useful, if the site runs as app
+				event.preventDefault();
+			}
+		}
+
+		// make element sticky (via position in css)
+		function stickyElement(stickyId,compensateId) {
+			stickyElement = document.getElementById(stickyId);
+			stickyElement.classList.add('sticky');
+			stickyHeight = stickyElement.clientHeight + 'px';
+
+			//add Element-Height as margin-top to desired element
+			scrollElement = document.getElementById(compensateId);
+			scrollElement.style.marginTop = stickyHeight;
+		}
+
+		// place Element in relation to sticky element
+		function placeOverlay(elementId) {
+			overlayElement = document.getElementById(elementId);
+			overlayElement.style.top = stickyHeight;
+		}
+
+		// ---- helper functions ----
+		// add JS to body-tag to allow CSS-Manipulation if JS is available
+		function setJs() {
+			document.getElementsByTagName('body')[0].classList.add('js');
+		}
+
+		// scroll to desired position
+		function scrollToTarget() {
+			window.scrollTo(0,0);
+		}
+
+		// ---- theme-switching ----
+		// check if localStorage is filled and set body.class with it. This is useful, if the site runs as app
 		var savedLocalStorageTheme = localStorage.getItem('theme');
 		console.log(savedLocalStorageTheme);
 		if(savedLocalStorageTheme !== null) {
@@ -46,84 +91,44 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
-		// toggle Element
-		function toggleElement(elementId,targetElementId) {
-			toggleElement = document.getElementById(elementId);
-			toggleElement.onclick = function() {
-				targetElement = document.getElementById(targetElementId);
-				if(targetElement.classList.contains('js-hidden')) {
-					targetElement.classList.remove('js-hidden');
-				} else {
-					targetElement.classList.add('js-hidden');
-				}
-
-				event.preventDefault();
-			}
-		}
-
-		// add JS to body-tag to allow CSS-Manipulation if JS is available
-		function setJs() {
-			document.getElementsByTagName('body')[0].classList.add('js');
-		}
-
-		// make element sticky (via position in css)
-		function stickyElement(stickyId,compensateId) {
-			stickyElement = document.getElementById(stickyId);
-			stickyElement.classList.add('sticky');
-			stickyHeight = stickyElement.clientHeight + 'px';
-
-			//add Element-Height as margin-top to desired element
-			scrollElement = document.getElementById(compensateId);
-			scrollElement.style.marginTop = stickyHeight;
-		}
-
-		// place Element in relation to sticky element
-		function placeOverlay(elementId) {
-			overlayElement = document.getElementById(elementId);
-			overlayElement.style.top = stickyHeight;
-		}
-
-		// scroll to desired position
-		function scrollToTarget() {
-			window.scrollTo(0,0);
-		}
-
-		// load items of a channel (via ajax)
+		// ---- Loading Feeds (via Ajax) ----
+		// add listener
 		function channelSwitch(elementId) {
 			elementContainer = document.getElementById(elementId);
 			elementContainer.addEventListener('click', switchChannel, false);
-
-			function switchChannel(e) {
-				document.getElementById(elementToToggleOnLoad).classList.remove('js-hidden');
-
-				xmlhttp = new XMLHttpRequest();
-				if (e.target !== e.currentTarget) {
-					overlayContainer = document.getElementById('application-overlay');
-					overlayContainer.classList.add('js-hidden');
-					channelLink = e.target.getAttribute('href');
-					renderFile = 'render-feeds.php';
-					e.preventDefault();
-
-					xmlhttp.open('GET',renderFile+channelLink,true);
-					xmlhttp.send();
-
-					// output if call is succesful
-					xmlhttp.onreadystatechange = function() {
-						if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
-							outputContainer = document.getElementById('content');
-							outputContainer.innerHTML = xmlhttp.response;
-							document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
-							scrollToTarget();
-							console.log("finish");
-						}
-					}
-
-				}
-				e.stopPropagation();
-			}
 		}
 
+		// loading the contents
+		function switchChannel(e) {
+			document.getElementById(elementToToggleOnLoad).classList.remove('js-hidden');
 
+			xmlhttp = new XMLHttpRequest();
+			if (e.target !== e.currentTarget) {
+				overlayContainer = document.getElementById('application-overlay');
+				overlayContainer.classList.add('js-hidden');
+				channelLink = e.target.getAttribute('href');
+				renderFile = 'render-feeds.php';
+				e.preventDefault();
+
+				xmlhttp.open('GET',renderFile+channelLink,true);
+				xmlhttp.send();
+
+				// output if call is succesful
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
+						outputContainer = document.getElementById('content');
+						outputContainer.innerHTML = xmlhttp.response;
+						document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
+						scrollToTarget();
+						console.log("finish");
+					}
+				}
+
+			}
+			e.stopPropagation();
+		}
+
+		// ---- initialize ----
 		// set Js on body if JS is available
 		setJs();
 
