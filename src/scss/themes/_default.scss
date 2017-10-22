@@ -179,7 +179,7 @@ main {
 		overflow-y: auto;
 
 		// calculate the height depending on configured item-count and configured font-sizes
-		height: $overlay-item-count * ($base-spacing-size * 2 + $font-size-overlay-title + $font-size-overlay-links);
+		height: $overlay-item-count * ($base-spacing-size * 2 + $font-size-overlay-links) + $font-size-overlay-title;
 	}
 
 	a {
