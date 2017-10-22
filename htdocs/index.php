@@ -75,7 +75,9 @@
 	</footer>
 
 	<!-- loading-screen (js-hidden is removed while ajax-request runs) -->
-	<div id="application-loading" class="overlay js-hidden"></div>
+	<div id="application-loading" class="overlay hidden">
+		<div class="spinner"></div>
+	</div>
 
 	<!-- JS -->
 	<script type="text/javascript">

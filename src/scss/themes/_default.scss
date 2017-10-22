@@ -8,6 +8,10 @@ $favicon-size: 16px;
 $logo-size: 24px;
 $icon-border-radius: 3px;
 
+$spinner-size: 5em;
+$spinner-border-color: rgba(#ccc, .9);
+$spinner-border-size: 1em;
+
 // font-sizes
 $font-size-title: 1.125em;	/* 18px / 16px */
 $font-size-excerpt: .875em;	/* 14px / 16px */
@@ -189,18 +193,28 @@ main {
 
 // ---- loading-screen -----
 #application-loading {
-	background-image: url('assets/images/ajax-loader.png');		// relative to index.php
-	background-position: center center;
-	background-repeat: no-repeat;
-
 	// place it above all elements
 	height: 100%;
 	left: 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
-
 	transition: opacity, $base-animation-speed;
+}
+.spinner {
+	@include align-centered;
+
+	// use pseudo-element so we can position the spinner without affectiong the animation
+	&:before {
+		animation: rotation .4s infinite ease-out;
+		border: $spinner-border-size solid $spinner-border-color;
+		border-right-color: transparent;
+		border-radius: 99em;
+		content: '';
+		display: block;
+		height: $spinner-size;
+		width: $spinner-size;
+	}
 }
 
 // hide/show loading-screen
