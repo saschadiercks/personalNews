@@ -1,4 +1,6 @@
 <?php
+	header('Content-type: text/html; charset=utf-8');
+
 	// Setup
 	$projectConfigUrl ='config/config.php';
 	require_once($projectConfigUrl);
