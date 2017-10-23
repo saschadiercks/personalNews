@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					outputContainer = document.getElementById('content');
 					outputContainer.innerHTML = xmlhttp.response;
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
+					document.getElementById('content').classList.remove('fixed');
 					scrollToTarget(0,0);
 				}
 			}
