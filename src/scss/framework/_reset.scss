@@ -19,3 +19,18 @@ img {
 	height: auto;
 	max-width: 100%;
 }
+
+// ---- Font-Smoothing
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// ---- sticky-Element
+.sticky { position: fixed; }
+
+// ---- hide elements from view
+.vh { @include visually-hidden; }
+
+// ---- fixed element
+.fixed { position: fixed; }

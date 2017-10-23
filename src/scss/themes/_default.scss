@@ -50,19 +50,14 @@ $overlay-background-color-dark: $body-background-color-dark;
 $overlay-color-dark: $base-color-dark;
 
 
-// ---- Font-Smoothing
+// ---- background
 body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	background-attachment:fixed;
 	background-image: url('assets/images/world.svg');	// url is relative from index.php
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 50%;
 }
-
-// ---- sticky-Element
-.sticky { position: fixed; }
 
 // ---- basic-grid
 main li,

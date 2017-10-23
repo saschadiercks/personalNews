@@ -14,9 +14,3 @@ main {
 		img { float: left; }
 	}
 }
-
-// ---- hide elements from view
-.vh { @include visually-hidden; }
-
-// fixed element
-.fixed { position: fixed; }
