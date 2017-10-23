@@ -14,12 +14,12 @@ I build this primarily to use it in a webpanel in vivaldi. But I really like to 
 
 
 ### Setup your own links
-personalNews comes with a default list of links, to show you how it works. It shows up with a list of popular news-sites and some development-Ressources. You change that. Just head over to '/htdocs/data/data.json` and play with that file. It's quite self explanatory.
+personalNews comes with a default list of links, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/data.json` and play with that file. It's quite self explanatory.
 
 ## Features
 - easy to configure via json
 - only requires php on your server
-- uses vanillaJS
+- uses vanillaJS (to minimize file-size)
 
 ### Planned Features
 - toggle descriptions
