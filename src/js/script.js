@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 					targetElement.classList.add('js-hidden');
 				}
-
 				event.preventDefault();
+				fixTimeline("content");
 			}
 		}
 
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		// scroll to desired position
-		function scrollToTarget() {
-			window.scrollTo(0,0);
+		function scrollToTarget(x,y) {
+			window.scrollTo(x,y);
 		}
 
 		// ---- theme-switching ----
@@ -125,16 +125,27 @@ document.addEventListener('DOMContentLoaded', function() {
 					outputContainer = document.getElementById('content');
 					outputContainer.innerHTML = xmlhttp.response;
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
-					scrollToTarget();
-					console.log("finish");
+					scrollToTarget(0,0);
 				}
 			}
 		}
 
 		// ---- fix element to current position
-		function fixElement(elementId) {
-			var boundingRect = document.getElementById(elementId).getBoundingClientRect
-			console.log(boundingRect);
+		function fixTimeline(elementId) {
+			elementToFix = document.getElementById(elementId);
+			scrollY = window.pageYOffset;
+
+			if(elementToFix.classList.contains('fixed')) {
+				elementToFix.classList.remove('fixed');
+				elementToFix.style.top = 0;
+				scrollToTarget(0,scrollYMem);
+			} else {
+				elementToFix.classList.add('fixed');
+				elementToFix.style.top = '-' + scrollY + 'px';
+				scrollYMem = scrollY;
+			}
+
+			console.log(scrollYMem);
 		}
 
 		// ---- initialize ----
@@ -150,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		// theme switcher
 		themeSwitch('theme-switcher');
 
-		// toggle Element (toggle, target)
+		// toggle Element (trigger, target)
 		toggleElement('toggle-overlay', 'application-overlay');
 
 		// place overlay
