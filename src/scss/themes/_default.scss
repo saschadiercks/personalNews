@@ -210,8 +210,9 @@ main {
 
 	// use pseudo-element so we can position the spinner without affectiong the animation
 	&:before {
-		animation: rotation .4s infinite ease-out;
+		animation: rotation .4s infinite linear;
 		border: $spinner-border-size solid $spinner-border-color;
+		border-top-color: transparent;
 		border-right-color: transparent;
 		border-radius: 99em;
 		content: '';
