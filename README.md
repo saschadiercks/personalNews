@@ -4,7 +4,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 ![Screenshot](/.screenshots/personalnews-iphone.jpg)
 
 ## How does it work?
-Just place the contents of the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow *allow_url_fopen* `allow_url_fopen = 1`. Some providers only require to tick a checkbox *allow_url_fopen* in the backoffice to allow this functionality.
+Just place the contents of the folder `/htdocs` on your own webserver. Make sure it supports *php* - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow *allow_url_fopen* `allow_url_fopen = true`. Some providers only require to tick a checkbox *allow_url_fopen* in the backoffice to allow this functionality.
 
 ### Use case
 I build this primarily to use it in a webpanel in vivaldi. But I really like to use this app on mobile too. It gives me a quick overview of whats currently happening. I really hope you enjoy this little tool as much as I do. :)
