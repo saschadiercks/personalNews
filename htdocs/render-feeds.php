@@ -111,12 +111,12 @@
 		foreach ($feedItems as $feedItem) {
 			echo '<li id="' . $feedItem['itemTimestamp'] . '">';	// add timestamp to use as anchor for unread news
 			echo 	'<div>';
-			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="_blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 			echo 	'</div>';
 			echo 	'<div>';
-			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="_blank">' . $feedItem['itemTitle'] .'</a></h2>';
+			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
 			echo 		'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
-			echo 		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="_blank">' . $feedItem['itemDescription'] . '</a></p>';
+			echo 		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
 			echo 	'</div>';
 			echo	'<div>';
 			echo	'</div>';
