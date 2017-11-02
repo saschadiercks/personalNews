@@ -13,15 +13,15 @@
 		return $url;
 	}
 
-	// check if there are channel or entry-nodes and filter them
+	// check if there are channel or entry-nodes and filter them (channel=rss / entry=atom)
 	function checkFormat($xml) {
 		foreach($xml->children() as $key=>$value) {
 			switch($key) {
 				case 'channel':
-					return $key;
+					return 'rss';
 					break;
 				case 'entry' :
-					return $key;
+					return 'atom';
 					break;
 			}
 		}
@@ -39,10 +39,10 @@
 					$xml = file_get_contents($feedUrl['url']);			// get url from json
 					$xml = simplexml_load_string($xml);					// load rss to object
 
-					$xmlSelector = checkFormat($xml);			// let's check, if there are chanel oder entry-nodes
+					$feedFormat = checkFormat($xml);					// let's check, if this is a rss or atom-feed
 
-					// get values from feed (depending on the reseult of $checkFormat)
-					if($xmlSelector === 'channel') {
+					// get values from feed (depending on the result of $feedFormat)
+					if($feedFormat === 'rss') {
 						// get data to push to every feedItem
 						$xmlAuthorLink = $xml->channel[0]->link;
 						$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
@@ -61,7 +61,7 @@
 								'itemDescription' => shortenText(strip_tags($item->description), $itemDescriptionLength)	// get description of item (usually news-short-description)
 							);
 						}
-					} elseif($xmlSelector === 'entry') {
+					} elseif($feedFormat === 'atom') {
 
 						// get data to push to every feedItem
 						$xmlAuthorLink = $xml->link['href'];						// extract href from element
