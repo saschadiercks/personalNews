@@ -101,7 +101,7 @@
 
 	function shortenText($text, $length) {
 		if(strlen($text) > $length) {
-			$text = substr($text, 0, $length) . " ...";
+			$text = substr($text, 0, strpos($text,'. ',$length)) . ". (...)";
 		}
 		return $text;
 	}
