@@ -100,6 +100,7 @@
 	}
 
 	function shortenText($text, $length) {
+		$text = preg_replace('!\s+!', ' ', $text);	// remove unnesseccary whitespace
 		if(strlen($text) > $length) {
 			$text = substr($text, 0, strpos($text,'. ',$length)) . ". (...)";
 		}
