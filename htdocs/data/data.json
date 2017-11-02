@@ -3,7 +3,8 @@
 		"Nachrichten" : [
 			{ "url":	"http://www.tagesschau.de/xml/rss2" },
 			{ "url":	"http://newsfeed.zeit.de/politik/index" },
-			{ "url":	"http://www.spiegel.de/schlagzeilen/tops/index.rss" }
+			{ "url":	"http://www.spiegel.de/schlagzeilen/tops/index.rss" },
+			{ "url":	"http://rss.dw.com/xml/rss-de-top" }
 		],
 		"Tech News" : [
 			{ "url":	"https://futurezone.at/xml/rss" },
