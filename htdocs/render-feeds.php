@@ -90,6 +90,24 @@
 		return $feedItems;
 	}
 
+	// filter feedItems with blacklist
+	function filterFeed($feedItems) {
+		global $blacklistItems;
+
+		//echo $blacklistItems[2];
+
+		foreach($feedItems as $feedItem) {
+			//var_dump($feedItem);
+			//var_dump($blacklistItems);
+			if(in_array($blacklistItems,$feedItem)) {
+				echo "match";
+			}
+		}
+		//$feedItems = array_intersect($feedItems['itemTitle'], $blacklistItems);
+		//return $feedItems;
+		//var_dump($feedItems[0]);
+	}
+
 	// sort feed by releaseDate/timestamp
 	function sortFeed($feedItems) {
 		foreach ($feedItems as $key => $row) {
@@ -143,6 +161,7 @@
 	<?php
 		$currentChannelKey = checkCurrentChannel($channelItems);
 		$feedItems = getFeed($content, $currentChannelKey);
+		$feedItems = filterFeed($feedItems);
 		$feedItems = sortFeed($feedItems);
 		renderFeed($feedItems);
 	?>

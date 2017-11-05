@@ -20,6 +20,9 @@
 			{ "url":	"http://metaideen.de/feed/atom/" },
 			{ "url":	"https://forum.vivaldi.net/topic/21786.rss"}
 		]
+	},
+	"blacklist": {
+		"filter": "liveticker,Puigdemont,SPD,Attentat"
 	}
 
 }
