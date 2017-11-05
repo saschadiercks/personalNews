@@ -4,33 +4,44 @@
 	// Setup
 	$projectConfigUrl ='config/config.php';
 	require_once($projectConfigUrl);
-
-	// get theme from session
-	session_start();
-	if(!empty($_SESSION['theme'])) {
-		$theme = $_SESSION['theme'];
-	} else {
-		$theme = $themeDefault;
-	}
 ?>
 
 <!DOCTYPE html>
-<html dir="ltr" lang="de" manifest="<?php if(isset($manifestUrl)) { echo($manifestUrl); } ?>" class="<?php echo $theme; ?>">
+<html <?php
+	echo isset($projectLanguage) ? 'lang="'.$projectLanguage.'"' : FALSE;
+	echo isset($projectDirection) ? 'dir="'.$projectDirection.'"' : FALSE;
+	echo isset($manifestUrl)? 'manifest="'.$manifestUrl.'"' : FALSE;
+	echo isset($theme)? 'class="'.$theme.'"' : FALSE;
+?>>
 <head>
-	<title><?php echo($projectTitle); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="<?php echo($projectdescription); ?>" />
-	<meta name="language" content="de" />
+	<?php
+		echo isset($projectTitle) ? '<title>'.$projectTitle.'</title>' : FALSE;
+		echo isset($projectDescription) ? '<meta name="description" content="'.$projectDescription.'"/>' : FALSE;
+		echo isset($projectKeywords) ? '<meta name="keywords" content="'.$projectKeywords.'"/>' : FALSE;
+		echo isset($projectLanguage) ? '<meta name="language" content="'.$projectLanguage.'"/>' : FALSE;
+	?>
+
+	<!-- mobile scaling -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+
+	<!-- IE-Stuff -->
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Website as app -->
-	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<?php if($serveAsApplication === TRUE) { ?>
+		<!-- Website as app -->
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
-	<!-- Short Names -->
-	<meta name="apple-mobile-web-app-title" content="<?php echo($applicationName); ?>" />
-	<meta name="application-name" content="<?php echo($applicationNameShort); ?>" />
+		<!-- Short Names -->
+		<meta name="apple-mobile-web-app-title" content="<?php echo($applicationName); ?>" />
+		<meta name="application-name" content="<?php echo($applicationNameShort); ?>" />
+
+		<!-- Mobile Manifest -->
+		<link rel="manifest" href="manifest.json" />
+	<?php } ?>
 
 	<!-- Icons -->
 	<link rel="apple-touch-icon" href="apple-touch-icon-foto-192x192-precomposed.png" />
@@ -40,12 +51,9 @@
 	<style type="text/css">
 		<?php require_once($cssUrl); ?>
 	</style>
-
-	<!-- Mobile Manifest -->
-	<link rel="manifest" href="manifest.json" />
 </head>
 
-<body id="home">
+<body>
 
 	<!-- header -->
 	<header id="application-head">
