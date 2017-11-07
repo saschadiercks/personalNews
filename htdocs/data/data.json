@@ -22,7 +22,7 @@
 		]
 	},
 	"blacklist": {
-		"filter": "liveticker,Puigdemont,SPD,Attentat"
+		"keywords": "BlacklistItems, separated by comma"
 	}
 
 }

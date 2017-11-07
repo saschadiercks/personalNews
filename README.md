@@ -10,11 +10,11 @@ Just place the contents of the folder `/htdocs` on your own webserver. Make sure
 I build this primarily to use it in a webpanel in vivaldi. But I really like to use this app on mobile too. It gives me a quick overview of whats currently happening. I really hope you enjoy this little tool as much as I do. :)
 
 ### Want a demo?
-[http://www.metafolio.de/fragments/personalnews/](http://www.metafolio.de/fragments/personalnews/)
+[http://www.metafolio.de/fragments/personalnews/](http://www.metafolio.de/side-projects/personalnews/)
 
 
-### Setup your own links
-personalNews comes with a default list of links, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/data.json` and play with that file. It's quite self explanatory.
+### Setup your own links and blacklist-keywords
+personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/data.json` and play with that file. It's quite self explanatory.
 
 ## Features
 - easy to configure via json
@@ -24,7 +24,7 @@ personalNews comes with a default list of links, to show you how it works. It co
 ### Planned Features
 - toggle descriptions
 - ~~allow theming~~ (done)
-- allow blacklisting of news
+- ~~allow blacklisting of news~~ (done)
 - grouping of related news
 - ~~multiple timelines~~ (done)
 - allow onsite-editing so you don't have to fiddle with the json-file

@@ -55,7 +55,7 @@
 <body>
 
 	<!-- header -->
-	<header id="application-head">
+	<header id="application-header">
 		<div>
 			<a href="#" title="select channel" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
@@ -73,7 +73,7 @@
 	<?php include_once('render-channels.php'); ?>
 
 	<!-- content -->
-	<main id="content">
+	<main id="content">hallo
 		<!-- feeds will be placed here (ajax) -->
 	</main>
 

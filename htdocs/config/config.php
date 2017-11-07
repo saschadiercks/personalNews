@@ -9,7 +9,7 @@
 	$projectDirection = 'ltr';					// Reading direction ltr || rtl
 
 	// Application-Settings (mobile)
-	$serveAsApplication = FALSE;					// allow running as standalone application (TRUE || FALSE)
+	$serveAsApplication = TRUE;					// allow running as standalone application (TRUE || FALSE)
 	$applicationName = 'personalNews';
 	$applicationNameShort = $applicationName;
 
@@ -50,7 +50,7 @@
 
 	// get all blacklist items and put them in array
 	function getBlacklistItems($blacklist) {
-		$blacklist = explode(',', $blacklist['filter']);
+		$blacklist = explode(',', $blacklist['keywords']);
 		return $blacklist;
 	}
 

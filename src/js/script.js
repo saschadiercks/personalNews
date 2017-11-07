@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		// initial load of content
 		ajaxRequest('');
 
-		//sticky header (item to fix, item with margin to compensate fix)
-		stickyElement('application-head','content','margin-top');
+		//sticky header (item(id) to fix, item(id) with property to compensate fix)
+		stickyElement('application-header','content','margin-top');
 
 		// theme switcher
 		themeSwitch('theme-switcher');

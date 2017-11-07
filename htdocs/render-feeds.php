@@ -94,18 +94,14 @@
 	function filterFeed($feedItems) {
 		global $blacklistItems;
 
-		//echo $blacklistItems[2];
-
-		foreach($feedItems as $feedItem) {
-			//var_dump($feedItem);
-			//var_dump($blacklistItems);
-			if(in_array($blacklistItems,$feedItem)) {
-				echo "match";
+		foreach($feedItems as $feedItem => $value) {
+			foreach($blacklistItems as $blacklistItem) {
+				if(strpos($value['itemTitle'], $blacklistItem)) {
+					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;
+				}
 			}
 		}
-		//$feedItems = array_intersect($feedItems['itemTitle'], $blacklistItems);
-		//return $feedItems;
-		//var_dump($feedItems[0]);
+		return $feedItems;
 	}
 
 	// sort feed by releaseDate/timestamp
@@ -128,18 +124,23 @@
 	// render Output
 	function renderFeed($feedItems) {
 		foreach ($feedItems as $feedItem) {
-			echo '<li id="' . $feedItem['itemTimestamp'] . '">';	// add timestamp to use as anchor for unread news
-			echo 	'<div>';
-			echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
-			echo 	'</div>';
-			echo 	'<div>';
-			echo 		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
-			echo 		'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
-			echo 		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
-			echo 	'</div>';
-			echo	'<div>';
-			echo	'</div>';
-			echo '</li>';
+			if($feedItem['itemBlacklistHit']) {
+				// output if part of feedItemTitle is in blacklist
+			} else {
+				// standard ouput of feed
+				echo '<li id="' . $feedItem['itemTimestamp'] . '">';	// add timestamp to use as anchor for unread news
+				echo 	'<div>';
+				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+				echo 	'</div>';
+				echo 	'<div>';
+				echo		'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
+				echo		'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
+				echo		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
+				echo	'</div>';
+				echo	'<div>';
+				echo	'</div>';
+				echo '</li>';
+			}
 		}
 	}
 

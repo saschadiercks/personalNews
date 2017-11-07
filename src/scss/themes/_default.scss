@@ -60,7 +60,7 @@ body {
 
 // ---- basic-grid
 main li,
-#application-head {
+#application-header {
 	display: grid;
 	grid-column-gap: $base-spacing-size / 2;
 }
@@ -69,7 +69,7 @@ main li {
 	grid-template-columns: $favicon-size auto;
 	padding: $base-spacing-size;
 }
-#application-head {
+#application-header {
 	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3 ;
 	// increase size clickable of elements
 	a,
@@ -258,7 +258,7 @@ footer {
 // theme-transition
 html,
 main ul,
-#application-head,
+#application-header,
 .overlay { transition: color, background-color, border-color, $base-animation-speed; }
 
 // Light
