@@ -23,10 +23,10 @@
 	?>
 
 	<!-- mobile scaling -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- IE-Stuff -->
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 
 	<?php if($serveAsApplication === TRUE) { ?>
