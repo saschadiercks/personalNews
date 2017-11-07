@@ -22,7 +22,7 @@
 		]
 	},
 	"blacklist": {
-		"keywords": "BlacklistItems, separated by comma"
+		"keywords": "BlacklistItems,separated by comma"
 	}
 
 }

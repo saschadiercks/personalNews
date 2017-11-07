@@ -94,9 +94,9 @@
 	function filterFeed($feedItems) {
 		global $blacklistItems;
 
-		foreach($feedItems as $feedItem => $value) {
+		foreach($feedItems as $feedItem => $key) {
 			foreach($blacklistItems as $blacklistItem) {
-				if(strpos($value['itemTitle'], $blacklistItem)) {
+				if(strpos($key['itemTitle'], $blacklistItem)) {
 					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;
 				}
 			}
