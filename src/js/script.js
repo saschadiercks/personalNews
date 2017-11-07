@@ -23,14 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		// make element sticky (via position in css)
-		function stickyElement(stickyId,compensateId) {
+		function stickyElement(stickyId,compensateId,compensateProperty) {
 			stickyElement = document.getElementById(stickyId);
 			stickyElement.classList.add('sticky');
 			stickyHeight = stickyElement.clientHeight + 'px';
 
-			//add Element-Height as margin-top to desired element
-			scrollElement = document.getElementById(compensateId);
-			scrollElement.style.marginTop = stickyHeight;
+			//add Element-Height as defined property to desired element
+			document.getElementById(compensateId).style.setProperty(compensateProperty,stickyHeight);
 		}
 
 		// place Element in relation to sticky element
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		ajaxRequest('');
 
 		//sticky header (item to fix, item with margin to compensate fix)
-		stickyElement('application-head','content');
+		stickyElement('application-head','content','margin-top');
 
 		// theme switcher
 		themeSwitch('theme-switcher');
