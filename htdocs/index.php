@@ -23,12 +23,11 @@
 	?>
 
 	<!-- mobile scaling -->
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- IE-Stuff -->
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<?php if($serveAsApplication === TRUE) { ?>
 		<!-- Website as app -->
@@ -44,7 +43,7 @@
 	<?php } ?>
 
 	<!-- Icons -->
-	<link rel="apple-touch-icon" href="apple-touch-icon-foto-192x192-precomposed.png" />
+	<link rel="apple-touch-icon" href="apple-touch-icon-foto-228x228-precomposed.png" sizes="228x228"/>
 	<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- CSS -->
