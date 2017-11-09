@@ -73,7 +73,7 @@
 	<?php include_once('render-channels.php'); ?>
 
 	<!-- content -->
-	<main id="content">hallo
+	<main id="content">
 		<!-- feeds will be placed here (ajax) -->
 	</main>
 

@@ -78,7 +78,7 @@
 								'itemTitle' => strip_tags($item->title),								// get the title
 								'itemTimestamp' => strtotime($item->updated),							// get timestamp to make timeline sortable
 								'itemDate' => date("d.m.Y (H:i)", strtotime($item->updated)),			// get releasedate an transform to readable date
-								'itemDescription' => shortenText(strip_tags($item->content), $itemDescriptionLength)	// get description of item (usually news-short-description)
+								'itemDescription' => shortenText(strip_tags($item->content))	// get description of item (usually news-short-description)
 							);
 						}
 
@@ -113,10 +113,11 @@
 		return $feedItems;
 	}
 
-	function shortenText($text, $length) {
+	function shortenText($text) {
+		global $length;
 		$text = preg_replace('!\s+!', ' ', $text);	// remove unnesseccary whitespace
 		if(strlen($text) > $length) {
-			$text = substr($text, 0, strpos($text,'. ',$length)) . ". (...)";
+			$text = substr($text, 0, strpos($text,'.',$length)) . ". (...)";
 		}
 		return $text;
 	}

@@ -35,7 +35,7 @@
 	$themeDefault = $themeDark;
 
 	// size to shortenText
-	$itemDescriptionLength = 300;
+	$itemDescriptionLength = 400;
 
 	// +++++ Functions +++++++
 	$channelUrlParameter = urldecode($_GET['channel']);		// get the channelparamter, if there's one
