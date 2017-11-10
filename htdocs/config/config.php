@@ -35,7 +35,7 @@
 	$themeDefault = $themeDark;
 
 	// size to shortenText
-	$itemDescriptionLength = 400;
+	$itemDescriptionLength = 300;
 	$readMoreIcon = '...';
 
 	// +++++ Functions +++++++
