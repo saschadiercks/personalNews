@@ -114,10 +114,11 @@
 	}
 
 	function shortenText($text) {
-		global $length;
+		global $itemDescriptionLength;
+		global $readMoreIcon;
 		$text = preg_replace('!\s+!', ' ', $text);	// remove unnesseccary whitespace
-		if(strlen($text) > $length) {
-			$text = substr($text, 0, strpos($text,'.',$length)) . ". (...)";
+		if(strlen($text) > $itemDescriptionLength) {
+			$text = substr($text, 0, strpos($text,'.',$itemDescriptionLength)) . ". " . $readMoreIcon;
 		}
 		return $text;
 	}

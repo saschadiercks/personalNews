@@ -36,6 +36,7 @@
 
 	// size to shortenText
 	$itemDescriptionLength = 400;
+	$readMoreIcon = '...';
 
 	// +++++ Functions +++++++
 	$channelUrlParameter = urldecode($_GET['channel']);		// get the channelparamter, if there's one
