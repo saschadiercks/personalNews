@@ -78,7 +78,7 @@
 								'itemTitle' => strip_tags($item->title),								// get the title
 								'itemTimestamp' => strtotime($item->updated),							// get timestamp to make timeline sortable
 								'itemDate' => date("d.m.Y (H:i)", strtotime($item->updated)),			// get releasedate an transform to readable date
-								'itemDescription' => shortenText(strip_tags($item->content))	// get description of item (usually news-short-description)
+								'itemDescription' => shortenText(strip_tags($item->content))			// get description of item (usually news-short-description)
 							);
 						}
 
@@ -96,7 +96,7 @@
 
 		foreach($feedItems as $feedItem => $key) {
 			foreach($blacklistItems as $blacklistItem) {
-				if(strpos($key['itemTitle'], $blacklistItem)) {
+				if(strpos($key['itemTitle'], $blacklistItem) !== FALSE) {
 					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;
 				}
 			}
@@ -106,8 +106,8 @@
 
 	// sort feed by releaseDate/timestamp
 	function sortFeed($feedItems) {
-		foreach ($feedItems as $key => $row) {
-			$itemTimestamp[$key] = $row['itemTimestamp'];
+		foreach ($feedItems as $feedItem => $key) {
+			$itemTimestamp[$feedItem] = $key['itemTimestamp'];
 		}
 		array_multisort($itemTimestamp, SORT_DESC, $feedItems);
 		return $feedItems;
@@ -125,6 +125,7 @@
 
 	// render Output
 	function renderFeed($feedItems) {
+		//var_dump($feedItems);
 		foreach ($feedItems as $feedItem) {
 			if($feedItem['itemBlacklistHit']) {
 				// output if part of feedItemTitle is in blacklist
