@@ -244,23 +244,24 @@ footer {
 
 }
 
-// Tablet portrait
+// Tablet landscape and up
 @include tablet-landscape-up {
+
+}
+
+// Default View
+@include default {
 	li {
 		div > * {
 			float: left;
-			width: 30%;
+			max-width: 80ch;
+			width: 45%;
 		}
 		.excerpt {
 			margin-top: 0;
 			margin-left: 5%;
 		}
 	}
-}
-
-// Default View
-@include default {
-
 }
 
 // ---- themes
