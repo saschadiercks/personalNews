@@ -87,7 +87,7 @@ body { font-family: $font-family-document; }
 
 
 // ---- header ----
-header {
+#application-header {
 	top: 0;
 	width: 100%;
 	z-index: 2;
@@ -246,7 +246,16 @@ footer {
 
 // Tablet portrait
 @include tablet-landscape-up {
-
+	li {
+		div > * {
+			float: left;
+			width: 30%;
+		}
+		.excerpt {
+			margin-top: 0;
+			margin-left: 5%;
+		}
+	}
 }
 
 // Default View
@@ -266,7 +275,7 @@ html.light {
 	background-color: $body-background-color;
 	border-bottom: $header-border;
 	color: $base-color;
-	header {
+	#application-header {
 		background-color: $header-background-color;
 		box-shadow: $base-shadow;
 		a { color: $base-link-color; }
@@ -302,7 +311,7 @@ html.light {
 html.dark {
 	background-color: $body-background-color-dark;
 	color: $base-color-dark;
-	header {
+	#application-header {
 		background-color: $header-background-color-dark;
 		border-bottom: $header-border-dark;
 		box-shadow: $base-shadow-dark;
