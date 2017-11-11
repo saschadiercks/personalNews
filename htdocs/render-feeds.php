@@ -96,8 +96,9 @@
 
 		foreach($feedItems as $feedItem => $key) {
 			foreach($blacklistItems as $blacklistItem) {
-				if(strpos($key['itemTitle'], $blacklistItem) !== FALSE) {
-					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;
+				$keysCombined = $key['itemTitle'] .' '. $key['itemDescription']; 	// were combining the text to search both keys in one go
+				if(strpos($keysCombined, $blacklistItem) !== FALSE) {
+					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;	// if one blacklistItem is in the keys, the array is expanded with it
 				}
 			}
 		}

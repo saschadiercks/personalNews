@@ -22,7 +22,7 @@
 		]
 	},
 	"blacklist": {
-		"keywords": "BlacklistItems,separated by comma,Fußball"
+		"_comment" : "blacklistitems,separated by comma",
+		"keywords": "Fußball,WM,Winterspiele"
 	}
-
 }
