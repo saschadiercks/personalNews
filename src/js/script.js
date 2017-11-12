@@ -108,6 +108,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// loading the content
 		function ajaxRequest(channelLink) {
+			// if this function is called with no parameter, we're chencking the localStorag, if one is present and use this (useful for initial load)
+			if(channelLink === '') {
+				var savedLocalStorageChannel = localStorage.getItem('channel');
+				if(savedLocalStorageChannel !== null) {
+					var channelLink = savedLocalStorageChannel;
+				}
+			}
+
+			// requesting the content
 			document.getElementById(elementToToggleOnLoad).classList.remove('js-hidden');
 			renderFile = 'render-feeds.php';
 			xmlhttp = new XMLHttpRequest();
@@ -126,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
 					document.getElementById('content').classList.remove('fixed');
 					scrollToTarget(0,0);
+					localStorage.setItem('channel', channelLink);
 				}
 			}
 		}
