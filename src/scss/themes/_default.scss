@@ -13,11 +13,11 @@ $spinner-border-color: rgba(#ccc, .9);
 $spinner-border-size: 1em;
 
 // font-sizes
-$font-size-title: 1.125em;		/* 18px / 16px */
-$font-size-excerpt: .875em;		/* 14px / 16px */
-$font-size-info: .75em;			/* 12px / 16px */
-$font-size-overlay-title: 1em;	/* 16px / 16px */
-$font-size-overlay-links: 1em;	/* 16px / 16px */
+$font-size-title: 1.125rem;		/* 18px / 16px */
+$font-size-excerpt: .75rem;		/* 12px / 16px */
+$font-size-info: .75rem;		/* 12px / 16px */
+$font-size-overlay-title: 1rem;	/* 16px / 16px */
+$font-size-overlay-links: 1rem;	/* 16px / 16px */
 
 // Theme-Colors
 // light
@@ -74,12 +74,6 @@ main li {
 	// increase size clickable of elements
 	a,
 	label {	padding: $base-spacing-size; }
-}
-
-// ---- theme-switcher
-#theme-switcher {
-	&:not(:checked) + label .icon-moon { display: none; }
-	&:checked + label .icon-sun { display: none; }
 }
 
 // ----- Body -----
@@ -147,6 +141,12 @@ main {
 	}
 
 	.source { color: inherit; }
+}
+
+// ---- theme-switcher
+#theme-switcher {
+	&:not(:checked) + label .icon-moon { display: none; }
+	&:checked + label .icon-sun { display: none; }
 }
 
 // ---- overlay ----
