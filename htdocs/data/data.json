@@ -22,7 +22,7 @@
 		]
 	},
 	"blacklist": {
-		"_comment" : "blacklistitems,separated by comma",
-		"keywords": "Fußball,WM,Winterspiele"
+		"_comment" : "blacklistitems,separated by comma. search for url/",
+		"keywords": "Fußball,WM,Winterspiele,sport/"
 	}
 }

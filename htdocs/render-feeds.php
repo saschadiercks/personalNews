@@ -96,9 +96,9 @@
 
 		foreach($feedItems as $feedItem => $key) {
 			foreach($blacklistItems as $blacklistItem) {
-				$keysCombined = $key['itemTitle'] .' '. $key['itemDescription']; 	// were combining the text to search both keys in one go
+				$keysCombined = $key['itemLink'] .' '. $key['itemTitle'] .' '. $key['itemDescription']; 	// were combining url, title, description to search them in one go
 				if(strpos($keysCombined, $blacklistItem) !== FALSE) {
-					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;	// if one blacklistItem is in the keys, the array is expanded with it
+					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;		// if one blacklistItem is in the keys, the array is expanded with it. It get's sorted out later
 				}
 			}
 		}
