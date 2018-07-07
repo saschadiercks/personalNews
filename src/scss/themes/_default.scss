@@ -352,4 +352,4 @@ html.dark {
 
 // ---- fx when overlays are visible ----
 .js-fx main { filter: blur(4px); }
-main { transition: filter $base-animation-speed ease; }
+// main { transition: filter $base-animation-speed ease; } // deactivated -> lacking performance
