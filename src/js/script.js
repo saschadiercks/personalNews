@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		function toggleOverlay(elementId,event) {
 			var targetElement = document.getElementById(elementId);
+			var fixElementId = 'content';
 			if(targetElement.classList.contains('js-visible')) {
 				addClass(targetElement,'js-hidden');
 				removeClass(targetElement,'js-visible');
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				addClass(targetElement,'js-visible');
 				addClass(effectClassApplyTo,'js-fx');
 			}
-			fixElement("content");
+			fixElement('content');
 			event.preventDefault();
 		}
 
@@ -149,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			overlayContainer = document.getElementById('application-overlay');
 			addClass(overlayContainer,'js-hidden');
+			fixElement('content');
 
 
 			// output if call is succesful
@@ -157,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					outputContainer = document.getElementById('content');
 					outputContainer.innerHTML = xmlhttp.response;
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
-					document.getElementById('content').classList.remove('fixed');
+					removeClass(elementToFix,'js-fixed');
 					document.getElementById('application-overlay').classList.remove('js-visible');
 					scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
