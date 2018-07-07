@@ -5,21 +5,52 @@ document.addEventListener('DOMContentLoaded', function() {
 		var themeLight = 'light';
 		var themeDark = 'dark';
 		var elementToToggleOnLoad = 'application-loading';
+		var effectClassApplyTo = document.getElementsByTagName('body')[0];
+
+		// helper: change classes
+		function addClass(element,className) {
+			element.classList.add(className);
+		}
+		function removeClass(element,className) {
+			element.classList.remove(className);
+		}
+
+		// helper: scroll to desired position
+		function scrollToTarget(x,y) {
+			window.scrollTo(x,y);
+		}
+
+		// add JS to body-tag to allow CSS-Manipulation if JS is available
+		function setJs() {
+			var body = document.getElementsByTagName("body")[0];
+			addClass(body,'js');
+		}
 
 		// ---- global functions ----
-		// toggle Element
-		function toggleElement(elementId,targetElementId) {
-			toggleElement = document.getElementById(elementId);
-			toggleElement.onclick = function() {
-				targetElement = document.getElementById(targetElementId);
-				if(targetElement.classList.contains('js-hidden')) {
-					targetElement.classList.remove('js-hidden');
-				} else {
-					targetElement.classList.add('js-hidden');
+
+		// Overlay-Handling
+		function handleOverlayTriggers(elementClassName) {
+			var elements = document.getElementsByClassName(elementClassName);
+			for(i=0; i < elements.length; i++) {
+				elements[i].onclick = function(event) {
+					var target = this.getAttribute('data-target');
+					toggleOverlay(target,event);
 				}
-				event.preventDefault();
-				fixTimeline("content");
 			}
+		}
+		function toggleOverlay(elementId,event) {
+			var targetElement = document.getElementById(elementId);
+			if(targetElement.classList.contains('js-visible')) {
+				addClass(targetElement,'js-hidden');
+				removeClass(targetElement,'js-visible');
+				removeClass(effectClassApplyTo,'js-fx');
+			} else {
+				removeClass(targetElement,'js-hidden');
+				addClass(targetElement,'js-visible');
+				addClass(effectClassApplyTo,'js-fx');
+			}
+			fixElement("content");
+			event.preventDefault();
 		}
 
 		// make element sticky (via position in css)
@@ -38,24 +69,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			overlayElement.style.top = stickyHeight;
 		}
 
-		// ---- helper functions ----
-		// add JS to body-tag to allow CSS-Manipulation if JS is available
-		function setJs() {
-			document.getElementsByTagName('body')[0].classList.add('js');
-		}
-
-		// scroll to desired position
-		function scrollToTarget(x,y) {
-			window.scrollTo(x,y);
-		}
-
 		// ---- theme-switching ----
 		// check if localStorage is filled and set body.class with it. This is useful, if the site runs as app
 		var savedLocalStorageTheme = localStorage.getItem('theme');
+		var applyThemeClassTo = document.getElementsByTagName('html')[0];
 		console.log(savedLocalStorageTheme);
 		if(savedLocalStorageTheme !== null) {
-			document.getElementsByTagName('html')[0].classList.remove(themeLight, themeDark);
-			document.getElementsByTagName('html')[0].classList.add(savedLocalStorageTheme);
+			removeClass(applyThemeClassTo, themeLight);
+			removeClass(applyThemeClassTo, themeDark);
+			addClass(applyThemeClassTo,savedLocalStorageTheme);
 			if(savedLocalStorageTheme === themeLight) {
 				document.getElementById('theme-switcher').checked = false;
 			}
@@ -67,20 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		// switch theme by adding and removing classes to body
 		function themeSwitch(elementId) {
 			var renderFile = 'themeswitch.php?theme=';
+			var applyThemeClassTo = document.getElementsByTagName('html')[0];
 
 			switchingElement = document.getElementById(elementId);
 			switchingElement.onclick = function() {
 				xmlhttp = new XMLHttpRequest();
 				if (this.checked) {
-					document.getElementsByTagName('html')[0].classList.add(themeDark);
-					document.getElementsByTagName('html')[0].classList.remove(themeLight);
+					addClass(applyThemeClassTo, themeDark);
+					removeClass(applyThemeClassTo, themeLight);
 					xmlhttp.open('GET',renderFile+themeDark,true);
 					xmlhttp.send();
 					localStorage.setItem('theme', themeDark);
 					console.log('localStorage Theme is: ' + themeDark);
 				} else {
-					document.getElementsByTagName('html')[0].classList.add(themeLight);
-					document.getElementsByTagName('html')[0].classList.remove(themeDark);
+					addClass(applyThemeClassTo, themeLight);
+					removeClass(applyThemeClassTo, themeDark);
 					xmlhttp.open('GET','themeswitch.php?theme='+themeLight,true);
 					xmlhttp.send();
 					localStorage.setItem('theme', themeLight);
@@ -100,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		function switchChannel(e) {
 			if (e.target !== e.currentTarget) {
 				channelLink = e.target.getAttribute('href');
+				removeClass(effectClassApplyTo,'js-fx');
 				ajaxRequest(channelLink);
 				e.preventDefault();
 			}
@@ -124,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			xmlhttp.send();
 
 			overlayContainer = document.getElementById('application-overlay');
-			overlayContainer.classList.add('js-hidden');
+			addClass(overlayContainer,'js-hidden');
 
 
 			// output if call is succesful
@@ -134,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					outputContainer.innerHTML = xmlhttp.response;
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
 					document.getElementById('content').classList.remove('fixed');
+					document.getElementById('application-overlay').classList.remove('js-visible');
 					scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
 				}
@@ -141,20 +166,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		// ---- fix element to current position
-		function fixTimeline(elementId) {
+		function fixElement(elementId) {
 			elementToFix = document.getElementById(elementId);
 			scrollY = window.pageYOffset;
 
-			if(elementToFix.classList.contains('fixed')) {
-				elementToFix.classList.remove('fixed');
-				elementToFix.style.top = 0;
+			if(elementToFix.classList.contains('js-fixed')) {
+				removeClass(elementToFix,'js-fixed');
+				elementToFix.style.top = '';
 				scrollToTarget(0,scrollYMem);
 			} else {
-				elementToFix.classList.add('fixed');
+				addClass(elementToFix,'js-fixed');
 				elementToFix.style.top = '-' + scrollY + 'px';
 				scrollYMem = scrollY;
 			}
-
 			console.log(scrollYMem);
 		}
 
@@ -171,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		// theme switcher
 		themeSwitch('theme-switcher');
 
-		// toggle Element (trigger, target)
-		toggleElement('toggle-overlay', 'application-overlay');
+		// Overlays
+		handleOverlayTriggers('js-overlay-toggle');
 
 		// place overlay
 		placeOverlay('application-overlay');

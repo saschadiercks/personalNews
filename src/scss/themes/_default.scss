@@ -1,7 +1,7 @@
 // ----- Setup -----
 $font-family-document: -apple-system, sans-serif;
 
-$base-animation-speed: .7s;
+$base-animation-speed: .2s;
 $base-spacing-size: 1em;
 $base-spacing-size-text: .5em;
 $favicon-size: 16px;
@@ -183,12 +183,14 @@ main {
 
 // hide/show overlay
 #application-overlay.js-hidden {
-	right: 100%;
-	left: -100%;
+	//right: 100%;
+	//left: -100%;
+	transform: scale(0);
 }
-#application-overlay:not(.js-hidden) {
+#application-overlay {
 	left: $base-spacing-size;
 	right: $base-spacing-size;
+	transform: scale(1);
 }
 
 // ---- loading-screen -----
@@ -347,3 +349,7 @@ html.dark {
 		}
 	}
 }
+
+// ---- fx when overlays are visible ----
+.js-fx main { filter: blur(4px); }
+main { transition: filter $base-animation-speed ease; }

@@ -57,7 +57,7 @@
 	<!-- header -->
 	<header id="application-header">
 		<div>
-			<a href="#" title="select channel" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+			<a href="#" title="select channel" class="js-overlay-toggle" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
 			<a href="#" title="scroll to top" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></a>
