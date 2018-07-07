@@ -1,12 +1,13 @@
 {
-  "name": "personalboilerplate",
+  "name": "personalNews",
   "version": "1.0.0",
-  "description": "Jumpstart Web-Development",
+  "description": "Your news personalised as a timeline",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0"
@@ -16,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saschadiercks/browserStartpage.git"
+    "url": "git+https://github.com/saschadiercks/personalNews.git"
   },
   "author": "Sascha Diercks",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/saschadiercks/browserStartpage/issues"
+    "url": "https://github.com/saschadiercks/personalNews/issues"
   },
-  "homepage": "https://github.com/saschadiercks/browserStartpage#readme"
+  "homepage": "https://github.com/saschadiercks/personalNews#readme"
 }
