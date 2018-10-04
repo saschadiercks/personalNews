@@ -170,7 +170,7 @@ main {
 	right: $base-spacing-size;
 	top: inherit;
 	// top is set via js
-	transition: all, $base-animation-speed / 2;
+	//transition: transform $base-animation-speed / 2;
 	z-index: 1;		// place between header and content
 
 	h2 {
@@ -212,7 +212,7 @@ main {
 	position: fixed;
 	top: 0;
 	width: 100%;
-	transition: opacity, $base-animation-speed;
+	transition: opacity $base-animation-speed;
 }
 .spinner {
 	@include align-centered;
@@ -279,10 +279,10 @@ footer {
 
 // ---- themes
 // theme-transition
-html,
-main ul,
-#application-header,
-.overlay { transition: color, background-color, border-color, $base-animation-speed; }
+//html,
+//main ul,
+//#application-header,
+//.overlay { transition: color, background-color, border-color, $base-animation-speed; }
 
 // Light
 html.light {
@@ -364,7 +364,7 @@ html.dark {
 
 // ---- fx when overlays are visible ----
 .js-fx main {
-	filter: blur(2px);
+	filter: blur(1px);
 	pointer-events: none;
 }
 // main { transition: filter $base-animation-speed ease; } // deactivated -> lacking performance
