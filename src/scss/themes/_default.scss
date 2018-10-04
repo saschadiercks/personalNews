@@ -151,14 +151,25 @@ main {
 }
 
 // ---- overlay ----
-#application-overlay {
+.overlay-backdrop {
+	background-color: transparent;
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: -1;
+}
+.overlay-content {
 	left: $base-spacing-size;
 	margin-top: $base-spacing-size;
 	max-height: 80%;		// leave some space to the bottom (even in ladnscape-mode)
+	max-width: 480px;
 	overflow-y: auto;
 	padding: $base-spacing-size;
 	position: fixed;
 	right: $base-spacing-size;
+	top: inherit;
 	// top is set via js
 	transition: all, $base-animation-speed / 2;
 	z-index: 1;		// place between header and content
@@ -187,7 +198,7 @@ main {
 	//left: -100%;
 	transform: scale(0);
 }
-#application-overlay {
+.overlay-content {
 	left: $base-spacing-size;
 	right: $base-spacing-size;
 	transform: scale(1);
@@ -284,6 +295,7 @@ html.light {
 		box-shadow: $base-shadow;
 		a { color: $base-link-color; }
 	}
+	#application-loading { background-color: $body-background-color; }
 	main {
 		a {
 			color: $base-link-color;
@@ -297,7 +309,7 @@ html.light {
 	.icon { background-color: transparent; }
 	.info { color: $base-color-info; }
 	.source:hover { color: $base-link-active-color !important; }
-	.overlay {
+	.overlay-content {
 		background-color: $overlay-background-color;
 		border: $base-border;
 		box-shadow: $base-shadow;
@@ -321,6 +333,7 @@ html.dark {
 		box-shadow: $base-shadow-dark;
 		a { color: $base-link-color-dark; }
 	}
+	#application-loading { background-color: $body-background-color-dark; }
 	main {
 		a {
 			color: $base-link-color-dark;
@@ -335,7 +348,7 @@ html.dark {
 	.icon { background-color: $base-color-dark; }
 	.info { color: $base-color-info-dark; }
 	.source:hover { color: $base-link-active-color-dark !important; }
-	.overlay {
+	.overlay-content {
 		background-color: $overlay-background-color-dark;
 		border: $base-border-dark;
 		box-shadow: $base-shadow-dark;
@@ -351,5 +364,8 @@ html.dark {
 }
 
 // ---- fx when overlays are visible ----
-.js-fx main { filter: blur(4px); }
+.js-fx main {
+	filter: blur(2px);
+	pointer-events: none;
+}
 // main { transition: filter $base-animation-speed ease; } // deactivated -> lacking performance

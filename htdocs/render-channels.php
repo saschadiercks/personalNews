@@ -20,10 +20,13 @@
 
 <!-- output -->
 <div class="overlay js-hidden" id="application-overlay">
-	<h2><?php echo($applicationName); ?></h2>
-	<ul id="channels">
-		<?php
-			renderChannels($channelItems);
-		?>
-	</ul>
+	<div class="overlay-backdrop js-overlay-toggle" data-target="application-overlay"></div>
+	<div class="overlay-content">
+		<h2><?php echo($applicationName); ?></h2>
+		<ul id="channels">
+			<?php
+				renderChannels($channelItems);
+			?>
+		</ul>
+	</div>
 </div>
