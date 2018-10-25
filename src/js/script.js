@@ -163,8 +163,47 @@ document.addEventListener('DOMContentLoaded', function() {
 					document.getElementById('application-overlay').classList.remove('js-visible');
 					scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
+
+					clickFeedItem('#feed-items li');
+					scrollIntoView(getLastReadItemId());
 				}
 			}
+		}
+
+		// ---- handle last read items
+		function getLastReadItemId() {
+			lastReadItemId = localStorage.getItem('lastReadItem');
+			if(lastReadItemId !== null) {
+			} else {
+				lastReadItemId = getIdFromElement('#feed-items li');
+			}
+			return lastReadItemId;
+		}
+
+		function setLastReadItemId(elementId) {
+			localStorage.setItem('lastReadItem',elementId);
+		}
+
+		function getIdFromElement(selector) {
+			elementId = document.querySelector(selector).id;
+			setLastReadItemId(elementId);
+			return elementId;
+		}
+
+		function scrollIntoView(target) {
+			document.getElementById(target).scrollIntoView({
+				behavior: 'smooth'
+			});
+		}
+
+		function clickFeedItem(selector) {
+			var elements = document.querySelectorAll(selector);
+			for(i=0; i < elements.length; i++) {
+				elements[i].onclick = function(event) {
+					setLastReadItemId(this.id);
+				}
+			}
+
 		}
 
 		// ---- fix element to current position
@@ -205,4 +244,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// switch channels
 		channelSwitch('channels');
+
 	});

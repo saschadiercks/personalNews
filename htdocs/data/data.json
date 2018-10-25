@@ -3,11 +3,10 @@
 		"Nachrichten" : [
 			{ "url":	"http://www.tagesschau.de/xml/rss2" },
 			{ "url":	"http://newsfeed.zeit.de/politik/index" },
-			{ "url":	"http://www.spiegel.de/schlagzeilen/tops/index.rss" },
-			{ "url":	"http://rss.dw.com/xml/rss-de-top" }
+			{ "url":	"http://www.spiegel.de/schlagzeilen/tops/index.rss" }
 		],
 		"Tech News" : [
-			{ "url":	"https://futurezone.at/xml/rss" },
+			{ "url":	"https://www.futurezone.de/?config=rss_hd" },
 			{ "url":	"https://www.theverge.com/rss/index.xml" },
 			{ "url":	"https://www.engadget.com/rss.xml" },
 			{ "url":	"http://feeds.macrumors.com/MacRumors-All" },
