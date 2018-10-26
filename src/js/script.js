@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					clickFeedItem('#feed-items li');
 					scrollIntoView(getLastReadItemId());
+					setLastReadItemId(getIdFromElement('#feed-items li'));
 				}
 			}
 		}
@@ -191,9 +192,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		function scrollIntoView(target) {
-			document.getElementById(target).scrollIntoView({
-				behavior: 'smooth'
-			});
+			var scrollPositionY = document.getElementById(target).offsetTop;
+			var stickOffset = document.getElementById('application-header').clientHeight;
+			scrollToTarget(0,scrollPositionY - stickOffset);
 		}
 
 		function clickFeedItem(selector) {
