@@ -126,8 +126,8 @@
 
 	// render Output
 	function renderFeed($feedItems) {
-		//var_dump($feedItems);
-		foreach ($feedItems as $feedItemCount => $feedItem) {
+		$feedItemCount = 0;
+		foreach ($feedItems as $feedItem) {
 			if($feedItem['itemBlacklistHit']) {
 				// output if part of feedItemTitle is in blacklist
 			} else {
@@ -146,6 +146,7 @@
 				echo	'<div>';
 				echo	'</div>';
 				echo '</li>';
+				$feedItemCount++;
 			}
 		}
 	}

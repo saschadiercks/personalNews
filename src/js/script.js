@@ -187,17 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			localStorage.setItem('lastReadItem',elementId);
 		}
 
-		function setUnreadItemCount(value) {
-			badge = '#unread-items';
-			badgeValue = '#unread-items__count';
-			if(value > 0) {
-				document.querySelector(badgeValue).textContent = value;
-				document.querySelector(badge).classList.add('js-show');
-			} else {
-				document.querySelector(badge).classList.add('js-hide');
-			}
-		}
-
 		function getAtrributeFromElement(selector,attribute) {
 			var attributeValue = document.querySelector(selector).getAttribute(attribute);
 			return attributeValue;
@@ -218,6 +207,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 
 		}
+
+		// ---- handel unreadItem badge
+		//https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+		function setUnreadItemCount(value) {
+			badge = '#unread-items';
+			badgeValue = '#unread-items__count';
+			if(value > 0) {
+				document.querySelector(badgeValue).textContent = value;
+				document.querySelector(badge).classList.add('js-show');
+				console.log(value);
+			} else {
+				document.querySelector(badge).classList.add('js-hide');
+			}
+		}
+
 
 		// ---- fix element to current position
 		function fixElement(elementId) {
