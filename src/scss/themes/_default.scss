@@ -19,6 +19,7 @@ $font-size-excerpt-single: .75rem;	/* 12px / 16px */
 $font-size-info: .75rem;			/* 12px / 16px */
 $font-size-overlay-title: 1rem;		/* 16px / 16px */
 $font-size-overlay-links: 1rem;		/* 16px / 16px */
+$font-size-item-count: .75rem; 		/* 12px / 16px */
 
 // Theme-Colors
 // light
@@ -150,6 +151,23 @@ main {
 	&:checked + label .icon-sun { display: none; }
 }
 
+// ---- unreadItemCount
+#unread-items {
+	position: absolute;
+	right: $base-spacing-size;
+	bottom: 0;
+	border-radius: 99em;
+	margin-bottom: -40px;
+	height:30px;
+	width: 30px;
+}
+#unread-items__count {
+	font-size: $font-size-item-count;
+	font-weight: bold;
+	@include align-centered;
+}
+
+
 // ---- overlay ----
 .overlay-backdrop {
 	background-color: transparent;
@@ -171,7 +189,7 @@ main {
 	top: inherit;
 	// top is set via js
 	//transition: transform $base-animation-speed / 2;
-	z-index: 1;		// place between header and content
+	z-index: 2;		// place between header and content
 
 	h2 {
 		font-size: $font-size-overlay-title;
@@ -193,8 +211,6 @@ main {
 
 // hide/show overlay
 #application-overlay.js-hidden {
-	//right: 100%;
-	//left: -100%;
 	transform: scale(0);
 }
 .overlay-content {
@@ -295,6 +311,10 @@ html.light {
 		a { color: $base-link-color; }
 	}
 	#application-loading { background-color: $body-background-color; }
+	#unread-items {
+		background-color: $body-background-color-dark;
+		color: $base-color-dark;
+	}
 	main {
 		a {
 			color: $base-link-color;
@@ -333,6 +353,11 @@ html.dark {
 		a { color: $base-link-color-dark; }
 	}
 	#application-loading { background-color: $body-background-color-dark; }
+	#unread-items {
+		background-color: $body-background-color;
+		color: $base-color;
+	}
+
 	main {
 		a {
 			color: $base-link-color-dark;

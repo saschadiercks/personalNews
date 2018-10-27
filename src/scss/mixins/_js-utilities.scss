@@ -1,7 +1,7 @@
 // ---- js-hidden (Elements to be hidden via JS) ----
 .js-hidden {
-	// display: none;
-	// z-index: -1;
+	//display: none;
+	//z-index: -1;
 }
 
 // ---- js-fixed (Element to be fixed via JS) ----
@@ -10,3 +10,24 @@
 // ---- Js-sticky (Element to be fixed via JS) ----
 .js-sticky { position: fixed; }
 
+// --- animated hide & show of elements
+@keyframes js-show {
+	  0% { opacity: 0;}
+	100% { opacity: 1; }
+}
+
+@keyframes js-hide {
+	  0% { opacity: 1;}
+	100% { opacity: 0; }
+}
+
+.js-hide,
+.js-show {
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+.js-show {
+	animation-duration: 1s;
+	animation-name: js-show;
+}
+.js-hide { animation-name: js-hide; }

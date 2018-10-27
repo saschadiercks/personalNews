@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		// check if localStorage is filled and set body.class with it. This is useful, if the site runs as app
 		var savedLocalStorageTheme = localStorage.getItem('theme');
 		var applyThemeClassTo = document.getElementsByTagName('html')[0];
-		console.log(savedLocalStorageTheme);
 		if(savedLocalStorageTheme !== null) {
 			removeClass(applyThemeClassTo, themeLight);
 			removeClass(applyThemeClassTo, themeDark);
@@ -164,9 +163,12 @@ document.addEventListener('DOMContentLoaded', function() {
 					scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
 
-					clickFeedItem('#feed-items li');
-					scrollIntoView(getLastReadItemId());
-					setLastReadItemId(getIdFromElement('#feed-items li'));
+					listenerClickFeedItem('#feed-items li');
+					var lastReadItemId = getLastReadItemId();
+					var unreadItemCount = getAtrributeFromElement('#' + lastReadItemId,'data-count');
+					setUnreadItemCount(unreadItemCount);
+					scrollIntoView(lastReadItemId);
+					setLastReadItemId(getAtrributeFromElement('#feed-items li','id'));
 				}
 			}
 		}
@@ -176,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			lastReadItemId = localStorage.getItem('lastReadItem');
 			if(lastReadItemId !== null) {
 			} else {
-				lastReadItemId = getIdFromElement('#feed-items li');
+				lastReadItemId = getAtrributeFromElement('#feed-items li','id');
 			}
 			return lastReadItemId;
 		}
@@ -185,10 +187,20 @@ document.addEventListener('DOMContentLoaded', function() {
 			localStorage.setItem('lastReadItem',elementId);
 		}
 
-		function getIdFromElement(selector) {
-			elementId = document.querySelector(selector).id;
-			setLastReadItemId(elementId);
-			return elementId;
+		function setUnreadItemCount(value) {
+			badge = '#unread-items';
+			badgeValue = '#unread-items__count';
+			if(value > 0) {
+				document.querySelector(badgeValue).textContent = value;
+				document.querySelector(badge).classList.add('js-show');
+			} else {
+				document.querySelector(badge).classList.add('js-hide');
+			}
+		}
+
+		function getAtrributeFromElement(selector,attribute) {
+			var attributeValue = document.querySelector(selector).getAttribute(attribute);
+			return attributeValue;
 		}
 
 		function scrollIntoView(target) {
@@ -197,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			scrollToTarget(0,scrollPositionY - stickOffset);
 		}
 
-		function clickFeedItem(selector) {
+		function listenerClickFeedItem(selector) {
 			var elements = document.querySelectorAll(selector);
 			for(i=0; i < elements.length; i++) {
 				elements[i].onclick = function(event) {
@@ -221,7 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				elementToFix.style.top = '-' + scrollY + 'px';
 				scrollYMem = scrollY;
 			}
-			console.log(scrollYMem);
 		}
 
 		// ---- initialize ----

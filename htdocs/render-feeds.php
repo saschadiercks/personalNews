@@ -127,12 +127,12 @@
 	// render Output
 	function renderFeed($feedItems) {
 		//var_dump($feedItems);
-		foreach ($feedItems as $feedItem) {
+		foreach ($feedItems as $feedItemCount => $feedItem) {
 			if($feedItem['itemBlacklistHit']) {
 				// output if part of feedItemTitle is in blacklist
 			} else {
 				// standard ouput of feed
-				echo '<li id="' . $feedItem['itemTimestamp'] . '">';	// add timestamp to use as anchor for unread news
+				echo '<li id="ts-' . $feedItem['itemTimestamp'] . '" data-count="' . $feedItemCount . '">';	// add timestamp to use as anchor for unread news
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
 				echo 	'</div>';

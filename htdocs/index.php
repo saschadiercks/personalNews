@@ -68,6 +68,9 @@
 				<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
 			</form>
 		</div>
+		<div id="unread-items">
+			<span id="unread-items__count"></span>
+		</div>
 	</header>
 
 	<?php include_once('render-channels.php'); ?>
