@@ -214,7 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			badge = '#unread-items';
 			badgeValue = '#unread-items__count';
 			if(value > 0) {
-				document.querySelector(badgeValue).textContent = value;
+				document.querySelector(badgeValue).innerText = value;
+				document.querySelector(badge).classList.remove('js-hidden');
 				document.querySelector(badge).classList.add('js-show');
 				console.log(value);
 			} else {
