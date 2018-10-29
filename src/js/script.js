@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var themeDark = 'dark';
 		var elementToToggleOnLoad = 'application-loading';
 		var effectClassApplyTo = document.getElementsByTagName('body')[0];
+		var feedItem = '#feed-items li';
 
 		// helper: change classes
 		function addClass(element,className) {
@@ -18,6 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		// helper: scroll to desired position
 		function scrollToTarget(x,y) {
 			window.scrollTo(x,y);
+		}
+
+		// helper: get Attribute from Element
+		function getAtrributeFromElement(selector,attribute) {
+			var attributeValue = document.querySelector(selector).getAttribute(attribute);
+			return attributeValue;
 		}
 
 		// add JS to body-tag to allow CSS-Manipulation if JS is available
@@ -163,52 +170,53 @@ document.addEventListener('DOMContentLoaded', function() {
 					scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
 
-					listenerClickFeedItem('#feed-items li');
-					var lastReadItemId = getLastReadItemId();
-					var unreadItemCount = getAtrributeFromElement('#' + lastReadItemId,'data-count');
-					setUnreadItemCount(unreadItemCount);
-					scrollIntoView(lastReadItemId);
-					setLastReadItemId(getAtrributeFromElement('#feed-items li','id'));
+					lastSavedItemTs = localStorage.getItem('latestItemTs');
+					latestItemTs = getLatestItemTs();
+					compareAndSaveLatestItemTs(latestItemTs,lastSavedItemTs);
+					listenerClickFeedItem(feedItem);
 				}
 			}
 		}
 
-		// ---- handle last read items
-		function getLastReadItemId() {
-			lastReadItemId = localStorage.getItem('lastReadItem');
-			if(lastReadItemId !== null) {
+		// ---- handle Timeline-Update
+		function getLatestItemTs() {
+			latestItemTs = getAtrributeFromElement(feedItem,'data-ts');
+			return latestItemTs;
+		}
+
+		function compareAndSaveLatestItemTs(latestItemTs,lastSavedItemTs) {
+			lastSavedItemTsId = '#ts-' + lastSavedItemTs;
+			if(lastSavedItemTs && latestItemTs > lastSavedItemTs) {
+				updatedCount = getAtrributeFromElement(lastSavedItemTsId,'data-count');
+				setUnreadItemCount(updatedCount);
+				scrollIntoView(lastSavedItemTsId);
 			} else {
-				lastReadItemId = getAtrributeFromElement('#feed-items li','id');
+				var stickyOffset = document.getElementById('application-header').clientHeight;
+				scrollToTarget(0,localStorage.getItem('offsetTop'));
+				localStorage.setItem('offsetTop',0);
 			}
-			return lastReadItemId;
-		}
-
-		function setLastReadItemId(elementId) {
-			localStorage.setItem('lastReadItem',elementId);
-		}
-
-		function getAtrributeFromElement(selector,attribute) {
-			var attributeValue = document.querySelector(selector).getAttribute(attribute);
-			return attributeValue;
+			localStorage.setItem('latestItemTs',latestItemTs);
 		}
 
 		function scrollIntoView(target) {
-			var scrollPositionY = document.getElementById(target).offsetTop;
-			var stickOffset = document.getElementById('application-header').clientHeight;
-			scrollToTarget(0,scrollPositionY - stickOffset);
+			var scrollPositionY = document.querySelector(target).offsetTop;
+			var stickyOffset = document.getElementById('application-header').clientHeight;
+			scrollToTarget(0,scrollPositionY - stickyOffset);
 		}
 
+
+		// ---- handle scrolldepth
 		function listenerClickFeedItem(selector) {
 			var elements = document.querySelectorAll(selector);
 			for(i=0; i < elements.length; i++) {
 				elements[i].onclick = function(event) {
-					setLastReadItemId(this.id);
+					localStorage.setItem('offsetTop',window.pageYOffset);
 				}
 			}
 
 		}
 
-		// ---- handel unreadItem badge
+		// ---- handle unreadItem badge
 		//https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
 		function setUnreadItemCount(value) {
 			badge = '#unread-items';
@@ -217,7 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				document.querySelector(badgeValue).innerText = value;
 				document.querySelector(badge).classList.remove('js-hidden');
 				document.querySelector(badge).classList.add('js-show');
-				console.log(value);
 			} else {
 				document.querySelector(badge).classList.add('js-hide');
 			}
