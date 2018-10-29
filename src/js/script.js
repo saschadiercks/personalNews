@@ -217,7 +217,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		// ---- handle unreadItem badge
-		//https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
 		function setUnreadItemCount(value) {
 			badge = '#unread-items';
 			badgeValue = '#unread-items__count';
