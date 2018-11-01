@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		// ---- theme-switching ----
-		// check if localStorage is filled and set body.class with it. This is useful, if the site runs as app
+		// check if localStorage is filled and set body-class with it. This is useful, if the site runs as app
 		var savedLocalStorageTheme = localStorage.getItem('theme');
 		var applyThemeClassTo = document.getElementsByTagName('html')[0];
 		if(savedLocalStorageTheme !== null) {
@@ -167,11 +167,11 @@ document.addEventListener('DOMContentLoaded', function() {
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
 					removeClass(elementToFix,'js-fixed');
 					document.getElementById('application-overlay').classList.remove('js-visible');
-					scrollToTarget(0,0);
+					//scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
 
 					lastSavedItemTs = localStorage.getItem('latestItemTs');
-					latestItemTs = getLatestItemTs();
+					setTimeout(latestItemTs = getLatestItemTs(),0);
 					compareAndSaveLatestItemTs(latestItemTs,lastSavedItemTs);
 					listenerClickFeedItem(feedItem);
 				}
@@ -186,14 +186,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		function compareAndSaveLatestItemTs(latestItemTs,lastSavedItemTs) {
 			lastSavedItemTsId = '#ts-' + lastSavedItemTs;
-			if(lastSavedItemTs && latestItemTs > lastSavedItemTs) {
-				updatedCount = getAtrributeFromElement(lastSavedItemTsId,'data-count');
-				setUnreadItemCount(updatedCount);
-				scrollIntoView(lastSavedItemTsId);
+			lastSavedItemTsIdSet = document.querySelector(lastSavedItemTsId);
+			console.log(lastSavedItemTsIdSet);
+			if(lastSavedItemTsIdSet !== null) {
+				if(lastSavedItemTs && (latestItemTs > lastSavedItemTs)) {
+					updatedCount = getAtrributeFromElement(lastSavedItemTsId,'data-count');
+					setUnreadItemCount(updatedCount);
+					scrollIntoView(lastSavedItemTsId);
+				} else {
+					var stickyOffset = document.getElementById('application-header').clientHeight;
+					scrollToTarget(0,localStorage.getItem('offsetTop'));
+					localStorage.setItem('offsetTop',0);
+				}
 			} else {
-				var stickyOffset = document.getElementById('application-header').clientHeight;
-				scrollToTarget(0,localStorage.getItem('offsetTop'));
-				localStorage.setItem('offsetTop',0);
+				console.log('didnt parse');
 			}
 			localStorage.setItem('latestItemTs',latestItemTs);
 		}
