@@ -19,7 +19,7 @@ $font-size-excerpt-single: .75rem;	/* 12px / 16px */
 $font-size-info: .75rem;			/* 12px / 16px */
 $font-size-overlay-title: 1rem;		/* 16px / 16px */
 $font-size-overlay-links: 1rem;		/* 16px / 16px */
-$font-size-item-count: .75rem; 		/* 12px / 16px */
+$font-size-item-count: 1rem; 		/* 12px / 16px */
 
 // Theme-Colors
 // light
@@ -154,17 +154,21 @@ main {
 // ---- unreadItemCount
 #unread-items {
 	position: absolute;
-	right: $base-spacing-size;
+	right: $base-spacing-size / 2;
 	bottom: 0;
 	border-radius: 99em;
 	margin-bottom: -40px;
-	height:30px;
-	width: 30px;
+	// height:30px;
+	min-width: 30px;
+	padding: .3125rem;
+	text-align: center;
 }
 #unread-items__count {
 	font-size: $font-size-item-count;
 	font-weight: bold;
-	@include align-centered;
+	line-height: 1;
+	text-align: center;
+	//@include align-centered;
 }
 
 
