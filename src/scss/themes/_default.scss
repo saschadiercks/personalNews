@@ -2,11 +2,11 @@
 $font-family-document: -apple-system, sans-serif;
 
 $base-animation-speed: .2s;
-$base-spacing-size: 1em;
+$base-spacing-size: .75em;
 $base-spacing-size-text: .5em;
-$favicon-size: 16px;
+$favicon-size: 24px;
 $logo-size: 24px;
-$icon-border-radius: 3px;
+$icon-border-radius: 99em;
 
 $spinner-size: 4em;
 $spinner-border-color: rgba(#ccc, .9);
@@ -64,7 +64,7 @@ body {
 main li,
 #application-header {
 	display: grid;
-	grid-column-gap: $base-spacing-size / 2;
+	grid-column-gap: $base-spacing-size;
 }
 
 main li {
@@ -327,7 +327,7 @@ html.light {
 		ul { background-color: $body-background-color; }
 	}
 	li { border-bottom: $base-border; }
-	.icon { background-color: transparent; }
+	//.icon { background-color: transparent; }
 	.info { color: $base-color-info; }
 	.source:hover { color: $base-link-active-color !important; }
 	.overlay-content {
@@ -370,8 +370,8 @@ html.dark {
 		ul { background-color: $body-background-color-dark; }
 	}
 	li { border-bottom: $base-border-dark; }
-	main .icon { opacity: .5; }
-	.icon { background-color: $base-color-dark; }
+	//main .icon { opacity: .5; }
+	//.icon { background-color: $base-color-dark; }
 	.info { color: $base-color-info-dark; }
 	.source:hover { color: $base-link-active-color-dark !important; }
 	.overlay-content {

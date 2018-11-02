@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
 					outputContainer = document.getElementById('content');
 					outputContainer.innerHTML = xmlhttp.response;
+					scrollToTarget(0,0);
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
 					removeClass(elementToFix,'js-fixed');
 					document.getElementById('application-overlay').classList.remove('js-visible');
-					//scrollToTarget(0,0);
 					localStorage.setItem('channel', channelLink);
 
 					lastSavedItemTs = localStorage.getItem('latestItemTs');

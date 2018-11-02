@@ -35,11 +35,11 @@
 
 			// compute selected channel only (default if checkCurrentChannel decides)
 			if($key == $currentChannelKey) {
-				foreach($value as $feedUrl) {
-					$xml = file_get_contents($feedUrl['url']);			// get url from json
-					$xml = simplexml_load_string($xml);					// load rss to object
-
-					$feedFormat = checkFormat($xml);					// let's check, if this is a rss or atom-feed
+				foreach($value as $feed) {
+					$icon = $feed['icon'];		// get icon-url
+					$xml = file_get_contents($feed['url']);			// get url from json
+					$xml = simplexml_load_string($xml);				// load rss to object
+					$feedFormat = checkFormat($xml);				// let's check, if this is a rss or atom-feed
 
 					// get values from feed (depending on the result of $feedFormat)
 					if($feedFormat === 'rss') {
@@ -47,7 +47,12 @@
 						$xmlAuthorLink = $xml->channel[0]->link;
 						$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
 						$xmlAuthorDescription = $xmlAuthorLink;							// get description from feed
-						$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";		// set up favicon from sourcelink
+
+						if($icon) {
+							$xmlAuthorIcon = $icon;
+						} else {
+							$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";		// set up favicon from sourcelink
+						}
 
 						foreach($xml->channel[0]->item as $item) {
 							$feedItems[] = array(
@@ -67,7 +72,12 @@
 						$xmlAuthorLink = $xml->link['href'];						// extract href from element
 						$xmlAuthorLink = getRootUrl($xmlAuthorLink);				// get source-link from feed
 						$xmlAuthorDescription = $xmlAuthorLink;						// get description from feed
-						$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";	// set up favicon from sourcelink
+
+						if($icon) {
+							$xmlAuthorIcon = $icon;
+						} else {
+							$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";		// set up favicon from sourcelink
+						}
 
 						foreach($xml->entry as $item) {
 							$feedItems[] = array(
@@ -134,7 +144,7 @@
 				// standard ouput of feed
 				echo '<li id="ts-' . $feedItem['itemTimestamp'] . '" data-count="' . $feedItemCount . '" data-ts="' . $feedItem['itemTimestamp'] .'">';	// add timestamp to use as anchor for unread news
 				echo 	'<div>';
-				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="32" width="32" /></a>';
+				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
 				echo 	'<div>';
 				echo		'<header>';
