@@ -2,7 +2,7 @@
 $font-family-document: -apple-system, sans-serif;
 
 $base-animation-speed: .2s;
-$base-spacing-size: .75em;
+$base-spacing-size: 1em;
 $base-spacing-size-text: .5em;
 $favicon-size: 24px;
 $logo-size: 24px;
@@ -69,7 +69,7 @@ main li,
 
 main li {
 	grid-template-columns: $favicon-size auto;
-	padding: $base-spacing-size;
+	padding: $base-spacing-size $base-spacing-size / 2;
 }
 #application-header {
 	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3 ;
