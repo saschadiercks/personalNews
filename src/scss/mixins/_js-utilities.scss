@@ -13,7 +13,8 @@
 // --- animated hide & show of elements
 @keyframes js-show {
 	  0% { top: 0; }
-	100% { top: 100%; }
+	 70% { top: 125%; }
+	 80% { top: 100%; }
 }
 
 @keyframes js-hide {
