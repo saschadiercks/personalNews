@@ -199,9 +199,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					localStorage.setItem('offsetTop',0);
 				}
 			} else {
-				console.log('didnt parse');
+				console.log('no update');
+				localStorage.setItem('latestItemTs',latestItemTs);
 			}
-			localStorage.setItem('latestItemTs',latestItemTs);
 		}
 
 		function scrollIntoView(target) {
@@ -212,6 +212,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 		// ---- handle scrolldepth
+		window.addEventListener('scroll', function(event) {
+			scrollDepth = window.pageYOffset;
+			if(scrollDepth <= 0) {
+				setUnreadItemCount(0);
+				var latestItemTs = getLatestItemTs();
+				localStorage.setItem('latestItemTs',latestItemTs);
+			}
+		});
 		function listenerClickFeedItem(selector) {
 			var elements = document.querySelectorAll(selector);
 			for(i=0; i < elements.length; i++) {
@@ -226,11 +234,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		function setUnreadItemCount(value) {
 			badge = '#unread-items';
 			badgeValue = '#unread-items__count';
+			document.querySelector(badgeValue).innerText = value;
 			if(value > 0) {
-				document.querySelector(badgeValue).innerText = value;
 				document.querySelector(badge).classList.remove('js-hidden');
 				document.querySelector(badge).classList.add('js-show');
 			} else {
+				document.querySelector(badge).classList.remove('js-show');
 				document.querySelector(badge).classList.add('js-hide');
 			}
 		}
