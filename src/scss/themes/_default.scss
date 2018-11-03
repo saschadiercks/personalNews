@@ -69,7 +69,7 @@ main li,
 
 main li {
 	grid-template-columns: $favicon-size auto;
-	padding: $base-spacing-size $base-spacing-size / 2;
+	padding: $base-spacing-size;
 }
 #application-header {
 	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3 ;
