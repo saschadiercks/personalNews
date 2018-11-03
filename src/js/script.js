@@ -234,10 +234,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		function setUnreadItemCount(value) {
 			badge = '#unread-items';
 			badgeValue = '#unread-items__count';
-			document.querySelector(badgeValue).innerText = value;
 			if(value > 0) {
 				document.querySelector(badge).classList.remove('js-hidden');
 				document.querySelector(badge).classList.add('js-show');
+				document.querySelector(badgeValue).innerText = value;
 			} else {
 				document.querySelector(badge).classList.remove('js-show');
 				document.querySelector(badge).classList.add('js-hide');
