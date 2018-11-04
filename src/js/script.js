@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					localStorage.setItem('offsetTop',0);
 				}
 			} else {
-				console.log('no update');
+				setUnreadItemCount('error');
 				localStorage.setItem('latestItemTs',latestItemTs);
 			}
 		}
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		window.addEventListener('scroll', function(event) {
 			scrollDepth = window.pageYOffset;
 			if(scrollDepth <= 0) {
-				setUnreadItemCount(0);
+				setUnreadItemCount();
 				var latestItemTs = getLatestItemTs();
 				localStorage.setItem('latestItemTs',latestItemTs);
 			}
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		function setUnreadItemCount(value) {
 			badge = '#unread-items';
 			badgeValue = '#unread-items__count';
-			if(value > 0) {
+			if(value > 0 || typeof value == 'string') {
 				document.querySelector(badge).classList.remove('js-hidden');
 				document.querySelector(badge).classList.add('js-show');
 				document.querySelector(badgeValue).innerText = value;
