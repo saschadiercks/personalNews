@@ -167,13 +167,15 @@ document.addEventListener('DOMContentLoaded', function() {
 					scrollToTarget(0,0);
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
 					removeClass(elementToFix,'js-fixed');
-					document.getElementById('application-overlay').classList.remove('js-visible');
 					localStorage.setItem('channel', channelLink);
-
 					lastSavedItemTs = localStorage.getItem('latestItemTs');
-					setTimeout(latestItemTs = getLatestItemTs(),0);
-					compareAndSaveLatestItemTs(latestItemTs,lastSavedItemTs);
-					listenerClickFeedItem(feedItem);
+					document.getElementById('application-overlay').classList.remove('js-visible');
+
+					setTimeout(stepsAfterLoad(),10);
+					function stepsAfterLoad() {
+						compareAndSaveLatestItemTs(getLatestItemTs(),lastSavedItemTs);
+						listenerClickFeedItem(feedItem);
+					}
 				}
 			}
 		}
@@ -225,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			for(i=0; i < elements.length; i++) {
 				elements[i].onclick = function(event) {
 					localStorage.setItem('offsetTop',window.pageYOffset);
+					localStorage.setItem('latestSeenItemTs',this.getAttribute('data-ts'));
 				}
 			}
 
