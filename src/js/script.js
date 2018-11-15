@@ -162,64 +162,58 @@ document.addEventListener('DOMContentLoaded', function() {
 			// output if call is succesful
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
+					// add content
 					outputContainer = document.getElementById('content');
 					outputContainer.innerHTML = xmlhttp.response;
+
+					// reset scrollpostion and remove loader & menu
 					scrollToTarget(0,0);
+					document.getElementById('application-overlay').classList.remove('js-visible');
 					document.getElementById(elementToToggleOnLoad).classList.add('js-hidden');
 					removeClass(elementToFix,'js-fixed');
-					localStorage.setItem('channel', channelLink);
-					lastSavedItemTs = localStorage.getItem('latestItemTs');
-					document.getElementById('application-overlay').classList.remove('js-visible');
 
-					setTimeout(stepsAfterLoad(),10);
+					// set current channel and get last clicked Item from storage & latest Item in Feed
+					localStorage.setItem('channel', channelLink);
+					lastItemTs = localStorage.getItem('lastItemTs');
+					window.latestItemTs = getAtrributeFromElement(feedItem,'data-ts');
+
+					// give browser time and handle feed-timeline afterwards
+					setTimeout(stepsAfterLoad(),100);
 					function stepsAfterLoad() {
-						compareAndSaveLatestItemTs(getLatestItemTs(),lastSavedItemTs);
-						listenerClickFeedItem(feedItem);
+						listenerClickFeedItem(feedItem);	// add Event-Listener and get oldest Item-Timestamp from Timeline
+						if(lastItemTs) {
+							if(document.querySelector('#ts-' + lastItemTs) === null) {
+								setUnreadItemCount('Not found');
+								localStorage.setItem('lastItemTs',latestItemTs);
+							} else if(lastItemTs < oldestItemInTimeline) {
+								setUnreadItemCount('(' + getAtrributeFromElement('#ts-' + oldestItemInTimeline,'data-count') + ')');
+								scrollIntoView('#ts-' + oldestItemInTimeline);
+							} else if(latestItemTs > lastItemTs) {
+								setUnreadItemCount(getAtrributeFromElement('#ts-' + lastItemTs,'data-count'));
+								scrollIntoView('#ts-' + lastItemTs);
+							}
+						} else {
+							setUnreadItemCount('Welcome');
+							localStorage.setItem('lastItemTs',latestItemTs);
+						}
 					}
 				}
 			}
 		}
 
-		// ---- handle Timeline-Update
-		function getLatestItemTs() {
-			latestItemTs = getAtrributeFromElement(feedItem,'data-ts');
-			return latestItemTs;
-		}
-
-		function compareAndSaveLatestItemTs(latestItemTs,lastSavedItemTs) {
-			lastSavedItemTsId = '#ts-' + lastSavedItemTs;
-			lastSavedItemTsIdSet = document.querySelector(lastSavedItemTsId);
-			console.log(lastSavedItemTsIdSet);
-			if(lastSavedItemTsIdSet !== null) {
-				if(lastSavedItemTs && (latestItemTs > lastSavedItemTs)) {
-					updatedCount = getAtrributeFromElement(lastSavedItemTsId,'data-count');
-					setUnreadItemCount(updatedCount);
-					scrollIntoView(lastSavedItemTsId);
-				} else {
-					var stickyOffset = document.getElementById('application-header').clientHeight;
-					scrollToTarget(0,localStorage.getItem('offsetTop'));
-					localStorage.setItem('offsetTop',0);
-				}
-			} else {
-				setUnreadItemCount('error');
-				localStorage.setItem('latestItemTs',latestItemTs);
-			}
-		}
-
+		// ---- scroll to element
 		function scrollIntoView(target) {
 			var scrollPositionY = document.querySelector(target).offsetTop;
 			var stickyOffset = document.getElementById('application-header').clientHeight;
 			scrollToTarget(0,scrollPositionY - stickyOffset);
 		}
 
-
 		// ---- handle scrolldepth
 		window.addEventListener('scroll', function(event) {
 			scrollDepth = window.pageYOffset;
 			if(scrollDepth <= 0) {
 				setUnreadItemCount();
-				var latestItemTs = getLatestItemTs();
-				localStorage.setItem('latestItemTs',latestItemTs);
+				localStorage.setItem('lastItemTs',latestItemTs);
 			}
 		});
 		function listenerClickFeedItem(selector) {
@@ -227,10 +221,14 @@ document.addEventListener('DOMContentLoaded', function() {
 			for(i=0; i < elements.length; i++) {
 				elements[i].onclick = function(event) {
 					localStorage.setItem('offsetTop',window.pageYOffset);
-					localStorage.setItem('latestSeenItemTs',this.getAttribute('data-ts'));
+					localStorage.setItem('lastItemTs',this.getAttribute('data-ts'));
+				}
+
+				// save last Item in timeline for later
+				if(i == elements.length -1) {
+					window.oldestItemInTimeline = elements[i].getAttribute('data-ts');
 				}
 			}
-
 		}
 
 		// ---- handle unreadItem badge
