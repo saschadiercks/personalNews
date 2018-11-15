@@ -56,7 +56,6 @@ gulp.task('imagemin', function () {
 
 		return gulp.src('./src/js/*.js')
 		.pipe(sourcemaps.init())
-		.pipe(uglify())
 		.pipe(sourcemaps.write({includeContent: true, sourceRoot: '.'}))		// use inline sourcemaps to avoid the need of deleting them - when using the build parameter
 		.pipe(gulp.dest('./htdocs/assets/js'));
 	});
