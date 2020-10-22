@@ -4,14 +4,14 @@ header("Content-Type:application/json");
 
 // get request
 
-// check for channel
+// --> check for channel
 if (isset($_GET['channel']) && $_GET['channel']!="") {
 	returnNewsItems($_GET['channel']);
 } else {
 	returnError("noChannel");
 }
 
-// return newsItems
+// --> return newsItems
 function returnNewsItems($channel) {
 	$response['status'] = "ok";
 	$response['channel'] = $channel;
@@ -19,7 +19,7 @@ function returnNewsItems($channel) {
 	answerRequest($response);
 }
 
-// return errorJson
+// --> return errorJson
 function returnError($errorType) {
 
 	// check for reason
@@ -32,7 +32,7 @@ function returnError($errorType) {
 	answerRequest($response);
 }
 
-// answerRequest
+// --> answerRequest
 function answerRequest($response) {
 	$json_response = json_encode($response);
  	echo $json_response;
