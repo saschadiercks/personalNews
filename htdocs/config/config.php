@@ -23,11 +23,11 @@
 	date_default_timezone_set('Europe/Berlin');  // set Timezone to avoid errors on feed-fetching
 
 	// Set Data-Environment
-	$dataUrl = 'data/data.json';					// Set the url to retrieve the data from
-	$jsonContent = file_get_contents($dataUrl);		// Get the data
-	$json = json_decode($jsonContent, true);		// (true) returns the json as array-structure
-	$content = $json['content'];					// Get content of json-array directly (used to ease extension of the json later (header, footer...))
-	$blacklist = $json['blacklist'];				// get Blacklist array
+	$feedsUrl = 'data/feeds.json';					// get the feeds
+	$blacklistUrl = 'data/blacklist.json';			// get the blacklist
+	$feeds = file_get_contents($feedsUrl);			// Get the data
+	$content = json_decode($feeds, true);			// (true) returns the json as array-structure
+	$blacklist = json_decode(file_get_contents($blacklistUrl), true);				// get Blacklist array
 
 	// Set themes
 	$themeLight = 'light';
