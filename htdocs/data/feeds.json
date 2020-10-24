@@ -1,5 +1,5 @@
 {
-	"Nachrichten": [
+	"nachrichten": [
 		{
 			"url": "http://metaideen.de/feed/atom/",
 			"icon": "assets/images/world.svg"
@@ -17,7 +17,7 @@
 			"icon": "assets/images/world.svg"
 		}
 	],
-	"Tech News": [
+	"technews": [
 		{
 			"url": "https://www.futurezone.de/?config=rss_hd",
 			"icon": "assets/images/world.svg"
@@ -39,13 +39,13 @@
 			"icon": "assets/images/world.svg"
 		}
 	],
-	"Vivaldi": [
+	"vivaldi": [
 		{
 			"url": "https://vivaldi.com/feed/",
 			"icon": "assets/images/world.svg"
 		}
 	],
-	"Sascha Diercks": [
+	"saschadiercks": [
 		{
 			"url": "http://metaideen.de/feed/atom/",
 			"icon": "assets/images/sdi.png"

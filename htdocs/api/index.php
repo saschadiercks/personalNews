@@ -1,39 +1,18 @@
 <?php
-// set output
-header("Content-Type:application/json");
 
-// get request
+	// data
+	$blacklist = json_decode(file_get_contents('../data/blacklist.json'), true);
+	$content = json_decode(file_get_contents('../data/feeds.json'), true);
 
-// --> check for channel
-if (isset($_GET['channel']) && $_GET['channel']!="") {
-	returnNewsItems($_GET['channel']);
-} else {
-	returnError("noChannel");
-}
+	// import functions
+	require_once("./functions/answerRequest.php");
 
-// --> return newsItems
-function returnNewsItems($channel) {
-	$response['status'] = "ok";
-	$response['channel'] = $channel;
-	$response['mock'] = "random content";
-	answerRequest($response);
-}
-
-// --> return errorJson
-function returnError($errorType) {
-
-	// check for reason
-	if ($errorType === "noChannel") {
-		$message = "no channel defined";
+	// --> check for channel
+	if (isset($_GET['channel']) && $_GET['channel'] != "") {
+		// returnNewsItems($_GET['channel'], $content);
+		answerRequest(200, "ok", null, $content);
+	} else {
+		answerRequest(404, "error", "no channel defined", null);
 	}
 
-	$response['status'] = "error";
-	$response['message'] = $message;
-	answerRequest($response);
-}
-
-// --> answerRequest
-function answerRequest($response) {
-	$json_response = json_encode($response);
- 	echo $json_response;
-}
+?>

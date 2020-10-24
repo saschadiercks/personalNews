@@ -25,8 +25,7 @@
 	// Set Data-Environment
 	$feedsUrl = 'data/feeds.json';					// get the feeds
 	$blacklistUrl = 'data/blacklist.json';			// get the blacklist
-	$feeds = file_get_contents($feedsUrl);			// Get the data
-	$content = json_decode($feeds, true);			// (true) returns the json as array-structure
+	$content = json_decode(file_get_contents($feedsUrl), true);			// (true) returns the json as array-structure
 	$blacklist = json_decode(file_get_contents($blacklistUrl), true);				// get Blacklist array
 
 	// Set themes
