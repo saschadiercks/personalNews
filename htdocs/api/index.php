@@ -1,5 +1,9 @@
 <?php
 
+// ###########
+// # imports #
+// ###########
+
 	// data
 	$blacklist = json_decode(file_get_contents('../data/blacklist.json'), true);
 	$content = json_decode(file_get_contents('../data/feeds.json'), true);
@@ -11,13 +15,33 @@
 	);
 
 	// import functions
-	require_once("./functions/answerRequest.php");
+	require_once("./functions/loadExternalFeeds.php");
+	require_once("./functions/returnJson.php");
 
-	// --> check for channel
+// ###########
+// # program #
+// ###########
+
+	// check: is a channel set?
 	if (isset($_GET['channel']) && $_GET['channel'] != "") {
-		answerRequest(200, $errorNames["success"], null, $content);
+
+		// check: does the requested channel exist in the datafile?
+		if(in_array($_GET['channel'], array_keys($content))) {
+
+			// grab requested channel-contents
+			$content = $content[$_GET['channel']];
+			$content = loadExternalFeeds($content);
+
+			returnJson(200, $errorNames["success"], null, $content);
+
+		} else {
+			// error: the submitted channel does not exist
+			returnJson(404, $errorNames["error"], "channel not found", null);
+		}
+
 	} else {
-		answerRequest(404, $errorNames["error"], "no channel defined", null);
+		// error: the channel is not submitted
+		returnJson(400, $errorNames["error"], "no channel set", null);
 	}
 
 ?>

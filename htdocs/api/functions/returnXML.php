@@ -1,7 +1,7 @@
 <?php
 
-	function answerRequest($httpResponseCode,$responseType,$responseMsg,$responseCnt) {
-		header("Content-Type:application/json");
+	function returnXML($httpResponseCode,$responseType,$responseMsg,$responseCnt) {
+		header('Content-Type: application/xml; charset=utf-8');
 
 		if($httpResponseCode) {
 			header(http_response_code ($httpResponseCode));
@@ -19,7 +19,7 @@
 			$response['content'] = $responseCnt;
 		}
 
-		echo json_encode($response);
+		echo createXML($response);
 	}
 
 ?>
