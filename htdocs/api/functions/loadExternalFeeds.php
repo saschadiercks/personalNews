@@ -14,24 +14,30 @@
 // ###########
 
 	function loadExternalFeeds($content) {
+
 		foreach($content as $feed) {
-			//$icon = $feed['icon'];						// get icon-url
 
 			// get url from json and put it in an object
-			$xml = @file_get_contents($feed['url']);
-			$xml = simplexml_load_string($xml);
+			$feed = @file_get_contents($feed['url']);
+			$feed = simplexml_load_string($feed);
 
-			switch (checkFeedFormat($xml)) {
+			switch (checkFeedFormat($feed)) {
 				case "rss":
-					parseRss($xml);
+					$feeds[] = parseRss($feed);
 					break;
 				case "atom":
-					parseAtom($xml);
+					$feeds[] = parseAtom($feed);
 					break;
 			}
 		}
 
-		return $xml;
+		// merge arrays into one
+		$feedsCombined = array();
+		for($i = 0; $i < count($feeds); $i++) {
+			$feedsCombined = array_merge($feedsCombined,$feeds[$i]);
+		}
+
+		return $feedsCombined;
 	}
 
 ?>

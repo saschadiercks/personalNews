@@ -1,4 +1,12 @@
 <?php
+// ###########
+// # imports #
+// ###########
+
+
+// ###########
+// # program #
+// ###########
 
 	function returnJson($httpResponseCode,$responseType,$responseMsg,$responseCnt) {
 		header("Content-Type:application/json");
