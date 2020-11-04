@@ -5,8 +5,8 @@
 // ###########
 
 	// data
-	$blacklist = json_decode(file_get_contents('../data/blacklist.json'), true);
 	$content = json_decode(file_get_contents('../data/feeds.json'), true);
+	$blacklist = json_decode(file_get_contents('../data/blacklist.json'), true);
 	$errorNames = array(
 		"success" => "ok",
 		"error" => "error",
@@ -16,6 +16,8 @@
 
 	// import functions
 	require_once("./functions/loadExternalFeeds.php");
+	require_once("./feedHandling/filterFeed.php");
+	require_once("./functions/sortArray.php");
 	require_once("./functions/returnJson.php");
 
 // ###########
@@ -31,6 +33,8 @@
 			// grab requested channel-contents
 			$content = $content[$_GET['channel']];
 			$content = loadExternalFeeds($content);
+			$content = filterFeed($content, $blacklist);
+			$content = sortArray($content, 'itemTimestamp');
 
 			returnJson(200, $errorNames["success"], null, $content);
 
