@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
   forward_port[80, 8080]  # nginx/apache
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "src/manifests"
+    puppet.manifests_path = "./manifests"
     puppet.manifest_file = "default.pp"
   end
 
