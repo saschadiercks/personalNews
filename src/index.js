@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 // import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-	<React.StrictMode></React.StrictMode>,
+	<React.StrictMode>Hallo</React.StrictMode>,
 	document.getElementById("root")
 );
 

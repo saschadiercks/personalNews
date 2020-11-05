@@ -1,83 +1,28 @@
-// Dependencies
+/* #### Setting #### */
 const gulp = require("gulp");
-const sass = require("gulp-sass");
-const sourcemaps = require("gulp-sourcemaps");
-const autoprefixer = require("gulp-autoprefixer");
-const uglify = require("gulp-uglify");
-const imagemin = require("gulp-imagemin");
+require("require-dir")("./_tasks");
 
-// Place Code for tasks here
-// ---- images ---
-gulp.task("imagemin", function () {
-	return gulp
-		.src("./public/assets/images/*.{svg}")
-		.pipe(
-			imagemin([
-				imagemin.jpegtran({ progressive: true }),
-				imagemin.optipng({ optimizationLevel: 5 }),
-			])
-		)
-		.pipe(gulp.dest("./public/assets/images/"));
-});
+/* ################# */
+/* ##### Tasks ##### */
+/* ################# */
+// --- set environment ----
+gulp.task("production", gulp.series("set-prod-node-env"));
+gulp.task("development", gulp.series("set-dev-node-env"));
 
-// ---- SCSS  ----
+// --- group tasks ----
+gulp.task("clean", gulp.series("clean:build"));
+gulp.task("copy", gulp.series("copy:images", "copy:fonts"));
+gulp.task("lint", gulp.series("lint:css"));
+gulp.task("scripts", gulp.series("scripts:build"));
+gulp.task("styles", gulp.series("lint:css", "compile:css"));
+gulp.task("optimize", gulp.series("imagemin", "purge:css"));
 
-// dev
-gulp.task("compile:css", function () {
-	return gulp
-		.src("./src/assets/scss/**/*.scss")
-		.pipe(sourcemaps.init())
-		.pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-		.pipe(
-			autoprefixer({
-				browsers: ["last 2 versions", ">5%"],
-				cascade: false,
-			})
-		)
-		.pipe(sourcemaps.write({ includeContent: true, sourceRoot: "." })) // use inline sourcemaps to avoid the need of deleting them - when using the build parameter
-		.pipe(gulp.dest("./public/assets/css"));
-});
+// --- run tasks ----
+gulp.task("dev", gulp.series("development", "scripts", "compile:css", "copy"));
 
-// build
-gulp.task("build:css", function () {
-	return gulp
-		.src("./src/assets/scss/**/*.scss")
-		.pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-		.pipe(
-			autoprefixer({
-				browsers: ["last 2 versions", ">5%"],
-				cascade: false,
-			})
-		)
-		.pipe(gulp.dest("./public/assets/css"));
-});
-
-// ---- Javascript ----
-
-// dev
-gulp.task("compile:js", function () {
-	var options = {
-		mangle: "false",
-	};
-
-	return gulp
-		.src("./src/assets/js/*.js")
-		.pipe(sourcemaps.init())
-		.pipe(sourcemaps.write({ includeContent: true, sourceRoot: "." })) // use inline sourcemaps to avoid the need of deleting them - when using the build parameter
-		.pipe(gulp.dest("./public/assets/js"));
-});
-
-// build
-gulp.task("build:js", function () {
-	var options = {
-		mangle: "true",
-	};
-
-	return gulp
-		.src("./src/assets/js/*.js")
-		.pipe(uglify())
-		.pipe(gulp.dest("./public/assets/js"));
-});
-
-// --- build ----
-gulp.task("build", gulp.series("build:css", "build:js", "imagemin"));
+// WARNING: due to optimization of css, images and JS, this will take several minutes!
+// but on the plus side you'll get a fully optimized site (SDI 2020)
+// gulp.task(
+// 	"build",
+// 	gulp.series("production", "compile:css", "scripts", "copy", "optimize")
+// );

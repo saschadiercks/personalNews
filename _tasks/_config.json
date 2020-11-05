@@ -1,0 +1,11 @@
+{
+	"src": "src",
+	"dist": "public",
+	"assetSrc": "src/assets",
+	"assetDist": "public/assets",
+	"assetImageSrc": "src/assets/images",
+	"assetImageDist": "public/assets/images",
+	"envProduction": "production",
+	"envDevelopment": "development",
+	"distCssSite": "site.css"
+}

@@ -16,7 +16,7 @@
 	// Set Environemt
 	// $manifestUrl = 'application.manifest.php';	// This is the name of the manifest-file
 	$cssUrl = 'assets/css/site.css';			// Set the url to retreive the css from
-	$jsUrl = 'assets/js/script.js';				// Set the url to retrieve the js from
+	$jsUrl = 'assets/js/site.js';				// Set the url to retrieve the js from
 
 	// Set php requirements
 	ini_set('allow_url_fopen', true);			// allow loading external files

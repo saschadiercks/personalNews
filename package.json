@@ -1,7 +1,7 @@
 {
   "name": "personalNews",
   "version": "1.0.0",
-  "description": "Your news personalised as a timeline",
+  "description": "Your news personalized as a timeline",
   "main": "gulpfile.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -17,7 +17,21 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
-    "gulp-uglify": "^2.0.0"
+    "gulp-uglify": "^2.0.0",
+    "critical": "^2.0.4",
+    "del": "^3.0.0",
+    "gulp-html-minifier": "^0.1.8",
+    "gulp-if": "^3.0.0",
+    "gulp-purgecss": "^3.0.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-stylelint": "^8.0.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-terser": "^1.2.0",
+    "require-dir": "^1.2.0",
+    "stylelint": "^9.10.1",
+    "stylelint-order": "^2.2.1",
+    "webpack": "^4.39.3",
+    "webpack-stream": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
