@@ -6,7 +6,13 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 
 ## How does it work?
 
-Just place the contents of the folder `/build` on your own webserver. Make sure it supports _php_ - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow _allow_url_fopen_ `allow_url_fopen = true`. Some providers only require to tick a checkbox _allow_url_fopen_ in the backoffice to allow this functionality.
+Make sure your server supports _php_ - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow _allow_url_fopen_ `allow_url_fopen = true`. Some providers only require to tick a checkbox _allow_url_fopen_ in the backoffice to allow this functionality.
+
+For local development the php-files are served through vagrant. They reside next to the index.html (used for react) in the folder `/public`. You could just remove the index-file and put everything in there on your server and you're done.
+
+Since there is also an api available, you can also run `npm run build`. After that you'll find the folder `/build`. Put this on your server if you want the react-frontend too.
+
+Of course you could create your own client and just use the api.
 
 ### Use case
 
