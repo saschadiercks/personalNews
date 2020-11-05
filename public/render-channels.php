@@ -11,7 +11,7 @@
 			$channelItemName = $channelItem;
 
 			echo '<li>';
-			echo '<a href="?channel=' . $channelItemParameter . '">' . $channelItemName . "</a>";
+			echo '<a href="?channel=' . $channelItemParameter . '" data-channel="'. $channelItemParameter . '">' . $channelItemName . "</a>";
 			echo '</li>';
 		}
 	}

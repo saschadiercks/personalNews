@@ -10,14 +10,14 @@ const imagemin = require("gulp-imagemin");
 // ---- images ---
 gulp.task("imagemin", function () {
 	return gulp
-		.src("./build/assets/images/*.{svg}")
+		.src("./public/assets/images/*.{svg}")
 		.pipe(
 			imagemin([
 				imagemin.jpegtran({ progressive: true }),
 				imagemin.optipng({ optimizationLevel: 5 }),
 			])
 		)
-		.pipe(gulp.dest("./build/assets/images/"));
+		.pipe(gulp.dest("./public/assets/images/"));
 });
 
 // ---- SCSS  ----
@@ -35,7 +35,7 @@ gulp.task("compile:css", function () {
 			})
 		)
 		.pipe(sourcemaps.write({ includeContent: true, sourceRoot: "." })) // use inline sourcemaps to avoid the need of deleting them - when using the build parameter
-		.pipe(gulp.dest("./build/assets/css"));
+		.pipe(gulp.dest("./public/assets/css"));
 });
 
 // build
@@ -49,7 +49,7 @@ gulp.task("build:css", function () {
 				cascade: false,
 			})
 		)
-		.pipe(gulp.dest("./build/assets/css"));
+		.pipe(gulp.dest("./public/assets/css"));
 });
 
 // ---- Javascript ----
@@ -64,7 +64,7 @@ gulp.task("compile:js", function () {
 		.src("./src/assets/js/*.js")
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write({ includeContent: true, sourceRoot: "." })) // use inline sourcemaps to avoid the need of deleting them - when using the build parameter
-		.pipe(gulp.dest("./build/assets/js"));
+		.pipe(gulp.dest("./public/assets/js"));
 });
 
 // build
@@ -76,7 +76,7 @@ gulp.task("build:js", function () {
 	return gulp
 		.src("./src/assets/js/*.js")
 		.pipe(uglify())
-		.pipe(gulp.dest("./build/assets/js"));
+		.pipe(gulp.dest("./public/assets/js"));
 });
 
 // --- build ----
