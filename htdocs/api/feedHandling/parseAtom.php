@@ -13,14 +13,14 @@
 	function parseAtom($xml) {
 		// get data to push to every feedItem
 		$xmlAuthorLink = $xml->link['href'];						// extract href from element
-		$xmlAuthorLink = getRootUrl($xmlAuthorLink,2);				// get source-link from feed
+		$xmlAuthorLink = getRootUrl($xmlAuthorLink);				// get source-link from feed
 		$xmlAuthorDescription = $xmlAuthorLink;						// get description from feed
 
-		$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";		// set up favicon from sourcelink
+		$xmlAuthorIcon = $xmlAuthorLink . "/favicon.ico";			// set up favicon from sourcelink
 
 		foreach($xml->entry as $item) {
 			$feedItems[] = array(
-				'itemAuthorLink' => '//' . $xmlAuthorLink,								// get authorlink (from feed)
+				'itemAuthorLink' => $xmlAuthorLink,								// get authorlink (from feed)
 				'itemAuthorDescription' => $xmlAuthorDescription,						// get author (from feed)
 				'itemAuthorIcon' => $xmlAuthorIcon,										// get authorIcon (from feed)
 				'itemLink' => strip_tags($item->id),									// get the link

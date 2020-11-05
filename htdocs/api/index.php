@@ -30,12 +30,13 @@
 		// check: does the requested channel exist in the datafile?
 		if(in_array($_GET['channel'], array_keys($content))) {
 
-			// grab requested channel-contents
+			// grab requested channel-contents and modify them
 			$content = $content[$_GET['channel']];
 			$content = loadExternalFeeds($content);
 			$content = filterFeed($content, $blacklist);
 			$content = sortArray($content, 'itemTimestamp');
 
+			// return json and enrich it
 			returnJson(200, $errorNames["success"], null, $content);
 
 		} else {

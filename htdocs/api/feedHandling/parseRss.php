@@ -12,14 +12,14 @@
 
 	function parseRss($xml) {
 		$xmlAuthorLink = $xml->channel[0]->link;
-		$xmlAuthorLink = getRootUrl($xmlAuthorLink,2);					// get source-link from feed
+		$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
 		$xmlAuthorDescription = $xmlAuthorLink;							// get description from feed
 
-		$xmlAuthorIcon = '//' . $xmlAuthorLink . "/favicon.ico";
+		$xmlAuthorIcon = $xmlAuthorLink . "/favicon.ico";
 
 		foreach($xml->channel[0]->item as $item) {
 			$feedItems[] = array(
-				'itemAuthorLink' => '//' . $xmlAuthorLink,								// get authorlink (from feed)
+				'itemAuthorLink' => $xmlAuthorLink,								// get authorlink (from feed)
 				'itemAuthorDescription' => $xmlAuthorDescription,						// get author (from feed)
 				'itemAuthorIcon' => $xmlAuthorIcon,										// get authorIcon (from feed)
 				'itemLink' => strip_tags($item->link),									// get the link

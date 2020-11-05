@@ -9,9 +9,9 @@
 // # program #
 // ###########
 
-	function getRootUrl($url,$urlFragementNr) {
-		$url = explode('/', $url);		// explode original url
-		$url = $url[$urlFragementNr];					// simply use rootUrl
+	function getRootUrl($url) {
+		$url = explode('/', $url);						// explode original url
+		$url = $url[0] . '//' . $url[2];				// just use protocole and domain
 		return $url;
 	}
 
