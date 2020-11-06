@@ -20,14 +20,14 @@ Vagrant.configure("2") do |config|
   end
 
   # Sync between the web root of the VM and the 'sites' directory
-  config.vm.synced_folder "./public/", "/var/www/html"
+  config.vm.synced_folder "./php/", "/var/www/html"
 
   forward_port[1080]      # mailcatcher
   forward_port[3306]      # mysql
   forward_port[80, 8080]  # nginx/apache
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "./manifests"
+    puppet.manifests_path = "./src/vagrant"
     puppet.manifest_file = "default.pp"
   end
 
