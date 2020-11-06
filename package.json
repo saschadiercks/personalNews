@@ -1,63 +1,32 @@
 {
   "name": "personalNews",
   "version": "1.0.0",
-  "description": "Your news personalized as a timeline",
+  "description": "Your news personalised as a timeline",
   "main": "gulpfile.js",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^12.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-uglify": "^2.0.0",
     "critical": "^2.0.4",
     "del": "^3.0.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^3.1.1",
     "gulp-html-minifier": "^0.1.8",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^4.1.0",
     "gulp-purgecss": "^3.0.0",
-    "gulp-sass": "^3.2.1",
     "gulp-shell": "^0.6.5",
-    "gulp-sourcemaps": "^1.12.1",
     "gulp-stylelint": "^8.0.0",
     "gulp-svg-sprite": "^1.5.0",
     "gulp-terser": "^1.2.0",
-    "gulp-uglify": "^2.1.2",
     "require-dir": "^1.2.0",
     "stylelint": "^9.10.1",
     "stylelint-order": "^2.2.1",
-    "webpack": "^4.44.2",
+    "webpack": "^4.39.3",
     "webpack-stream": "^4.0.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saschadiercks/personalNews.git"
