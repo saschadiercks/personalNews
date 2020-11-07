@@ -103,14 +103,13 @@
 	}
 
 	// filter feedItems with blacklist
-	function filterFeed($feedItems) {
-		global $blacklistItems;
+	function filterFeed($feedItems, $blacklist) {
+		foreach($feedItems as $feedItem => $itemFragment) {
+			$itemFragmentsCombined = $itemFragment['itemLink'] .' '. $itemFragment['itemTitle'] .' '. $itemFragment['itemDescription']; 	// were combining url, title, description to search them in one go
 
-		foreach($feedItems as $feedItem => $key) {
-			foreach($blacklistItems as $blacklistItem) {
-				$keysCombined = $key['itemLink'] .' '. $key['itemTitle'] .' '. $key['itemDescription']; 	// were combining url, title, description to search them in one go
-				if(strpos($keysCombined, $blacklistItem) !== FALSE) {
-					$feedItems[$feedItem]['itemBlacklistHit'] = $blacklistItem;		// if one blacklistItem is in the keys, the array is expanded with it. It get's sorted out later
+			foreach($blacklist as $blacklistItem) {
+				if(strpos($itemFragmentsCombined, $blacklistItem) !== FALSE) {
+					unset($feedItems[$feedItem]);
 				}
 			}
 		}
@@ -181,7 +180,7 @@
 	<?php
 		$currentChannelKey = checkCurrentChannel($channelItems);
 		$feedItems = getFeed($content, $currentChannelKey);
-		$feedItems = filterFeed($feedItems);
+		$feedItems = filterFeed($feedItems, $blacklist);
 		$feedItems = sortFeed($feedItems);
 		renderFeed($feedItems);
 	?>
