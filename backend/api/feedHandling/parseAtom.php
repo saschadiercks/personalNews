@@ -4,7 +4,7 @@
 // ###########
 
 	// import functions
-	require_once("./functions/getRootUrl.php");
+	require_once __DIR__ ."/../functions/getRootUrl.php";
 
 // ###########
 // # program #

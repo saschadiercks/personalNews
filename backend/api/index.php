@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL ^ E_NOTICE);
+
 // ###########
 // # imports #
 // ###########
@@ -15,10 +18,10 @@
 	);
 
 	// import functions
-	require_once("./functions/loadExternalFeeds.php");
-	require_once("./feedHandling/filterFeed.php");
-	require_once("./functions/sortArray.php");
-	require_once("./functions/returnJson.php");
+	require_once __DIR__ . "/functions/loadExternalFeeds.php";
+	require_once __DIR__ . "/feedHandling/filterFeed.php";
+	require_once __DIR__ . "/functions/sortArray.php";
+	require_once __DIR__ . "/functions/returnJson.php";
 
 // ###########
 // # program #
