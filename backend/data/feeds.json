@@ -1,19 +1,11 @@
 {
 	"nachrichten": [
 		{
-			"url": "http://metaideen.de/feed/atom/",
-			"icon": "assets/images/world.svg"
-		},
-		{
 			"url": "http://www.tagesschau.de/xml/rss2",
 			"icon": "assets/images/world.svg"
 		},
 		{
 			"url": "http://newsfeed.zeit.de/politik/index",
-			"icon": "assets/images/world.svg"
-		},
-		{
-			"url": "http://www.spiegel.de/schlagzeilen/tops/index.rss",
 			"icon": "assets/images/world.svg"
 		}
 	],

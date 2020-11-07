@@ -7,5 +7,6 @@
 	"assetImageDist": "public/assets/images",
 	"envProduction": "production",
 	"envDevelopment": "development",
-	"distCssSite": "site.css"
+	"distCssSite": "site.css",
+	"reactDir": "headless-react"
 }

@@ -10,6 +10,7 @@
 
 	function returnJson($httpResponseCode,$responseType,$responseMsg,$responseCnt) {
 		header("Content-Type:application/json");
+		header('Access-Control-Allow-Origin: *');
 
 		if($httpResponseCode) {
 			header(http_response_code ($httpResponseCode));
