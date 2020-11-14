@@ -40,16 +40,16 @@ error_reporting(E_ALL ^ E_NOTICE);
 			$content = sortArray($content, 'itemTimestamp');
 
 			// return json and enrich it
-			returnJson(200, $errorNames["success"], null, $content);
+			returnJson($errorNames["success"], null, $content);
 
 		} else {
 			// error: the submitted channel does not exist
-			returnJson(404, $errorNames["error"], "channel not found", null);
+			returnJson($errorNames["error"], "channel not found", null);
 		}
 
 	} else {
 		// error: the channel is not submitted
-		returnJson(400, $errorNames["error"], "no channel set", null);
+		returnJson($errorNames["error"], "no channel set", null);
 	}
 
 ?>

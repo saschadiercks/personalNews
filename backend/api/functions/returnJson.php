@@ -8,15 +8,9 @@
 // # program #
 // ###########
 
-	function returnJson($httpResponseCode,$responseType,$responseMsg,$responseCnt) {
+	function returnJson($responseType,$responseMsg,$responseCnt) {
 		header("Content-Type:application/json");
 		header('Access-Control-Allow-Origin: *');
-
-		if($httpResponseCode) {
-			header(http_response_code ($httpResponseCode));
-		} else {
-			header(http_response_code (200));
-		}
 
 		$response['type'] = $responseType;
 
