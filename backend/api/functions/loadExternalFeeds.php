@@ -17,16 +17,20 @@
 
 		foreach($content['feeds'] as $feed) {
 
+			// check if an avatar is set in the data-file
+			// we put it into the parser to exchange the favicon if the icon is set
+			$feedAvatar = $feed['icon'];
+
 			// get url from json and put it in an object
 			$feed = @file_get_contents($feed['url']);
 			$feed = simplexml_load_string($feed);
 
 			switch (checkFeedFormat($feed)) {
 				case "rss":
-					$feeds[] = parseRss($feed);
+					$feeds[] = parseRss($feed, $feedAvatar);
 					break;
 				case "atom":
-					$feeds[] = parseAtom($feed);
+					$feeds[] = parseAtom($feed, $feedAvatar);
 					break;
 			}
 		}

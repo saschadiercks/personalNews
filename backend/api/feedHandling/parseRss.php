@@ -5,17 +5,19 @@
 
 	// import functions
 	require_once __DIR__ ."/../functions/getRootUrl.php";
+	require_once __DIR__ ."/../functions/setAvatar.php";
 
 // ###########
 // # program #
 // ###########
 
-	function parseRss($xml) {
+	function parseRss($xml, $optionalAvatarUrl) {
 		$xmlAuthorLink = $xml->channel[0]->link;
 		$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
 		$xmlAuthorDescription = $xmlAuthorLink;							// get description from feed
 
-		$xmlAuthorIcon = $xmlAuthorLink . "/favicon.ico";
+		// use Icon from date file or use Url for favicon
+		$xmlAuthorIcon = setAvatar($optionalAvatarUrl, $xmlAuthorLink);
 
 		foreach($xml->channel[0]->item as $item) {
 			$feedItems[] = array(
