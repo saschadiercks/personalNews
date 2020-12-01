@@ -35,7 +35,7 @@
 
 			// compute selected channel only (default if checkCurrentChannel decides)
 			if($key == $currentChannelKey) {
-				foreach($value as $feed) {
+				foreach($value["feeds"] as $feed) {
 					$icon = $feed['icon'];		// get icon-url
 					$xml = @file_get_contents($feed['url']);		// get url from json
 					if($xml != false) {

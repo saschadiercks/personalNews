@@ -142,7 +142,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// loading the content
 	function ajaxRequest(channelLink) {
-		// if this function is called with no parameter, we're chencking the localStorag, if one is present and use this (useful for initial load)
+		// if this function is called with no parameter, we're checking the localStorage,
+		// if one is present we use this (useful for initial load)
 		if (channelLink === "") {
 			var savedLocalStorageChannel = localStorage.getItem("channel");
 			if (savedLocalStorageChannel !== null) {
