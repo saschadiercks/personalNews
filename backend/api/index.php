@@ -37,7 +37,7 @@
 			$content = $content[$_GET['channel']];
 			$content = loadExternalFeeds($content);
 			$content = filterFeed($content, $blacklist);
-			//$content = sortArray($content, 'itemTimestamp');
+			$content = sortArray($content, 'itemTimestamp');
 
 			// return json and enrich it
 			returnJson($errorNames["success"], null, $content);
