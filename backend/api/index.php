@@ -36,7 +36,7 @@
 			// grab requested channel-contents and modify them
 			$content = $content[$_GET['channel']];
 			$content = loadExternalFeeds($content);
-			//$content = filterFeed($content, $blacklist);
+			$content = filterFeed($content, $blacklist);
 			//$content = sortArray($content, 'itemTimestamp');
 
 			// return json and enrich it
