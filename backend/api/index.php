@@ -27,29 +27,25 @@ error_reporting(E_ALL ^ E_NOTICE);
 // # program #
 // ###########
 
-	// check: is a channel set?
-	if (isset($_GET['channel']) && $_GET['channel'] != "") {
-
-		// check: does the requested channel exist in the datafile?
-		if(in_array($_GET['channel'], array_keys($content))) {
-
-			// grab requested channel-contents and modify them
-			$content = $content[$_GET['channel']];
-			$content = loadExternalFeeds($content);
-			$content = filterFeed($content, $blacklist);
-			$content = sortArray($content, 'itemTimestamp');
-
-			// return json and enrich it
-			returnJson($errorNames["success"], null, $content);
-
-		} else {
-			// error: the submitted channel does not exist
-			returnJson($errorNames["error"], "channel not found", null);
-		}
-
+	// check: is a channel set and does it exist in the data?
+	// otherwise use the first channel
+	if (isset($_GET['channel']) && $_GET['channel'] != "" && in_array($_GET['channel'], array_keys($content))) {
+		$channel = $_GET['channel'];
+		$responseType = $errorNames["success"];
+		$responseMsg = null;
 	} else {
-		// error: the channel is not submitted
-		returnJson($errorNames["error"], "no channel set", null);
+		$channel = array_keys($content)[0];
+		$responseType = $errorNames["warning"];
+		$responseMsg = "requested channel not found - using default";
 	}
+
+	// grab requested channel-contents and modify them
+	$content = $content[$channel];
+	$content = loadExternalFeeds($content);
+	$content = filterFeed($content, $blacklist);
+	$content = sortArray($content, 'itemTimestamp');
+
+	// enrich json and return it
+	returnJson($responseType, $responseMsg, $content);
 
 ?>
