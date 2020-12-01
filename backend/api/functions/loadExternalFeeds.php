@@ -15,7 +15,7 @@
 
 	function loadExternalFeeds($content) {
 
-		foreach($content as $feed) {
+		foreach($content['feeds'] as $feed) {
 
 			// get url from json and put it in an object
 			$feed = @file_get_contents($feed['url']);

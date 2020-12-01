@@ -19,6 +19,7 @@
 				}
 			}
 		}
+		var_dump($feedItems);
 		return $feedItems;
 	}
 

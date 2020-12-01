@@ -1,7 +1,7 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL ^ E_NOTICE);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL ^ E_NOTICE);
 
 // ###########
 // # imports #
@@ -36,8 +36,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 			// grab requested channel-contents and modify them
 			$content = $content[$_GET['channel']];
 			$content = loadExternalFeeds($content);
-			$content = filterFeed($content, $blacklist);
-			$content = sortArray($content, 'itemTimestamp');
+			//$content = filterFeed($content, $blacklist);
+			//$content = sortArray($content, 'itemTimestamp');
 
 			// return json and enrich it
 			returnJson($errorNames["success"], null, $content);
