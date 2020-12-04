@@ -37,6 +37,23 @@
 			}
 		]
 	},
+	"regionales": {
+		"title": "Regionales",
+		"feeds": [
+			{
+				"url": "https://www.ndr.de/nachrichten/schleswig-holstein/nachrichtenshindex113-rss2.xml",
+				"icon": "assets/images/ndr.png"
+			},
+			{
+				"url": "https://www.shz.de/regionales/schleswig-holstein/rss",
+				"icon": "assets/images/shz.png"
+			},
+			{
+				"url": "https://www.shz.de/regionales/newsticker-nord/rss",
+				"icon": "assets/images/shz.png"
+			}
+		]
+	},
 	"vivaldi": {
 		"title": "Vivaldi",
 		"feeds": [
