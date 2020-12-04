@@ -20,6 +20,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// import functions
 	require_once __DIR__ . "/functions/loadExternalFeeds.php";
 	require_once __DIR__ . "/feedHandling/filterFeed.php";
+	require_once __DIR__ . "/feedHandling/returnChannelList.php";
 	require_once __DIR__ . "/functions/sortArray.php";
 	require_once __DIR__ . "/functions/returnJson.php";
 
@@ -30,22 +31,24 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// check: is a channel set and does it exist in the data?
 	// otherwise use the first channel
 	if (isset($_GET['channel']) && $_GET['channel'] != "" && in_array($_GET['channel'], array_keys($content))) {
-		$channel = $_GET['channel'];
+		$activeChannel = $_GET['channel'];
 		$responseType = $errorNames["success"];
 		$responseMsg = null;
 	} else {
-		$channel = array_keys($content)[0];
+		$activeChannel = array_keys($content)[0];
 		$responseType = $errorNames["warning"];
 		$responseMsg = "requested channel not found - using default";
 	}
 
+	$channels = returnChannelList($content, $activeChannel);
+
 	// grab requested channel-contents and modify them
-	$content = $content[$channel];
+	$content = $content[$activeChannel];
 	$content = loadExternalFeeds($content);
 	$content = filterFeed($content, $blacklist);
 	$content = sortArray($content, 'itemTimestamp');
 
 	// enrich json and return it
-	returnJson($responseType, $responseMsg, $content);
+	returnJson($responseType, $responseMsg, $content, $channels);
 
 ?>
