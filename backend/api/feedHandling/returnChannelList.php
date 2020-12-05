@@ -15,9 +15,9 @@ function returnChannelList($content, $activeChannel) {
 
 	foreach($content as $key => $channel) {
 		$channelItem = array(
-			"channelId" => $key,
-			"title" => $channel["title"],
-			"isActive" => returnTrueFalse($key, $activeChannel)
+			"channel" => $key,
+			"channelTitle" => $channel["title"],
+			"channelIsActive" => returnTrueFalse($key, $activeChannel)
 		);
 
 		array_push($renderedChannels, $channelItem);

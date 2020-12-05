@@ -11,7 +11,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 	$feedsData = json_decode(file_get_contents('../data/feeds.json'), true);
 	$blacklistData = json_decode(file_get_contents('../data/blacklist.json'), true);
 	$errorNames = array(
-		"success" => "ok",
+		"ok" => "ok",
 		"error" => "error",
 		"warning" => "warning",
 		"information" => "information"
@@ -32,7 +32,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// otherwise use the first channel
 	if (isset($_GET['channel']) && $_GET['channel'] != "" && in_array($_GET['channel'], array_keys($feedsData))) {
 		$activeChannel = $_GET['channel'];
-		$responseType = $errorNames["success"];
+		$responseType = $errorNames["ok"];
 		$responseMsg = null;
 	} else {
 		$activeChannel = array_keys($feedsData)[0];
@@ -49,7 +49,14 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// return channelList with Active State
 	$channels = returnChannelList($feedsData, $activeChannel);
 
+	// collect metaStuff
+	$meta = array(
+		"type" => $responseType ? $responseType : $errorNames["ok"],
+		"message" => $responseMsg ? $responseMsg : null,
+		"count" => $returnedItems ? $returnedItems : null
+	);
+
 	// enrich json and return it
-	returnJson($responseType, $responseMsg, $content, $channels);
+	returnJson($meta, $content, $channels);
 
 ?>

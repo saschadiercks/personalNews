@@ -8,14 +8,12 @@
 // # program #
 // ###########
 
-	function returnJson($responseType, $responseMsg, $responseCnt, $responseLst) {
+	function returnJson($responseMeta, $responseCnt, $responseLst) {
 		header("Content-Type:application/json");
 		header('Access-Control-Allow-Origin: *');
 
-		$response['type'] = $responseType;
-
-		if($responseMsg) {
-			$response['message'] = $responseMsg;
+		if($responseMeta) {
+			$response['meta'] = $responseMeta;
 		}
 
 		if($responseCnt) {
@@ -23,7 +21,7 @@
 		}
 
 		if($responseLst) {
-			$response['feeds'] = $responseLst;
+			$response['channels'] = $responseLst;
 		}
 
 		echo json_encode($response);
