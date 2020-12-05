@@ -51,9 +51,9 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 	// collect metaStuff
 	$meta = array(
-		"type" => $responseType ? $responseType : $errorNames["ok"],
+		"state" => $responseType ? $responseType : $errorNames["ok"],
 		"message" => $responseMsg ? $responseMsg : null,
-		"count" => $returnedItems ? $returnedItems : null
+		"newItems" => $returnedItems ? $returnedItems : null
 	);
 
 	// enrich json and return it
