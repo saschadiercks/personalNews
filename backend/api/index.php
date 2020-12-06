@@ -10,6 +10,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// data
 	$feedsData = json_decode(file_get_contents('../data/feeds.json'), true);
 	$blacklistData = json_decode(file_get_contents('../data/blacklist.json'), true);
+	$metaData= json_decode(file_get_contents('../data/meta.json'), true);
 	$errorNames = array(
 		"ok" => "ok",
 		"error" => "error",
@@ -49,11 +50,13 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// return channelList with Active State
 	$channels = returnChannelList($feedsData, $activeChannel);
 
+
 	// collect metaStuff
 	$meta = array(
 		"state" => $responseType ? $responseType : $errorNames["ok"],
 		"message" => $responseMsg ? $responseMsg : null,
-		"newItems" => $returnedItems ? $returnedItems : null
+		"newItems" => $returnedItems ? $returnedItems : null,
+		"pinnedMessage" => $metaData["pinnedMessage"] ? $metaData["pinnedMessage"] : false
 	);
 
 	// enrich json and return it
