@@ -8,15 +8,18 @@ error_reporting(E_ALL ^ E_NOTICE);
 // ###########
 
 	// data
+	$metaData= json_decode(file_get_contents('../data/meta.json'), true);
 	$feedsData = json_decode(file_get_contents('../data/feeds.json'), true);
 	$blacklistData = json_decode(file_get_contents('../data/blacklist.json'), true);
-	$metaData= json_decode(file_get_contents('../data/meta.json'), true);
 	$errorNames = array(
 		"ok" => "ok",
 		"error" => "error",
 		"warning" => "warning",
 		"information" => "information"
 	);
+
+	// data through url
+	$channel = $_GET['channel'];
 
 	// import functions
 	require_once __DIR__ . "/functions/loadExternalFeeds.php";
@@ -29,37 +32,46 @@ error_reporting(E_ALL ^ E_NOTICE);
 // # program #
 // ###########
 
-	// check: is a channel set and does it exist in the data?
-	// otherwise use the first channel
-	if (isset($_GET['channel']) && $_GET['channel'] != "" && in_array($_GET['channel'], array_keys($feedsData))) {
-		$activeChannel = $_GET['channel'];
-		$responseType = $errorNames["ok"];
-		$responseMsg = null;
-	} else {
-		$activeChannel = array_keys($feedsData)[0];
-		$responseType = $errorNames["warning"];
-		$responseMsg = "requested channel not found - using default";
+	function buildContent($channel, $meta, $feeds, $blacklist, $translations) {
+		// check: is a channel set and does it exist in the data?
+		// otherwise use the first channel
+		if (isset($channel) && $channel != "" && in_array($channel, array_keys($feeds))) {
+			$activeChannel = $channel;
+			$responseType = $translations["ok"];
+			$responseMsg = null;
+		} else {
+			$activeChannel = array_keys($feeds)[0];
+			$responseType = $translations["warning"];
+			$responseMsg = "requested channel not found - using default";
+		}
+
+		// grab requested channel-contents and modify them
+		$content['content'] = $feeds[$activeChannel];
+		$content['content'] = loadExternalFeeds($content['content']);
+		$content['content'] = filterFeed($content['content'], $blacklist);
+		$content['content'] = sortArray($content['content'], 'itemTimestamp');
+
+		// count returnedItems
+		$returnedItems = 0;
+
+		// return channelList with Active State
+		$content['channels'] = returnChannelList($feeds, $activeChannel);
+
+		// collect metaStuff
+		$content['meta'] = array(
+			"state" => $responseType ? $responseType : $translations["ok"],
+			"message" => $responseMsg ? $responseMsg : null,
+			"newItems" => $returnedItems ? $returnedItems : null,
+			"pinnedMessage" => $meta["pinnedMessage"] ? $meta["pinnedMessage"] : false
+		);
+
+		return $content;
 	}
 
-	// collect metaStuff
-	$meta = array(
-		"state" => $responseType ? $responseType : $errorNames["ok"],
-		"message" => $responseMsg ? $responseMsg : null,
-		"newItems" => $returnedItems ? $returnedItems : null,
-		"pinnedMessage" => $metaData["pinnedMessage"] ? $metaData["pinnedMessage"] : false
-	);
-
-	// grab requested channel-contents and modify them
-	$content = $feedsData[$activeChannel];
-	$content = loadExternalFeeds($content);
-	$content = filterFeed($content, $blacklistData);
-	$content = sortArray($content, 'itemTimestamp');
-
-	// return channelList with Active State
-	$channels = returnChannelList($feedsData, $activeChannel);
-
+	// build content
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames);
 
 	// enrich json and return it
-	returnJson($meta, $content, $channels);
+	returnJson($contentBuilt['meta'], $contentBuilt['content'], $contentBuilt['channels']);
 
 ?>
