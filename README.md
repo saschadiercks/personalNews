@@ -8,7 +8,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 
 Make sure your server supports _php_ - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow _allow_url_fopen_ `allow_url_fopen = true`. Some providers only require to tick a checkbox _allow_url_fopen_ in the backoffice to allow this functionality.
 
-For local development the php-files are served through vagrant. They reside next to the index.html (used for react) in the folder `/public`. You could just remove the index-file and put everything in there on your server and you're done.
+For local development the php-files are served through vagrant. They reside next to the index.html (used for react) in the folder `/htdocs`. You could just remove the index-file and put everything in there on your server and you're done.
 
 Since there is also an api available, you can also run `npm run build`. After that you'll find the folder `/build`. Put this on your server if you want the react-frontend too.
 
@@ -24,7 +24,7 @@ I build this primarily to use it in a webpanel in vivaldi. But I really like to 
 
 ### Setup your own links and blacklist-keywords
 
-personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/data.json` and play with that file. It's quite self explanatory.
+personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/_data_.json` and play with that files. It's quite self explanatory.
 
 ## Features
 

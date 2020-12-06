@@ -16,7 +16,7 @@
 
 	// data from api
 	require_once __DIR__ . ('/settings/index.php');
-	require_once __DIR__ . ('/api/functions/buildContent.php');
+	require_once __DIR__ . ('/api/v1/functions/buildContent.php');
 
 // ###########
 // # program #

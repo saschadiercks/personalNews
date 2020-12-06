@@ -6,7 +6,7 @@ import "../App.css";
 
 const PersonalNews = () => {
 	const { data, loading } = useFetch(
-		"http://127.0.0.1:8080/api/?channel=nachrichten&format=json"
+		"http://127.0.0.1:8080/api/?channel=nachrichten"
 	);
 
 	if (loading) {

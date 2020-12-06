@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   end
 
   # Sync between the web root of the VM and the 'sites' directory
-  config.vm.synced_folder "./backend/", "/var/www/html"
+  config.vm.synced_folder "./htdocs/", "/var/www/html"
 
   forward_port[1080]      # mailcatcher
   forward_port[3306]      # mysql

@@ -10,7 +10,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// data through url
 	$channel = $_GET['channel'];
 
-	require_once __DIR__ . ('/../settings/index.php');
+	require_once __DIR__ . ('/../../settings/index.php');
 	require_once __DIR__ . ('/functions/buildContent.php');
 
 // ###########
