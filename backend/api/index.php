@@ -41,6 +41,14 @@ error_reporting(E_ALL ^ E_NOTICE);
 		$responseMsg = "requested channel not found - using default";
 	}
 
+	// collect metaStuff
+	$meta = array(
+		"state" => $responseType ? $responseType : $errorNames["ok"],
+		"message" => $responseMsg ? $responseMsg : null,
+		"newItems" => $returnedItems ? $returnedItems : null,
+		"pinnedMessage" => $metaData["pinnedMessage"] ? $metaData["pinnedMessage"] : false
+	);
+
 	// grab requested channel-contents and modify them
 	$content = $feedsData[$activeChannel];
 	$content = loadExternalFeeds($content);
@@ -50,14 +58,6 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// return channelList with Active State
 	$channels = returnChannelList($feedsData, $activeChannel);
 
-
-	// collect metaStuff
-	$meta = array(
-		"state" => $responseType ? $responseType : $errorNames["ok"],
-		"message" => $responseMsg ? $responseMsg : null,
-		"newItems" => $returnedItems ? $returnedItems : null,
-		"pinnedMessage" => $metaData["pinnedMessage"] ? $metaData["pinnedMessage"] : false
-	);
 
 	// enrich json and return it
 	returnJson($meta, $content, $channels);
