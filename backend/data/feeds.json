@@ -53,23 +53,5 @@
 				"icon": "assets/images/shz.png"
 			}
 		]
-	},
-	"vivaldi": {
-		"title": "Vivaldi",
-		"feeds": [
-			{
-				"url": "https://vivaldi.com/feed/",
-				"icon": "assets/images/vivaldi.pngs"
-			}
-		]
-	},
-	"saschadiercks": {
-		"title": "Sascha",
-		"feeds": [
-			{
-				"url": "https://forum.vivaldi.net/topic/21786.rss",
-				"icon": "assets/images/sdi.png"
-			}
-		]
 	}
 }

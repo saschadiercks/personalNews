@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	// prepare loading after click
 	function switchChannel(e) {
 		if (e.target !== e.currentTarget) {
-			channelLink = e.target.getAttribute("href");
+			channelLink = e.target.dataset.channel;
 			removeClass(effectClassApplyTo, "js-fx");
 			ajaxRequest(channelLink);
 			e.preventDefault();
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			.classList.remove("js-hidden");
 		renderFile = "middleware.php?return=content";
 		xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", renderFile + channelLink, true);
+		xmlhttp.open("GET", renderFile + "&channel=" + channelLink, true);
 		xmlhttp.send();
 
 		overlayContainer = document.getElementById("application-overlay");

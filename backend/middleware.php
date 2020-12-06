@@ -1,4 +1,8 @@
 <?php
+
+	// this middleware is used as a very dirty solution to keep the old site
+	// working as expected
+
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL ^ E_NOTICE);
 
@@ -8,6 +12,7 @@
 
 	// data through url
 	$returnType = $_GET['return'];
+	$channel = $_GET['channel'];
 
 	// data from api
 	require_once __DIR__ . ('/settings/index.php');
@@ -16,6 +21,8 @@
 // ###########
 // # program #
 // ###########
+
+
 
 	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames);
 
@@ -36,10 +43,10 @@
 		echo '</div>';
 	}
 
-	function renderContent($feedItems) {
+	function renderContent($content) {
 		echo '<ul id="feed-items">';
 			$feedItemCount = 0;
-			foreach ($feedItems as $feedItem) {
+			foreach ($content as $feedItem) {
 				echo '<li id="ts-' . $feedItem['itemTimestamp'] . '" data-count="' . $feedItemCount . '" data-ts="' . $feedItem['itemTimestamp'] .'">';	// add timestamp to use as anchor for unread news
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
