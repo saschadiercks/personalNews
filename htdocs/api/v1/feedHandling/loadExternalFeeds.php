@@ -5,9 +5,9 @@
 // ###########
 
 	// import functions
-	require_once __DIR__ . "/../feedHandling/checkFeedFormat.php";
-	require_once __DIR__ . "/../feedHandling/parseRss.php";
-	require_once __DIR__ . "/../feedHandling/parseAtom.php";
+	require_once __DIR__ . "/checkFeedFormat.php";
+	require_once __DIR__ . "/parseRss.php";
+	require_once __DIR__ . "/parseAtom.php";
 
 // ###########
 // # program #

@@ -5,7 +5,7 @@
 // ###########
 
 	// import functions
-	require_once __DIR__ . "/loadExternalFeeds.php";
+	require_once __DIR__ . "/../feedHandling/loadExternalFeeds.php";
 	require_once __DIR__ . "/../feedHandling/filterFeed.php";
 	require_once __DIR__ . "/../feedHandling/returnChannelList.php";
 	require_once __DIR__ . "/sortArray.php";

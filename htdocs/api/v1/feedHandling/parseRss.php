@@ -5,7 +5,7 @@
 
 	// import functions
 	require_once __DIR__ ."/../functions/getRootUrl.php";
-	require_once __DIR__ ."/../functions/setAvatar.php";
+	require_once __DIR__ ."/setAvatar.php";
 
 // ###########
 // # program #

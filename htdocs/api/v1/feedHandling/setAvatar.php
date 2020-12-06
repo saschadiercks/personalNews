@@ -4,7 +4,7 @@
 // # imports #
 // ###########
 
-	require_once __DIR__ ."/getCurrentServer.php";
+	require_once __DIR__ ."/../functions/getCurrentServer.php";
 
 // ###########
 // # program #
