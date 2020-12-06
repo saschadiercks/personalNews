@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		document
 			.getElementById(elementToToggleOnLoad)
 			.classList.remove("js-hidden");
-		renderFile = "render-feeds.php";
+		renderFile = "middleware.php?return=content";
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET", renderFile + channelLink, true);
 		xmlhttp.send();

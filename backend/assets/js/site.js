@@ -133,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	function switchChannel(e) {
 		if (e.target !== e.currentTarget) {
 			channelLink = e.target.getAttribute("href");
-			console.log(channelLink);
 			removeClass(effectClassApplyTo, "js-fx");
 			ajaxRequest(channelLink);
 			e.preventDefault();
@@ -143,7 +142,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// loading the content
 	function ajaxRequest(channelLink) {
-		// if this function is called with no parameter, we're chencking the localStorag, if one is present and use this (useful for initial load)
+		// if this function is called with no parameter, we're checking the localStorage,
+		// if one is present we use this (useful for initial load)
 		if (channelLink === "") {
 			var savedLocalStorageChannel = localStorage.getItem("channel");
 			if (savedLocalStorageChannel !== null) {
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		document
 			.getElementById(elementToToggleOnLoad)
 			.classList.remove("js-hidden");
-		renderFile = "render-feeds.php";
+		renderFile = "middleware.php?return=content";
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET", renderFile + channelLink, true);
 		xmlhttp.send();
