@@ -8,6 +8,7 @@
 	require_once __DIR__ . "/../feedHandling/loadExternalFeeds.php";
 	require_once __DIR__ . "/../feedHandling/filterFeed.php";
 	require_once __DIR__ . "/../feedHandling/returnChannelList.php";
+	require_once __DIR__ . "/../feedHandling/returnNewItemCount.php";
 	require_once __DIR__ . "/sortArray.php";
 	require_once __DIR__ . "/returnJson.php";
 
@@ -35,7 +36,7 @@
 		$content['content'] = sortArray($content['content'], 'itemTimestamp');
 
 		// count returnedItems
-		$returnedItems = 0;
+		$returnedItems = returnNewItemCount();
 
 		// return channelList with Active State
 		$content['channels'] = returnChannelList($feeds, $activeChannel);
