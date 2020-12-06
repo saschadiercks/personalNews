@@ -7,7 +7,7 @@
 // # program #
 // ###########
 
-	function retunrNewItemsCount($feeds, $timestamp, $totalItems) {
+	function returnNewItemsCount($feeds, $timestamp, $totalItems) {
 		$i = 0;
 
 		foreach($feeds as $feed) {
@@ -21,7 +21,7 @@
 	function returnItemCounts($feeds, $timestamp) {
 
 		$totalItems = count($feeds);
-		$newItems = retunrNewItemsCount($feeds, $timestamp, $totalItems);
+		$newItems = returnNewItemsCount($feeds, $timestamp, $totalItems);
 
 		$itemCounts = array(
 			"totalItems" => $totalItems,
