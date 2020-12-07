@@ -4,6 +4,29 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 
 ![Screenshot](/.screenshots/personalnews-iphone.jpg)
 
+---
+
+- [Introduction](#personalNews)
+- [How does it work](#how-does-it-work)
+
+  - [Use case](#use-case)
+  - [Wan a demo](#want-a-demo)
+  - [Setup your own links and blacklist-keywords](#setup-your-own-links-and-blacklist-keywords)
+
+- [Features](#features)
+
+  - [Planned Features](#planned-features)
+
+- [Api-documentation](#api-documentation)
+
+  - [What does the api return?](#what-does-the-api-return?)
+  - [output](#output)
+  - [input](#input)
+
+- [Infos for local development](#infos-for-local-development)
+
+---
+
 ## How does it work?
 
 Make sure your server supports _php_ - this is the only requirement. If feeds didn't get fetched, try to modify your php.ini and allow _allow_url_fopen_ `allow_url_fopen = true`. Some providers only require to tick a checkbox _allow_url_fopen_ in the backoffice to allow this functionality.
@@ -31,6 +54,7 @@ personalNews comes with a default list of links and some example keywords for bl
 - easy to configure via json
 - only requires php on your server
 - uses vanillaJS (to minimize file-size)
+- API for fetching content (get only for now)
 
 ### Planned Features
 
@@ -40,6 +64,37 @@ personalNews comes with a default list of links and some example keywords for bl
 - grouping of related news
 - ~~multiple timelines~~ (done)
 - allow onsite-editing so you don't have to fiddle with the json-file
+
+## Api documentation
+
+The api is called via `/api/v1/` and the output can be controlled via url-parameters. This is great for building your own frontend or embed the news in your website or project.
+
+### What does the api return?
+
+#### Output
+
+The **output** is returned as a json
+
+- meta
+  - state: error || warning || info || ok
+  - message: null || string (with additional info)
+  - itemCounts
+    - totalItems: number (of items returned)
+    - newItems: number (of items from timestamp given to the api)
+  - pinnedMessage: null || string (configure in `htdocs/data/meta.json`)
+- content: array (of items to be displayed)
+- channels: array (of configured channels see `htdocs/data/feeds.json`)
+
+#### Input
+
+**Input** for filtering the output. Uses url-parameters
+
+**channel=someChannel**
+
+Return items from the selected channel. This uses the channels-object configured in `htdocs/data/feeds.json`. If the channel given to the api doesn't exist or none channel is given to it, it returns the content of the first channel from `htdocs/data/feeds.json`.
+
+**timestamp=some timestamp**
+Using a timestamp the api will return the number of new items after that given timestamp. If no timestamp is set, the api will return the number of totalItems as `newItems`. The number of totalItems is always returned as a sperate value.
 
 ## Infos for local development
 
