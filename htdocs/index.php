@@ -1,16 +1,12 @@
 <?php
 	header('Content-type: text/html; charset=utf-8');
-
-	// Setup
-	$projectConfigUrl ='config/config.php';
-	require_once($projectConfigUrl);
+	require_once __DIR__ . '/config/config.php';
 ?>
 
 <!DOCTYPE html>
 <html <?php
 	echo isset($projectLanguage) ? 'lang="'.$projectLanguage.'"' : FALSE;
 	echo isset($projectDirection) ? 'dir="'.$projectDirection.'"' : FALSE;
-	echo isset($manifestUrl)? 'manifest="'.$manifestUrl.'"' : FALSE;
 	echo isset($theme)? 'class="'.$theme.'"' : 'class="' . $themeDefault .'"';
 ?>>
 <head>
@@ -37,9 +33,6 @@
 		<!-- Short Names -->
 		<meta name="apple-mobile-web-app-title" content="<?php echo($applicationName); ?>" />
 		<meta name="application-name" content="<?php echo($applicationNameShort); ?>" />
-
-		<!-- Mobile Manifest -->
-		<link rel="manifest" href="manifest.json" />
 	<?php } ?>
 
 	<!-- Icons -->
@@ -73,7 +66,16 @@
 		</div>
 	</header>
 
-	<?php include_once('render-channels.php'); ?>
+	<!-- overlay -->
+	<div class="overlay js-visible" id="application-overlay">
+		<div class="overlay-content">
+			<h2><?= $applicationName ?></h2>
+			<ul id="channels">
+				<!-- overlay will be placed here (ajax) -->
+			</ul>
+		</div>
+		<div class="overlay-backdrop js-overlay-toggle" data-target="application-overlay"></div>
+	</div>
 
 	<!-- content -->
 	<main id="content">

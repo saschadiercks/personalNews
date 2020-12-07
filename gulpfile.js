@@ -20,7 +20,10 @@ gulp.task("optimize", gulp.series("imagemin", "purge:css"));
 // --- run tasks ----
 gulp.task("dev", gulp.series("development", "scripts", "compile:css"));
 gulp.task("serve", gulp.series("dev", "vagrant:up", "react:up"));
-gulp.task("build", gulp.series("production", "scripts", "compile:css"));
+gulp.task(
+	"build",
+	gulp.series("production", "copy:images", "imagemin", "scripts", "compile:css")
+);
 
 // WARNING: due to optimization of css, images and JS, this will take several minutes!
 // but on the plus side you'll get a fully optimized site (SDI 2020)

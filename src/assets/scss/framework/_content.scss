@@ -1,5 +1,7 @@
 // ---- Content ----
 main {
+	width: 100%;
+
 	ul {
 		@include ul-reset;
 		margin-left: auto;
@@ -11,6 +13,8 @@ main {
 
 		// avoid showing alt-text if icon is not loaded
 		text-indent: 100px;
-		img { float: left; }
+		img {
+			float: left;
+		}
 	}
 }

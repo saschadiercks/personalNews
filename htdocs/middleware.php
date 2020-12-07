@@ -23,25 +23,14 @@
 // # program #
 // ###########
 
-
-
 	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
 
 	function renderChannels($channels) {
-		echo '<div class="overlay js-hidden" id="application-overlay">';
-		echo 	'<div class="overlay-backdrop js-overlay-toggle" data-target="application-overlay"></div>';
-		echo 		'<div class="overlay-content">';
-		echo			'<h2>personalNews</h2>';
-		echo			'<ul id="channels">';
-							foreach($channels as $channel) {
-								echo '<li>';
-								echo '<a href="?channel=' . $channel['channel'] . '" data-channel="'. $channel['channel'] . '">' . $channel['channelTitle'] . "</a>";
-								echo '</li>';
-							}
-		echo			'</ul>';
-		echo		'</div>';
-		echo	'</div>';
-		echo '</div>';
+		foreach($channels as $channel) {
+			echo '<li>';
+			echo '<a href="?channel=' . $channel['channel'] . '" data-channel="'. $channel['channel'] . '">' . $channel['channelTitle'] . "</a>";
+			echo '</li>';
+		}
 	}
 
 	function renderContent($content) {

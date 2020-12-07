@@ -151,19 +151,43 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		}
 
+		function getLastTs() {
+			var lastTs = localStorage.getItem("lastItemTs");
+			if (lastTs === null) {
+				var lastTs = 0;
+			}
+			return lastTs;
+		}
+
 		// requesting the content
 		document
 			.getElementById(elementToToggleOnLoad)
 			.classList.remove("js-hidden");
-		renderFile = "middleware.php?return=content";
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.open(
 			"GET",
-			renderFile + "&channel=" + channelLink + "&timestamp=" + lastItemTs,
+			"middleware.php?return=content" +
+				"&channel=" +
+				channelLink +
+				"&timestamp=" +
+				getLastTs(),
 			true
 		);
 		xmlhttp.send();
 
+		// requesting the channels for overlay
+		xmlhttpChannels = new XMLHttpRequest();
+		xmlhttpChannels.open("GET", "middleware.php?return=channels", true);
+		xmlhttpChannels.send();
+		xmlhttpChannels.onreadystatechange = function () {
+			if (xmlhttpChannels.readyState === 4 && xmlhttp.readyState) {
+				// add content
+				outputContainer = document.getElementById("channels");
+				outputContainer.innerHTML = xmlhttpChannels.response;
+			}
+		};
+
+		// toggle overlay
 		overlayContainer = document.getElementById("application-overlay");
 		addClass(overlayContainer, "js-hidden");
 		fixElement("content");
