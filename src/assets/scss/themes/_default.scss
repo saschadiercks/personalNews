@@ -1,32 +1,32 @@
 // ----- Setup -----
 $font-family-document: -apple-system, sans-serif;
 
-$base-animation-speed: .2s;
+$base-animation-speed: 0.2s;
 $base-spacing-size: 1em;
-$base-spacing-size-text: .5em;
+$base-spacing-size-text: 0.5em;
 $favicon-size: 24px;
 $logo-size: 24px;
 $icon-border-radius: 99em;
 
 $spinner-size: 4em;
-$spinner-border-color: rgba(#ccc, .9);
+$spinner-border-color: rgba(#ccc, 0.9);
 $spinner-border-size: 1em;
 
 // font-sizes
-$font-size-title: 1.125rem;			/* 18px / 16px */
-$font-size-excerpt: .875rem;		/* 14px / 16px */
-$font-size-excerpt-single: .75rem;	/* 12px / 16px */
-$font-size-info: .75rem;			/* 12px / 16px */
-$font-size-overlay-title: 1rem;		/* 16px / 16px */
-$font-size-overlay-links: 1rem;		/* 16px / 16px */
-$font-size-item-count: 1rem; 		/* 12px / 16px */
+$font-size-title: 1.125rem; /* 18px / 16px */
+$font-size-excerpt: 0.875rem; /* 14px / 16px */
+$font-size-excerpt-single: 0.75rem; /* 12px / 16px */
+$font-size-info: 0.75rem; /* 12px / 16px */
+$font-size-overlay-title: 1rem; /* 16px / 16px */
+$font-size-overlay-links: 1rem; /* 16px / 16px */
+$font-size-item-count: 1rem; /* 12px / 16px */
 
 // Theme-Colors
 // light
 $body-background-color: #fdfdfd;
 $base-color: #333;
 $base-color-info: #aaa;
-$base-shadow: 0 2px 4px rgba(0,0,0,0.2);
+$base-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 $header-background-color: $body-background-color;
 $header-border: 1px solid darken($body-background-color, 5%);
 $base-link-color: $base-color;
@@ -40,7 +40,7 @@ $overlay-color: $base-color;
 $body-background-color-dark: #272e35;
 $base-color-dark: #cad4e0;
 $base-color-info-dark: #a8c9ed;
-$base-shadow-dark: 0 2px 4px rgba(0,0,0,0.4);
+$base-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.4);
 $header-background-color-dark: $body-background-color-dark;
 $header-border-dark: 1px solid darken($body-background-color-dark, 5%);
 $base-link-color-dark: $base-color-dark;
@@ -50,11 +50,10 @@ $base-border-dark: 1px solid lighten($body-background-color-dark, 7%);
 $overlay-background-color-dark: $body-background-color-dark;
 $overlay-color-dark: $base-color-dark;
 
-
 // ---- background
 body {
-	background-attachment:fixed;
-	background-image: url('assets/images/world.svg');	// url is relative from index.php
+	background-attachment: fixed;
+	background-image: url("assets/images/world.svg"); // url is relative from index.php
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 50%;
@@ -72,22 +71,27 @@ main li {
 	padding: $base-spacing-size;
 }
 #application-header {
-	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3 ;
+	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
 	// increase size clickable of elements
 	a,
-	label {	padding: $base-spacing-size; }
+	label {
+		padding: $base-spacing-size;
+	}
 }
 
 // ----- Body -----
-body { font-family: $font-family-document; }
-
+body {
+	font-family: $font-family-document;
+}
 
 // ---- header ----
 #application-header {
 	top: 0;
 	width: 100%;
 	z-index: 2;
-	div:nth-of-type(2) { position: relative; }	// allow larger logo to center
+	div:nth-of-type(2) {
+		position: relative;
+	} // allow larger logo to center
 	img {
 		@include align-centered;
 		height: $logo-size;
@@ -98,7 +102,7 @@ body { font-family: $font-family-document; }
 		text-decoration: none;
 	}
 	label {
-		cursor: pointer;		// simulate link-behavior
+		cursor: pointer; // simulate link-behavior
 		float: right;
 	}
 }
@@ -106,14 +110,20 @@ body { font-family: $font-family-document; }
 // ---- Content ----
 main {
 	a {
-		&:not(.source) { text-decoration: none; }
+		&:not(.source) {
+			text-decoration: none;
+		}
 		&:hover,
-		&:active { text-decoration: underline; }
+		&:active {
+			text-decoration: underline;
+		}
 	}
 
 	p {
 		margin-top: $base-spacing-size-text;
-		&:last-of-type { margin-bottom: 0; }
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 
 	.icon {
@@ -123,7 +133,9 @@ main {
 		height: $favicon-size;
 		margin-top: 3px;
 		width: $favicon-size;
-		img { border-radius: $icon-border-radius; }
+		img {
+			border-radius: $icon-border-radius;
+		}
 	}
 
 	.title {
@@ -134,32 +146,42 @@ main {
 		margin-bottom: $base-spacing-size-text / 2;
 	}
 
-	.excerpt { font-size: $font-size-excerpt-single; }
+	.excerpt {
+		font-size: $font-size-excerpt-single;
+	}
 
 	.info {
 		font-size: $font-size-info;
 		margin: 0;
-		a { color: inherit !important; }
+		a {
+			color: inherit !important;
+		}
 	}
 
-	.source { color: inherit; }
+	.source {
+		color: inherit;
+	}
 }
 
 // ---- theme-switcher
 #theme-switcher {
-	&:not(:checked) + label .icon-moon { display: none; }
-	&:checked + label .icon-sun { display: none; }
+	&:not(:checked) + label .icon-moon {
+		display: none;
+	}
+	&:checked + label .icon-sun {
+		display: none;
+	}
 }
 
 // ---- unreadItemCount
 #unread-items {
-	position: absolute;
+	position: fixed;
 	right: $base-spacing-size / 2;
-	top: 100%;
+	top: 60px;
 	border-radius: 99em;
 	margin-top: $base-spacing-size / 2;
 	min-width: 30px;
-	padding: .3125rem;
+	padding: 0.3125rem;
 	text-align: center;
 }
 #unread-items__count {
@@ -168,7 +190,6 @@ main {
 	line-height: 1;
 	text-align: center;
 }
-
 
 // ---- overlay ----
 .overlay-backdrop {
@@ -182,7 +203,7 @@ main {
 .overlay-content {
 	left: $base-spacing-size;
 	margin-top: $base-spacing-size;
-	max-height: 80%;		// leave some space to the bottom (even in ladnscape-mode)
+	max-height: 80%; // leave some space to the bottom (even in ladnscape-mode)
 	max-width: 480px;
 	overflow-y: auto;
 	padding: $base-spacing-size;
@@ -191,7 +212,7 @@ main {
 	top: inherit;
 	// top is set via js
 	//transition: transform $base-animation-speed / 2;
-	z-index: 2;		// place between header and content
+	z-index: 2; // place between header and content
 
 	h2 {
 		font-size: $font-size-overlay-title;
@@ -201,7 +222,9 @@ main {
 		text-align: center;
 	}
 
-	ul { @include ul-reset;	}
+	ul {
+		@include ul-reset;
+	}
 
 	a {
 		display: block;
@@ -237,12 +260,12 @@ main {
 
 	// use pseudo-element so we can position the spinner without affectiong the animation
 	&:before {
-		animation: rotation .4s infinite linear;
+		animation: rotation 0.4s infinite linear;
 		border: $spinner-border-size solid $spinner-border-color;
 		border-top-color: transparent;
 		border-right-color: transparent;
 		border-radius: 99em;
-		content: '';
+		content: "";
 		display: block;
 		height: $spinner-size;
 		width: $spinner-size;
@@ -261,23 +284,22 @@ main {
 
 // ---- Footer ----
 footer {
-
 }
 
 // ---- Responsive ----
 // Mobile view
 @include phone-only {
-
 }
 
 // Tablet portrait
 @include tablet-portrait {
-
 }
 
 // Tablet landscape and up
 @include tablet-landscape-up {
-	main .excerpt { font-size: $font-size-excerpt; }
+	main .excerpt {
+		font-size: $font-size-excerpt;
+	}
 }
 
 // Default View
@@ -310,9 +332,13 @@ html.light {
 	#application-header {
 		background-color: $header-background-color;
 		box-shadow: $base-shadow;
-		a { color: $base-link-color; }
+		a {
+			color: $base-link-color;
+		}
 	}
-	#application-loading { background-color: $body-background-color; }
+	#application-loading {
+		background-color: $body-background-color;
+	}
 	#unread-items {
 		background-color: $body-background-color-dark;
 		color: $base-color-dark;
@@ -321,25 +347,41 @@ html.light {
 		a {
 			color: $base-link-color;
 			&:hover,
-			&:active { color: $base-link-active-color !important; }
-			&:visited { color: $base-link-visited-color; }
+			&:active {
+				color: $base-link-active-color !important;
+			}
+			&:visited {
+				color: $base-link-visited-color;
+			}
 		}
-		ul { background-color: $body-background-color; }
+		ul {
+			background-color: $body-background-color;
+		}
 	}
-	li { border-bottom: $base-border; }
+	li {
+		border-bottom: $base-border;
+	}
 	//.icon { background-color: transparent; }
-	.info { color: $base-color-info; }
-	.source:hover { color: $base-link-active-color !important; }
+	.info {
+		color: $base-color-info;
+	}
+	.source:hover {
+		color: $base-link-active-color !important;
+	}
 	.overlay-content {
 		background-color: $overlay-background-color;
 		border: $base-border;
 		box-shadow: $base-shadow;
 		color: $overlay-color;
-		h2 { border-bottom: $base-border; }
+		h2 {
+			border-bottom: $base-border;
+		}
 		a {
 			color: $base-link-color;
 			&:hover,
-			&:active { color: $base-link-active-color; }
+			&:active {
+				color: $base-link-active-color;
+			}
 		}
 	}
 }
@@ -352,9 +394,13 @@ html.dark {
 		background-color: $header-background-color-dark;
 		border-bottom: $header-border-dark;
 		box-shadow: $base-shadow-dark;
-		a { color: $base-link-color-dark; }
+		a {
+			color: $base-link-color-dark;
+		}
 	}
-	#application-loading { background-color: $body-background-color-dark; }
+	#application-loading {
+		background-color: $body-background-color-dark;
+	}
 	#unread-items {
 		background-color: $body-background-color;
 		color: $base-color;
@@ -364,27 +410,43 @@ html.dark {
 		a {
 			color: $base-link-color-dark;
 			&:hover,
-			&:active { color: $base-link-active-color-dark !important; }
-			&:visited { color: $base-link-visited-color-dark; }
+			&:active {
+				color: $base-link-active-color-dark !important;
+			}
+			&:visited {
+				color: $base-link-visited-color-dark;
+			}
 		}
-		ul { background-color: $body-background-color-dark; }
+		ul {
+			background-color: $body-background-color-dark;
+		}
 	}
-	li { border-bottom: $base-border-dark; }
+	li {
+		border-bottom: $base-border-dark;
+	}
 	//main .icon { opacity: .5; }
 	//.icon { background-color: $base-color-dark; }
-	.info { color: $base-color-info-dark; }
-	.source:hover { color: $base-link-active-color-dark !important; }
+	.info {
+		color: $base-color-info-dark;
+	}
+	.source:hover {
+		color: $base-link-active-color-dark !important;
+	}
 	.overlay-content {
 		background-color: $overlay-background-color-dark;
 		border: $base-border-dark;
 		box-shadow: $base-shadow-dark;
 		color: $overlay-color-dark;
-		h2 { border-bottom: $base-border-dark; }
+		h2 {
+			border-bottom: $base-border-dark;
+		}
 
 		a {
 			color: $base-link-color-dark;
 			&:hover,
-			&:active { color: $base-link-active-color-dark; }
+			&:active {
+				color: $base-link-active-color-dark;
+			}
 		}
 	}
 }

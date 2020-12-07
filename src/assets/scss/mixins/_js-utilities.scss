@@ -5,21 +5,35 @@
 }
 
 // ---- js-fixed (Element to be fixed via JS) ----
-.js-fixed { position: fixed; }
+.js-fixed {
+	position: fixed;
+}
 
 // ---- Js-sticky (Element to be fixed via JS) ----
-.js-sticky { position: fixed; }
+.js-sticky {
+	position: fixed;
+}
 
 // --- animated hide & show of elements
 @keyframes js-show {
-	  0% { top: 0; }
-	 70% { top: 125%; }
-	 80% { top: 100%; }
+	0% {
+		top: 0;
+	}
+	70% {
+		top: 65px;
+	}
+	80% {
+		top: 55px;
+	}
 }
 
 @keyframes js-hide {
-	  0% { opacity: 1; }
-	100% { opacity: 0; }
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 .js-hide,
@@ -28,10 +42,10 @@
 	animation-fill-mode: forwards;
 }
 .js-show {
-	animation-duration: .2s;
+	animation-duration: 0.2s;
 	animation-name: js-show;
 }
 .js-hide {
-	animation-duration: .5s;
+	animation-duration: 0.5s;
 	animation-name: js-hide;
 }

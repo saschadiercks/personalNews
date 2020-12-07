@@ -61,9 +61,6 @@
 				<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
 			</form>
 		</div>
-		<div id="unread-items" class="js-hidden">
-			<span id="unread-items__count"></span>
-		</div>
 	</header>
 
 	<!-- overlay -->

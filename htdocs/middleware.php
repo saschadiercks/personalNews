@@ -19,6 +19,9 @@
 	require_once __DIR__ . ('/settings/index.php');
 	require_once __DIR__ . ('/api/v1/functions/buildContent.php');
 
+	// load the data
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
+
 // ###########
 // # program #
 // ###########
@@ -31,7 +34,13 @@
 		}
 	}
 
-	function renderContent($content) {
+	function renderContent($content, $meta) {
+		// the itemCount
+		echo'<div id="unread-items" class="js-hidden">';
+		echo'<span id="unread-items__count">' . $meta['itemCounts']['newItems'] . '</span>';
+		echo'</div>';
+
+		// the feedItems
 		echo '<ul id="feed-items">';
 			$feedItemCount = 0;
 			foreach ($content as $feedItem) {
@@ -60,13 +69,10 @@
 			renderChannels($contentBuilt['channels']);
 			break;
 		case 'content':
-			renderContent($contentBuilt['content']);
+			renderContent($contentBuilt['content'], $contentBuilt['meta']);
 			break;
 		default:
 			echo "nothing specified";
 			break;
 	}
-
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
-
 ?>

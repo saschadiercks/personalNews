@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	function toggleOverlay(elementId, event) {
 		var targetElement = document.getElementById(elementId);
-		var fixElementId = "content";
 		if (targetElement.classList.contains("js-visible")) {
 			addClass(targetElement, "js-hidden");
 			removeClass(targetElement, "js-visible");
@@ -140,6 +139,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		e.stopPropagation();
 	}
 
+	function getLastTs() {
+		lastTs = localStorage.getItem("lastItemTs");
+		console.log(lastTs);
+		if (lastTs === null) {
+			lastTs = 0;
+		}
+		return lastTs;
+	}
+
 	// loading the content
 	function ajaxRequest(channelLink) {
 		// if this function is called with no parameter, we're checking the localStorage,
@@ -149,14 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (savedLocalStorageChannel !== null) {
 				var channelLink = savedLocalStorageChannel;
 			}
-		}
-
-		function getLastTs() {
-			var lastTs = localStorage.getItem("lastItemTs");
-			if (lastTs === null) {
-				var lastTs = 0;
-			}
-			return lastTs;
 		}
 
 		// requesting the content
@@ -217,29 +217,17 @@ document.addEventListener("DOMContentLoaded", function () {
 				// give browser time and handle feed-timeline afterwards
 				setTimeout(stepsAfterLoad(), 100);
 				function stepsAfterLoad() {
+					setUnreadItemCount();
 					listenerClickFeedItem(feedItem); // add Event-Listener and get oldest Item-Timestamp from Timeline
 					if (lastItemTs) {
 						if (document.querySelector("#ts-" + lastItemTs) === null) {
-							setUnreadItemCount("Not found");
 							localStorage.setItem("lastItemTs", latestItemTs);
 						} else if (lastItemTs < oldestItemInTimeline) {
-							setUnreadItemCount(
-								"(" +
-									getAtrributeFromElement(
-										"#ts-" + oldestItemInTimeline,
-										"data-count"
-									) +
-									")"
-							);
 							scrollIntoView("#ts-" + oldestItemInTimeline);
 						} else if (latestItemTs > lastItemTs) {
-							setUnreadItemCount(
-								getAtrributeFromElement("#ts-" + lastItemTs, "data-count")
-							);
 							scrollIntoView("#ts-" + lastItemTs);
 						}
 					} else {
-						setUnreadItemCount("Welcome");
 						localStorage.setItem("lastItemTs", latestItemTs);
 					}
 				}
@@ -259,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	window.addEventListener("scroll", function (event) {
 		scrollDepth = window.pageYOffset;
 		if (scrollDepth <= 0) {
-			setUnreadItemCount();
+			setUnreadItemCount(0);
 			localStorage.setItem("lastItemTs", latestItemTs);
 		}
 	});
@@ -281,11 +269,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	// ---- handle unreadItem badge
 	function setUnreadItemCount(value) {
 		badge = "#unread-items";
-		badgeValue = "#unread-items__count";
-		if (value > 0 || typeof value == "string") {
+		if (value !== 0 || typeof value == "string") {
 			document.querySelector(badge).classList.remove("js-hidden");
 			document.querySelector(badge).classList.add("js-show");
-			document.querySelector(badgeValue).innerText = value;
 		} else {
 			document.querySelector(badge).classList.remove("js-show");
 			document.querySelector(badge).classList.add("js-hide");
