@@ -9,17 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.1.0] - 2020-12
+---
+
+## [Releases]
+
+## [1.1.0] - 2020-12-07
 
 [NEW API]
 Attention: this contains breaking changes for old users.
 
 Please beware, that _feeds.json_ and _blacklist.json_ have been split into several files. Also the structure of _feeds.json_ changed a bit and contains additional values. This was done to being able to implement a new api which can be used to build own frontends to the application.
 Just fix your _feeds.json_ and put everything on the server again and your done!
-
----
-
-## [Releases]
 
 ## [1.0.0] - 2017-09-30
 
