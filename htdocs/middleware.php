@@ -13,6 +13,7 @@
 	// data through url
 	$returnType = $_GET['return'];
 	$channel = $_GET['channel'];
+	$timestamp = $_GET['timestamp'];
 
 	// data from api
 	require_once __DIR__ . ('/settings/index.php');
@@ -24,7 +25,7 @@
 
 
 
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames);
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
 
 	function renderChannels($channels) {
 		echo '<div class="overlay js-hidden" id="application-overlay">';

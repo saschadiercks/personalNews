@@ -157,7 +157,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			.classList.remove("js-hidden");
 		renderFile = "middleware.php?return=content";
 		xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", renderFile + "&channel=" + channelLink, true);
+		xmlhttp.open(
+			"GET",
+			renderFile + "&channel=" + channelLink + "&timestamp=" + lastItemTs,
+			true
+		);
 		xmlhttp.send();
 
 		overlayContainer = document.getElementById("application-overlay");
