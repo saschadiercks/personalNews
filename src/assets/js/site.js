@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	ajaxRequest("");
 
 	//sticky header (item(id) to fix, item(id) with property to compensate fix)
-	stickyElement("application-header", "content", "margin-top");
+	stickyElement("application-header", "content", "padding-top");
 
 	// theme switcher
 	themeSwitch("theme-switcher");

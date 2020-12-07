@@ -28,6 +28,11 @@
 	$content = json_decode(file_get_contents($feedsUrl), true);			// (true) returns the json as array-structure
 	$blacklist = json_decode(file_get_contents($blacklistUrl), true);				// get Blacklist array
 
+	// Set themes
+	$themeLight = 'light';
+	$themeDark = 'dark';
+	$themeDefault = $themeDark;
+
 	// size to shortenText
 	$itemDescriptionLength = 300;
 	$readMoreIcon = '...';
