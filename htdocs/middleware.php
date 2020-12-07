@@ -23,8 +23,6 @@
 // # program #
 // ###########
 
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
-
 	function renderChannels($channels) {
 		foreach($channels as $channel) {
 			echo '<li>';
@@ -56,6 +54,7 @@
 		echo '</ul>';
 	}
 
+	// what to do, when called via ajax from index.php
 	switch ($returnType) {
 		case 'channels':
 			renderChannels($contentBuilt['channels']);
@@ -67,5 +66,7 @@
 			echo "nothing specified";
 			break;
 	}
+
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
 
 ?>
