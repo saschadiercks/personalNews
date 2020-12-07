@@ -7,7 +7,6 @@
 <html <?php
 	echo isset($projectLanguage) ? 'lang="'.$projectLanguage.'"' : FALSE;
 	echo isset($projectDirection) ? 'dir="'.$projectDirection.'"' : FALSE;
-	echo isset($theme)? 'class="'.$theme.'"' : 'class="' . $themeDefault .'"';
 ?>>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -57,7 +56,7 @@
 		</div>
 		<div>
 			<form method="#" action="#">
-				<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
+				<input type="checkbox" id="theme-switcher" class="vh" />
 				<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
 			</form>
 		</div>

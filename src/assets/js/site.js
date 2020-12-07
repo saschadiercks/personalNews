@@ -97,24 +97,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// switch theme by adding and removing classes to body
 	function themeSwitch(elementId) {
-		var renderFile = "themeswitch.php?theme=";
 		var applyThemeClassTo = document.getElementsByTagName("html")[0];
 
 		switchingElement = document.getElementById(elementId);
 		switchingElement.onclick = function () {
-			xmlhttp = new XMLHttpRequest();
 			if (this.checked) {
 				addClass(applyThemeClassTo, themeDark);
 				removeClass(applyThemeClassTo, themeLight);
-				xmlhttp.open("GET", renderFile + themeDark, true);
-				xmlhttp.send();
 				localStorage.setItem("theme", themeDark);
 				console.log("localStorage Theme is: " + themeDark);
 			} else {
 				addClass(applyThemeClassTo, themeLight);
 				removeClass(applyThemeClassTo, themeDark);
-				xmlhttp.open("GET", "themeswitch.php?theme=" + themeLight, true);
-				xmlhttp.send();
 				localStorage.setItem("theme", themeLight);
 				console.log("localStorage Theme is: " + themeLight);
 			}

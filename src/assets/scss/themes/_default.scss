@@ -319,10 +319,12 @@ footer {
 
 // ---- themes
 // theme-transition
-//html,
-//main ul,
-//#application-header,
-//.overlay { transition: color, background-color, border-color, $base-animation-speed; }
+html,
+main ul,
+#application-header,
+.overlay {
+	transition: color, background-color, border-color, $base-animation-speed;
+}
 
 // Light
 html.light {

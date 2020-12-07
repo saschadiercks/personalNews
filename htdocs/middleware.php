@@ -35,11 +35,6 @@
 	}
 
 	function renderContent($content, $meta) {
-		// the itemCount
-		echo'<div id="unread-items" class="js-hidden">';
-		echo'<span id="unread-items__count">' . $meta['itemCounts']['newItems'] . '</span>';
-		echo'</div>';
-
 		// the feedItems
 		echo '<ul id="feed-items">';
 			$feedItemCount = 0;
@@ -61,6 +56,11 @@
 				$feedItemCount++;
 			}
 		echo '</ul>';
+
+		// the itemCount
+		echo'<div id="unread-items" class="js-hidden">';
+		echo'<span id="unread-items__count">' . $meta['itemCounts']['newItems'] . '</span>';
+		echo'</div>';
 	}
 
 	// what to do, when called via ajax from index.php
