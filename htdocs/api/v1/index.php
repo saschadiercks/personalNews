@@ -19,7 +19,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 // ###########
 
 	// build content
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $translations, $timestamp);
 
 	// enrich json and return it
 	returnJson($contentBuilt['meta'], $contentBuilt['content'], $contentBuilt['channels']);

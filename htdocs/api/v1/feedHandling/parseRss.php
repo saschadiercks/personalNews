@@ -5,6 +5,7 @@
 
 	// import functions
 	require_once __DIR__ ."/../functions/getRootUrl.php";
+	require_once __DIR__ ."/returnItemTimestamp.php";
 	require_once __DIR__ ."/setAvatar.php";
 
 // ###########
@@ -26,8 +27,8 @@
 				'itemAuthorIcon' => $xmlAuthorIcon,										// get authorIcon (from feed)
 				'itemLink' => strip_tags($item->link),									// get the link
 				'itemTitle' => strip_tags($item->title),								// get the title
-				'itemTimestamp' => strtotime($item->pubDate),							// get timestamp to make timeline sortable
-				'itemDate' => date("d.m.Y (H:i)", strtotime($item->pubDate)),			// get releasedate an transform to readable date
+				'itemTimestamp' => returnItemTimestamp($item->pubDate, "timestamp"),	// get timestamp to make timeline sortable
+				'itemDate' => returnItemTimestamp($item->pubDate, "readableDate"),		// get releasedate an transform to readable date
 				'itemDescription' => strip_tags($item->description)						// get description of item (usually news-short-description)
 			);
 		}

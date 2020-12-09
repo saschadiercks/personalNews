@@ -22,12 +22,6 @@
 	ini_set('allow_url_fopen', true);			// allow loading external files
 	date_default_timezone_set('Europe/Berlin');  // set Timezone to avoid errors on feed-fetching
 
-	// Set Data-Environment
-	$feedsUrl = 'data/feeds.json';					// get the feeds
-	$blacklistUrl = 'data/blacklist.json';			// get the blacklist
-	$content = json_decode(file_get_contents($feedsUrl), true);			// (true) returns the json as array-structure
-	$blacklist = json_decode(file_get_contents($blacklistUrl), true);				// get Blacklist array
-
 	// Set themes
 	$themeLight = 'light';
 	$themeDark = 'dark';

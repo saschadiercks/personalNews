@@ -20,7 +20,7 @@
 	require_once __DIR__ . ('/api/v1/functions/buildContent.php');
 
 	// load the data
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $errorNames, $timestamp);
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $translations, $timestamp);
 
 // ###########
 // # program #
