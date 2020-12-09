@@ -1,1 +1,124 @@
-!function(e){var t={};function n(l){if(t[l])return t[l].exports;var o=t[l]={i:l,l:!1,exports:{}};return e[l].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,l){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:l})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var l=Object.create(null);if(n.r(l),Object.defineProperty(l,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(l,o,function(t){return e[t]}.bind(null,o));return l},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t){document.addEventListener("DOMContentLoaded",(function(){var e=document.getElementsByTagName("body")[0];function t(e,t){e.classList.add(t)}function n(e,t){e.classList.remove(t)}function l(e,t){window.scrollTo(e,t)}function o(l,o){var s=document.getElementById(l);s.classList.contains("js-visible")?(t(s,"js-hidden"),n(s,"js-visible"),n(e,"js-fx")):(n(s,"js-hidden"),t(s,"js-visible"),t(e,"js-fx")),h("content"),o.preventDefault()}function s(e,t,n){(s=document.getElementById(e)).classList.add("sticky"),stickyHeight=s.clientHeight+"px",document.getElementById(t).style.setProperty(n,stickyHeight)}var a,c=localStorage.getItem("theme"),r=document.getElementsByTagName("html")[0];function d(t){t.target!==t.currentTarget&&(channelLink=t.target.dataset.channel,n(e,"js-fx"),m(channelLink),t.preventDefault()),t.stopPropagation()}function m(e){if(""===e){var o=localStorage.getItem("channel");if(null!==o)e=o}document.getElementById("application-loading").classList.remove("js-hidden"),xmlhttp=new XMLHttpRequest,xmlhttp.open("GET","middleware.php?return=content&channel="+e+"&timestamp="+(lastTs=localStorage.getItem("lastItemTs"),console.log(lastTs),null===lastTs&&(lastTs=0),lastTs),!0),xmlhttp.send(),xmlhttpChannels=new XMLHttpRequest,xmlhttpChannels.open("GET","middleware.php?return=channels",!0),xmlhttpChannels.send(),xmlhttpChannels.onreadystatechange=function(){4===xmlhttpChannels.readyState&&xmlhttp.readyState&&(outputContainer=document.getElementById("channels"),outputContainer.innerHTML=xmlhttpChannels.response)},overlayContainer=document.getElementById("application-overlay"),t(overlayContainer,"js-hidden"),h("content"),xmlhttp.onreadystatechange=function(){if(4===xmlhttp.readyState&&xmlhttp.readyState){outputContainer=document.getElementById("content"),outputContainer.innerHTML=xmlhttp.response,l(0,0),document.getElementById("application-overlay").classList.remove("js-visible"),document.getElementById("application-loading").classList.add("js-hidden"),n(elementToFix,"js-fixed"),localStorage.setItem("channel",e),lastItemTs=localStorage.getItem("lastItemTs"),window.latestItemTs=(t="#feed-items li",o="data-ts",document.querySelector(t).getAttribute(o)),setTimeout((g(),function(e){var t=document.querySelectorAll(e);for(i=0;i<t.length;i++)t[i].onclick=function(e){localStorage.setItem("offsetTop",window.pageYOffset),localStorage.setItem("lastItemTs",this.getAttribute("data-ts"))},i==t.length-1&&(window.oldestItemInTimeline=t[i].getAttribute("data-ts"))}("#feed-items li"),void(lastItemTs?null===document.querySelector("#ts-"+lastItemTs)?localStorage.setItem("lastItemTs",latestItemTs):lastItemTs<oldestItemInTimeline?u("#ts-"+oldestItemInTimeline):latestItemTs>lastItemTs&&u("#ts-"+lastItemTs):localStorage.setItem("lastItemTs",latestItemTs))),100)}var t,o}}function u(e){l(0,document.querySelector(e).offsetTop-document.getElementById("application-header").clientHeight)}function g(e){badge="#unread-items",0!==e||"string"==typeof e?(document.querySelector(badge).classList.remove("js-hidden"),document.querySelector(badge).classList.add("js-show")):(document.querySelector(badge).classList.remove("js-show"),document.querySelector(badge).classList.add("js-hide"))}function h(e){elementToFix=document.getElementById(e),scrollY=window.pageYOffset,elementToFix.classList.contains("js-fixed")?(n(elementToFix,"js-fixed"),elementToFix.style.top="",l(0,scrollYMem)):(t(elementToFix,"js-fixed"),elementToFix.style.top="-"+scrollY+"px",scrollYMem=scrollY)}null!==c&&(n(r,"light"),n(r,"dark"),t(r,c),"light"===c&&(document.getElementById("theme-switcher").checked=!1),"dark"===c&&(document.getElementById("theme-switcher").checked=!0)),window.addEventListener("scroll",(function(e){scrollDepth=window.pageYOffset,scrollDepth<=0&&(g(0),localStorage.setItem("lastItemTs",latestItemTs))})),t(document.getElementsByTagName("body")[0],"js"),m(""),s("application-header","content","padding-top"),function(e){var l=document.getElementsByTagName("html")[0];switchingElement=document.getElementById(e),switchingElement.onclick=function(){this.checked?(t(l,"dark"),n(l,"light"),localStorage.setItem("theme","dark"),console.log("localStorage Theme is: dark")):(t(l,"light"),n(l,"dark"),localStorage.setItem("theme","light"),console.log("localStorage Theme is: light"))}}("theme-switcher"),function(e){var t=document.getElementsByClassName(e);for(i=0;i<t.length;i++)t[i].onclick=function(e){o(this.getAttribute("data-target"),e)}}("js-overlay-toggle"),a="application-overlay",overlayElement=document.getElementById(a),overlayElement.style.top=stickyHeight,function(e){elementContainer=document.getElementById(e),elementContainer.addEventListener("click",d,!1)}("channels")}))}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/assets/js/functions/find.js":
+/*!*****************************************!*\
+  !*** ./src/assets/js/functions/find.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction find(term) {\n\treturn document.querySelectorAll(term);\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (find);\n\n\n//# sourceURL=webpack:///./src/assets/js/functions/find.js?");
+
+/***/ }),
+
+/***/ "./src/assets/js/site.js":
+/*!*******************************!*\
+  !*** ./src/assets/js/site.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _functions_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/find */ \"./src/assets/js/functions/find.js\");\n// ###########\n// # imports #\n// ###########\n\n\n\n// ###########\n// # program #\n// ###########\n\nlet overlayToggle = Object(_functions_find__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\".js-overlay-toggle\");\nconsole.log(overlayToggle);\n\n\n//# sourceURL=webpack:///./src/assets/js/site.js?");
+
+/***/ }),
+
+/***/ 0:
+/*!*************************************!*\
+  !*** multi ./src/assets/js/site.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! ./src/assets/js/site.js */\"./src/assets/js/site.js\");\n\n\n//# sourceURL=webpack:///multi_./src/assets/js/site.js?");
+
+/***/ })
+
+/******/ });
