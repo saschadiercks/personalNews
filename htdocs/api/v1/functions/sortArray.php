@@ -9,12 +9,15 @@
 // # program #
 // ###########
 
-	function sortArray($feedItems,$keyName) {
+	function sortArray($feedItems, $sortBy) {
 		foreach ($feedItems as $feedItem => $key) {
-			$itemTimestamp[$feedItem] = $key[$keyName];
+			$itemTimestamp[$feedItem] = $key[$sortBy];
 		}
 
-		if($itemTimestamp[$feedItem] != "no date received") {
+		// only sort, when there is a timestamp available
+		// otherwise we're keeping the sorting from the feed
+		// we can safely assume, that timestamp is a number
+		if(is_numeric($itemTimestamp[$feedItem])) {
 			array_multisort($itemTimestamp, SORT_DESC, $feedItems);
 		}
 		return $feedItems;
