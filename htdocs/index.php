@@ -50,7 +50,7 @@
 	<!-- header -->
 	<header id="application-header">
 		<div>
-			<a href="#" title="select channel" class="js-overlay-toggle" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+			<a href="#" title="select channel" class="js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
 			<a href="#" title="scroll to top" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></a>
@@ -64,14 +64,14 @@
 	</header>
 
 	<!-- overlay -->
-	<div class="overlay js-visible" id="application-overlay">
+	<div class="overlay js-hidden" id="application-overlay">
 		<div class="overlay-content">
 			<h2><?= $applicationName ?></h2>
 			<ul id="channels">
 				<!-- overlay will be placed here (ajax) -->
 			</ul>
 		</div>
-		<div class="overlay-backdrop js-overlay-toggle" data-target="application-overlay"></div>
+		<div class="overlay-backdrop js-overlay-toggle" data-target="#application-overlay"></div>
 	</div>
 
 	<!-- content -->
