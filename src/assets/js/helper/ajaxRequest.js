@@ -1,11 +1,10 @@
 function ajaxRequest(method, url, callback) {
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open(method, url, true);
-	xmlhttp.send();
-
-	xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState === 4 && xmlhttp.readyState) {
-			callback();
+	let content = new XMLHttpRequest();
+	content.open(method, url, true);
+	content.send();
+	content.onreadystatechange = function () {
+		if (content.readyState === 4 && content.readyState) {
+			callback(content.response);
 		}
 	};
 }
