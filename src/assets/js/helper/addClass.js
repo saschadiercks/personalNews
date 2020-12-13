@@ -1,5 +1,7 @@
-function addClass(element, className) {
-	element.classList.add(className);
+function addClass(elements, className) {
+	elements.forEach((element) => {
+		element.classList.add(className);
+	});
 }
 
 export default addClass;

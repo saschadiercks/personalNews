@@ -1,5 +1,7 @@
-function addClass(element, className) {
-	element.classList.remove(className);
+function removeClass(elements, className) {
+	elements.forEach((element) => {
+		element.classList.remove(className);
+	});
 }
 
-export default addClass;
+export default removeClass;
