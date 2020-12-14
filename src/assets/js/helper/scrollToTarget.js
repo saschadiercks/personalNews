@@ -1,10 +1,14 @@
-function scrollToElement(element, offsetY) {
-	let scrollPositionY = document.querySelector(element).offsetTop;
-	if (!offsetY) {
-		offsetY = 0;
+function scrollToTarget(element, offsetX) {
+	let scrollPositionY = element.offsetTop;
+	if (!offsetX) {
+		offsetX = 0;
 	}
 
-	window.scrollTo(0, scrollPositionY - offsetY);
+	window.scrollTo({
+		left: 0,
+		top: scrollPositionY,
+		behavior: "smooth",
+	});
 }
 
-export default scrollToElement;
+export default scrollToTarget;

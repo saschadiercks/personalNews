@@ -39,7 +39,7 @@
 		echo '<ul id="feed-items">';
 			$feedItemCount = 0;
 			foreach ($content as $feedItem) {
-				echo '<li id="ts-' . $feedItem['itemTimestamp'] . '" data-count="' . $feedItemCount . '" data-ts="' . $feedItem['itemTimestamp'] .'">';	// add timestamp to use as anchor for unread news
+				echo '<li class="feed-items__item" data-ts="' . $feedItem['itemTimestamp'] .'">';
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
@@ -58,9 +58,10 @@
 		echo '</ul>';
 
 		// the itemCount
-		echo'<div id="unread-items" class="js-hidden">';
-		echo'<span id="unread-items__count">' . $meta['itemCounts']['newItems'] . '</span>';
-		echo'</div>';
+
+		echo '<div id="unread-items" class="js-hidden">';
+		echo	'<span id="unread-items__count" data-inreadItems="' . $meta['itemCounts']['newItems'] . '">' . $meta['itemCounts']['newItems'] . '</span>';
+		echo '</div>';
 	}
 
 	// what to do, when called via ajax from index.php

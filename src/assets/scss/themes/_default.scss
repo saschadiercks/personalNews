@@ -89,6 +89,7 @@ body {
 	top: 0;
 	width: 100%;
 	z-index: 2;
+	position: fixed;
 	div:nth-of-type(2) {
 		position: relative;
 	} // allow larger logo to center
@@ -109,6 +110,7 @@ body {
 
 // ---- Content ----
 main {
+	padding-top: 52px; // preserve space for header
 	a {
 		&:not(.source) {
 			text-decoration: none;
