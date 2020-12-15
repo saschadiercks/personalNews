@@ -195,16 +195,16 @@ main {
 
 // ---- overlay ----
 .overlay-backdrop {
-	background-color: transparent;
 	height: 100vh;
 	left: 0;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
+	opacity: 0.9;
 }
 .overlay-content {
 	left: $base-spacing-size;
-	margin-top: $base-spacing-size;
+	margin-top: 65px;
 	max-height: 80%; // leave some space to the bottom (even in ladnscape-mode)
 	max-width: 480px;
 	overflow-y: auto;
@@ -372,6 +372,9 @@ html.light {
 	.source:hover {
 		color: $base-link-active-color !important;
 	}
+	.overlay-backdrop {
+		background-color: $overlay-background-color;
+	}
 	.overlay-content {
 		background-color: $overlay-background-color;
 		border: $base-border;
@@ -435,6 +438,9 @@ html.dark {
 	}
 	.source:hover {
 		color: $base-link-active-color-dark !important;
+	}
+	.overlay-backdrop {
+		background-color: $overlay-background-color-dark;
 	}
 	.overlay-content {
 		background-color: $overlay-background-color-dark;

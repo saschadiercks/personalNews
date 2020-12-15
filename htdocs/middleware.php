@@ -39,7 +39,7 @@
 		echo '<ul id="feed-items">';
 			$feedItemCount = 0;
 			foreach ($content as $feedItem) {
-				echo '<li class="feed-items__item" data-ts="' . $feedItem['itemTimestamp'] .'">';
+				echo '<li class="feed-items__item" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $feedItemCount .'">';
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';

@@ -2,20 +2,31 @@
 // # imports #
 // ###########
 
+import debounce from "./helper/debounce";
 import find from "./helper/find";
 import toggleClass from "./helper/toggleClass";
 import ajaxRequest from "./helper/ajaxRequest";
 import returnSearchParam from "./helper/returnSearchParam";
 import scrollToTarget from "./helper/scrollToTarget";
+import themeSwitcher from "./helper/themeSwitcher";
 
 // ###########
 // # program #
 // ###########
 
+// get latest unreadItem from saved timestamp
+let lastReadTimestamps = localStorage.getItem("lastReadItems");
+if (!lastReadTimestamps) {
+	lastReadTimestamps = 0;
+}
+
 // load content into the ui
 ajaxRequest(
 	"GET",
-	"middleware.php?return=content&channel=" + returnSearchParam("channel"),
+	"middleware.php?return=content&channel=" +
+		returnSearchParam("channel") +
+		"&timestamp=" +
+		lastReadTimestamps,
 	afterContentLoad
 );
 
@@ -29,9 +40,39 @@ function afterContentLoad(response) {
 
 function scrollToFirstUnreadItem() {
 	// we're removing 1 since the iteration through the list starts with zero
-	let unreaItemsCount = find("#unread-items__count")[0].innerHTML - 1;
-	let latestItem = find(".feed-items__item")[unreaItemsCount];
+	let allFeedItems = find(".feed-items__item");
+	let unreadItemsCount = find("#unread-items__count")[0].innerHTML - 1;
+	let latestItem = allFeedItems[unreadItemsCount];
 	scrollToTarget(latestItem);
+
+	// give it some time before executing
+	setTimeout(() => {
+		updateTimestamp(allFeedItems);
+	}, 3000);
+}
+
+// remembering the timestamp, when the item comes into view
+// IntersectionObserver Supported
+function updateTimestamp(elements) {
+	//let amount = elements.length;
+	let config = {
+		root: null,
+		rootMargin: "0px",
+		threshold: 0.5,
+	};
+
+	let observer = new IntersectionObserver(onChange, config);
+	elements.forEach((element) => observer.observe(element));
+}
+
+function onChange(changes, observer) {
+	changes.forEach((change) => {
+		if (change.intersectionRatio > 0) {
+			localStorage.setItem("lastReadItems", change.target.dataset.timestamp);
+			change.target.classList.add("feed-items__item--read");
+			observer.unobserve(change.target);
+		}
+	});
 }
 
 // load channels into UI
@@ -46,7 +87,11 @@ find(".js-overlay-toggle").forEach((element) => {
 		"click",
 		() => {
 			toggleClass(find(element.dataset.target), "js-hidden");
+			event.preventDefault();
 		},
 		true
 	);
 });
+
+// allow theme switching
+themeSwitcher();
