@@ -57,8 +57,8 @@ function updateTimestamp(elements) {
 	//let amount = elements.length;
 	let config = {
 		root: null,
-		rootMargin: "0px",
-		threshold: 0.5,
+		rootMargin: "100px 0px 0px",
+		threshold: 0,
 	};
 
 	let observer = new IntersectionObserver(onChange, config);
@@ -68,7 +68,11 @@ function updateTimestamp(elements) {
 function onChange(changes, observer) {
 	changes.forEach((change) => {
 		if (change.intersectionRatio > 0) {
-			localStorage.setItem("lastReadItems", change.target.dataset.timestamp);
+			let lastSavedTimestamp = localStorage.getItem("lastReadItems");
+			let currentTimestamp = change.target.dataset.timestamp;
+			if (lastSavedTimestamp < currentTimestamp) {
+				localStorage.setItem("lastReadItems", currentTimestamp);
+			}
 			change.target.classList.add("feed-items__item--read");
 			observer.unobserve(change.target);
 		}
