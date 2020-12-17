@@ -39,10 +39,13 @@ function afterContentLoad(response) {
 }
 
 function scrollToFirstUnreadItem() {
-	// we're removing 1 since the iteration through the list starts with zero
+	// we're removing 1 since the iteration through the list starts with one
+	// this way, we can achieve zero
 	let allFeedItems = find(".feed-items__item");
 	let unreadItemsCount = find("#unread-items__count")[0].innerHTML - 1;
 	let latestItem = allFeedItems[unreadItemsCount];
+
+	// now scroll to item
 	scrollToTarget(latestItem);
 
 	// give it some time before executing
@@ -57,7 +60,7 @@ function updateTimestamp(elements) {
 	//let amount = elements.length;
 	let config = {
 		root: null,
-		rootMargin: "100px 0px 0px",
+		rootMargin: "52px 0px 0px",
 		threshold: 0,
 	};
 

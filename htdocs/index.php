@@ -40,9 +40,7 @@
 	<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- CSS -->
-	<style type="text/css">
-		<?php require_once($cssUrl); ?>
-	</style>
+	<link rel="stylesheet" href="<?=$cssUrl?>" media="all"/>
 </head>
 
 <body>

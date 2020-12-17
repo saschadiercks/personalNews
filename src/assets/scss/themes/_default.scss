@@ -53,7 +53,7 @@ $overlay-color-dark: $base-color-dark;
 // ---- background
 body {
 	background-attachment: fixed;
-	background-image: url("assets/images/world.svg"); // url is relative from index.php
+	background-image: url("../images/world.svg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 50%;
@@ -77,6 +77,14 @@ main li {
 	label {
 		padding: $base-spacing-size;
 	}
+}
+
+#application-message {
+	display: flex;
+	flex-direction: column;
+	height: 52px;
+	justify-content: center;
+	align-items: center;
 }
 
 // ----- Body -----
@@ -110,7 +118,10 @@ body {
 
 // ---- Content ----
 main {
-	padding-top: 52px; // preserve space for header
+	li {
+		position: relative;
+	}
+
 	a {
 		&:not(.source) {
 			text-decoration: none;
@@ -165,6 +176,25 @@ main {
 	}
 }
 
+// ---- highlight unread items
+.source {
+	text-decoration: none;
+
+	&:after {
+		content: "●";
+		margin-left: $base-spacing-size / 2;
+		color: currentColor;
+		opacity: 1;
+		transition: all 1s ease;
+		transition-delay: 3s;
+	}
+}
+.feed-items__item--read {
+	.source:after {
+		opacity: 0;
+	}
+}
+
 // ---- theme-switcher
 #theme-switcher {
 	&:not(:checked) + label .icon-moon {
@@ -194,6 +224,10 @@ main {
 }
 
 // ---- overlay ----
+.overlay {
+	position: relative;
+	z-index: 1;
+}
 .overlay-backdrop {
 	height: 100vh;
 	left: 0;
@@ -211,7 +245,7 @@ main {
 	padding: $base-spacing-size;
 	position: fixed;
 	right: $base-spacing-size;
-	top: inherit;
+	top: 0.5rem;
 	// top is set via js
 	//transition: transform $base-animation-speed / 2;
 	z-index: 2; // place between header and content

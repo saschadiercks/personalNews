@@ -35,11 +35,19 @@
 	}
 
 	function renderContent($content, $meta) {
+		// the meta-message
+
+
 		// the feedItems
 		echo '<ul id="feed-items">';
-			$feedItemCount = 0;
+			echo '<li id="application-message">';
+			echo $meta['pinnedMessage'];
+			echo '</li>';
+
+			$feedItemCount = 1;
 			foreach ($content as $feedItem) {
-				echo '<li class="feed-items__item" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $feedItemCount .'">';
+				$classNameRead = $feedItemCount > $meta['itemCounts']['newItems'] ?  "feed-items__item--read" : "";
+				echo '<li class="feed-items__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $feedItemCount .'">';
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
@@ -50,15 +58,13 @@
 				echo		'</header>';
 				echo		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
 				echo	'</div>';
-				echo	'<div>';
-				echo	'</div>';
+				echo	'<div class="feed-items__marker"></div>';
 				echo '</li>';
 				$feedItemCount++;
 			}
 		echo '</ul>';
 
 		// the itemCount
-
 		echo '<div id="unread-items" class="js-hidden">';
 		echo	'<span id="unread-items__count" data-inreadItems="' . $meta['itemCounts']['newItems'] . '">' . $meta['itemCounts']['newItems'] . '</span>';
 		echo '</div>';

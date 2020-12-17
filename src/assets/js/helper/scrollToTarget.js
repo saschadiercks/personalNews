@@ -5,7 +5,6 @@ function scrollToTarget(element, offsetX) {
 	window.scrollTo({
 		left: scrollPositionX,
 		top: scrollPositionY,
-		behavior: "smooth",
 	});
 }
 
