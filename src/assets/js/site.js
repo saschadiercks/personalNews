@@ -46,7 +46,7 @@ function scrollToFirstUnreadItem() {
 	let latestItem = allFeedItems[unreadItemsCount];
 
 	// now scroll to item
-	scrollToTarget(latestItem);
+	scrollToTarget(latestItem, 0, 52);
 
 	// give it some time before executing
 	setTimeout(() => {
@@ -60,7 +60,7 @@ function updateTimestamp(elements) {
 	//let amount = elements.length;
 	let config = {
 		root: null,
-		rootMargin: "52px 0px 0px",
+		rootMargin: "-52px 0px 0px",
 		threshold: 0,
 	};
 
@@ -75,6 +75,8 @@ function onChange(changes, observer) {
 			let currentTimestamp = change.target.dataset.timestamp;
 			if (lastSavedTimestamp < currentTimestamp) {
 				localStorage.setItem("lastReadItems", currentTimestamp);
+				document.querySelector("#unread-items__count").innerHTML =
+					change.target.dataset.count - 1;
 			}
 			change.target.classList.add("feed-items__item--read");
 			observer.unobserve(change.target);

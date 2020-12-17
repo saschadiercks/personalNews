@@ -1,6 +1,6 @@
-function scrollToTarget(element, offsetX) {
-	let scrollPositionY = element ? element.offsetTop : 0;
-	let scrollPositionX = offsetX ? offsetX : 0;
+function scrollToTarget(element, offsetX = 0, offsetY = 0) {
+	let scrollPositionY = element ? element.offsetTop - offsetY : 0;
+	let scrollPositionX = offsetX;
 
 	window.scrollTo({
 		left: scrollPositionX,

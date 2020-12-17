@@ -61,6 +61,7 @@ body {
 
 // ---- basic-grid
 main li,
+.overlay__header,
 #application-header {
 	display: grid;
 	grid-column-gap: $base-spacing-size;
@@ -70,9 +71,13 @@ main li {
 	grid-template-columns: $favicon-size auto;
 	padding: $base-spacing-size;
 }
+.overlay__header,
 #application-header {
 	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
 	// increase size clickable of elements
+}
+
+#application-header {
 	a,
 	label {
 		padding: $base-spacing-size;
@@ -85,6 +90,10 @@ main li {
 	height: 52px;
 	justify-content: center;
 	align-items: center;
+
+	a {
+		text-decoration: underline;
+	}
 }
 
 // ----- Body -----
@@ -110,6 +119,9 @@ body {
 		display: inline-block;
 		text-decoration: none;
 	}
+}
+
+.theme-switcher-container {
 	label {
 		cursor: pointer; // simulate link-behavior
 		float: right;
@@ -118,6 +130,7 @@ body {
 
 // ---- Content ----
 main {
+	margin-top: 52px;
 	li {
 		position: relative;
 	}
@@ -414,7 +427,7 @@ html.light {
 		border: $base-border;
 		box-shadow: $base-shadow;
 		color: $overlay-color;
-		h2 {
+		.overlay__header {
 			border-bottom: $base-border;
 		}
 		a {
@@ -481,7 +494,7 @@ html.dark {
 		border: $base-border-dark;
 		box-shadow: $base-shadow-dark;
 		color: $overlay-color-dark;
-		h2 {
+		.overlay__header {
 			border-bottom: $base-border-dark;
 		}
 

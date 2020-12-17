@@ -54,17 +54,23 @@
 			<a href="#" title="scroll to top" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></a>
 		</div>
 		<div>
-			<form method="#" action="#">
-				<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
-				<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
-			</form>
+
 		</div>
 	</header>
 
 	<!-- overlay -->
 	<div class="overlay js-hidden" id="application-overlay">
 		<div class="overlay-content">
-			<h2><?= $applicationName ?></h2>
+			<div class="overlay__header">
+				<div></div>
+				<div><h2><?= $applicationName ?></h2></div>
+				<div class="theme-switcher-container">
+					<form method="#" action="#">
+					<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
+					<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
+					</form>
+				</div>
+			</div>
 			<ul id="channels">
 				<!-- overlay will be placed here (ajax) -->
 			</ul>
