@@ -10,7 +10,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 - [How does it work](#how-does-it-work)
 
   - [Use case](#use-case)
-  - [Wan a demo](#want-a-demo)
+  - [Want a demo](#want-a-demo)
   - [Setup your own links and blacklist-keywords](#setup-your-own-links-and-blacklist-keywords)
 
 - [Features](#features)
