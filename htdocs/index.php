@@ -51,10 +51,10 @@
 			<a href="#" title="select channel" class="js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
-			<a href="#" title="scroll to top" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></a>
+			<button class="button--transparent js-reload" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
 		</div>
 		<div>
-			<button class="application-reload"><i class="icon-reload"></i></button>
+			<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
 		</div>
 	</header>
 

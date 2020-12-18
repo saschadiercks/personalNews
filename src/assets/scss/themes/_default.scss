@@ -59,6 +59,11 @@ body {
 	background-size: 50%;
 }
 
+.button--transparent {
+	background-color: transparent;
+	border-width: 0;
+}
+
 // ---- basic-grid
 main li,
 .overlay__header,
@@ -108,10 +113,11 @@ body {
 	z-index: 2;
 	position: fixed;
 	div:nth-of-type(2) {
+		display: flex;
+		justify-content: center;
 		position: relative;
 	} // allow larger logo to center
 	img {
-		@include align-centered;
 		height: $logo-size;
 		width: $logo-size;
 	}
@@ -212,8 +218,6 @@ main {
 .application-reload {
 	padding: $base-spacing-size;
 	float: right;
-	background-color: transparent;
-	border-width: 0;
 	color: currentColor;
 	font-size: 1rem;
 }

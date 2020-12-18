@@ -50,7 +50,7 @@ find(".js-overlay-toggle").forEach((element) => {
 });
 
 // reload
-find(".application-reload").forEach((element) => {
+find(".js-reload").forEach((element) => {
 	element.addEventListener("click", reload, true);
 });
 
