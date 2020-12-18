@@ -40,9 +40,7 @@
 	<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- CSS -->
-	<style type="text/css">
-		<?php require_once($cssUrl); ?>
-	</style>
+	<link rel="stylesheet" href="<?=$cssUrl?>" media="all"/>
 </head>
 
 <body>
@@ -50,28 +48,34 @@
 	<!-- header -->
 	<header id="application-header">
 		<div>
-			<a href="#" title="select channel" class="js-overlay-toggle" data-target="application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+			<a href="#" title="select channel" class="js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
-			<a href="#" title="scroll to top" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></a>
+			<button class="button--transparent js-reload" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
 		</div>
 		<div>
-			<form method="#" action="#">
-				<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
-				<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
-			</form>
+			<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
 		</div>
 	</header>
 
 	<!-- overlay -->
-	<div class="overlay js-visible" id="application-overlay">
+	<div class="overlay js-hidden" id="application-overlay">
 		<div class="overlay-content">
-			<h2><?= $applicationName ?></h2>
+			<div class="overlay__header">
+				<div></div>
+				<div><h2><?= $applicationName ?></h2></div>
+				<div class="theme-switcher-container">
+					<form method="#" action="#">
+					<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
+					<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
+					</form>
+				</div>
+			</div>
 			<ul id="channels">
 				<!-- overlay will be placed here (ajax) -->
 			</ul>
 		</div>
-		<div class="overlay-backdrop js-overlay-toggle" data-target="application-overlay"></div>
+		<div class="overlay-backdrop js-overlay-toggle" data-target="#application-overlay"></div>
 	</div>
 
 	<!-- content -->
@@ -84,7 +88,7 @@
 	</footer>
 
 	<!-- loading-screen (js-hidden is removed while ajax-request runs) -->
-	<div id="application-loading" class="overlay js-hidden">
+	<div id="application-loading" class="overlay">
 		<div class="spinner"></div>
 	</div>
 
