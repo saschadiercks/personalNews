@@ -55,4 +55,5 @@ find(".application-reload").forEach((element) => {
 });
 
 // allow theme switching
+// TODO: this needs refactoring alongside with the css
 themeSwitcher();
