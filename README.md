@@ -47,7 +47,7 @@ I build this primarily to use it in a webpanel in vivaldi. But I really like to 
 
 ### Setup your own links and blacklist-keywords
 
-personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/_data_.json` and play with that files. It's quite self explanatory.
+personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/*' and play with that files. It's quite self explanatory.
 
 ## Features
 
