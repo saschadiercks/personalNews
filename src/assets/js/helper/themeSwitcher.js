@@ -2,10 +2,6 @@
 // # imports #
 // ###########
 
-import addClass from "./addClass";
-import removeClass from "./removeClass";
-import find from "./find";
-
 // ###########
 // # program #
 // ###########
@@ -18,8 +14,6 @@ function themeSwitcher() {
 	let savedLocalStorageTheme = localStorage.getItem("theme");
 	let applyThemeClassTo = document.getElementsByTagName("html")[0];
 	if (savedLocalStorageTheme !== null) {
-		applyThemeClassTo.classList.remove(themeLight);
-		applyThemeClassTo.classList.remove(themeDark);
 		applyThemeClassTo.classList.add(savedLocalStorageTheme);
 		if (savedLocalStorageTheme === themeLight) {
 			switchingElement.checked = false;
@@ -30,7 +24,6 @@ function themeSwitcher() {
 	}
 
 	// switch theme by adding and removing classes to body
-
 	switchingElement.onclick = function () {
 		if (this.checked) {
 			applyThemeClassTo.classList.remove(themeLight);

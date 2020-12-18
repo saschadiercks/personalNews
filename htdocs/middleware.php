@@ -35,9 +35,6 @@
 	}
 
 	function renderContent($content, $meta) {
-		// the meta-message
-
-
 		// the feedItems
 		echo '<ul id="feed-items">';
 			echo '<li id="application-message">';
@@ -66,7 +63,7 @@
 
 		// the itemCount
 		echo '<div id="unread-items" class="js-hidden">';
-		echo	'<span id="unread-items__count" data-inreadItems="' . $meta['itemCounts']['newItems'] . '">' . $meta['itemCounts']['newItems'] . '</span>';
+		echo	'<span id="unread-items__count" data-unreadItems="' . $meta['itemCounts']['newItems'] . '">' . $meta['itemCounts']['newItems'] . '</span>';
 		echo '</div>';
 	}
 

@@ -54,7 +54,7 @@
 			<a href="#" title="scroll to top" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></a>
 		</div>
 		<div>
-
+			<button class="application-reload"><i class="icon-reload"></i></button>
 		</div>
 	</header>
 

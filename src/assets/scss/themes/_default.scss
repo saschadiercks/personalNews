@@ -208,6 +208,16 @@ main {
 	}
 }
 
+// ---- application-reload
+.application-reload {
+	padding: $base-spacing-size;
+	float: right;
+	background-color: transparent;
+	border-width: 0;
+	color: currentColor;
+	font-size: 1rem;
+}
+
 // ---- theme-switcher
 #theme-switcher {
 	&:not(:checked) + label .icon-moon {
@@ -247,7 +257,7 @@ main {
 	position: fixed;
 	top: 0;
 	right: 0;
-	opacity: 0.9;
+	backdrop-filter: blur(1px);
 }
 .overlay-content {
 	left: $base-spacing-size;
@@ -259,8 +269,7 @@ main {
 	position: fixed;
 	right: $base-spacing-size;
 	top: 0.5rem;
-	// top is set via js
-	//transition: transform $base-animation-speed / 2;
+	transition: transform $base-animation-speed / 2;
 	z-index: 2; // place between header and content
 
 	h2 {
@@ -419,9 +428,6 @@ html.light {
 	.source:hover {
 		color: $base-link-active-color !important;
 	}
-	.overlay-backdrop {
-		background-color: $overlay-background-color;
-	}
 	.overlay-content {
 		background-color: $overlay-background-color;
 		border: $base-border;
@@ -485,9 +491,6 @@ html.dark {
 	}
 	.source:hover {
 		color: $base-link-active-color-dark !important;
-	}
-	.overlay-backdrop {
-		background-color: $overlay-background-color-dark;
 	}
 	.overlay-content {
 		background-color: $overlay-background-color-dark;
