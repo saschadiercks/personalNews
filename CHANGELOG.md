@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
-## [1.2] - 2020-12-27
+## [1.3] - 2020-12-27
 
 Add support for docker
 
