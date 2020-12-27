@@ -19,7 +19,7 @@ function onChange(changes, observer) {
 			let currentTimestamp = change.target.dataset.timestamp;
 			if (lastSavedTimestamp < currentTimestamp) {
 				localStorage.setItem("lastReadItems", currentTimestamp);
-				unreadItemsElement.innerHTML = change.target.dataset.count - 1;
+				unreadItemsElement.innerHTML = change.target.dataset.count;
 			}
 			change.target.classList.add("feed-items__item--read");
 			observer.unobserve(change.target);
