@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
+## [1.2] - 2020-12-27
+
+Add support for docker
+
 ## [1.1.1] - 2020-12-09
 
 Feeds are now giving feedback, when there is no date assigned to a feedItem. This will keep the order of the original feed, so newst messages from taht feed appear on top.

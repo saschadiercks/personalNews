@@ -47,7 +47,7 @@ I build this primarily to use it in a webpanel in vivaldi. But I really like to 
 
 ### Setup your own links and blacklist-keywords
 
-personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/*' and play with that files. It's quite self explanatory.
+personalNews comes with a default list of links and some example keywords for blacklisting, to show you how it works. It contains a list of popular news-sites and some development-ressources. You can change that. Just head over to '/htdocs/data/\*' and play with that files. It's quite self explanatory.
 
 ## Features
 
@@ -97,6 +97,13 @@ Return items from the selected channel. This uses the channels-object configured
 Using a timestamp the api will return the number of new items after that given timestamp. If no timestamp is set, the api will return the number of totalItems as `newItems`. The number of totalItems is always returned as a sperate value.
 
 ## Infos for local development
+
+### Usage of coker (preferred)
+
+1. install docker on your machine (https://docs.docker.com/get-docker/)
+2. head to the local repository and run `docker-compose up`
+3. Wait a while until all components are loaded an the box is running. (The first start can take a while)
+4. visit (http://127.0.0.1:8080/)
 
 ### Usage of Vagrant
 
