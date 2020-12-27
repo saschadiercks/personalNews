@@ -20,7 +20,7 @@ function setupTimeline(response) {
 
 	// now get amount of feeditems and calculate latest item to se it as scroll-anchor
 	let allFeedItems = find(".feed-items__item");
-	let unreadItemsCount = unreadItemsElement.innerHTML - 1;
+	let unreadItemsCount = unreadItemsElement.innerHTML;
 	let latestItem = allFeedItems[unreadItemsCount];
 	scrollToTarget(latestItem, 0, 52);
 
