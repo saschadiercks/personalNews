@@ -98,7 +98,7 @@ Using a timestamp the api will return the number of new items after that given t
 
 ## Infos for local development
 
-### Usage of coker (preferred)
+### Usage of docker (preferred)
 
 1. install docker on your machine (https://docs.docker.com/get-docker/)
 2. head to the local repository and run `docker-compose up`
