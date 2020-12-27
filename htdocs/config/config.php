@@ -36,18 +36,6 @@
 	$channelItems = array();								// collect all channels in array
 	$feedItems = array();									// collect all feeds in array
 
-	// get all channels and put them in array
-	function getChannelItems($content) {
-		$channelItems = array_keys($content);
-		return $channelItems;
-	}
-
-	// get all blacklist items and put them in array
-	function getBlacklistItems($blacklist) {
-		$blacklist = explode(',', $blacklist['keywords']);
-		return $blacklist;
-	}
-
 	// get theme from session
 	session_start();
 	if(!empty($_SESSION['theme'])) {
@@ -55,8 +43,4 @@
 	} else {
 		$theme = $themeDefault;
 	}
-
-	// calls
-	$channelItems = getChannelItems($content);
-	$blacklistItems = getBlacklistItems($blacklist);
 ?>
