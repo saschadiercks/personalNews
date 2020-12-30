@@ -195,23 +195,23 @@ main {
 }
 
 // ---- highlight unread items
-.source {
-	text-decoration: none;
+// .source {
+// 	text-decoration: none;
 
-	&:after {
-		content: "●";
-		margin-left: $base-spacing-size / 2;
-		color: currentColor;
-		opacity: 1;
-		transition: all 1s ease;
-		transition-delay: 3s;
-	}
-}
-.feed-items__item--read {
-	.source:after {
-		opacity: 0;
-	}
-}
+// 	&:after {
+// 		content: "●";
+// 		margin-left: $base-spacing-size / 2;
+// 		color: currentColor;
+// 		opacity: 1;
+// 		transition: all 1s ease;
+// 		transition-delay: 3s;
+// 	}
+// }
+// .feed-items__item--read {
+// 	.source:after {
+// 		opacity: 0;
+// 	}
+// }
 
 // ---- application-reload
 .application-reload {

@@ -15,9 +15,8 @@ function updateTimestamp(elements) {
 function onChange(changes, observer) {
 	changes.forEach((change) => {
 		if (change.intersectionRatio > 0) {
-			let lastSavedTimestamp = localStorage.getItem("lastReadItems");
 			let currentTimestamp = change.target.dataset.timestamp;
-			if (lastSavedTimestamp < currentTimestamp) {
+			if (window.lastReadTimestamps < currentTimestamp) {
 				localStorage.setItem("lastReadItems", currentTimestamp);
 				unreadItemsElement.innerHTML = change.target.dataset.count - 1;
 			}
