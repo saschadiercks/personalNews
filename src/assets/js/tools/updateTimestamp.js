@@ -1,10 +1,10 @@
 // remembering the timestamp, when the item comes into view
-
-// IntersectionObserver
+// IntersectionObserver Supported
 function updateTimestamp(elements) {
+	//let amount = elements.length;
 	let config = {
 		root: null,
-		rootMargin: "-52px 0px 0px 0px",
+		rootMargin: "0px",
 		threshold: 0,
 	};
 
@@ -12,13 +12,13 @@ function updateTimestamp(elements) {
 	elements.forEach((element) => observer.observe(element));
 }
 
-// things to hapüen on intersection
 function onChange(changes, observer) {
 	changes.forEach((change) => {
 		if (change.intersectionRatio > 0) {
-			let itemTimestamp = change.target.dataset.timestamp;
-			if (window.lastReadTimestamps < itemTimestamp) {
-				localStorage.setItem("lastReadItems", itemTimestamp);
+			let lastSavedTimestamp = localStorage.getItem("lastReadItems");
+			let currentTimestamp = change.target.dataset.timestamp;
+			if (lastSavedTimestamp < currentTimestamp) {
+				localStorage.setItem("lastReadItems", currentTimestamp);
 				unreadItemsElement.innerHTML = change.target.dataset.count;
 			}
 			change.target.classList.add("feed-items__item--read");
