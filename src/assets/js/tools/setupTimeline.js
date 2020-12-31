@@ -16,22 +16,17 @@ function setupTimeline(response) {
 	document.getElementById("content").innerHTML = response;
 
 	// get unreadItem and make value globally acccessible
-	window.unreadItemsElement = document.getElementById("unread-items__count");
+	window.unreadItemsElement = document.getElementById("unread-items");
 
 	// now get amount of feeditems and calculate latest item to se it as scroll-anchor
 	let allFeedItems = find(".feed-items__item");
-	let unreadItemsCount = unreadItemsElement.innerHTML;
-	let latestItem = allFeedItems[unreadItemsCount];
-	scrollToTarget(latestItem, 0, 52);
+	let unreadItemsCount = unreadItemsElement.dataset.unreaditems;
+	let latestItem = allFeedItems[unreadItemsCount - 1];
+	scrollToTarget(latestItem, 0, 52, () => updateTimestamp(allFeedItems));
 
 	// toggle ui-elements
 	toggleClass(find("#unread-items"), "js-hidden");
 	toggleClass(find("#application-loading"), "js-hidden");
-
-	// give it some time before executing timestamp-updates
-	setTimeout(() => {
-		updateTimestamp(allFeedItems);
-	}, 1000);
 }
 
 export default setupTimeline;
