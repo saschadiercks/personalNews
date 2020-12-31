@@ -41,10 +41,11 @@
 			echo $meta['pinnedMessage'];
 			echo '</li>';
 
-			$feedItemCount = 1;
+			// we need to start at zero, since we're using the number to render the remaining items
+			$remainingItemCount = 0;
 			foreach ($content as $feedItem) {
-				$classNameRead = $feedItemCount > $meta['itemCounts']['newItems'] ?  "feed-items__item--read" : "";
-				echo '<li class="feed-items__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $feedItemCount .'">';
+				$classNameRead = $remainingItemCount > $meta['itemCounts']['newItems'] ?  "feed-items__item--read" : "";
+				echo '<li class="feed-items__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $remainingItemCount .'">';
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
@@ -57,13 +58,13 @@
 				echo	'</div>';
 				echo	'<div class="feed-items__marker"></div>';
 				echo '</li>';
-				$feedItemCount++;
+				$remainingItemCount++;
 			}
 		echo '</ul>';
 
 		// the itemCount
-		echo '<div id="unread-items" class="js-hidden">';
-		echo	'<span id="unread-items__count" data-unreadItems="' . $meta['itemCounts']['newItems'] . '">' . $meta['itemCounts']['newItems'] . '</span>';
+		echo '<div id="unread-items" class="js-hidden" data-unreaditems="' . $meta['itemCounts']['newItems']. '">';
+		echo	'<span id="unread-items__count">' . $meta['itemCounts']['newItems'] . '</span>';
 		echo '</div>';
 	}
 
