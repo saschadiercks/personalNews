@@ -1,7 +1,16 @@
+// ###########
+// # imports #
+// ###########
+
+import find from "../helper/find";
+import toggleClass from "../helper/toggleClass";
+
+// ###########
+// # program #
+// ###########
+
 // remembering the timestamp, when the item comes into view
-// IntersectionObserver Supported
 function updateTimestamp(elements) {
-	//let amount = elements.length;
 	let config = {
 		root: null,
 		rootMargin: "0px",
@@ -16,10 +25,15 @@ function onChange(changes, observer) {
 	changes.forEach((change) => {
 		if (change.intersectionRatio > 0) {
 			let lastSavedTimestamp = localStorage.getItem("lastReadItems");
-			let currentTimestamp = change.target.dataset.timestamp;
-			if (lastSavedTimestamp < currentTimestamp) {
-				localStorage.setItem("lastReadItems", currentTimestamp);
-				unreadItemsElement.innerHTML = change.target.dataset.count;
+			let itemTimestamp = change.target.dataset.timestamp;
+			let remainingItemsCount = change.target.dataset.count;
+			if (lastSavedTimestamp < itemTimestamp) {
+				localStorage.setItem("lastReadItems", itemTimestamp);
+				if (remainingItemsCount > 0) {
+					unreadItemsElementCount.innerHTML = remainingItemsCount;
+				} else {
+					toggleClass(find("#unread-items"), "js-hidden");
+				}
 			}
 			change.target.classList.add("feed-items__item--read");
 			observer.unobserve(change.target);
