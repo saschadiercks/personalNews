@@ -13,6 +13,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
+## [1.3.4] - 2021-01-01
+
+Hide unread-item badge if scrollPosition reaches height of the header. This prevents showing a false value in the unread-badge if all items were scrolled throught.
+
+## [1.3.3] - 2020-12-31
+
+Remove protocl and ww from AuthorDescription to save some space
+
+## [1.3.2] - 2020-12-31
+
+Fix item-count going below zero (again)
+
+## [1.3.1] - 2020-12-27
+
+Fix item-count going below zero
+
 ## [1.3] - 2020-12-27
 
 Add support for docker
