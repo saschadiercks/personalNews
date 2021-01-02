@@ -15,7 +15,7 @@ function updateTimestamp(elements) {
 	let config = {
 		root: null,
 		rootMargin: "0px",
-		threshold: 0,
+		threshold: 1,
 	};
 
 	let observer = new IntersectionObserver(onChange, config);
