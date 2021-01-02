@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.4] - 2021-01-01
 
+Fixes the threshold to make unread-items appear later. Brings back the unread-indicator too.
+
+## [1.3.4] - 2021-01-01
+
 Hide unread-item badge if scrollPosition reaches height of the header. This prevents showing a false value in the unread-badge if all items were scrolled throught.
 
 ## [1.3.3] - 2020-12-31
