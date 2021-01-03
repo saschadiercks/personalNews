@@ -14,16 +14,15 @@
 
 .overlay__header {
 	@include basic-grid;
-	border-bottom: $base-border;
+	border-bottom: 1px solid var(--border-color);
 	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
 }
 
 .overlay-content {
-	background-color: $overlay-background-color;
-	border: $base-border;
-	box-shadow: $base-shadow;
-	color: $overlay-color;
-	right: $base-spacing-size;
+	background-color: var(--bg);
+	border: 1px solid var(--border-color);
+	box-shadow: var(--drop-shadow);
+	color: var(--color);
 	margin-top: 65px;
 	max-height: 80%; // leave some space to the bottom (even in ladnscape-mode)
 	max-width: 480px;

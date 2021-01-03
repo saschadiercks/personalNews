@@ -1,10 +1,17 @@
+html {
+	font-family: $font-family-body;
+	font-size: $font-size;
+	font-weight: $font-weight;
+	line-height: $line-height;
+	overflow-x: hidden; // avoid vertical scrollbars
+}
+
 body {
 	background-attachment: fixed;
 	background-image: url("../images/world.svg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 50%;
-	background-color: $body-background-color;
-	color: $base-color;
-	font-family: $font-family-document;
+	background-color: var(--bg);
+	color: var(--color);
 }

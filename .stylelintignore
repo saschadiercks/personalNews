@@ -1,2 +1,5 @@
 htdocs
 node_modules
+
+#TODO: remove
+src/assets/scss/6-components/_current-theme.scss

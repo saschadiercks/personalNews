@@ -3,19 +3,18 @@
 
 // ---- main styling
 // settings
-@import "./1-settings/breakpoints";
 @import "./1-settings/colors";
 @import "./1-settings/settings";
 @import "./1-settings/typography";
 
 // tools
-@import "./2-tools/ul-reset";
 @import "./2-tools/basic-grid";
+@import "./2-tools/breakpoints";
+@import "./2-tools/ul-reset";
 
 // generic
 @import "./3-generic/page";
 @import "./3-generic/reset";
-@import "./3-generic/themes";
 
 // elements
 @import "./4-elements/main";

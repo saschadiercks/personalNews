@@ -1,12 +1,7 @@
 .channels__link {
-	color: $base-link-color;
+	color: var(--color);
 	display: block;
 	font-size: $font-size-overlay-links;
 	padding: $base-spacing-size 0;
 	text-decoration: none;
-
-	&:hover,
-	&:active {
-		color: $base-link-active-color;
-	}
 }

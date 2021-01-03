@@ -1,7 +1,8 @@
 .application-header {
 	@include basic-grid;
-	background-color: $header-background-color;
-	box-shadow: $base-shadow;
+	background-color: var(--bg);
+	color: var(--color);
+	box-shadow: var(--drop-shadow);
 
 	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
 	top: 0;

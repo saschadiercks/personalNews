@@ -1,12 +1,12 @@
-$font-family-document: -apple-system, sans-serif;
+$font-family-body: -apple-system, sans-serif !default;
 
-$base-animation-speed: 0.3s;
-$base-spacing-size: 1em;
-$base-spacing-size-text: 0.5em;
-$favicon-size: 24px;
-$logo-size: 24px;
-$icon-border-radius: 99em;
+$base-animation-speed: 0.3s !default;
+$base-spacing-size: 1em !default;
+$base-spacing-size-text: 0.5em !default;
+$favicon-size: 24px !default;
+$logo-size: 24px !default;
+$icon-border-radius: 99em !default;
 
-$spinner-size: 4em;
-$spinner-border-color: rgba(#ccc, 0.9);
-$spinner-border-size: 1em;
+$spinner-size: 4em !default;
+$spinner-border-color: rgba(#ccc, 0.9) !default;
+$spinner-border-size: 1em !default;

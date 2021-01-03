@@ -1,0 +1,12 @@
+a {
+	color: var(--color);
+
+	&:hover,
+	&:active {
+		color: var(--link-active-color);
+	}
+
+	&:visited {
+		color: var(--link-visited-color);
+	}
+}

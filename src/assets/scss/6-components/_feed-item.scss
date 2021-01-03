@@ -1,24 +1,13 @@
 .feed-item {
 	@include basic-grid;
-	background-color: $body-background-color;
-	border-bottom: $base-border;
+	background-color: var(--bg);
+	border-bottom: 1px solid var(--border-color);
 	grid-template-columns: $favicon-size auto;
 	padding: $base-spacing-size;
 	position: relative;
 
 	a {
-		color: $base-link-color;
 		text-decoration: none;
-
-		&:hover,
-		&:active {
-			color: $base-link-active-color
-			text-decoration: underline;
-		}
-
-		&:visited {
-			color: $base-link-visited-color;
-		}
 	}
 
 	p {
@@ -51,7 +40,7 @@
 }
 
 .feed-item__meta {
-	color: $base-color-info;
+	color: var(--color-light);
 	font-size: $font-size-meta;
 	margin: 0;
 
@@ -63,10 +52,6 @@
 .feed-item__source {
 	color: inherit;
 	text-decoration: underline;
-
-	&:hover {
-		color: $base-link-active-color;
-	}
 
 	// highlight unread items
 	&:after {
@@ -80,6 +65,7 @@
 }
 
 .feed-item__description {
+	font-size: $font-size-description-single;
 	margin-top: 0;
 	margin-left: 5%;
 
@@ -93,8 +79,4 @@
 	.source:after {
 		opacity: 0;
 	}
-}
-
-.feed-item__description {
-	font-size: $font-size-description-single;
 }

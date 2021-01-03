@@ -1,27 +1,68 @@
-// light
-$body-background-color: #fdfdfd !default;
-$base-color: #333 !default;
-$base-color-info: #aaa !default;
-$base-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !default;
-$header-background-color: $body-background-color !default;
-$header-border: 1px solid darken($body-background-color, 5%) !default;
-$base-link-color: $base-color !default;
-$base-link-active-color: darken($base-link-color, 50%) !default;
-$base-link-visited-color: lighten($base-link-color, 50%) !default;
-$base-border: 1px solid #e4e4e4 !default;
-$overlay-background-color: $body-background-color !default;
-$overlay-color: $base-color !default;
+// ---- light
+$bg: #fdfdfd !default;
+$bg-inverted: #272e35 !default;
+$color: #333 !default;
+$color-light: #aaa !default;
+$color-secondary: darken($color, 50%) !default;
+$color-tertiary: lighten($color, 50%) !default;
+$drop-shadow-color: rgba(0, 0, 0, 0.2) !default;
+$border-color: #e4e4e4 !default;
 
-// dark
-$body-background-color-dark: #272e35 !default;
-$base-color-dark: #cad4e0 !default;
-$base-color-info-dark: #a8c9ed !default;
-$base-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.4) !default;
-$header-background-color-dark: $body-background-color-dark !default;
-$header-border-dark: 1px solid darken($body-background-color-dark, 5%) !default;
-$base-link-color-dark: $base-color-dark !default;
-$base-link-active-color-dark: darken($base-link-color-dark, 20%) !default;
-$base-link-visited-color-dark: darken($base-link-color-dark, 20%) !default;
-$base-border-dark: 1px solid lighten($body-background-color-dark, 7%) !default;
-$overlay-background-color-dark: $body-background-color-dark !default;
-$overlay-color-dark: $base-color-dark !default;
+// $header-background-color: $body-background-color !default;
+// $header-border: 1px solid darken($body-background-color, 5%) !default;
+// $base-link-color: $base-color !default;
+// $base-link-active-color: darken($base-link-color, 50%) !default;
+// $base-link-visited-color: lighten($base-link-color, 50%) !default;
+// $base-border: 1px solid #e4e4e4 !default;
+// $overlay-background-color: $body-background-color !default;
+// $overlay-color: $base-color !default;
+
+// ---- dark
+$bg--dark: #272e35 !default;
+$bg-inverted--dark: #fdfdfd !default;
+$color--dark: #cad4e0 !default;
+$color-light--dark: #a8c9ed !default;
+$color-secondary--dark: darken($color--dark, 20%) !default;
+$color-tertiary--dark: darken($color--dark, 20%) !default;
+$border-color--dark: #36404a !default;
+$drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
+
+//$header-background-color-dark: $body-background-color-dark !default;
+// $header-border-dark: 1px solid darken($body-background-color-dark, 5%) !default;
+// $base-link-color-dark: $base-color-dark !default;
+// $base-link-active-color-dark: darken($base-link-color-dark, 20%) !default;
+// $base-link-visited-color-dark: darken($base-link-color-dark, 20%) !default;
+// $base-border-dark: 1px solid lighten($body-background-color-dark, 7%) !default;
+// $overlay-background-color-dark: $body-background-color-dark !default;
+// $overlay-color-dark: $base-color-dark !default;
+
+// our default color-scheme is dark
+:root {
+	// colors
+	--bg: #{$bg--dark} !default;
+	--bg--inverted: #{$bg-inverted--dark} !default;
+	--color: #{$color--dark} !default;
+	--color-light: #{$color-light--dark} !default;
+	--link-active-color: #{color-secondary--dark} !default;
+	--link-visited-color: #{color-tertiary--dark} !default;
+
+	// elements
+	--drop-shadow: 0 2px 4px #{$drop-shadow-color--dark} !default;
+	--border-color: #{$border-color--dark} !default;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		// colors
+		--bg: #{$bg} !default;
+		--bg--inverted: #{$bg-inverted} !default;
+		--color: #{$color} !default;
+		--color-light: #{$color-light} !default;
+		--link-active-color: #{color-secondary} !default;
+		--link-visited-color: #{color-tertiary} !default;
+
+		// elements
+		--drop-shadow: 0 2px 4px #{$drop-shadow-color} !default;
+		--border-color: #{$border-color} !default;
+	}
+}
