@@ -46,12 +46,12 @@
 <body>
 
 	<!-- header -->
-	<header id="application-header">
+	<header class="application-header">
 		<div>
-			<a href="#" title="select channel" class="js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+			<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
 		<div>
-			<button class="button--transparent js-reload" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
+			<button class="button--transparent js-reload application-header__logo" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
 		</div>
 		<div>
 			<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
@@ -63,15 +63,15 @@
 		<div class="overlay-content">
 			<div class="overlay__header">
 				<div></div>
-				<div><h2><?= $applicationName ?></h2></div>
-				<div class="theme-switcher-container">
+				<div><h2 class="overlay__title"><?= $applicationName ?></h2></div>
+				<div class="current-theme">
 					<form method="#" action="#">
 					<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
 					<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
 					</form>
 				</div>
 			</div>
-			<ul id="channels">
+			<ul id="channels" class="channels ui-list ui-list--vertical">
 				<!-- overlay will be placed here (ajax) -->
 			</ul>
 		</div>
@@ -88,13 +88,12 @@
 	</footer>
 
 	<!-- loading-screen (js-hidden is removed while ajax-request runs) -->
-	<div id="application-loading" class="overlay">
+	<div id="application-loading" class="application-loading overlay">
 		<div class="spinner"></div>
 	</div>
 
 	<!-- JS -->
-	<script type="text/javascript">
-		<?php require_once($jsUrl); ?>
+	<script type="text/javascript" src="<?php echo $jsUrl ?>">
 	</script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+.current-theme {
+	&:not(:checked) + label .icon-moon {
+		display: none;
+	}
+	&:checked + label .icon-sun {
+		display: none;
+	}
+
+	label {
+		cursor: pointer;
+		float: right;
+	}
+}

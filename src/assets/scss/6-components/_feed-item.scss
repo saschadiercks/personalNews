@@ -1,0 +1,100 @@
+.feed-item {
+	@include basic-grid;
+	background-color: $body-background-color;
+	border-bottom: $base-border;
+	grid-template-columns: $favicon-size auto;
+	padding: $base-spacing-size;
+	position: relative;
+
+	a {
+		color: $base-link-color;
+		text-decoration: none;
+
+		&:hover,
+		&:active {
+			color: $base-link-active-color
+			text-decoration: underline;
+		}
+
+		&:visited {
+			color: $base-link-visited-color;
+		}
+	}
+
+	p {
+		margin-top: $base-spacing-size-text;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.feed-item__icon {
+	border-radius: $icon-border-radius;
+	display: inline-block;
+	height: $favicon-size;
+	margin-top: 3px;
+	width: $favicon-size;
+
+	// avoid showing alt-text if icon is not loaded
+	overflow: hidden;
+	text-indent: 100px;
+	background-clip: padding-box;
+}
+
+.feed-item__title {
+	display: inline-block;
+	font-size: $font-size-title;
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: $base-spacing-size-text / 2;
+}
+
+.feed-item__meta {
+	color: $base-color-info;
+	font-size: $font-size-meta;
+	margin: 0;
+
+	a {
+		color: inherit !important;
+	}
+}
+
+.feed-item__source {
+	color: inherit;
+	text-decoration: underline;
+
+	&:hover {
+		color: $base-link-active-color;
+	}
+
+	// highlight unread items
+	&:after {
+		content: "●";
+		margin-left: $base-spacing-size / 2;
+		color: currentColor;
+		opacity: 1;
+		transition: all 1s ease;
+		transition-delay: 3s;
+	}
+}
+
+.feed-item__description {
+	margin-top: 0;
+	margin-left: 5%;
+
+	@include tablet-landscape-up {
+		font-size: $font-size-excerpt;
+	}
+}
+
+// remove highlight of items in view
+.feed-items__item--read {
+	.source:after {
+		opacity: 0;
+	}
+}
+
+.feed-item__description {
+	font-size: $font-size-description-single;
+}

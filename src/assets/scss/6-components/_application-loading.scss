@@ -1,0 +1,28 @@
+.application-loading {
+	background-color: $body-background-color;
+	border-width: 0;
+	// place it above all elements
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	transition: opacity $base-animation-speed;
+}
+
+.application-loading__spinner {
+	@include align-centered;
+
+	// use pseudo-element so we can position the spinner without affectiong the animation
+	&:before {
+		animation: rotation 0.4s infinite linear;
+		border: $spinner-border-size solid $spinner-border-color;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-radius: 99em;
+		content: "";
+		display: block;
+		height: $spinner-size;
+		width: $spinner-size;
+	}
+}

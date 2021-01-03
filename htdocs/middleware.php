@@ -28,16 +28,16 @@
 
 	function renderChannels($channels) {
 		foreach($channels as $channel) {
-			echo '<li>';
-			echo '<a href="?channel=' . $channel['channel'] . '" data-channel="'. $channel['channel'] . '">' . $channel['channelTitle'] . "</a>";
+			echo '<li class="channels__item>';
+			echo '<a href="?channel=' . $channel['channel'] . '" data-channel="'. $channel['channel'] . '" class="channels__link">' . $channel['channelTitle'] . "</a>";
 			echo '</li>';
 		}
 	}
 
 	function renderContent($content, $meta) {
 		// the feedItems
-		echo '<ul id="feed-items">';
-			echo '<li id="application-message">';
+		echo '<ul id="feed-items" class="ui-list ui-list--vertical">';
+			echo '<li class="application-message">';
 			echo $meta['pinnedMessage'];
 			echo '</li>';
 
@@ -45,16 +45,16 @@
 			$remainingItemCount = 0;
 			foreach ($content as $feedItem) {
 				$classNameRead = $remainingItemCount > $meta['itemCounts']['newItems'] ?  "feed-items__item--read" : "";
-				echo '<li class="feed-items__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $remainingItemCount .'">';
+				echo '<li class="feed-items__item feed-item' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $remainingItemCount .'">';
 				echo 	'<div>';
-				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
+				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="feed-item__icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
 				echo 	'<div>';
 				echo		'<header>';
-				echo			'<h2 class="title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
-				echo			'<p class="info"><span class="date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
+				echo			'<h2 class="feed-item__title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
+				echo			'<p class="feed-item__meta"><span class="feed-item__date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="feed-item__source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
 				echo		'</header>';
-				echo		'<p class="excerpt"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
+				echo		'<p class="feed-item__description"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
 				echo	'</div>';
 				echo	'<div class="feed-items__marker"></div>';
 				echo '</li>';
@@ -63,8 +63,8 @@
 		echo '</ul>';
 
 		// the itemCount
-		echo '<div id="unread-items" class="js-hidden" data-unreaditems="' . $meta['itemCounts']['newItems']. '">';
-		echo	'<span id="unread-items__count">' . $meta['itemCounts']['newItems'] . '</span>';
+		echo '<div id="unread-items" class="badge badge--unread-items js-hidden" data-unreaditems="' . $meta['itemCounts']['newItems']. '">';
+		echo	'<span id="unread-items__count" class="badge__content">' . $meta['itemCounts']['newItems'] . '</span>';
 		echo '</div>';
 	}
 

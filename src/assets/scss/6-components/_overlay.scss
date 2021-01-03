@@ -1,0 +1,45 @@
+.overlay {
+	position: relative;
+	z-index: 1;
+}
+
+.overlay-backdrop {
+	height: 100vh;
+	left: 0;
+	position: fixed;
+	top: 0;
+	right: 0;
+	backdrop-filter: blur(1px);
+}
+
+.overlay__header {
+	@include basic-grid;
+	border-bottom: $base-border;
+	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
+}
+
+.overlay-content {
+	background-color: $overlay-background-color;
+	border: $base-border;
+	box-shadow: $base-shadow;
+	color: $overlay-color;
+	right: $base-spacing-size;
+	margin-top: 65px;
+	max-height: 80%; // leave some space to the bottom (even in ladnscape-mode)
+	max-width: 480px;
+	overflow-y: auto;
+	padding: $base-spacing-size;
+	position: fixed;
+	right: $base-spacing-size;
+	top: 0.5rem;
+	transition: transform $base-animation-speed / 2;
+	z-index: 2; // place between header and content
+}
+
+.overlay__title {
+	font-size: $font-size-overlay-title;
+	font-weight: 600;
+	margin: 0;
+	padding-bottom: $base-spacing-size;
+	text-align: center;
+}

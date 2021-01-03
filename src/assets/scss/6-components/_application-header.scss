@@ -1,0 +1,25 @@
+.application-header {
+	@include basic-grid;
+	background-color: $header-background-color;
+	box-shadow: $base-shadow;
+
+	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+	position: fixed;
+
+	button {
+		padding: $base-spacing-size;
+	}
+}
+
+.application-header__logo {
+	display: flex;
+	justify-content: center;
+
+	img {
+		height: $logo-size;
+		width: $logo-size;
+	}
+}

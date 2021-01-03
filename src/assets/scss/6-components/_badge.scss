@@ -1,0 +1,18 @@
+.badge {
+	border-radius: 99em;
+	padding: 0.3125rem;
+	text-align: center;
+	line-height: 1;
+}
+
+.badge--unread-items {
+	background-color: $body-background-color-dark;
+	color: $base-color-dark;
+	font-size: $font-size-item-count;
+	margin-top: $base-spacing-size / 2;
+	min-width: 30px;
+	position: fixed;
+	right: $base-spacing-size / 2;
+	top: 60px;
+	font-weight: bold;
+}

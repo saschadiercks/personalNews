@@ -1,0 +1,10 @@
+body {
+	background-attachment: fixed;
+	background-image: url("../images/world.svg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 50%;
+	background-color: $body-background-color;
+	color: $base-color;
+	font-family: $font-family-document;
+}
