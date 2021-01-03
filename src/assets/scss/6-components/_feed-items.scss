@@ -71,6 +71,7 @@
 .feed-items__description {
 	font-size: $font-size-description-single;
 	margin-top: $base-spacing-size-text;
+	margin-bottom: 0;
 
 	@include tablet-landscape-up {
 		font-size: $font-size-excerpt;

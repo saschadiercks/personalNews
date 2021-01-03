@@ -28,7 +28,7 @@
 
 	function renderChannels($channels) {
 		foreach($channels as $channel) {
-			echo '<li class="channels__item>';
+			echo '<li class="channels__item">';
 			echo '<a href="?channel=' . $channel['channel'] . '" data-channel="'. $channel['channel'] . '" class="channels__link">' . $channel['channelTitle'] . "</a>";
 			echo '</li>';
 		}
