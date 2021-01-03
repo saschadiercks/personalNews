@@ -50,8 +50,8 @@
 		<div>
 			<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
 		</div>
-		<div>
-			<button class="button--transparent js-reload application-header__logo" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
+		<div class="application-header__logo">
+			<button class="button--transparent js-reload" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
 		</div>
 		<div>
 			<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
@@ -88,8 +88,8 @@
 	</footer>
 
 	<!-- loading-screen (js-hidden is removed while ajax-request runs) -->
-	<div id="application-loading" class="application-loading overlay">
-		<div class="spinner"></div>
+	<div id="application-loading" class="application-loading">
+		<div class="application-loading__spinner"></div>
 	</div>
 
 	<!-- JS -->

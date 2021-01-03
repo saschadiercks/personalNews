@@ -17,6 +17,7 @@
 @import "./3-generic/reset";
 
 // elements
+@import "./4-elements/a";
 @import "./4-elements/main";
 
 // objects
@@ -24,17 +25,18 @@
 
 // components
 @import "./6-components/application-header";
+@import "./6-components/application-loading";
 @import "./6-components/application-message";
 @import "./6-components/application-reload";
 @import "./6-components/badge";
 @import "./6-components/buttons";
 @import "./6-components/channels";
 @import "./6-components/current-theme";
-@import "./6-components/feed-item";
+@import "./6-components/feed-items";
 @import "./6-components/overlay";
 
 // utilities
 @import "./7-utilities/fixed";
 @import "./7-utilities/rotation";
 @import "./7-utilities/sticky";
-@import "./7-utilities/visually-hidden";
+@import "./7-utilities/hidden";

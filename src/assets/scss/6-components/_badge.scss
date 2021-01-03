@@ -6,8 +6,8 @@
 }
 
 .badge--unread-items {
-	background-color: var(--bg-inverted);
-	color: var(--color);
+	background-color: var(--bg--inverted);
+	color: var(--color--inverted);
 	font-size: $font-size-item-count;
 	margin-top: $base-spacing-size / 2;
 	min-width: 30px;
