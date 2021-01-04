@@ -36,7 +36,7 @@
 
 	function renderContent($content, $meta) {
 		// the feedItems
-		echo '<ul id="feed-items" class="ui-list ui-list--vertical feed-items">';
+		echo '<ul id="timeline" class="ui-list ui-list--vertical timeline">';
 			echo '<li class="application-message">';
 			echo $meta['pinnedMessage'];
 			echo '</li>';
@@ -44,19 +44,19 @@
 			// we need to start at zero, since we're using the number to render the remaining items
 			$remainingItemCount = 0;
 			foreach ($content as $feedItem) {
-				$classNameRead = $remainingItemCount > $meta['itemCounts']['newItems'] ?  "feed-items__item--read" : "";
-				echo '<li class="feed-items__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $remainingItemCount .'">';
+				$classNameRead = $remainingItemCount > $meta['itemCounts']['newItems'] ?  "timeline__item--read" : "";
+				echo '<li class="timeline__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $remainingItemCount .'">';
 				echo 	'<div>';
-				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="feed-items__icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
+				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="timeline__icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
-				echo 	'<div class="feed-items__content">';
-				echo		'<header class="feed-items__header">';
-				echo			'<h2 class="feed-items__title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
-				echo			'<span class="feed-items__meta"><span class="feed-items__date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="feed-items__source">' . $feedItem['itemAuthorDescription'] . '</a></span>';
+				echo 	'<div class="timeline__content">';
+				echo		'<header class="timeline__header">';
+				echo			'<h2 class="timeline__title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
+				echo			'<span class="timeline__meta"><span class="timeline__date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="timeline__source">' . $feedItem['itemAuthorDescription'] . '</a></span>';
 				echo		'</header>';
-				echo		'<p class="feed-items__description"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
+				echo		'<p class="timeline__description"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
 				echo	'</div>';
-				echo	'<div class="feed-items__marker"></div>';
+				echo	'<div class="timeline__marker"></div>';
 				echo '</li>';
 				$remainingItemCount++;
 			}

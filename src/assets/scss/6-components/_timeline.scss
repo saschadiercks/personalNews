@@ -1,9 +1,9 @@
-.feed-items {
+.timeline {
 	background-color: var(--bg);
 	color: var(--color);
 }
 
-.feed-items__item {
+.timeline__item {
 	@include basic-grid;
 	background-color: var(--bg);
 	border-bottom: 1px solid var(--border-color);
@@ -16,7 +16,7 @@
 	}
 }
 
-.feed-items__icon {
+.timeline__icon {
 	border-radius: $icon-border-radius;
 	display: inline-block;
 	height: $favicon-size;
@@ -28,18 +28,18 @@
 	background-clip: padding-box;
 }
 
-.feed-items__content {
+.timeline__content {
 	align-items: flex-start;
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.feed-items__header,
-.feed-items__description {
+.timeline__header,
+.timeline__description {
 	flex: 1 1 480px;
 }
 
-.feed-items__header {
+.timeline__header {
 	@include tablet-landscape-up {
 		padding-right: $base-spacing-size;
 	}
@@ -47,7 +47,7 @@
 	margin-bottom: $base-spacing-size-text;
 }
 
-.feed-items__title {
+.timeline__title {
 	display: inline-block;
 	font-size: $font-size-title;
 	font-weight: 600;
@@ -55,7 +55,7 @@
 	margin-bottom: $base-spacing-size-text / 2;
 }
 
-.feed-items__meta {
+.timeline__meta {
 	color: var(--color-light);
 	font-size: $font-size-meta;
 	display: block;
@@ -65,7 +65,7 @@
 	}
 }
 
-.feed-items__source {
+.timeline__source {
 	color: inherit;
 	text-decoration: underline;
 
@@ -81,13 +81,13 @@
 }
 
 // remove highlight of items in view
-.feed-items__item--read {
-	.feed-items__source:after {
+.timeline__item--read {
+	.timeline__source:after {
 		opacity: 0;
 	}
 }
 
-.feed-items__description {
+.timeline__description {
 	font-size: $font-size-description-single;
 	margin: 0;
 }

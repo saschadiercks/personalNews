@@ -42,7 +42,7 @@ function onChange(changes, observer) {
 					unreadItemsElementCount.innerHTML = remainingItemsCount;
 				}
 			}
-			change.target.classList.add("feed-items__item--read");
+			change.target.classList.add("timeline__item--read");
 			observer.unobserve(change.target);
 		}
 	});
