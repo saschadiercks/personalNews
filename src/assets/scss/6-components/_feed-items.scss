@@ -28,6 +28,25 @@
 	background-clip: padding-box;
 }
 
+.feed-items__content {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.feed-items__header,
+.feed-items__description {
+	flex: 1 1 480px;
+}
+
+.feed-items__header {
+	@include tablet-landscape-up {
+		padding-right: $base-spacing-size;
+	}
+
+	margin-bottom: $base-spacing-size-text;
+}
+
 .feed-items__title {
 	display: inline-block;
 	font-size: $font-size-title;
@@ -39,7 +58,7 @@
 .feed-items__meta {
 	color: var(--color-light);
 	font-size: $font-size-meta;
-	margin: 0;
+	display: block;
 
 	a {
 		color: inherit !important;
@@ -70,10 +89,5 @@
 
 .feed-items__description {
 	font-size: $font-size-description-single;
-	margin-top: $base-spacing-size-text;
-	margin-bottom: 0;
-
-	@include tablet-landscape-up {
-		font-size: $font-size-excerpt;
-	}
+	margin: 0;
 }

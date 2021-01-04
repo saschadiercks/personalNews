@@ -49,10 +49,10 @@
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="feed-items__icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';
 				echo 	'</div>';
-				echo 	'<div>';
-				echo		'<header>';
+				echo 	'<div class="feed-items__content">';
+				echo		'<header class="feed-items__header">';
 				echo			'<h2 class="feed-items__title"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemTitle'] .'</a></h2>';
-				echo			'<p class="feed-items__meta"><span class="feed-items__date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="feed-items__source">' . $feedItem['itemAuthorDescription'] . '</a></p>';
+				echo			'<span class="feed-items__meta"><span class="feed-items__date">' . $feedItem['itemDate'] . '</span> / <a href="' . $feedItem['itemAuthorLink'] . '" class="feed-items__source">' . $feedItem['itemAuthorDescription'] . '</a></span>';
 				echo		'</header>';
 				echo		'<p class="feed-items__description"><a href="' .  $feedItem['itemLink'] . '" rel="noopener" target="pn-blank">' . $feedItem['itemDescription'] . '</a></p>';
 				echo	'</div>';
