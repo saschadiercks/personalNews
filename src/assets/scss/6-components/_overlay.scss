@@ -4,12 +4,14 @@
 }
 
 .overlay-backdrop {
-	height: 100vh;
+	backdrop-filter: blur(1px);
+	background-color: var(--bg);
+	bottom: 0;
 	left: 0;
+	opacity: 0.9;
 	position: fixed;
 	top: 0;
 	right: 0;
-	backdrop-filter: blur(1px);
 }
 
 .overlay__header {
@@ -29,8 +31,8 @@
 	overflow-y: auto;
 	padding: $base-spacing-size;
 	position: fixed;
-	right: $base-spacing-size;
-	top: 0.5rem;
+	left: $base-spacing-size;
+	top: $base-spacing-size / 2;
 	transition: transform $base-animation-speed / 2;
 	z-index: 2; // place between header and content
 }

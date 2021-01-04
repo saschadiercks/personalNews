@@ -1,11 +1,13 @@
 .application-message {
+	align-items: center;
 	border-bottom: 1px solid var(--border-color);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	padding: $base-spacing-size;
 
 	a {
+		color: var(--color-light);
 		text-decoration: underline;
 	}
 }

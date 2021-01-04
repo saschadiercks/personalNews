@@ -13,7 +13,7 @@ import updateTimestamp from "../tools/updateTimestamp";
 
 function setupTimeline(response) {
 	// place response
-	document.getElementById("content").innerHTML = response;
+	document.getElementById("application-content").innerHTML = response;
 
 	// get unreadItem-element and it's count
 	window.unreadItemsCount = document.getElementById(

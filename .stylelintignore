@@ -1,5 +1,6 @@
 htdocs
 node_modules
+src/assets/scss/fonts
 
 #TODO: remove
 src/assets/scss/6-components/_current-theme.scss

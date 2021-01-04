@@ -47,15 +47,9 @@
 
 	<!-- header -->
 	<header class="application-header">
-		<div>
-			<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
-		</div>
-		<div class="application-header__logo">
-			<button class="button--transparent js-reload" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
-		</div>
-		<div>
-			<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
-		</div>
+		<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+		<button class="button--transparent js-scroll-top application-header__logo" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
+		<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
 	</header>
 
 	<!-- overlay -->
@@ -79,7 +73,7 @@
 	</div>
 
 	<!-- content -->
-	<main id="content">
+	<main class="application-content" id="application-content">
 		<!-- feeds will be placed here (ajax) -->
 	</main>
 
