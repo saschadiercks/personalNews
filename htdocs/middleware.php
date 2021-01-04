@@ -35,11 +35,16 @@
 	}
 
 	function renderContent($content, $meta) {
-		// the feedItems
-		echo '<ul id="timeline" class="ui-list ui-list--vertical timeline">';
-			echo '<li class="application-message">';
-			echo $meta['pinnedMessage'];
-			echo '</li>';
+			// The message
+			if(isset($meta['pinnedMessage'])) {
+				echo '<div class="application-message">';
+				echo $meta['pinnedMessage'];
+				echo '</div>';
+			}
+
+			// the feedItems
+			echo '<ul id="timeline" class="ui-list ui-list--vertical timeline">';
+
 
 			// we need to start at zero, since we're using the number to render the remaining items
 			$remainingItemCount = 0;
