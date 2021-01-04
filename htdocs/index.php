@@ -7,7 +7,7 @@
 <html <?php
 	echo isset($projectLanguage) ? 'lang="'.$projectLanguage.'"' : FALSE;
 	echo isset($projectDirection) ? 'dir="'.$projectDirection.'"' : FALSE;
-	echo isset($theme)? 'class="'.$theme.'"' : 'class="' . $themeDefault .'"';
+	//echo isset($theme)? 'class="'.$theme.'"' : 'class="' . $themeDefault .'"';
 ?>>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,6 +39,11 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon-foto-228x228-precomposed.png" sizes="228x228" />
 	<link rel="shortcut icon" href="favicon.ico" />
 
+	<!-- Theswitcher (loaded as early as possible)-->
+	<script type="text/javascript">
+		<?php include_once("./assets/js/themeSwitcher.js") ?>
+	</script>
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="<?=$cssUrl?>" media="all"/>
 </head>
@@ -59,10 +64,7 @@
 				<div></div>
 				<div><h2 class="overlay__title"><?= $applicationName ?></h2></div>
 				<div class="current-theme">
-					<form method="#" action="#">
-					<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
-					<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
-					</form>
+					<button class="button--transparent" id="js-themeswitch"><span class="text-auto">auto</span><i class="icon-moon"></i><i class="icon-sun"></i></button>
 				</div>
 			</div>
 			<ul id="channels" class="channels ui-list ui-list--vertical">

@@ -1,13 +1,29 @@
 .current-theme {
-	&:not(:checked) + label .icon-moon {
-		display: none;
-	}
-	&:checked + label .icon-sun {
-		display: none;
-	}
+	text-align: right;
+}
 
-	label {
-		cursor: pointer;
-		float: right;
+// show/hide icons based on selected theme
+// if theme is set to auto, both Icons are shown
+html[data-theme="auto"] {
+	.icon-sun,
+	.icon-moon {
+		display: none;
+	}
+}
+html:not([data-theme="auto"]) {
+	.text-auto {
+		display: none;
+	}
+}
+
+html[data-theme="dark"] {
+	.icon-sun {
+		display: none;
+	}
+}
+
+html[data-theme="light"] {
+	.icon-moon {
+		display: none;
 	}
 }

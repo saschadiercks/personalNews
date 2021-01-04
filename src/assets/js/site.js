@@ -7,7 +7,6 @@ import find from "./helper/find";
 import reload from "./helper/reload";
 import returnSearchParam from "./helper/returnSearchParam";
 import scrollToTop from "./helper/scrollToTop";
-import themeSwitcher from "./helper/themeSwitcher";
 import toggleClass from "./helper/toggleClass";
 
 import setupTimeline from "./tools/setupTimeline";
@@ -65,7 +64,3 @@ find(".js-scroll-top").forEach((element) => {
 		true
 	);
 });
-
-// allow theme switching
-// TODO: this needs refactoring alongside with the css
-themeSwitcher();

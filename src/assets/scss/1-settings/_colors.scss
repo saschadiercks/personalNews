@@ -21,7 +21,7 @@ $border-color--dark: #36404a !default;
 $drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
 
 // our default color-scheme is dark
-:root {
+@mixin theme-dark {
 	// colors
 	--bg: #{$bg--dark};
 	--bg--inverted: #{$bg-inverted--dark};
@@ -36,19 +36,17 @@ $drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
 	--border-color: #{$border-color--dark};
 }
 
-@media (prefers-color-scheme: light) {
-	:root {
-		// colors
-		--bg: #{$bg};
-		--bg--inverted: #{$bg-inverted};
-		--color: #{$color};
-		--color--inverted: #{$color-inverted};
-		--color-light: #{$color-light};
-		--link-active-color: #{color-secondary};
-		--link-visited-color: #{color-tertiary};
+@mixin theme-light {
+	// colors
+	--bg: #{$bg};
+	--bg--inverted: #{$bg-inverted};
+	--color: #{$color};
+	--color--inverted: #{$color-inverted};
+	--color-light: #{$color-light};
+	--link-active-color: #{color-secondary};
+	--link-visited-color: #{color-tertiary};
 
-		// elements
-		--drop-shadow: 0 2px 4px #{$drop-shadow-color};
-		--border-color: #{$border-color};
-	}
+	// elements
+	--drop-shadow: 0 2px 4px #{$drop-shadow-color};
+	--border-color: #{$border-color};
 }
