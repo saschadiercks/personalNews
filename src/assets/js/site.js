@@ -6,6 +6,7 @@ import ajaxRequest from "./helper/ajaxRequest";
 import find from "./helper/find";
 import reload from "./helper/reload";
 import returnSearchParam from "./helper/returnSearchParam";
+import scrollToTop from "./helper/scrollToTop";
 import themeSwitcher from "./helper/themeSwitcher";
 import toggleClass from "./helper/toggleClass";
 
@@ -52,6 +53,17 @@ find(".js-overlay-toggle").forEach((element) => {
 // reload
 find(".js-reload").forEach((element) => {
 	element.addEventListener("click", reload, true);
+});
+
+// scroll to top
+find(".js-scroll-top").forEach((element) => {
+	element.addEventListener(
+		"click",
+		() => {
+			scrollToTop();
+		},
+		true
+	);
 });
 
 // allow theme switching
