@@ -3,6 +3,11 @@
 	color: var(--color);
 	display: block;
 	font-size: $font-size-overlay-links;
-	padding: $base-spacing-size 0;
+	padding: $base-spacing-size $base-spacing-size / 2;
 	text-decoration: none;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: var(--link-hover-bg);
+	}
 }

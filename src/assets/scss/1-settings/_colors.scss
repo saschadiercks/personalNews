@@ -1,6 +1,7 @@
 // ---- light
 $bg: #fdfdfd !default;
 $color: #333 !default;
+$bg-light: darken($bg, 5%) !default;
 $bg-inverted: #272e35 !default;
 $color-inverted: #cad4e0 !default;
 $color-light: #aaa !default;
@@ -12,6 +13,7 @@ $border-color: #e4e4e4 !default;
 // ---- dark
 $bg--dark: #272e35 !default;
 $color--dark: #cad4e0 !default;
+$bg-light--dark: lighten($bg--dark, 5%) !default;
 $bg-inverted--dark: #fdfdfd !default;
 $color-inverted--dark: #333 !default;
 $color-light--dark: #a8c9ed !default;
@@ -28,6 +30,7 @@ $drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
 	--color: #{$color--dark};
 	--color--inverted: #{$color-inverted--dark};
 	--color-light: #{$color-light--dark};
+	--link-hover-bg: #{$bg-light--dark};
 	--link-active-color: #{color-secondary--dark};
 	--link-visited-color: #{color-tertiary--dark};
 
@@ -43,6 +46,7 @@ $drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
 	--color: #{$color};
 	--color--inverted: #{$color-inverted};
 	--color-light: #{$color-light};
+	--link-hover-bg: #{$bg-light};
 	--link-active-color: #{color-secondary};
 	--link-visited-color: #{color-tertiary};
 
