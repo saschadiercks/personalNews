@@ -6,7 +6,7 @@
 // # program #
 // ###########
 // the first theme in the array is the default theme
-let availableThemes = ["dark", "light", "auto"];
+let availableThemes = ["auto", "dark", "light"];
 let applyThemeClassTo = document.querySelector("html");
 let availableThemesCount = availableThemes.length;
 

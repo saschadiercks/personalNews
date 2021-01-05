@@ -17,7 +17,23 @@
 .overlay__header {
 	@include basic-grid;
 	border-bottom: 1px solid var(--border-color);
-	grid-template-columns: $favicon-size * 3 auto $favicon-size * 3;
+	grid-template-columns: auto auto;
+	padding-bottom: $base-spacing-size;
+}
+
+.overlay__headeritem {
+	display: flex;
+	align-items: center;
+}
+
+.overlay__theme {
+	font-size: 11px;
+	justify-content: right;
+}
+
+.overlay__themeswitch {
+	min-width: 40px;
+	padding: $base-spacing-size / 2;
 }
 
 .overlay-content {
@@ -27,14 +43,14 @@
 	color: var(--color);
 	left: $base-spacing-size;
 	margin-top: 65px;
-	max-height: 80%; // leave some space to the bottom (even in ladnscape-mode)
+	max-height: 80%; // leave some space to the bottom (even in landscape-mode)
 	max-width: 480px;
 	overflow-y: auto;
 	padding: $base-spacing-size;
 	position: fixed;
 	top: $base-spacing-size / 2;
 	transition: transform $base-animation-speed / 2;
-	width: 100%;
+	right: $base-spacing-size;
 	z-index: 2; // place between header and content
 }
 
@@ -42,6 +58,4 @@
 	font-size: $font-size-overlay-title;
 	font-weight: 600;
 	margin: 0;
-	padding-bottom: $base-spacing-size;
-	text-align: center;
 }

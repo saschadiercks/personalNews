@@ -61,10 +61,14 @@
 	<div class="overlay js-hidden" id="application-overlay">
 		<div class="overlay-content">
 			<div class="overlay__header">
-				<div></div>
-				<div><h2 class="overlay__title"><?= $applicationName ?></h2></div>
-				<div class="current-theme">
-					<button class="button--transparent" id="js-themeswitch"><span class="text-auto">auto</span><i class="icon-moon"></i><i class="icon-sun"></i></button>
+				<h2 class="overlay__title overlay__headeritem"><?= $applicationName ?></h2>
+				<div class="overlay__theme overlay__headeritem">
+					<span class="">theme:</span>
+					<button class="overlay__themeswitch button--transparent" id="js-themeswitch">
+						<span class="text-auto">auto</span>
+						<i class="icon-moon"></i>
+						<i class="icon-sun"></i>
+					</button>
 				</div>
 			</div>
 			<ul id="channels" class="channels ui-list ui-list--vertical">
