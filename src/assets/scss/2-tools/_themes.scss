@@ -1,4 +1,12 @@
-// theme: auto
+// ###### switches #####
+
+// ###### Settings #####
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+// ---- theme: auto
 // the default is dark here
 html {
 	@include theme-dark;
@@ -10,12 +18,12 @@ html {
 	}
 }
 
-// theme: dark
+// ---- theme: dark
 html[data-theme="dark"] {
 	@include theme-dark;
 }
 
-// theme: light
+// ---- theme: light
 html[data-theme="light"] {
 	@include theme-light;
 }

@@ -8,5 +8,5 @@ $logo-size: 24px !default;
 $icon-border-radius: 99rem !default;
 
 $spinner-size: 4rem !default;
-$spinner-border-color: rgba(#ccc, 0.9) !default;
+$spinner-border-color: var(--border-color) !default;
 $spinner-border-size: 1rem !default;
