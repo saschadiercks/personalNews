@@ -26,7 +26,7 @@
 	@include basic-grid;
 	border-bottom: 1px solid var(--border-color);
 	grid-template-columns: auto auto;
-	padding-bottom: $base-spacing-size;
+	padding-bottom: var(--spacing-default);
 }
 
 .overlay__headeritem {
@@ -41,7 +41,7 @@
 
 .overlay__themeswitch {
 	min-width: 40px;
-	padding: $base-spacing-size / 2;
+	padding: var(--spacing-default) / 2;
 }
 
 .overlay-content {
@@ -49,21 +49,21 @@
 	border: 1px solid var(--border-color);
 	box-shadow: var(--drop-shadow);
 	color: var(--color);
-	left: $base-spacing-size;
+	left: var(--spacing-default);
 	margin-top: 65px;
 	max-height: 80%; // leave some space to the bottom (even in landscape-mode)
 	max-width: 480px;
 	overflow-y: auto;
-	padding: $base-spacing-size;
+	padding: var(--spacing-default);
 	position: fixed;
-	top: $base-spacing-size / 2;
-	transition: transform $base-animation-speed / 2;
-	right: $base-spacing-size;
+	top: calc(var(--spacing-default) / 2);
+	transition: transform calc(var(--animation-speed-default) / 2);
+	right: var(--spacing-default);
 	z-index: 2; // place between header and content
 }
 
 .overlay__title {
-	font-size: $font-size-overlay-title;
+	font-size: var(--h2);
 	font-weight: 600;
 	margin: 0;
 }

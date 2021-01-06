@@ -7,9 +7,9 @@
 //---------------------
 
 html {
-	font-family: $font-family-body;
+	font-family: var(--font-family-default);
 	font-size: $font-size;
-	font-weight: $font-weight;
+	font-weight: normal;
 	overflow-x: hidden; // avoid vertical scrollbars
 }
 

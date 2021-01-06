@@ -1,6 +1,9 @@
 // ###### switches #####
 
 // ###### Settings #####
+$spinner-size: calc(var(--spacing-default) * 4) !default;
+$spinner-border-color: var(--color) !default;
+$spinner-border-size: var(--spacing-default) !default;
 
 //---------------------
 // ###### Layout ######
@@ -18,7 +21,7 @@
 	position: fixed;
 	top: 0;
 	width: 100%;
-	transition: opacity $base-animation-speed;
+	transition: opacity var(--animation-speed-default);
 	z-index: 99;
 }
 

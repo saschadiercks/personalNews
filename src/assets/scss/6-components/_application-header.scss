@@ -12,7 +12,9 @@
 	color: var(--color);
 	box-shadow: var(--drop-shadow);
 
-	grid-template-columns: $favicon-size * 2 auto $favicon-size * 2; // Magic number
+	grid-template-columns: calc(var(--avatar-size) * 2) auto calc(
+			var(--avatar-size) * 2
+		); // Magic number
 	top: 0;
 	width: 100%;
 	z-index: 2;
@@ -22,7 +24,7 @@
 		align-items: center;
 		display: flex;
 		justify-content: center;
-		padding: $base-spacing-size * 0.75 0;
+		padding: calc(var(--spacing-default) * 0.75) 0;
 	}
 }
 
@@ -31,7 +33,7 @@
 	justify-content: center;
 
 	img {
-		height: $logo-size;
-		width: $logo-size;
+		height: var(--avatar-size);
+		width: var(--avatar-size);
 	}
 }

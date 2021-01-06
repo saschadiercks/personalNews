@@ -9,5 +9,5 @@
 @import "../fonts/style";
 
 [class*="icon-"] {
-	padding: $base-spacing-size-text $base-spacing-size-text / 2;
+	padding: calc(var(--spacing-default / 2)) calc(var(--spacing-default / 4));
 }

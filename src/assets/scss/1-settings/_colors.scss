@@ -22,6 +22,7 @@ $color-tertiary--dark: darken($color--dark, 20%) !default;
 $border-color--dark: #36404a !default;
 $drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
 
+// ---- prepare themes as custom properties
 // our default color-scheme is dark
 @mixin theme-dark {
 	// colors

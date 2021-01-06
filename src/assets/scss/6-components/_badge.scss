@@ -16,11 +16,11 @@
 .badge--unread-items {
 	background-color: var(--bg--inverted);
 	color: var(--color--inverted);
-	font-size: $font-size-item-count;
-	margin-top: $base-spacing-size / 2;
+	font-size: var(--h2);
+	margin-top: calc(var(--spacing-default) / 2);
 	min-width: 30px;
 	position: fixed;
-	right: $base-spacing-size / 2;
+	right: calc(var(--spacing-default) / 2);
 	top: 60px;
 	font-weight: bold;
 }

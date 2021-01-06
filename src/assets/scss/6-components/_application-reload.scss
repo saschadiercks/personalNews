@@ -7,8 +7,8 @@
 //---------------------
 
 .application-reload {
-	padding: $base-spacing-size;
+	padding: var(--spacing-default);
 	float: right;
-	color: currentColor;
+	color: var(--color);
 	font-size: 1rem;
 }

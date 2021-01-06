@@ -9,7 +9,7 @@
 .application-message {
 	border-bottom: 1px solid var(--border-color);
 	display: block;
-	padding: $base-spacing-size;
+	padding: var(--spacing-default);
 	text-align: center;
 
 	a {

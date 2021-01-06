@@ -15,8 +15,8 @@
 	@include basic-grid;
 	background-color: var(--bg);
 	border-bottom: 1px solid var(--border-color);
-	grid-template-columns: $favicon-size auto;
-	padding: $base-spacing-size;
+	grid-template-columns: var(--avatar-size) auto;
+	padding: var(--spacing-default);
 	position: relative;
 
 	a {
@@ -25,11 +25,11 @@
 }
 
 .timeline__icon {
-	border-radius: $icon-border-radius;
+	border-radius: var(--avatar-border-radius);
 	display: inline-block;
-	height: $favicon-size;
+	height: var(--avatar-size);
 	margin-top: 3px;
-	width: $favicon-size;
+	width: var(--avatar-size);
 
 	// avoid showing alt-text if icon is not loaded
 	overflow: hidden;
@@ -49,23 +49,23 @@
 
 .timeline__header {
 	@include tablet-landscape-up {
-		padding-right: $base-spacing-size;
+		padding-right: var(--spacing-default);
 	}
 
-	margin-bottom: $base-spacing-size-text;
+	margin-bottom: calc(var(--spacing-default) / 2);
 }
 
 .timeline__title {
 	display: inline-block;
-	font-size: $font-size-title;
+	font-size: var(--h1);
 	font-weight: 600;
 	margin-top: 0;
-	margin-bottom: $base-spacing-size-text / 2;
+	margin-bottom: calc(var(--spacing-default) / 2);
 }
 
 .timeline__meta {
 	color: var(--color-light);
-	font-size: $font-size-meta;
+	font-size: var(--h4);
 	display: block;
 
 	a {
@@ -80,7 +80,7 @@
 	// highlight unread items
 	&:after {
 		content: "●";
-		margin-left: $base-spacing-size / 2;
+		margin-left: calc(var(--spacing-default) / 2);
 		color: currentColor;
 		opacity: 1;
 		transition: all 1s ease;
@@ -96,6 +96,6 @@
 }
 
 .timeline__description {
-	font-size: $font-size-description-single;
+	font-size: var(--h4);
 	margin: 0;
 }

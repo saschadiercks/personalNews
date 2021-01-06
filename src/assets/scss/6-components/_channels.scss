@@ -10,8 +10,8 @@
 	border-bottom: 1px solid var(--border-color);
 	color: var(--color);
 	display: block;
-	font-size: $font-size-overlay-links;
-	padding: $base-spacing-size $base-spacing-size / 2;
+	font-size: var(--h2);
+	padding: var(--spacing-default) calc(var(--spacing-default) / 2);
 	text-decoration: none;
 	transition: background-color 0.3s;
 
