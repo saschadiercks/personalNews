@@ -1,6 +1,12 @@
 // ###### switches #####
 
 // ###### Settings #####
+$application-header-bg: var(--bg) !default;
+$application-header-color: var(--color) !default;
+$application-header-box-shadow: var(--drop-shadow) !default;
+$application-header-button-padding: calc(var(--spacing-default) * 0.75) 0 !default;
+$application-logo-size-x: var(--avatar-size) !default;
+$application-logo-size-y: var(--avatar-size) !default;
 
 //---------------------
 // ###### Layout ######
@@ -8,9 +14,9 @@
 
 .application-header {
 	@include basic-grid;
-	background-color: var(--bg);
-	color: var(--color);
-	box-shadow: var(--drop-shadow);
+	background-color: $application-header-bg;
+	color: $application-header-color;
+	box-shadow: $application-header-box-shadow;
 
 	grid-template-columns: calc(var(--avatar-size) * 2) auto calc(
 			var(--avatar-size) * 2
@@ -24,7 +30,7 @@
 		align-items: center;
 		display: flex;
 		justify-content: center;
-		padding: calc(var(--spacing-default) * 0.75) 0;
+		padding: $application-header-button-padding;
 	}
 }
 
@@ -33,7 +39,7 @@
 	justify-content: center;
 
 	img {
-		height: var(--avatar-size);
-		width: var(--avatar-size);
+		height: $application-logo-size-x;
+		width: $application-logo-size-y;
 	}
 }

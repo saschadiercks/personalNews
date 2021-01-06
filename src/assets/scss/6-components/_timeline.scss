@@ -1,6 +1,28 @@
 // ###### switches #####
 
 // ###### Settings #####
+$timeline-bg: var(--bg) !default;
+$timeline-color: var(--color) !default;
+$timeline-border-color: var(--border-color) !default;
+$timeline-item-padding: var(--spacing-default) !default;
+$timeline-item-template-columns: var(--avatar-size) auto !default;
+
+$timeline-icon-border-radius: var(--avatar-border-radius) !default;
+$timeline-icon-size: var(--avatar-size) !default;
+
+$timeline-header-gap: var(--spacing-default) !default;
+$timeline-header-margin-bottom: calc(var(--spacing-default) / 2) !default;
+$timeline-title-font-size: var(--h1) !default;
+$timeline-title-margin-bottom: calc(var(--spacing-default) / 2) !default;
+$timeline-description-font-size: var(--h3) !default;
+
+$timeline-meta-color: var(--color-light) !default;
+$timeline-meta-font-size: var(--h4) !default;
+
+$timeline-unread-marker-symbol: "●" !default;
+$timeline-unread-marker-gap: calc(var(--spacing-default) / 2) !default;
+$timeline-unread-marker-color: currentColor !default;
+$timeline-unread-marker-fade-delay: 2s !default;
 
 //---------------------
 // ###### Layout ######
@@ -13,10 +35,9 @@
 
 .timeline__item {
 	@include basic-grid;
-	background-color: var(--bg);
-	border-bottom: 1px solid var(--border-color);
-	grid-template-columns: var(--avatar-size) auto;
-	padding: var(--spacing-default);
+	border-bottom: 1px solid $timeline-border-color;
+	grid-template-columns: $timeline-item-template-columns;
+	padding: $timeline-item-padding;
 	position: relative;
 
 	a {
@@ -25,11 +46,11 @@
 }
 
 .timeline__icon {
-	border-radius: var(--avatar-border-radius);
+	border-radius: $timeline-icon-border-radius;
 	display: inline-block;
 	height: var(--avatar-size);
 	margin-top: 3px;
-	width: var(--avatar-size);
+	width: $timeline-icon-size;
 
 	// avoid showing alt-text if icon is not loaded
 	overflow: hidden;
@@ -49,23 +70,23 @@
 
 .timeline__header {
 	@include tablet-landscape-up {
-		padding-right: var(--spacing-default);
+		padding-right: $timeline-header-gap;
 	}
 
-	margin-bottom: calc(var(--spacing-default) / 2);
+	margin-bottom: $timeline-header-margin-bottom;
 }
 
 .timeline__title {
 	display: inline-block;
-	font-size: var(--h1);
+	font-size: $timeline-title-font-size;
 	font-weight: 600;
 	margin-top: 0;
-	margin-bottom: calc(var(--spacing-default) / 2);
+	margin-bottom: $timeline-title-margin-bottom;
 }
 
 .timeline__meta {
-	color: var(--color-light);
-	font-size: var(--h4);
+	color: $timeline-meta-color;
+	font-size: $timeline-meta-font-size;
 	display: block;
 
 	a {
@@ -79,12 +100,12 @@
 
 	// highlight unread items
 	&:after {
-		content: "●";
-		margin-left: calc(var(--spacing-default) / 2);
-		color: currentColor;
+		content: $timeline-unread-marker-symbol;
+		margin-left: $timeline-unread-marker-gap;
+		color: $timeline-unread-marker-color;
 		opacity: 1;
 		transition: all 1s ease;
-		transition-delay: 3s;
+		transition-delay: $timeline-unread-marker-fade-delay;
 	}
 }
 
@@ -96,6 +117,6 @@
 }
 
 .timeline__description {
-	font-size: var(--h4);
+	font-size: $timeline-description-font-size;
 	margin: 0;
 }
