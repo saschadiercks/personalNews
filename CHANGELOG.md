@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
+## [1.4.2] - 2021-01-06
+
+fix gap for overlay and unread-badge
+
 ## [1.4.1] - 2021-01-06
 
 Using smaller font-size on mobile for better text separation.

@@ -3,9 +3,9 @@
 // ###### Settings #####
 $overlay-backdrop-color: var(--bg) !default;
 $overlay-backdrop-opacity: 0.7 !default;
-$overlay-margin-top: calc(var(--spacing-default) / 2) !default;
+$overlay-margin-top: var(--spacing-default) !default;
 $overlay-position-top: var(--header-size) !default;
-$overlay-position-horizontal: calc(var(--spacing-default) / 2) !default;
+$overlay-position-horizontal: var(--spacing-default) !default;
 
 $overlay-content-bg: var(--bg) !default;
 $overlay-content-color: var(--color) !default;

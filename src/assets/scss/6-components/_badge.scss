@@ -5,7 +5,7 @@ $badge-bg: var(--bg--inverted) !default;
 $badge-color: var(--color--inverted) !default;
 $badge-font-size: var(--h2) !default;
 $badge-padding: calc(var(--spacing-default) / 2) !default;
-$badge-margin-top: calc(var(--spacing-default) / 2) !default;
+$badge-margin-top: var(--spacing-default) !default;
 $badge-position-top: var(--header-size) !default;
 $badge-position-right: calc(var(--spacing-default) / 2) !default;
 
