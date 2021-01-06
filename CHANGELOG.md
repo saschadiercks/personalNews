@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
-## [1.3.6] - 2021-01-06
+## [1.4] - 2021-01-06
 
 Total refactor of CSS.
 We're using ITCSS and BEM for improved structuring of the project.
