@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
+## [1.5] - 2021-01-07
+
+lock scroll, when modal is opened
+
 ## [1.4.2] - 2021-01-06
 
 fix gap for overlay and unread-badge

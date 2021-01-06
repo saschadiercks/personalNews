@@ -7,12 +7,12 @@
 // ###########
 function togglePageScroll() {
 	if (window.isScrollable) {
-		document.querySelector("html").style.overflowY = "hidden";
-		document.querySelector("body").style.marginRight = window.scrollbarWidth;
+		window.scrollPosition = window.pageYOffset;
+		document.body.style.cssText = `overflow: hidden; position: fixed; top: -${window.scrollPosition}px`;
 		window.isScrollable = false;
 	} else {
-		document.querySelector("html").style.overflowY = "scroll";
-		document.querySelector("body").style.marginRight = 0;
+		document.body.style.cssText = null;
+		window.scrollTo(0, scrollPosition);
 		window.isScrollable = true;
 	}
 }
