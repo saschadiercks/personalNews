@@ -14,7 +14,8 @@ $timeline-header-gap: var(--spacing-default) !default;
 $timeline-header-margin-bottom: calc(var(--spacing-default) / 2) !default;
 $timeline-title-font-size: var(--h1) !default;
 $timeline-title-margin-bottom: calc(var(--spacing-default) / 2) !default;
-$timeline-description-font-size: var(--h3) !default;
+$timeline-description-font-size: var(--h4) !default;
+$timeline-description-font-size-tablet: var(--h3) !default;
 
 $timeline-meta-color: var(--color-light) !default;
 $timeline-meta-font-size: var(--h4) !default;
@@ -119,4 +120,8 @@ $timeline-unread-marker-fade-delay: 2s !default;
 .timeline__description {
 	font-size: $timeline-description-font-size;
 	margin: 0;
+
+	@include tablet-landscape-up {
+		font-size: $timeline-description-font-size-tablet;
+	}
 }

@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Releases]
 
+## [1.4.1] - 2021-01-06
+
+Using smaller font-size on mobile for better text separation.
+
 ## [1.4] - 2021-01-06
 
 Total refactor of CSS.
