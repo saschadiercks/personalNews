@@ -1,0 +1,23 @@
+// ###### switches #####
+
+// ###### Settings #####
+$a-color: var(--color) !default;
+$a-active-color: var(--link-active-color) !default;
+$a-visited-color: var(--link-visited-color) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+a {
+	color: $a-color;
+
+	&:hover,
+	&:active {
+		color: $a-active-color;
+	}
+
+	&:visited {
+		color: $a-visited-color;
+	}
+}

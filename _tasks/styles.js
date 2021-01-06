@@ -27,6 +27,7 @@ gulp.task("compile:css", function () {
 gulp.task("lint:css", function () {
 	return gulp.src(config.assetSrc + "/scss/**/*.scss").pipe(
 		gulpStylelint({
+			fix: true,
 			reporters: [{ formatter: "string", console: true }],
 		})
 	);
@@ -55,8 +56,8 @@ gulp.task("critical:css", () => {
 				css: [config.assetDist + "/css/" + config.distCssSite],
 				penthouse: {
 					timeout: 60000,
-					pageLoadSkipTimeout: 30000
-				}
+					pageLoadSkipTimeout: 30000,
+				},
 			})
 		)
 		.pipe(gulp.dest(config.dist));

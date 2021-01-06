@@ -2,3 +2,4 @@ _private
 node_modules
 build
 __bak
+.DS_Store

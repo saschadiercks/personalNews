@@ -1,0 +1,16 @@
+// ###### switches #####
+
+// ###### Settings #####
+$application-reload-padding: var(--spacing-default) !default;
+$application-reload-color: var(--color) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.application-reload {
+	padding: $application-reload-padding;
+	float: right;
+	color: $application-reload-color;
+	font-size: 1rem;
+}

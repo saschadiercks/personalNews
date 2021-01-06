@@ -1,0 +1,29 @@
+// ###### switches #####
+
+// ###### Settings #####
+$html-font-family: var(--font-family-default) !default;
+$html-font-size: var(--font-size) !default;
+$body-bg: var(--bg) !default;
+$body-bg-image: url("../images/world.svg") !default;
+$body-color: var(--color) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+html {
+	font-family: var(--font-family-default);
+	font-size: var(--font-size);
+	font-weight: normal;
+	overflow-x: hidden; // avoid vertical scrollbars
+}
+
+body {
+	background-attachment: fixed;
+	background-image: $body-bg-image;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 50%;
+	background-color: $body-bg;
+	color: $body-color;
+}

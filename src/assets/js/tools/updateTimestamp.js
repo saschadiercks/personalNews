@@ -23,7 +23,7 @@ function updateTimestamp(elements) {
 
 	// remove badge if user scrolls to designated position to avoid keeping
 	// the badge with a value higher than 0
-	listenForScroll(52, hideBadge);
+	listenForScroll(48, hideBadge);
 
 	function hideBadge() {
 		toggleClass(find("#unread-items"), "js-hidden");
@@ -42,7 +42,7 @@ function onChange(changes, observer) {
 					unreadItemsElementCount.innerHTML = remainingItemsCount;
 				}
 			}
-			change.target.classList.add("feed-items__item--read");
+			change.target.classList.add("timeline__item--read");
 			observer.unobserve(change.target);
 		}
 	});

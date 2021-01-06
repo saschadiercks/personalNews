@@ -7,7 +7,7 @@
 <html <?php
 	echo isset($projectLanguage) ? 'lang="'.$projectLanguage.'"' : FALSE;
 	echo isset($projectDirection) ? 'dir="'.$projectDirection.'"' : FALSE;
-	echo isset($theme)? 'class="'.$theme.'"' : 'class="' . $themeDefault .'"';
+	//echo isset($theme)? 'class="'.$theme.'"' : 'class="' . $themeDefault .'"';
 ?>>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,6 +39,11 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon-foto-228x228-precomposed.png" sizes="228x228" />
 	<link rel="shortcut icon" href="favicon.ico" />
 
+	<!-- Theswitcher (loaded as early as possible)-->
+	<script type="text/javascript">
+		<?php include_once("./assets/js/themeSwitcher.js") ?>
+	</script>
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="<?=$cssUrl?>" media="all"/>
 </head>
@@ -46,32 +51,27 @@
 <body>
 
 	<!-- header -->
-	<header id="application-header">
-		<div>
-			<a href="#" title="select channel" class="js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
-		</div>
-		<div>
-			<button class="button--transparent js-reload" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
-		</div>
-		<div>
-			<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
-		</div>
+	<header class="application-header">
+		<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
+		<button class="button--transparent js-scroll-top application-header__logo" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
+		<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
 	</header>
 
 	<!-- overlay -->
 	<div class="overlay js-hidden" id="application-overlay">
 		<div class="overlay-content">
 			<div class="overlay__header">
-				<div></div>
-				<div><h2><?= $applicationName ?></h2></div>
-				<div class="theme-switcher-container">
-					<form method="#" action="#">
-					<input type="checkbox" id="theme-switcher" class="vh" <?php if($theme == $themeDark) { echo 'checked="checked"'; } ?> />
-					<label for="theme-switcher"><span class="vh">change theme</span><i class="icon-moon"></i><i class="icon-sun"></i></label>
-					</form>
+				<h2 class="overlay__title overlay__headeritem"><?= $applicationName ?></h2>
+				<div class="overlay__theme overlay__headeritem">
+					<span class="">theme:</span>
+					<button class="overlay__themeswitch button--transparent" id="js-themeswitch">
+						<span class="text-auto">auto</span>
+						<i class="icon-moon"></i>
+						<i class="icon-sun"></i>
+					</button>
 				</div>
 			</div>
-			<ul id="channels">
+			<ul id="channels" class="channels ui-list ui-list--vertical">
 				<!-- overlay will be placed here (ajax) -->
 			</ul>
 		</div>
@@ -79,7 +79,7 @@
 	</div>
 
 	<!-- content -->
-	<main id="content">
+	<main class="application-content" id="application-content">
 		<!-- feeds will be placed here (ajax) -->
 	</main>
 
@@ -88,13 +88,12 @@
 	</footer>
 
 	<!-- loading-screen (js-hidden is removed while ajax-request runs) -->
-	<div id="application-loading" class="overlay">
-		<div class="spinner"></div>
+	<div id="application-loading" class="application-loading">
+		<div class="application-loading__spinner"></div>
 	</div>
 
 	<!-- JS -->
-	<script type="text/javascript">
-		<?php require_once($jsUrl); ?>
+	<script type="text/javascript" src="<?php echo $jsUrl ?>">
 	</script>
 </body>
 </html>

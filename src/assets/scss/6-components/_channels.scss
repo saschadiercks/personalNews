@@ -1,0 +1,31 @@
+// ###### switches #####
+
+// ###### Settings #####
+$channels-link-border-color: var(--border-color) !default;
+$channels-link-color: var(--color) !default;
+$channels-link-font-size: var(--h2) !default;
+$channels-link-animation-speed: var(--animation-speed-default) !default;
+$channels-link-padding: var(--spacing-default) calc(var(--spacing-default) / 2) !default;
+$channels-link-margin: 1px 0 !default;
+$channels-link-hover-bg: var(--link-hover-bg) !default;
+$channels-link-hover-indent: var(--spacing-default) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.channels__link {
+	border-bottom: 1px solid $channels-link-border-color;
+	color: $channels-link-color;
+	display: block;
+	font-size: $channels-link-font-size;
+	margin: $channels-link-margin;
+	padding: $channels-link-padding;
+	text-decoration: none;
+	transition: all $channels-link-animation-speed;
+
+	&:hover {
+		background-color: $channels-link-hover-bg;
+		text-indent: $channels-link-hover-indent;
+	}
+}

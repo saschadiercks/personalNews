@@ -1,0 +1,12 @@
+// ###### switches #####
+
+// ###### Settings #####
+$application-content-bg: var(--bg) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.application-content {
+	background-color: $application-content-bg;
+}

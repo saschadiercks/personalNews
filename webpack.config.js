@@ -1,17 +1,16 @@
 /* #### Setting #### */
-const config = require('./_tasks/_config.json')
+const config = require("./_tasks/_config.json");
 
 /* ################# */
 /* ##### Tasks ##### */
 /* ################# */
 module.exports = {
 	entry: {
-		site: [
-			`./${config.assetSrc}/js/site.js`
-		]
+		site: [`./${config.assetSrc}/js/site.js`],
+		themeSwitcher: [`./${config.assetSrc}/js/themeSwitcher.js`],
 	},
 	output: {
-		filename: `./${config.assetDist}/js/[name].js`
+		filename: `./${config.assetDist}/js/[name].js`,
 	},
-	mode: process.env.NODE_ENV
+	mode: process.env.NODE_ENV,
 };

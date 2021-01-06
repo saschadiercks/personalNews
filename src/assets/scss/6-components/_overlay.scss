@@ -1,0 +1,84 @@
+// ###### switches #####
+
+// ###### Settings #####
+$overlay-backdrop-color: var(--bg) !default;
+$overlay-backdrop-opacity: 0.7 !default;
+$overlay-margin-top: calc(var(--spacing-default) / 2) !default;
+$overlay-position-top: var(--header-size) !default;
+$overlay-position-horizontal: calc(var(--spacing-default) / 2) !default;
+
+$overlay-content-bg: var(--bg) !default;
+$overlay-content-color: var(--color) !default;
+$overlay-content-border-color: var(--border-color) !default;
+$overlay-content-box-shadow: var(--drop-shadow) !default;
+$overlay-content-padding: var(--spacing-default) !default;
+
+$overlay-header-padding-bottom: var(--spacing-default) !default;
+$overlay-header-border-color: var(--border-color) !default;
+$overlay-title-font-size: var(--h2) !default;
+$overlay-theme-switch-padding: calc(var(--spacing-default) / 2) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.overlay {
+	position: relative;
+	z-index: 1;
+}
+
+.overlay-backdrop {
+	backdrop-filter: blur(1px);
+	background-color: $overlay-backdrop-color;
+	bottom: 0;
+	left: 0;
+	opacity: $overlay-backdrop-opacity;
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+.overlay__header {
+	@include basic-grid;
+	border-bottom: 1px solid $overlay-header-border-color;
+	grid-template-columns: auto auto;
+	padding-bottom: $overlay-header-padding-bottom;
+}
+
+.overlay__headeritem {
+	display: flex;
+	align-items: center;
+}
+
+.overlay__theme {
+	font-size: 11px;
+	justify-content: flex-end;
+}
+
+.overlay__themeswitch {
+	min-width: 40px;
+	padding: $overlay-theme-switch-padding;
+}
+
+.overlay-content {
+	background-color: $overlay-content-bg;
+	border: 1px solid $overlay-content-border-color;
+	box-shadow: $overlay-content-box-shadow;
+	color: $overlay-content-color;
+	left: $overlay-position-horizontal;
+	margin-top: $overlay-margin-top;
+	max-height: 80%; // leave some space to the bottom (even in landscape-mode)
+	max-width: 480px;
+	overflow-y: auto;
+	padding: $overlay-content-padding;
+	position: fixed;
+	top: $overlay-position-top;
+	right: $overlay-position-horizontal;
+	z-index: 2; // place between header and content
+}
+
+.overlay__title {
+	font-size: $overlay-title-font-size;
+	font-weight: 600;
+	margin: 0;
+}

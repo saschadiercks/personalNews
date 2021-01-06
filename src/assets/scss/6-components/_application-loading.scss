@@ -1,0 +1,42 @@
+// ###### switches #####
+
+// ###### Settings #####
+$application-loading-bg: var(--bg) !default;
+
+$spinner-size: calc(var(--spacing-default) * 4) !default;
+$spinner-border-color: var(--color) !default;
+$spinner-border-size: var(--spacing-default) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.application-loading {
+	background-color: $application-loading-bg;
+	border-width: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	// place it above all elements
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+}
+
+.application-loading__spinner {
+	// use pseudo-element so we can position the spinner without affectiong the animation
+	&:before {
+		animation: rotation 0.4s infinite linear;
+		border: $spinner-border-size solid $spinner-border-color;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-radius: 99em;
+		content: "";
+		display: block;
+		height: $spinner-size;
+		width: $spinner-size;
+	}
+}
