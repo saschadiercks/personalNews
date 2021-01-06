@@ -113,12 +113,6 @@ Using a timestamp the api will return the number of new items after that given t
 4. Wait a while until all components are loaded an the box is running. (The first start can take a while)
 5. visit (http://127.0.0.1:8080/)
 
-### React environment
-
-1. run `npm install`
-2. run `npm run start` to start react
-3. visit (http://localhost:3000/)
-
 ### Usage of gulp
 
 1. Make sure, you have node.js installed on your computer (https://nodejs.org/en/)
