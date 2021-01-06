@@ -1,14 +1,20 @@
-function togglePageScroll(elementToFix, elementToOffset) {
-	if (window.lastScrollPosition === 0) {
-		lastScrollPosition = window.pageYOffset;
-		elementToFix.style.position = "fixed";
-	} else {
-		elementToFix.style.position = "relative";
-		window.scrollTo(0, lastScrollPosition);
-		lastScrollPosition = 0;
-	}
+// ###########
+// # imports #
+// ###########
 
-	elementToOffset.style.top = lastScrollPosition * -1 + "px";
+// ###########
+// # program #
+// ###########
+function togglePageScroll() {
+	if (window.isScrollable) {
+		document.querySelector("html").style.overflowY = "hidden";
+		document.querySelector("body").style.marginRight = window.scrollbarWidth;
+		window.isScrollable = false;
+	} else {
+		document.querySelector("html").style.overflowY = "scroll";
+		document.querySelector("body").style.marginRight = 0;
+		window.isScrollable = true;
+	}
 }
 
 export default togglePageScroll;

@@ -8,6 +8,7 @@ import reload from "./helper/reload";
 import returnSearchParam from "./helper/returnSearchParam";
 import scrollToTop from "./helper/scrollToTop";
 import toggleClass from "./helper/toggleClass";
+import getScrollbarWidth from "./helper/getScrollbarWidth";
 import togglePageScroll from "./helper/togglePageScroll";
 
 import setupTimeline from "./tools/setupTimeline";
@@ -17,7 +18,8 @@ import setupTimeline from "./tools/setupTimeline";
 // ###########
 
 // ---- initial states
-window.lastScrollPosition = 0;
+window.isScrollable = true;
+window.scrollbarWidth = getScrollbarWidth() + "px";
 
 // get latest unreadItem from saved timestamp
 window.lastReadTimestamps = localStorage.getItem("lastReadItems");

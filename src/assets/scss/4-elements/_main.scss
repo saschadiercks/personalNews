@@ -9,6 +9,5 @@ $main-margin-top: var(--header-size) !default;
 
 main {
 	margin-top: $main-margin-top;
-	position: relative; // we need position relative, to allow indenting content, when the page is fixed
 	width: 100%;
 }
