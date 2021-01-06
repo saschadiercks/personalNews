@@ -1,0 +1,122 @@
+// ###### switches #####
+
+// ###### Settings #####
+$timeline-bg: var(--bg) !default;
+$timeline-color: var(--color) !default;
+$timeline-border-color: var(--border-color) !default;
+$timeline-item-padding: var(--spacing-default) !default;
+$timeline-item-template-columns: var(--avatar-size) auto !default;
+
+$timeline-icon-border-radius: var(--avatar-border-radius) !default;
+$timeline-icon-size: var(--avatar-size) !default;
+
+$timeline-header-gap: var(--spacing-default) !default;
+$timeline-header-margin-bottom: calc(var(--spacing-default) / 2) !default;
+$timeline-title-font-size: var(--h1) !default;
+$timeline-title-margin-bottom: calc(var(--spacing-default) / 2) !default;
+$timeline-description-font-size: var(--h3) !default;
+
+$timeline-meta-color: var(--color-light) !default;
+$timeline-meta-font-size: var(--h4) !default;
+
+$timeline-unread-marker-symbol: "●" !default;
+$timeline-unread-marker-gap: calc(var(--spacing-default) / 2) !default;
+$timeline-unread-marker-color: currentColor !default;
+$timeline-unread-marker-fade-delay: 2s !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.timeline {
+	background-color: var(--bg);
+	color: var(--color);
+}
+
+.timeline__item {
+	@include basic-grid;
+	border-bottom: 1px solid $timeline-border-color;
+	grid-template-columns: $timeline-item-template-columns;
+	padding: $timeline-item-padding;
+	position: relative;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.timeline__icon {
+	border-radius: $timeline-icon-border-radius;
+	display: inline-block;
+	height: var(--avatar-size);
+	margin-top: 3px;
+	width: $timeline-icon-size;
+
+	// avoid showing alt-text if icon is not loaded
+	overflow: hidden;
+	background-clip: padding-box;
+}
+
+.timeline__content {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.timeline__header,
+.timeline__description {
+	flex: 1 1 480px;
+}
+
+.timeline__header {
+	@include tablet-landscape-up {
+		padding-right: $timeline-header-gap;
+	}
+
+	margin-bottom: $timeline-header-margin-bottom;
+}
+
+.timeline__title {
+	display: inline-block;
+	font-size: $timeline-title-font-size;
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: $timeline-title-margin-bottom;
+}
+
+.timeline__meta {
+	color: $timeline-meta-color;
+	font-size: $timeline-meta-font-size;
+	display: block;
+
+	a {
+		color: inherit !important;
+	}
+}
+
+.timeline__source {
+	color: inherit;
+	text-decoration: underline;
+
+	// highlight unread items
+	&:after {
+		content: $timeline-unread-marker-symbol;
+		margin-left: $timeline-unread-marker-gap;
+		color: $timeline-unread-marker-color;
+		opacity: 1;
+		transition: all 1s ease;
+		transition-delay: $timeline-unread-marker-fade-delay;
+	}
+}
+
+// remove highlight of items in view
+.timeline__item--read {
+	.timeline__source:after {
+		opacity: 0;
+	}
+}
+
+.timeline__description {
+	font-size: $timeline-description-font-size;
+	margin: 0;
+}

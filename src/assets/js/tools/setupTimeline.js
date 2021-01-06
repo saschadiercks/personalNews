@@ -13,7 +13,7 @@ import updateTimestamp from "../tools/updateTimestamp";
 
 function setupTimeline(response) {
 	// place response
-	document.getElementById("content").innerHTML = response;
+	document.getElementById("application-content").innerHTML = response;
 
 	// get unreadItem-element and it's count
 	window.unreadItemsCount = document.getElementById(
@@ -24,7 +24,7 @@ function setupTimeline(response) {
 	);
 
 	// now get amount of feeditems and calculate latest item to se it as scroll-anchor
-	let allFeedItems = find(".feed-items__item");
+	let allFeedItems = find(".timeline__item");
 	let latestItem = allFeedItems[unreadItemsCount - 1];
 
 	// toggle ui-elements

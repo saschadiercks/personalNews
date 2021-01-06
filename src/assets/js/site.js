@@ -6,7 +6,7 @@ import ajaxRequest from "./helper/ajaxRequest";
 import find from "./helper/find";
 import reload from "./helper/reload";
 import returnSearchParam from "./helper/returnSearchParam";
-import themeSwitcher from "./helper/themeSwitcher";
+import scrollToTop from "./helper/scrollToTop";
 import toggleClass from "./helper/toggleClass";
 
 import setupTimeline from "./tools/setupTimeline";
@@ -54,6 +54,13 @@ find(".js-reload").forEach((element) => {
 	element.addEventListener("click", reload, true);
 });
 
-// allow theme switching
-// TODO: this needs refactoring alongside with the css
-themeSwitcher();
+// scroll to top
+find(".js-scroll-top").forEach((element) => {
+	element.addEventListener(
+		"click",
+		() => {
+			scrollToTop();
+		},
+		true
+	);
+});

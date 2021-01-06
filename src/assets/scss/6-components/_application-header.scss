@@ -1,0 +1,45 @@
+// ###### switches #####
+
+// ###### Settings #####
+$application-header-bg: var(--bg) !default;
+$application-header-color: var(--color) !default;
+$application-header-box-shadow: var(--drop-shadow) !default;
+$application-header-button-padding: calc(var(--spacing-default) * 0.75) 0 !default;
+$application-logo-size-x: var(--avatar-size) !default;
+$application-logo-size-y: var(--avatar-size) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.application-header {
+	@include basic-grid;
+	background-color: $application-header-bg;
+	color: $application-header-color;
+	box-shadow: $application-header-box-shadow;
+
+	grid-template-columns: calc(var(--avatar-size) * 2) auto calc(
+			var(--avatar-size) * 2
+		); // Magic number
+	top: 0;
+	width: 100%;
+	z-index: 2;
+	position: fixed;
+
+	button {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		padding: $application-header-button-padding;
+	}
+}
+
+.application-header__logo {
+	display: flex;
+	justify-content: center;
+
+	img {
+		height: $application-logo-size-x;
+		width: $application-logo-size-y;
+	}
+}

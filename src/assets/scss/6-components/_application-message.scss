@@ -1,0 +1,22 @@
+// ###### switches #####
+
+// ###### Settings #####
+$application-message-boder-color: var(--border-color) !default;
+$application-message-padding: var(--spacing-default) !default;
+$application-message-link-color: var(--color-light) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.application-message {
+	border-bottom: 1px solid $application-message-boder-color;
+	display: block;
+	padding: $application-message-padding;
+	text-align: center;
+
+	a {
+		color: $application-message-link-color;
+		text-decoration: underline;
+	}
+}

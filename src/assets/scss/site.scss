@@ -1,24 +1,45 @@
-// Mixins
-@import 'mixins/align-vertical';
-@import 'mixins/align-centered';
-@import 'mixins/clearfix';
-@import 'mixins/js-utilities';
-@import 'mixins/responsive';
-@import 'mixins/ul-reset';
-@import 'mixins/visually-hidden';
+// ---- theme
+@import "themes/theme.scss";
 
-// Fonts
-@import 'fonts/style';
+// ---- main styling
+// settings
+@import "./1-settings/colors";
+@import "./1-settings/settings";
 
-// effects
-@import 'effects/rotation';
+// tools
+@import "./2-tools/basic-grid";
+@import "./2-tools/breakpoints";
+@import "./2-tools/themes";
+@import "./2-tools/ul-reset";
 
-// Defaults
-@import 'framework/reset';
-@import 'framework/footer';
-@import 'framework/content';
-@import 'framework/navigation';
+// generic
+@import "./3-generic/icons";
+@import "./3-generic/page";
+@import "./3-generic/reset";
 
+// elements
+@import "./4-elements/a";
+@import "./4-elements/button";
+@import "./4-elements/main";
 
-// Themes
-@import 'themes/default';
+// objects
+@import "./5-objects/ui-list";
+
+// components
+@import "./6-components/application-content";
+@import "./6-components/application-header";
+@import "./6-components/application-loading";
+@import "./6-components/application-message";
+@import "./6-components/application-reload";
+@import "./6-components/badge";
+@import "./6-components/buttons";
+@import "./6-components/channels";
+@import "./6-components/current-theme";
+@import "./6-components/overlay";
+@import "./6-components/timeline";
+
+// utilities
+@import "./7-utilities/fixed";
+@import "./7-utilities/rotation";
+@import "./7-utilities/sticky";
+@import "./7-utilities/hidden";

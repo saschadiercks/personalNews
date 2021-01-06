@@ -1,0 +1,29 @@
+// ###### switches #####
+
+// ###### Settings #####
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+// ---- theme: auto
+// the default is dark here
+html {
+	@include theme-dark;
+}
+
+@media (prefers-color-scheme: light) {
+	html {
+		@include theme-light;
+	}
+}
+
+// ---- theme: dark
+html[data-theme="dark"] {
+	@include theme-dark;
+}
+
+// ---- theme: light
+html[data-theme="light"] {
+	@include theme-light;
+}

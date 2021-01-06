@@ -1,0 +1,33 @@
+// ###### switches #####
+
+// ###### Settings #####
+$badge-bg: var(--bg--inverted) !default;
+$badge-color: var(--color--inverted) !default;
+$badge-font-size: var(--h2) !default;
+$badge-padding: calc(var(--spacing-default) / 2) !default;
+$badge-margin-top: calc(var(--spacing-default) / 2) !default;
+$badge-position-top: var(--header-size) !default;
+$badge-position-right: calc(var(--spacing-default) / 2) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.badge {
+	border-radius: 99em;
+	padding: $badge-padding;
+	text-align: center;
+	line-height: 1;
+}
+
+.badge--unread-items {
+	background-color: $badge-bg;
+	color: $badge-color;
+	font-size: $badge-font-size;
+	margin-top: $badge-margin-top;
+	min-width: 30px;
+	position: fixed;
+	right: $badge-position-right;
+	top: $badge-position-top;
+	font-weight: bold;
+}

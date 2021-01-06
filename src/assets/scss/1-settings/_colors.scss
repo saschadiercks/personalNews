@@ -1,0 +1,57 @@
+// ---- light
+$bg: #fdfdfd !default;
+$color: #333 !default;
+$bg-light: darken($bg, 5%) !default;
+$bg-inverted: #272e35 !default;
+$color-inverted: #cad4e0 !default;
+$color-light: #aaa !default;
+$color-secondary: darken($color, 50%) !default;
+$color-tertiary: lighten($color, 50%) !default;
+$border-color: #e4e4e4 !default;
+$drop-shadow-color: rgba(0, 0, 0, 0.2) !default;
+
+// ---- dark
+$bg--dark: #272e35 !default;
+$color--dark: #cad4e0 !default;
+$bg-light--dark: lighten($bg--dark, 5%) !default;
+$bg-inverted--dark: #fdfdfd !default;
+$color-inverted--dark: #333 !default;
+$color-light--dark: #a8c9ed !default;
+$color-secondary--dark: darken($color--dark, 20%) !default;
+$color-tertiary--dark: darken($color--dark, 20%) !default;
+$border-color--dark: #36404a !default;
+$drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
+
+// ---- prepare themes as custom properties
+// our default color-scheme is dark
+@mixin theme-dark {
+	// colors
+	--bg: #{$bg--dark};
+	--bg--inverted: #{$bg-inverted--dark};
+	--color: #{$color--dark};
+	--color--inverted: #{$color-inverted--dark};
+	--color-light: #{$color-light--dark};
+	--link-hover-bg: #{$bg-light--dark};
+	--link-active-color: #{color-secondary--dark};
+	--link-visited-color: #{color-tertiary--dark};
+
+	// elements
+	--drop-shadow: 0 2px 4px #{$drop-shadow-color--dark};
+	--border-color: #{$border-color--dark};
+}
+
+@mixin theme-light {
+	// colors
+	--bg: #{$bg};
+	--bg--inverted: #{$bg-inverted};
+	--color: #{$color};
+	--color--inverted: #{$color-inverted};
+	--color-light: #{$color-light};
+	--link-hover-bg: #{$bg-light};
+	--link-active-color: #{color-secondary};
+	--link-visited-color: #{color-tertiary};
+
+	// elements
+	--drop-shadow: 0 2px 4px #{$drop-shadow-color};
+	--border-color: #{$border-color};
+}

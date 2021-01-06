@@ -1,0 +1,13 @@
+// ###### switches #####
+
+// ###### Settings #####
+$main-margin-top: var(--header-size) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+main {
+	margin-top: $main-margin-top;
+	width: 100%;
+}

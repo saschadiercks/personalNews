@@ -1,0 +1,14 @@
+// ###### switches #####
+
+// ###### Settings #####
+$icon-padding-vertical: calc(var(--spacing-default / 2)) !default;
+$icon-padding-horizontal: calc(var(--spacing-default / 4)) !default;
+
+//---------------------
+// ###### Layout ######
+//---------------------
+@import "../fonts/style";
+
+[class*="icon-"] {
+	padding: $icon-padding-vertical $icon-padding-horizontal;
+}
