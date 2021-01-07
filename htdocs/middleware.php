@@ -49,7 +49,7 @@
 			// we need to start at zero, since we're using the number to render the remaining items
 			$remainingItemCount = 0;
 			foreach ($content as $feedItem) {
-				$classNameRead = $remainingItemCount > $meta['itemCounts']['newItems'] ?  "timeline__item--read" : "";
+				$classNameRead = $feedItem['itemIsUnread'] === true ?  "" : "timeline__item--read";
 				echo '<li class="timeline__item ' . $classNameRead . '" data-timestamp="' . $feedItem['itemTimestamp'] .'" data-count="' . $remainingItemCount .'">';
 				echo 	'<div>';
 				echo 		'<a href="' . $feedItem['itemAuthorLink'] . '" class="timeline__icon" rel="noopener" target="pn-blank"><img src="' . $feedItem['itemAuthorIcon'] . '" alt="' . $feedItem['itemAuthorDescription'] . '" height="128" width="128" /></a>';

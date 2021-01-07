@@ -4,7 +4,6 @@
 
 import find from "../helper/find";
 import toggleClass from "../helper/toggleClass";
-import listenForScroll from "../helper/listenForScroll";
 
 // ###########
 // # program #

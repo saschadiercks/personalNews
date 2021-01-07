@@ -28,7 +28,9 @@ function setupTimeline(response) {
 	let latestItem = allFeedItems[unreadItemsCount - 1];
 
 	// toggle ui-elements
-	toggleClass(find("#unread-items"), "js-hidden");
+	if (window.unreadItemsCount > 0) {
+		toggleClass(find("#unread-items"), "js-hidden");
+	}
 	toggleClass(find("#application-loading"), "js-hidden");
 
 	// scroll to target

@@ -31,7 +31,7 @@
 
 		// grab requested channel-contents and modify them
 		$content['content'] = $feeds[$activeChannel];
-		$content['content'] = loadExternalFeeds($content['content']);
+		$content['content'] = loadExternalFeeds($content['content'], $timestamp);
 		$content['content'] = filterFeed($content['content'], $blacklist);
 		$content['content'] = sortArray($content['content'], 'itemTimestamp');
 
