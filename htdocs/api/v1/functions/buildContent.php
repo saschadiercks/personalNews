@@ -9,6 +9,7 @@
 	require_once __DIR__ . "/../feedHandling/filterFeed.php";
 	require_once __DIR__ . "/../feedHandling/returnChannelList.php";
 	require_once __DIR__ . "/../feedHandling/returnItemCounts.php";
+	require_once __DIR__ . "/../feedHandling/reduceFeed.php";
 	require_once __DIR__ . "/sortArray.php";
 	require_once __DIR__ . "/returnJson.php";
 
@@ -16,10 +17,11 @@
 // # program #
 // ###########
 
-	function buildContent($channel, $meta, $feeds, $blacklist, $translations, $timestamp) {
-		// check: is a channel set and does it exist in the data?
+	function buildContent($channel, $meta, $feeds, $blacklist, $translations, $timestamp, $maxitemcount) {
+		// ---- check items that are passed via URL
+		// is a channel set and does it exist in the data?
 		// otherwise use the first channel
-		if (isset($channel) && $channel != "" && in_array($channel, array_keys($feeds))) {
+		if (isset($channel) && $channel !== "" && in_array($channel, array_keys($feeds))) {
 			$activeChannel = $channel;
 			$responseType = $translations["ok"];
 			$responseMsg = null;
@@ -29,11 +31,25 @@
 			$responseMsg = "requested channel not found - using default";
 		}
 
+		// is maxitemcount set and is it a valid number?
+		// otherwise set it to zero => return everything
+		if(!is_numeric($maxitemcount) && isset($maxitemcount)) {
+			$maxitemcount = 0;
+			$responseType = $translations["warning"];
+			$responseMsg = "maxitemcount dosn't contain a valid number - returning all items";
+		}
+
+		// ---- now let's build the content
 		// grab requested channel-contents and modify them
 		$content['content'] = $feeds[$activeChannel];
 		$content['content'] = loadExternalFeeds($content['content'], $timestamp);
 		$content['content'] = filterFeed($content['content'], $blacklist);
 		$content['content'] = sortArray($content['content'], 'itemTimestamp');
+
+		// reduce content to maxitemcount
+		if($maxitemcount > 0) {
+			$content['content'] = reduceFeed($content['content'], $maxitemcount);
+		}
 
 		// count returnedItems
 		$itemCounts = returnItemCounts($content['content'], $timestamp);
