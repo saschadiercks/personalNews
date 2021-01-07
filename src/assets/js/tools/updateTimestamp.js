@@ -20,14 +20,10 @@ function updateTimestamp(elements) {
 
 	let observer = new IntersectionObserver(onChange, config);
 	elements.forEach((element) => observer.observe(element));
+}
 
-	// remove badge if user scrolls to designated position to avoid keeping
-	// the badge with a value higher than 0
-	listenForScroll(48, hideBadge);
-
-	function hideBadge() {
-		toggleClass(find("#unread-items"), "js-hidden");
-	}
+function hideBadge() {
+	toggleClass(find("#unread-items"), "js-hidden");
 }
 
 function onChange(changes, observer) {
@@ -40,6 +36,8 @@ function onChange(changes, observer) {
 				localStorage.setItem("lastReadItems", itemTimestamp);
 				if (remainingItemsCount > 0) {
 					unreadItemsElementCount.innerHTML = remainingItemsCount;
+				} else {
+					hideBadge();
 				}
 			}
 			change.target.classList.add("timeline__item--read");
