@@ -18,11 +18,14 @@ import setupTimeline from "./tools/setupTimeline";
 
 // ---- initial states
 window.isScrollable = true;
+window.maxTextLength = returnSearchParam("maxtextlength")
+	? returnSearchParam("maxtextlength")
+	: 400;
 
 // get latest unreadItem from saved timestamp
 window.lastReadTimestamps = localStorage.getItem("lastReadItems");
 if (!lastReadTimestamps) {
-	lastReadTimestamps = 0;
+	lastReadTimestamps = 400;
 }
 
 // ---- load content and setupTimeline with response
@@ -31,7 +34,9 @@ ajaxRequest(
 	"middleware.php?return=content&channel=" +
 		returnSearchParam("channel") +
 		"&timestamp=" +
-		lastReadTimestamps,
+		lastReadTimestamps +
+		"&maxtextlength=" +
+		maxTextLength,
 	setupTimeline
 );
 

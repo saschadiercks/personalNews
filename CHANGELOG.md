@@ -9,10 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.6] - 2021-01-07
+## [1.6] - 2021-01-08
 
 API now returns if an item is read or unread
 the number of timelineitems to be returned can now get set by using the url-parameter: maxitemcount
+the textLength of the itemDescription (summary of the article) can now get shortended via url-parameter: maxtextlength
 
 ## [Releases]
 

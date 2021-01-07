@@ -15,13 +15,14 @@
 	$channel = $_GET['channel'];
 	$timestamp = $_GET['timestamp'];
 	$maxitemcount = $_GET['maxitemcount'];
+	$maxTextLength = $_GET['maxtextlength'];
 
 	// data from api
 	require_once __DIR__ . ('/settings/index.php');
 	require_once __DIR__ . ('/api/v1/functions/buildContent.php');
 
 	// load the data
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $translations, $timestamp, $maxitemcount);
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $translations, $timestamp, $maxitemcount, $maxTextLength);
 
 // ###########
 // # program #
