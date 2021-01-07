@@ -96,6 +96,9 @@ Return items from the selected channel. This uses the channels-object configured
 **timestamp=some timestamp**
 Using a timestamp the api will return the number of new items after that given timestamp. If no timestamp is set, the api will return the number of totalItems as `newItems`. The number of totalItems is always returned as a sperate value.
 
+**maxitemcount=number**
+The number of items in the timeline can be reduced by passing in `maxitemcount`. If `maxitemcount` is a number higher than zero, this number is used to determine the number of items in the feed. If a string or 0 is passed, all items in the feed will be returned. The meta-values `totalItems`and `newItem` will adept too.
+
 ## Infos for local development
 
 ### Usage of docker (preferred)
