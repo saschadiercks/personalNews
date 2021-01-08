@@ -10,6 +10,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// data through url
 	$channel = $_GET['channel'];
 	$timestamp = $_GET['timestamp'];
+	$maxitemcount = $_GET['maxitemcount'];
+	$maxTextLength = $_GET['maxtextlength'];
 
 	require_once __DIR__ . ('/../../settings/index.php');
 	require_once __DIR__ . ('/functions/buildContent.php');
@@ -19,7 +21,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 // ###########
 
 	// build content
-	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $translations, $timestamp);
+	$contentBuilt = buildContent($channel, $metaData, $feedsData, $blacklistData, $translations, $timestamp, $maxitemcount, $maxTextLength);
 
 	// enrich json and return it
 	returnJson($contentBuilt['meta'], $contentBuilt['content'], $contentBuilt['channels']);

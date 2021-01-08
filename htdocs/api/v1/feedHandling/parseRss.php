@@ -13,7 +13,7 @@
 // # program #
 // ###########
 
-	function parseRss($xml, $optionalAvatarUrl) {
+	function parseRss($xml, $optionalAvatarUrl, $timestamp) {
 		$xmlAuthorLink = $xml->channel[0]->link;
 		$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
 		$xmlAuthorDescription = getRootDomainTLD($xmlAuthorLink);	// get description from AuthorLink
@@ -30,7 +30,8 @@
 				'itemTitle' => strip_tags($item->title),								// get the title
 				'itemTimestamp' => returnItemTimestamp($item->pubDate, "timestamp"),	// get timestamp to make timeline sortable
 				'itemDate' => returnItemTimestamp($item->pubDate, "readableDate"),		// get releasedate an transform to readable date
-				'itemDescription' => strip_tags($item->description)						// get description of item (usually news-short-description)
+				'itemDescription' => strip_tags($item->description),						// get description of item (usually news-short-description)
+				'itemIsUnread' => returnItemTimestamp($item->pubDate, "timestamp") > $timestamp
 			);
 		}
 

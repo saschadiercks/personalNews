@@ -13,7 +13,7 @@
 // # program #
 // ###########
 
-	function loadExternalFeeds($content) {
+	function loadExternalFeeds($content, $timestamp) {
 
 		foreach($content['feeds'] as $feed) {
 
@@ -27,10 +27,10 @@
 
 			switch (checkFeedFormat($feed)) {
 				case "rss":
-					$feeds[] = parseRss($feed, $feedAvatar);
+					$feeds[] = parseRss($feed, $feedAvatar, $timestamp);
 					break;
 				case "atom":
-					$feeds[] = parseAtom($feed, $feedAvatar);
+					$feeds[] = parseAtom($feed, $feedAvatar, $timestamp);
 					break;
 			}
 		}
