@@ -17,6 +17,13 @@ the textLength of the itemDescription (summary of the article) can now get short
 
 ## [Releases]
 
+## [1.6] - 2021-01-08
+
+API now returns if an item is read or unread
+the number of timelineitems to be returned can now get set by using the url-parameter: maxitemcount
+the textLength of the itemDescription (summary of the article) can now get shortended via url-parameter: maxtextlength
+
+
 ## [1.5.1] - 2021-01-07
 
 prevent unread-badge getting removed, when modal is opened
