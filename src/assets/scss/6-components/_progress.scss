@@ -1,0 +1,35 @@
+// ###### switches #####
+
+// ###### Settings #####
+$progress-bg: var(--bg);
+$progress-border: 1px solid var(--color);
+$progress-border-radius: var(--avatar-border-radius);
+$progress-height: 25%;
+$progress-width: 70%;
+$progress-max-width: 320px;
+$progress-bar-bg: var(--bg--inverted);
+$progress-bar-border: 1px solid var(--bg);
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.progress {
+	align-items: center;
+	background-color: $progress-bg;
+	border-radius: $progress-border-radius;
+	border: $progress-border;
+	display: flex;
+	height: $progress-height;
+	max-width: $progress-max-width;
+	overflow: hidden;
+	width: $progress-width;
+}
+
+.progress__bar {
+	background-color: $progress-bar-bg;
+	border: $progress-bar-border;
+	border-radius: $progress-border-radius;
+	height: 100%;
+	width: 0; // updated via JS
+}

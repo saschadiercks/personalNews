@@ -1,0 +1,18 @@
+// ###### switches #####
+
+// ###### Settings #####
+
+//---------------------
+// ###### Layout ######
+//---------------------
+
+.application-refresh {
+	align-items: center;
+	display: flex;
+	height: var(--header-size);
+	justify-content: center;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
