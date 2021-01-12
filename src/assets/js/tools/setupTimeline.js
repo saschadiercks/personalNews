@@ -34,7 +34,7 @@ function setupTimeline(response) {
 	toggleClass(find("#application-loading"), "js-hidden");
 
 	// scroll to target
-	scrollToTarget(latestItem, 0, 52, () => {
+	scrollToTarget(latestItem, 0, window.headerHeight, () => {
 		updateTimestamp(allFeedItems);
 	});
 }

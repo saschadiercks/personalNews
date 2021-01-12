@@ -57,6 +57,13 @@
 		<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
 	</header>
 
+	<!-- pullToTefresh-indicator -->
+	<div class="application-refresh">
+		<div class="progress">
+			<div class="progress__bar"></div>
+		</div>
+	</div>
+
 	<!-- overlay -->
 	<div class="overlay js-hidden" id="application-overlay">
 		<div class="overlay-content">
