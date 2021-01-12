@@ -28,6 +28,10 @@
 // # program #
 // ###########
 
+	function returnDefaultChannel($channels) {
+		echo $channels[0]['channel'];
+	}
+
 	function renderChannels($channels) {
 		foreach($channels as $channel) {
 			echo '<li class="channels__item">';
@@ -77,6 +81,9 @@
 
 	// what to do, when called via ajax from index.php
 	switch ($returnType) {
+		case 'defaultChannel':
+			returnDefaultChannel($contentBuilt['channels']);
+			break;
 		case 'channels':
 			renderChannels($contentBuilt['channels']);
 			break;

@@ -21,18 +21,35 @@ window.isScrollable = true;
 window.maxTextLength = returnSearchParam("maxtextlength")
 	? returnSearchParam("maxtextlength")
 	: 400;
+window.headerHeight = document.querySelector(
+	".application-header"
+).clientHeight;
+
+// check for current channel. If none is set, get the initial one from middleware
+window.currentChannel = returnSearchParam("channel");
+if (!currentChannel) {
+	ajaxRequest(
+		"GET",
+		"middleware.php?return=defaultChannel",
+		updateCurrentChannel
+	);
+
+	function updateCurrentChannel(response) {
+		window.currentChannel = response;
+	}
+}
 
 // get latest unreadItem from saved timestamp
 window.lastReadTimestamps = localStorage.getItem("lastReadItems");
 if (!lastReadTimestamps) {
-	lastReadTimestamps = 400;
+	lastReadTimestamps = 0;
 }
 
 // ---- load content and setupTimeline with response
 ajaxRequest(
 	"GET",
 	"middleware.php?return=content&channel=" +
-		returnSearchParam("channel") +
+		currentChannel +
 		"&timestamp=" +
 		lastReadTimestamps +
 		"&maxtextlength=" +

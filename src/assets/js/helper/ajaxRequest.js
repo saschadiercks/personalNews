@@ -4,7 +4,11 @@ function ajaxRequest(method, url, callback) {
 	content.send();
 	content.onreadystatechange = function () {
 		if (content.readyState === 4 && content.readyState) {
-			callback(content.response);
+			if (callback) {
+				callback(content.response);
+			} else {
+				return content.response;
+			}
 		}
 	};
 }
