@@ -44,6 +44,9 @@ window.lastReadTimestamps = localStorage.getItem("lastReadItems");
 if (!lastReadTimestamps) {
 	lastReadTimestamps = 0;
 }
+window.headerHeight = document.querySelector(
+	".application-header"
+).clientHeight;
 
 // ---- load content and setupTimeline with response
 ajaxRequest(
@@ -94,3 +97,19 @@ find(".js-scroll-top").forEach((element) => {
 		true
 	);
 });
+
+// ---- pullToRefresh
+document.addEventListener("scroll", pullToRefresh, true);
+function pullToRefresh() {
+	if (window.pageYOffset < 0) {
+		let refreshPercentage =
+			(window.pageYOffset / (window.headerHeight * 2)) * -100;
+		document.querySelector(
+			".progress__bar"
+		).style.cssText = `width: ${refreshPercentage}%`;
+
+		if (refreshPercentage >= 100) {
+			reload();
+		}
+	}
+}
