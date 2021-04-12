@@ -1,12 +1,10 @@
 {
 	"src": "src",
-	"dist": "public",
+	"dist": "htdocs",
 	"assetSrc": "src/assets",
 	"assetDist": "htdocs/assets",
 	"assetImageSrc": "src/assets/images",
 	"assetImageDist": "htdocs/assets/images",
 	"envProduction": "production",
-	"envDevelopment": "development",
-	"distCssSite": "site.css",
-	"reactDir": "headless-react"
+	"envDevelopment": "development"
 }
