@@ -96,3 +96,8 @@ function pullToRefresh() {
 		}
 	}
 }
+
+// ---- service worker
+navigator.serviceWorker.register("./serviceworker.js", {
+	scope: "/",
+});

@@ -52,9 +52,9 @@
 
 	<!-- header -->
 	<header class="application-header">
-		<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay"><i class="icon-menu"></i></a>
-		<button class="button--transparent js-scroll-top application-header__logo" id="logo"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
-		<button class="button--transparent js-reload application-reload"><i class="icon-reload"></i></button>
+		<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay" aria-label="open the menu to choose a channel"><i class="icon-menu"></i></a>
+		<button class="button--transparent js-scroll-top application-header__logo" id="logo" aria-label="scroll to top of the page"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
+		<button class="button--transparent js-reload application-reload"><i class="icon-reload" aria-label="reload the content"></i></button>
 	</header>
 
 	<!-- pullToTefresh-indicator -->

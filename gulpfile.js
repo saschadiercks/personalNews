@@ -19,7 +19,7 @@ gulp.task("optimize", gulp.series("imagemin", "purge:css"));
 
 // --- run tasks ----
 gulp.task("dev", gulp.series("development", "scripts", "compile:css"));
-gulp.task("serve", gulp.series("dev", "vagrant:up", "react:up"));
+gulp.task("serve", gulp.series("dev", "docker:up"));
 gulp.task(
 	"build",
 	gulp.series("production", "copy:images", "imagemin", "scripts", "compile:css")
