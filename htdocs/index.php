@@ -22,11 +22,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- IE-Stuff -->
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 
 	<?php if($serveAsApplication === TRUE) { ?>
 		<!-- Website as app -->
+		<meta rel="manifest" href="manifest/manifest.json" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
