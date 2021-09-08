@@ -6,6 +6,7 @@
 
 	// import functions
 	require_once __DIR__ . "/../feedHandling/loadExternalFeeds.php";
+	require_once __DIR__ . "/../feedHandling/removeDuplicates.php";
 	require_once __DIR__ . "/../feedHandling/filterFeed.php";
 	require_once __DIR__ . "/../feedHandling/returnChannelList.php";
 	require_once __DIR__ . "/../feedHandling/returnItemCounts.php";
@@ -52,6 +53,7 @@
 		// grab requested channel-contents and modify them
 		$content['content'] = $feeds[$activeChannel];
 		$content['content'] = loadExternalFeeds($content['content'], $timestamp);
+		$content['content'] = removeDuplicates($content['content']);
 		$content['content'] = filterFeed($content['content'], $blacklist);
 		$content['content'] = sortArray($content['content'], 'itemTimestamp');
 
