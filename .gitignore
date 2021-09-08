@@ -4,3 +4,4 @@ build
 __bak
 .DS_Store
 .nova
+.idea
