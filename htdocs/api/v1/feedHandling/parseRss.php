@@ -5,7 +5,7 @@
 
 	// import functions
 	require_once __DIR__ ."/../functions/getRootUrl.php";
-	require_once __DIR__ ."/../functions/getRootDomainTLD.php";
+	require_once __DIR__ . "/../functions/removeProtocol.php";
 	require_once __DIR__ ."/returnItemTimestamp.php";
 	require_once __DIR__ ."/setAvatar.php";
 
@@ -16,7 +16,7 @@
 	function parseRss($xml, $optionalAvatarUrl, $timestamp) {
 		$xmlAuthorLink = $xml->channel[0]->link;
 		$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
-		$xmlAuthorDescription = getRootDomainTLD($xmlAuthorLink);	// get description from AuthorLink
+		$xmlAuthorDescription = removeProtocol($xmlAuthorLink);	// get description from AuthorLink
 
 		// use Icon from date file or use Url for favicon
 		$xmlAuthorIcon = setAvatar($optionalAvatarUrl, $xmlAuthorLink);

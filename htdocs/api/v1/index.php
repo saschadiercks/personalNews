@@ -25,5 +25,3 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 	// enrich json and return it
 	returnJson($contentBuilt['meta'], $contentBuilt['content'], $contentBuilt['channels']);
-
-?>
