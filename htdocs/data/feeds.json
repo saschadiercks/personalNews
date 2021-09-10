@@ -1,57 +1,66 @@
 {
-	"nachrichten": {
-		"title": "Nachrichten",
-		"feeds": [
-			{
-				"url": "http://www.tagesschau.de/xml/rss2",
-				"icon": "assets/images/tagesschau.png"
-			},
-			{
-				"url": "http://newsfeed.zeit.de/politik/index",
-				"icon": "assets/images/zeit.png"
-			}
-		]
-	},
-	"technews": {
-		"title": "TechNews",
-		"feeds": [
-			{
-				"url": "https://www.futurezone.de/?config=rss_hd",
-				"icon": "assets/images/futurezone.png"
-			},
-			{
-				"url": "https://www.theverge.com/rss/index.xml",
-				"icon": "assets/images/verge.png"
-			},
-			{
-				"url": "https://www.engadget.com/rss.xml",
-				"icon": "assets/images/engadget.png"
-			},
-			{
-				"url": "http://feeds.macrumors.com/MacRumors-All",
-				"icon": "assets/images/macrumors.png"
-			},
-			{
-				"url": "https://www.wired.com/feed/rss",
-				"icon": "assets/images/wired.png"
-			}
-		]
-	},
-	"regionales": {
-		"title": "Regionales",
-		"feeds": [
-			{
-				"url": "https://www.ndr.de/nachrichten/schleswig-holstein/nachrichtenshindex113-rss2.xml",
-				"icon": "assets/images/ndr.png"
-			},
-			{
-				"url": "https://www.shz.de/regionales/schleswig-holstein/rss",
-				"icon": "assets/images/shz.png"
-			},
-			{
-				"url": "https://www.shz.de/regionales/newsticker-nord/rss",
-				"icon": "assets/images/shz.png"
-			}
-		]
-	}
+  "nachrichten": {
+	"title": "Nachrichten",
+	"feeds": [
+	  {
+		  "url": "http://www.tagesschau.de/xml/rss2",
+		  "icon": "assets/images/tagesschau.png"
+	  },
+	  {
+		  "url": "http://newsfeed.zeit.de/politik/index",
+		  "icon": "assets/images/zeit.png"
+	  }
+	]
+  },
+  "letterboxd": {
+	"title": "Letterboxd",
+	"feeds": [
+	  {
+		"url": "https://www.letterboxd.com/saschadiercks/rss",
+		"icon": null
+	  }
+	]
+  },
+  "technews": {
+	"title": "TechNews",
+	"feeds": [
+		{
+			"url": "https://www.futurezone.de/?config=rss_hd",
+			"icon": "assets/images/futurezone.png"
+		},
+		{
+			"url": "https://www.theverge.com/rss/index.xml",
+			"icon": "assets/images/verge.png"
+		},
+		{
+			"url": "https://www.engadget.com/rss.xml",
+			"icon": "assets/images/engadget.png"
+		},
+		{
+			"url": "http://feeds.macrumors.com/MacRumors-All",
+			"icon": "assets/images/macrumors.png"
+		},
+		{
+			"url": "https://www.wired.com/feed/rss",
+			"icon": "assets/images/wired.png"
+		}
+	]
+  },
+  "regionales": {
+	"title": "Regionales",
+	"feeds": [
+		{
+			"url": "https://www.ndr.de/nachrichten/schleswig-holstein/nachrichtenshindex113-rss2.xml",
+			"icon": "assets/images/ndr.png"
+		},
+		{
+			"url": "https://www.shz.de/regionales/schleswig-holstein/rss",
+			"icon": "assets/images/shz.png"
+		},
+		{
+			"url": "https://www.shz.de/regionales/newsticker-nord/rss",
+			"icon": "assets/images/shz.png"
+		}
+	]
+  }
 }

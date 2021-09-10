@@ -25,5 +25,3 @@ function returnChannelList($content, $activeChannel) {
 
 	return $renderedChannels;
 }
-
-?>

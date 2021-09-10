@@ -1,4 +1,12 @@
 <?php
+// ###########
+// # imports #
+// ###########
+
+
+// ###########
+// # program #
+// ###########
 
 	function checkFeedFormat($feedObject) {
 		if(isset($feedObject->channel)) {
@@ -6,6 +14,5 @@
 		} else if(isset($feedObject->entry)) {
 			return "atom";
 		}
+		return null;
 	}
-
-?>

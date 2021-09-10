@@ -18,5 +18,3 @@ function shortenText($feedItems, $maxTextLength) {
 
 	return $feedItems;
 }
-
-?>

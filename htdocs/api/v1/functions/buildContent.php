@@ -75,13 +75,11 @@
 
 		// collect metaStuff
 		$content['meta'] = array(
-			"state" => $responseType ? $responseType : $translations["ok"],
-			"message" => $responseMsg ? $responseMsg : null,
-			"itemCounts" => $itemCounts ? $itemCounts : null,
-			"pinnedMessage" => $meta["pinnedMessage"] ? $meta["pinnedMessage"] : false
+			"state" => $responseType ?: $translations["ok"],
+			"message" => $responseMsg ?: null,
+			"itemCounts" => $itemCounts ?: null,
+			"pinnedMessage" => $meta["pinnedMessage"] ?: false
 		);
 
 		return $content;
 	}
-
-?>

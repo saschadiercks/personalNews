@@ -23,12 +23,8 @@
 		$totalItems = count($feeds);
 		$newItems = returnNewItemsCount($feeds, $timestamp, $totalItems);
 
-		$itemCounts = array(
+		return array(
 			"totalItems" => $totalItems,
 			"newItems" => isset($newItems) ? $newItems : $totalItems
 		);
-
-		return $itemCounts;
 	}
-
-?>
