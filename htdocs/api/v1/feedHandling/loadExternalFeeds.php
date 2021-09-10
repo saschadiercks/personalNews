@@ -43,5 +43,3 @@
 
 		return $feedsCombined;
 	}
-
-?>

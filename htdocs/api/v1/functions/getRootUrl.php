@@ -10,9 +10,12 @@
 // ###########
 
 	function getRootUrl($url) {
-		$url = explode('/', $url);						// explode original url
-		$url = $url[0] . '//' . $url[2];				// just use protocole and domain
-		return $url;
+		// extract the protocol
+		$url = explode('//', $url);
+		$protocol = $url[0];
+		$urlWithoutPath = explode('/', $url[1]);
+
+		$urlWithoutSubDomain = str_replace('www.', '', $urlWithoutPath);
+		return $protocol . '//' . $urlWithoutSubDomain[0];
 	}
 
-?>

@@ -1,17 +1,4 @@
 {
-	"nachrichten": {
-		"title": "Nachrichten",
-		"feeds": [
-			{
-				"url": "http://www.tagesschau.de/xml/rss2",
-				"icon": "assets/images/tagesschau.png"
-			},
-			{
-				"url": "http://newsfeed.zeit.de/politik/index",
-				"icon": "assets/images/zeit.png"
-			}
-		]
-	},
 	"technews": {
 		"title": "TechNews",
 		"feeds": [
@@ -37,20 +24,25 @@
 			}
 		]
 	},
-	"regionales": {
-		"title": "Regionales",
+	"letterboxd": {
+		"title": "Letterboxd",
+		"feeds": [
+		  {
+			"url": "https://www.letterboxd.com/saschadiercks/rss",
+			"icon": null
+		  }
+		]
+  	},
+	"nachrichten": {
+		"title": "Nachrichten",
 		"feeds": [
 			{
-				"url": "https://www.ndr.de/nachrichten/schleswig-holstein/nachrichtenshindex113-rss2.xml",
-				"icon": "assets/images/ndr.png"
+				"url": "http://www.tagesschau.de/xml/rss2",
+				"icon": "assets/images/tagesschau.png"
 			},
 			{
-				"url": "https://www.shz.de/regionales/schleswig-holstein/rss",
-				"icon": "assets/images/shz.png"
-			},
-			{
-				"url": "https://www.shz.de/regionales/newsticker-nord/rss",
-				"icon": "assets/images/shz.png"
+				"url": "http://newsfeed.zeit.de/politik/index",
+				"icon": "assets/images/zeit.png"
 			}
 		]
 	}
