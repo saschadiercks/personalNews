@@ -17,6 +17,8 @@
 		echo isset($projectKeywords) ? '<meta name="keywords" content="'.$projectKeywords.'"/>' : FALSE;
 		echo isset($projectLanguage) ? '<meta name="language" content="'.$projectLanguage.'"/>' : FALSE;
 	?>
+	<meta name="theme-color" content="#fdfdfd" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#272e35" media="(prefers-color-scheme: dark)">
 
 	<!-- mobile scaling -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
