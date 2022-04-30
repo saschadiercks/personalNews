@@ -27,16 +27,16 @@ function setupTimeline(response) {
 	let allFeedItems = find(".timeline__item");
 	let latestItem = allFeedItems[unreadItemsCount - 1];
 
+	// scroll to target
+	scrollToTarget(latestItem, 0, window.headerHeight, () => {
+		updateTimestamp(allFeedItems);
+	});
+
 	// toggle ui-elements
 	if (window.unreadItemsCount > 0) {
 		toggleClass(find("#unread-items"), "js-hidden");
 	}
 	toggleClass(find("#application-loading"), "js-hidden");
-
-	// scroll to target
-	scrollToTarget(latestItem, 0, window.headerHeight, () => {
-		updateTimestamp(allFeedItems);
-	});
 }
 
 export default setupTimeline;

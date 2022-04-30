@@ -15,7 +15,7 @@ gulp.task("copy", gulp.series("copy:images", "copy:fonts"));
 gulp.task("lint", gulp.series("lint:css"));
 gulp.task("scripts", gulp.series("scripts:build"));
 gulp.task("styles", gulp.series("lint:css", "compile:css"));
-gulp.task("optimize", gulp.series("imagemin", "purge:css"));
+//gulp.task("optimize", gulp.series("imagemin", "purge:css"));
 
 // --- run tasks ----
 gulp.task("dev", gulp.series("development", "scripts", "compile:css"));
