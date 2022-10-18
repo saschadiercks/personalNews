@@ -3,24 +3,24 @@
 		"title": "TechNews",
 		"feeds": [
 			{
-				"url": "https://www.futurezone.de/?config=rss_hd",
-				"icon": "assets/images/futurezone.png"
+				"url": "https://www.futurezone.de/feed",
+				"icon": "personalnews/assets/images/futurezone.png"
 			},
 			{
 				"url": "https://www.theverge.com/rss/index.xml",
-				"icon": "assets/images/verge.png"
+				"icon": "personalnews/assets/images/verge.png"
 			},
 			{
 				"url": "https://www.engadget.com/rss.xml",
-				"icon": "assets/images/engadget.png"
+				"icon": "personalnews/assets/images/engadget.png"
 			},
 			{
 				"url": "http://feeds.macrumors.com/MacRumors-All",
-				"icon": "assets/images/macrumors.png"
+				"icon": "personalnews/assets/images/macrumors.png"
 			},
 			{
 				"url": "https://www.wired.com/feed/rss",
-				"icon": "assets/images/wired.png"
+				"icon": "personalnews/assets/images/wired.png"
 			}
 		]
 	},
@@ -38,11 +38,11 @@
 		"feeds": [
 			{
 				"url": "http://www.tagesschau.de/xml/rss2",
-				"icon": "assets/images/tagesschau.png"
+				"icon": "personalnews/assets/images/tagesschau.png"
 			},
 			{
 				"url": "http://newsfeed.zeit.de/politik/index",
-				"icon": "assets/images/zeit.png"
+				"icon": "personalnews/assets/images/zeit.png"
 			}
 		]
 	}
