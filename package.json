@@ -24,7 +24,7 @@
     "stylelint-order": "^2.2.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^4.6.0",
-    "webpack-stream": "^4.0.3"
+    "webpack-stream": "^7.0.0"
   },
   "scripts": {},
   "repository": {
