@@ -3,8 +3,8 @@
 	// this middleware is used as a very dirty solution to keep the old site
 	// working as expected
 
-	ini_set('display_errors', 1);
-	error_reporting(E_ALL ^ E_NOTICE);
+	// ini_set('display_errors', 1);
+	// error_reporting(E_ALL ^ E_NOTICE);
 
 // ###########
 // # imports #

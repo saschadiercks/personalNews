@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "gulp",
+			"script": "scripts",
+			"target": "scripts",
+			"path": "",
+			"fileName": "gulpfile.js",
+			"uri": {
+				"$mid": 1,
+				"fsPath": "/Users/sascha/Sites/_git/personalNews/gulpfile.js",
+				"path": "/Users/sascha/Sites/_git/personalNews/gulpfile.js",
+				"scheme": "file"
+			},
+			"problemMatcher": ["$msCompile"],
+			"group": "build",
+			"label": "gulp: scripts"
+		}
+	]
+}

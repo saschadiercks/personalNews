@@ -39,8 +39,9 @@
 	<?php } ?>
 
 	<!-- Icons -->
-	<link rel="apple-touch-icon" href="apple-touch-icon-foto-228x228-precomposed.png" sizes="228x228" />
-	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+	<link rel="mask-icon" href="maskIcon.svg" color="#007ACC" />
+	<link rel="shortcut icon" href="favicon.ico" sizes="any" />
 
 	<!-- Theswitcher (loaded as early as possible)-->
 	<script type="text/javascript">
