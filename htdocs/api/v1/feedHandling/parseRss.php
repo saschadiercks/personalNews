@@ -30,7 +30,7 @@
 				'itemTitle' => strip_tags($item->title),								// get the title
 				'itemTimestamp' => returnItemTimestamp($item->pubDate, "timestamp"),	// get timestamp to make timeline sortable
 				'itemDate' => returnItemTimestamp($item->pubDate, "readableDate"),		// get releasedate an transform to readable date
-				'itemDescription' => strip_tags($item->description),						// get description of item (usually news-short-description)
+				'itemDescription' => strlen($item->description)  > 0 ? strip_tags($item->description) : "no text here",						// get description of item (usually news-short-description)
 				'itemIsUnread' => returnItemTimestamp($item->pubDate, "timestamp") > $timestamp
 			);
 		}

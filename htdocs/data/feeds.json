@@ -7,8 +7,8 @@
         "icon": "assets/images/tagesschau.png"
       },
       {
-        "url": "https://taz.de/rss.xml",
-        "icon": "assets/images/taz.png"
+        "url": " https://www.faz.net/rss/aktuell",
+        "icon": "assets/images/faz.png"
       }
     ]
   },
