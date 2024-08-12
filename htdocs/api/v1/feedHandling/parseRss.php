@@ -4,6 +4,7 @@
 // ###########
 
 	// import functions
+	require_once __DIR__ ."/../../../config/config.php";
 	require_once __DIR__ ."/../functions/getRootUrl.php";
 	require_once __DIR__ . "/../functions/removeProtocol.php";
 	require_once __DIR__ ."/returnItemTimestamp.php";
@@ -14,6 +15,10 @@
 // ###########
 
 	function parseRss($xml, $optionalAvatarUrl, $timestamp) {
+		global $itemDescriptionEmptyAllowed;
+		global $itemDescriptionEmptyText;
+
+		// get data to push to every feedItem
 		$xmlAuthorLink = $xml->channel[0]->link;
 		$xmlAuthorLink = getRootUrl($xmlAuthorLink);					// get source-link from feed
 		$xmlAuthorDescription = removeProtocol($xmlAuthorLink);	// get description from AuthorLink
@@ -30,12 +35,10 @@
 				'itemTitle' => strip_tags($item->title),								// get the title
 				'itemTimestamp' => returnItemTimestamp($item->pubDate, "timestamp"),	// get timestamp to make timeline sortable
 				'itemDate' => returnItemTimestamp($item->pubDate, "readableDate"),		// get releasedate an transform to readable date
-				'itemDescription' => strlen($item->description)  > 0 ? strip_tags($item->description) : "no text here",						// get description of item (usually news-short-description)
+				'itemDescription' => strlen($item->description) > 0 || !$itemDescriptionEmptyAllowed ? strip_tags($item->description) : $itemDescriptionEmptyText,	// get description of item (usually news-short-description)
 				'itemIsUnread' => returnItemTimestamp($item->pubDate, "timestamp") > $timestamp
 			);
 		}
 
 		return $feedItems;
 	}
-
-?>
