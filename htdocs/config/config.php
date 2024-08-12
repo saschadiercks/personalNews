@@ -6,7 +6,7 @@
 	$projectDescription = $projectTitle . ' | ' . $projectTitleSub;
 	$projectKeywords = 'news, timeline, newsstream';
 	$projectLanguage = 'de';					// langugage of your content (see: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)
-	$projectDirection = 'ltr';					// Reading direction ltr || rtl
+	$projectDirection = 'ltr';				// Reading direction ltr || rtl
 
 	// Application-Settings (mobile)
 	$serveAsApplication = TRUE;					// allow running as standalone application (TRUE || FALSE)
@@ -30,6 +30,10 @@
 	// size to shortenText
 	$itemDescriptionLength = 300;
 	$readMoreIcon = '...';
+
+	// show entries without itemDescription
+	$itemDescriptionEmptyAllowed = FALSE;
+	$itemDescriptionEmptyText = "no text here";
 
 	// +++++ Functions +++++++
 	$channelUrlParameter = urldecode($_GET['channel']);		// get the channelparamter, if there's one
