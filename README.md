@@ -55,6 +55,7 @@ personalNews comes with a default list of links and some example keywords for bl
 - only requires php on your server
 - uses vanillaJS (to minimize file-size)
 - API for fetching content (get only for now)
+- allows hiding the UI via url-parameter (mode=minimal)
 
 ### Planned Features
 

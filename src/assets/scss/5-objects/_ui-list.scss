@@ -1,3 +1,5 @@
+@use "../2-tools/ul-reset";
+
 // ###### switches #####
 
 // ###### Settings #####
@@ -7,5 +9,5 @@
 //---------------------
 
 .ui-list {
-	@include ul-reset;
+	@include ul-reset.ul-reset;
 }

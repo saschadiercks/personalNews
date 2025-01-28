@@ -1,3 +1,5 @@
+@use "../2-tools/basic-grid";
+
 // ###### switches #####
 
 // ###### Settings #####
@@ -39,7 +41,7 @@ $overlay-theme-switch-padding: calc(var(--spacing-default) / 2) !default;
 }
 
 .overlay__header {
-	@include basic-grid;
+	@include basic-grid.basic-grid;
 	border-bottom: 1px solid $overlay-header-border-color;
 	grid-template-columns: auto auto;
 	padding-bottom: $overlay-header-padding-bottom;

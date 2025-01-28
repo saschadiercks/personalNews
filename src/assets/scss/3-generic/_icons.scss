@@ -7,7 +7,7 @@ $icon-padding-horizontal: calc(var(--spacing-default / 4)) !default;
 //---------------------
 // ###### Layout ######
 //---------------------
-@import "../fonts/style";
+@use "../fonts/style";
 
 [class*="icon-"] {
 	padding: $icon-padding-vertical $icon-padding-horizontal;

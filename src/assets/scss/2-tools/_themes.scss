@@ -1,3 +1,5 @@
+@use "../1-settings/colors";
+
 // ###### switches #####
 
 // ###### Settings #####
@@ -9,21 +11,21 @@
 // ---- theme: auto
 // the default is dark here
 html {
-	@include theme-dark;
+	@include colors.theme-dark;
 }
 
 @media (prefers-color-scheme: light) {
 	html {
-		@include theme-light;
+		@include colors.theme-light;
 	}
 }
 
 // ---- theme: dark
 html[data-theme="dark"] {
-	@include theme-dark;
+	@include colors.theme-dark;
 }
 
 // ---- theme: light
 html[data-theme="light"] {
-	@include theme-light;
+	@include colors.theme-light;
 }

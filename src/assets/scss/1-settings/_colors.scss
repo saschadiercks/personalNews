@@ -1,24 +1,25 @@
+@use "sass:color";
 // ---- light
 $bg: #fdfdfd !default;
 $color: #333 !default;
-$bg-light: darken($bg, 5%) !default;
+$bg-light: color.adjust($bg, $lightness: -5%) !default;
 $bg-inverted: #272e35 !default;
 $color-inverted: #cad4e0 !default;
 $color-light: #757575 !default;
-$color-secondary: darken($color, 50%) !default;
-$color-tertiary: lighten($color, 50%) !default;
+$color-secondary: color.adjust($color, $lightness: -50%) !default;
+$color-tertiary: color.adjust($color, $lightness: 50%) !default;
 $border-color: #e4e4e4 !default;
 $drop-shadow-color: rgba(0, 0, 0, 0.2) !default;
 
 // ---- dark
 $bg--dark: #272e35 !default;
 $color--dark: #cad4e0 !default;
-$bg-light--dark: lighten($bg--dark, 5%) !default;
+$bg-light--dark: color.adjust($bg--dark, $lightness: 5%) !default;
 $bg-inverted--dark: #fdfdfd !default;
 $color-inverted--dark: #333 !default;
 $color-light--dark: #a8c9ed !default;
-$color-secondary--dark: darken($color--dark, 20%) !default;
-$color-tertiary--dark: darken($color--dark, 20%) !default;
+$color-secondary--dark: color.adjust($color--dark, $lightness: -20%) !default;
+$color-tertiary--dark: color.adjust($color--dark, $lightness: -20%) !default;
 $border-color--dark: #36404a !default;
 $drop-shadow-color--dark: rgba(0, 0, 0, 0.4) !default;
 

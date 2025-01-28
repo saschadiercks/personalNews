@@ -1,3 +1,5 @@
+@use "../2-tools/basic-grid";
+
 // ###### switches #####
 
 // ###### Settings #####
@@ -13,7 +15,7 @@ $application-logo-size-y: var(--avatar-size) !default;
 //---------------------
 
 .application-header {
-	@include basic-grid;
+	@include basic-grid.basic-grid;
 	background-color: $application-header-bg;
 	color: $application-header-color;
 	box-shadow: $application-header-box-shadow;
