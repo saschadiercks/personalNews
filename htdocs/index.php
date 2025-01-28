@@ -1,7 +1,7 @@
 <?php
 	header('Content-type: text/html; charset=utf-8');
 	require_once __DIR__ . '/config/config.php';
-	$single = isset($_GET['mode']) && $_GET['mode'] === 'single' ? true : false;
+	$minimal = isset($_GET['mode']) && $_GET['mode'] === 'minimal' ? true : false;
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
 <body>
 
 	<!-- header -->
-	<?php if (!$single) { ?>
+	<?php if (!$minimal) { ?>
 		<header class="application-header">
 			<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay" aria-label="open the menu to choose a channel"><i class="icon-menu"></i></button>
 			<button class="button--transparent js-scroll-top application-header__logo" id="logo" aria-label="scroll to top of the page"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
@@ -83,14 +83,14 @@
 			</div>
 			<div class="overlay-backdrop js-overlay-toggle" data-target="#application-overlay"></div>
 		</div>
-	<?php } ?>
 
-	<!-- pullToTefresh-indicator -->
-	<div class="application-refresh">
-		<div class="progress">
-			<div class="progress__bar"></div>
-		</div>
-	</div>
+        <!-- pullToTefresh-indicator -->
+        <div class="application-refresh">
+            <div class="progress">
+                <div class="progress__bar"></div>
+            </div>
+        </div>
+    <?php } ?>
 
 	<!-- content -->
 	<main class="application-content" id="application-content">
