@@ -1,47 +1,47 @@
 // ---- theme
-@import "themes/theme.scss";
+@use "themes/theme.scss";
 
 // ---- main styling
 // settings
-@import "./1-settings/colors";
-@import "./1-settings/settings";
+@use "1-settings/colors";
+@use "1-settings/settings";
 
 // tools
-@import "./2-tools/basic-grid";
-@import "./2-tools/breakpoints";
-@import "./2-tools/themes";
-@import "./2-tools/ul-reset";
+@use "2-tools/basic-grid";
+@use "2-tools/breakpoints";
+@use "2-tools/themes";
+@use "2-tools/ul-reset";
 
 // generic
-@import "./3-generic/icons";
-@import "./3-generic/page";
-@import "./3-generic/reset";
+@use "3-generic/icons";
+@use "3-generic/page";
+@use "3-generic/reset";
 
 // elements
-@import "./4-elements/a";
-@import "./4-elements/button";
-@import "./4-elements/main";
+@use "4-elements/a";
+@use "4-elements/button";
+@use "4-elements/main";
 
 // objects
-@import "./5-objects/ui-list";
+@use "5-objects/ui-list";
 
 // components
-@import "./6-components/application-content";
-@import "./6-components/application-header";
-@import "./6-components/application-loading";
-@import "./6-components/application-message";
-@import "./6-components/application-refresh";
-@import "./6-components/application-reload";
-@import "./6-components/badge";
-@import "./6-components/buttons";
-@import "./6-components/channels";
-@import "./6-components/current-theme";
-@import "./6-components/overlay";
-@import "./6-components/progress";
-@import "./6-components/timeline";
+@use "6-components/application-content";
+@use "6-components/application-header";
+@use "6-components/application-loading";
+@use "6-components/application-message";
+@use "6-components/application-refresh";
+@use "6-components/application-reload";
+@use "6-components/badge";
+@use "6-components/buttons";
+@use "6-components/channels";
+@use "6-components/current-theme";
+@use "6-components/overlay";
+@use "6-components/progress";
+@use "6-components/timeline";
 
 // utilities
-@import "./7-utilities/fixed";
-@import "./7-utilities/rotation";
-@import "./7-utilities/sticky";
-@import "./7-utilities/hidden";
+@use "7-utilities/fixed";
+@use "7-utilities/rotation";
+@use "7-utilities/sticky";
+@use "7-utilities/hidden";

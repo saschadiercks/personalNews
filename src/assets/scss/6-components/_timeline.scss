@@ -1,3 +1,6 @@
+@use "../2-tools/basic-grid";
+@use "../2-tools/breakpoints";
+
 // ###### switches #####
 
 // ###### Settings #####
@@ -35,7 +38,7 @@ $timeline-unread-marker-fade-delay: 2s !default;
 }
 
 .timeline__item {
-	@include basic-grid;
+	@include basic-grid.basic-grid;
 	border-bottom: 1px solid $timeline-border-color;
 	grid-template-columns: $timeline-item-template-columns;
 	padding: $timeline-item-padding;
@@ -70,11 +73,11 @@ $timeline-unread-marker-fade-delay: 2s !default;
 }
 
 .timeline__header {
-	@include tablet-landscape-up {
+	margin-bottom: $timeline-header-margin-bottom;
+
+	@include breakpoints.tablet-landscape-up {
 		padding-right: $timeline-header-gap;
 	}
-
-	margin-bottom: $timeline-header-margin-bottom;
 }
 
 .timeline__title {
@@ -121,7 +124,7 @@ $timeline-unread-marker-fade-delay: 2s !default;
 	font-size: $timeline-description-font-size;
 	margin: 0;
 
-	@include tablet-landscape-up {
+	@include breakpoints.tablet-landscape-up {
 		font-size: $timeline-description-font-size-tablet;
 	}
 }

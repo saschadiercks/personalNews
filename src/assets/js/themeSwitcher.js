@@ -25,6 +25,12 @@ if (currentThemeNo === -1) {
 // now apply the theme
 applyThemeClassTo.dataset.theme = currentTheme;
 
+// ---- Theme Switcher availibility
+const themeSwitch = document.querySelector("#js-themeswitch");
+if (themeSwitch === null) {
+	return;
+}
+
 // ---- run this after html is loaded
 document.addEventListener("DOMContentLoaded", domReady, true);
 

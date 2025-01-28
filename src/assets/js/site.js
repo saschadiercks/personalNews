@@ -27,9 +27,8 @@ window.lastReadTimestamps = localStorage.getItem("lastReadItems");
 if (!lastReadTimestamps) {
 	lastReadTimestamps = 400;
 }
-window.headerHeight = document.querySelector(
-	".application-header"
-).clientHeight;
+const windowHeader = document.querySelector(".application-header");
+const headerHeight = windowHeader ? windowHeader.clientHeight : 0;
 
 // ---- load content and setupTimeline with response
 ajaxRequest(
@@ -44,9 +43,12 @@ ajaxRequest(
 );
 
 // ---- load channels into UI-Element
-ajaxRequest("GET", "middleware.php?return=channels", injectChannels);
-function injectChannels(response) {
-	document.getElementById("channels").innerHTML = response;
+const channels = document.getElementById("channels");
+if (channels) {
+	ajaxRequest("GET", "middleware.php?return=channels", injectChannels);
+	function injectChannels(response) {
+		document.getElementById("channels").innerHTML = response;
+	}
 }
 
 // toggle overlays
@@ -86,7 +88,7 @@ document.addEventListener("scroll", pullToRefresh, true);
 function pullToRefresh() {
 	if (window.pageYOffset < 0) {
 		let refreshPercentage =
-			(window.pageYOffset / (window.headerHeight * 2)) * -100;
+			(window.pageYOffset / (headerHeight * 2)) * -100;
 		document.querySelector(
 			".progress__bar"
 		).style.cssText = `width: ${refreshPercentage}%`;

@@ -1,6 +1,7 @@
 <?php
 	header('Content-type: text/html; charset=utf-8');
 	require_once __DIR__ . '/config/config.php';
+	$single = isset($_GET['mode']) && $_GET['mode'] === 'single' ? true : false;
 ?>
 
 <!DOCTYPE html>
@@ -55,38 +56,40 @@
 <body>
 
 	<!-- header -->
-	<header class="application-header">
-		<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay" aria-label="open the menu to choose a channel"><i class="icon-menu"></i></button>
-		<button class="button--transparent js-scroll-top application-header__logo" id="logo" aria-label="scroll to top of the page"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
-		<button class="button--transparent js-reload application-reload"><i class="icon-reload" aria-label="reload the content"></i></button>
-	</header>
+	<?php if (!$single) { ?>
+		<header class="application-header">
+			<button class="button--transparent js-overlay-toggle" data-target="#application-overlay" id="toggle-overlay" aria-label="open the menu to choose a channel"><i class="icon-menu"></i></button>
+			<button class="button--transparent js-scroll-top application-header__logo" id="logo" aria-label="scroll to top of the page"><img src="assets/images/world.svg" alt="<?php echo($projectTitle); ?>" /></button>
+			<button class="button--transparent js-reload application-reload"><i class="icon-reload" aria-label="reload the content"></i></button>
+		</header>
+
+		<!-- overlay -->
+		<div class="overlay js-hidden" id="application-overlay">
+			<div class="overlay-content">
+				<div class="overlay__header">
+					<h2 class="overlay__title overlay__headeritem"><?= $applicationName ?></h2>
+					<div class="overlay__theme overlay__headeritem">
+						<span class="">theme:</span>
+						<button class="overlay__themeswitch button--transparent" id="js-themeswitch">
+							<span class="text-auto">auto</span>
+							<i class="icon-moon"></i>
+							<i class="icon-sun"></i>
+						</button>
+					</div>
+				</div>
+				<ul id="channels" class="channels ui-list ui-list--vertical">
+					<!-- overlay will be placed here (ajax) -->
+				</ul>
+			</div>
+			<div class="overlay-backdrop js-overlay-toggle" data-target="#application-overlay"></div>
+		</div>
+	<?php } ?>
 
 	<!-- pullToTefresh-indicator -->
 	<div class="application-refresh">
 		<div class="progress">
 			<div class="progress__bar"></div>
 		</div>
-	</div>
-
-	<!-- overlay -->
-	<div class="overlay js-hidden" id="application-overlay">
-		<div class="overlay-content">
-			<div class="overlay__header">
-				<h2 class="overlay__title overlay__headeritem"><?= $applicationName ?></h2>
-				<div class="overlay__theme overlay__headeritem">
-					<span class="">theme:</span>
-					<button class="overlay__themeswitch button--transparent" id="js-themeswitch">
-						<span class="text-auto">auto</span>
-						<i class="icon-moon"></i>
-						<i class="icon-sun"></i>
-					</button>
-				</div>
-			</div>
-			<ul id="channels" class="channels ui-list ui-list--vertical">
-				<!-- overlay will be placed here (ajax) -->
-			</ul>
-		</div>
-		<div class="overlay-backdrop js-overlay-toggle" data-target="#application-overlay"></div>
 	</div>
 
 	<!-- content -->
