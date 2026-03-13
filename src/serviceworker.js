@@ -2,7 +2,7 @@ var CACHE_NAME = "[contenthash]";
 var REQUIRED_FILES = [
 	"./assets/css/site.css",
 	"./assets/js/site.js",
-	"./assets/images/world.svg",
+	"./assets/images/world-icon.svg",
 	"./favicon.ico",
 	"./assets/fonts/icomoon.ttf",
 ];
