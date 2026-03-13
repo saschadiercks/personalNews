@@ -1,0 +1,5 @@
+# Gzip
+<FilesMatch "\.(js|css|html|htm|php|xml)$">
+    SetOutputFilter DEFLATE
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml
+</FilesMatch>
