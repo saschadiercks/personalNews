@@ -23,11 +23,14 @@
     "sass": "^1.49.7",
     "stylelint": "^9.10.1",
     "stylelint-order": "^2.2.1",
-    "webpack": "^4.39.3",
+    "webpack": "^5.105.4",
     "webpack-cli": "^4.6.0",
     "webpack-stream": "^4.0.3"
   },
-  "scripts": {},
+  "scripts": {
+    "colima:start": "colima start && docker-compose up && echo 'open http://127.0.0.1:8080/ in browser' ",
+    "colima:stop": "docker-compose down && colima stop"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saschadiercks/personalNews.git"

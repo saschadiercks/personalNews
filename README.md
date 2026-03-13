@@ -19,7 +19,7 @@ Do you like getting an overview of news? Do you prefer timelines? With personalN
 
 - [Api-documentation](#api-documentation)
 
-  - [What does the api return?](#what-does-the-api-return?)
+  - [What does the api return?](#what-does-the-api-return)
   - [output](#output)
   - [input](#input)
 
@@ -106,7 +106,22 @@ In the attached example page, I'm using a `maxtextlength=400`.
 
 ## Infos for local development
 
-### Usage of docker (preferred)
+### Usage of Colima
+- Install Docker CLI: `brew install docker`
+- Install Colima: `brew install colima`
+- Start Colima: `npm run colima:start` or `colima start`
+- Start the container: `npm run docker:start` or `docker-compose up`
+  - (the first start can take a while)
+- **Troubleshooting**: If you get an error like "limactl is running under rosetta, please reinstall lima with native arch", this means Homebrew is installed for Intel instead of Apple Silicon. Follow these steps:
+  - Check your Homebrew: `which brew` (if it shows `/usr/local/bin/brew`, it's Intel)
+  - Uninstall Intel Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"`
+  - Install Homebrew for Apple Silicon: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+  - Add to PATH: `echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"`
+  - Install Docker CLI: `brew install docker`
+  - Install Colima: `brew install colima`
+  - Start Colima: `colima start`
+
+### Usage of docker
 
 1. install docker on your machine (https://docs.docker.com/get-docker/)
 2. head to the local repository and run `docker-compose up`
@@ -123,7 +138,7 @@ In the attached example page, I'm using a `maxtextlength=400`.
 
 ### Usage of gulp
 
-1. Make sure, you have node.js installed on your computer (https://nodejs.org/en/)
+1. Make sure, you have node.js installed on your computer (https://nodejs.org/en/) or `brew install node` if you're on a mac
 2. run `npm install gulp-cli -g` to install gulp
 3. run `npm install` to install gulp in your project
 4. run `gulp sass:watch` to compile SASS on the fly
